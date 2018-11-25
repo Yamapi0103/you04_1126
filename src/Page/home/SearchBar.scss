@@ -1,0 +1,82 @@
+.searchbar {
+    height: 50px;
+    width:80%;
+    // background: lightgreen;
+    display: flex;
+    justify-content: space-around;
+    .searchbar_btn {
+      width: 25%;
+      background: #ffffff;
+      border: 2px solid grey;
+    //   border-radius: 20px;
+      .searchbar_btn_dropdown_toggle {
+        // box-sizing: border-box;
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+        list-style: none;
+        line-height: 47px;
+        display: inline-block;
+        max-height: 50px;
+        overflow: hidden;
+        width: 100%;
+        transition: .5s;
+        // border-radius: 20px;
+        position: relative;
+        left: 0;
+        outline: 2.5px solid transparent;
+        div {
+          padding-left: 10%;
+          color: #686868;
+        }
+        &:hover {
+          max-height: 250px;
+          background: #fff;
+          outline: 2.5px solid grey;
+        //   -moz-outline-radius: 20px;
+        }
+        li {
+            display: block;
+            padding-left: 10%;
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+        li:hover {
+            background: rgb(214, 214, 214);
+        }
+      }
+    }
+    .searchbar_btn3 {
+      width: 40%;
+      font-family: "微軟正黑體";
+      font-size: 1rem;
+      padding-left: 3%;
+      box-sizing: border-box;
+    }
+  }
+  .startsearch_btn {
+      display: block;
+      width: 200px;
+      height: 50px;
+      border-radius: 20px;
+      background: orange;
+      display: flex;
+      justify-content: center;
+      text-decoration: none;
+      font-family: "微軟正黑體";
+      color: white;
+      &:hover {
+        background: rgb(216, 140, 0);
+      }
+      i{
+        line-height: 50px;
+        text-align: center;
+        padding-right: 20px;
+      }
+      span {
+        // background: #ffffff;
+        line-height: 50px;
+        text-align: center;
+      }
+  }

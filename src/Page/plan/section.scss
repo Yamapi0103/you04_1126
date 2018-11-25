@@ -1,0 +1,199 @@
+$plan_section_bg_color:rgb(241, 234, 222);
+$plan_section_content_width:80%;
+$plan_section_content_marginTop:50px;
+$plan_section_content_paddingTop:50px;
+$plan_h1_fontSize:2rem;
+$plan_h2_fontSize:1.5rem;
+$plan_padding:50px 0;
+$explain_button_height:50px;
+$plan_box_circle_length:50px;
+$plan_btn_color:#f54337;
+@mixin btn {
+    border: 2px solid $plan_btn_color;
+    color: $plan_btn_color;
+}
+@mixin btn_hover {
+    color: #fff;
+    background-color: $plan_btn_color;
+}
+
+
+.plan_section_2,.plan_section_3,.plan_section_4{
+    margin-top: $plan_section_content_marginTop;
+    h1{
+        font-size: $plan_h1_fontSize;
+        font-weight: 700;
+        font-family: Microsoft JhengHei,sans-serif!important;
+    }
+    p{
+        line-height: 2rem;
+    }
+}
+
+
+.plan_section_1{
+    background-color: $plan_section_bg_color;
+    h1{
+        font-size: $plan_h1_fontSize;
+        font-weight: 700;
+        font-family: Microsoft JhengHei,sans-serif!important;
+    }
+    .plan_section_1_content{
+        width:$plan_section_content_width;
+        margin: auto;
+        display: flex;
+        flex-wrap:wrap;
+        h1{
+            width: 100%;
+            padding: $plan_padding;
+        }  
+        .plan_section_1_content_bottom{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            h2{
+                font-size: $plan_h2_fontSize;
+                padding: $plan_padding;
+                width: 50%;
+            }
+            .explain_button{
+                width: 125px;
+                height: $explain_button_height;
+                line-height: $explain_button_height;
+                margin-left: 20%;
+                text-align: center;
+                text-decoration: none;
+                @include btn;
+                .arrow{
+                    width:30%;
+                    height: auto;
+                    vertical-align: middle;
+                }
+            }
+            .explain_button:hover{
+                @include btn_hover;
+            }
+
+        }
+    }
+}
+
+.plan_section_2{
+    .plan_section_2_content{
+        width:$plan_section_content_width;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        .plan_box{
+            width:30%;
+            .plan_box_circle{
+                background-color:#ff8f59;
+                border-radius: 50%;
+                width: $plan_box_circle_length;
+                height: $plan_box_circle_length;
+                line-height: $plan_box_circle_length;
+                text-align: center;
+                margin: auto;
+            }
+            .plan_box_text{
+                word-break: break-all;
+            }
+        }
+        @media(max-width: 840px) {
+            .plan_box{
+                width:100%;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+.plan_section_3{
+    background-color: $plan_section_bg_color;
+    .plan_section_3_content{
+        padding-top:$plan_section_content_paddingTop;
+        width:$plan_section_content_width;
+        margin: auto;
+        h1,.plan_section_3_content_p{
+            margin-bottom:30px;
+        }
+        .plan_description{
+            display: flex;
+            padding-bottom: $plan_section_content_paddingTop;
+            .plan_description_text{
+                width:70%;
+                word-break: break-all;
+            }
+            .plan_description_img{
+                width: 30%;
+                height: 30%;
+                img{
+                    width:100%;
+                    height:100%;
+                    object-fit: contain;
+                }
+            }
+        }
+        @media(max-width: 840px) {
+            .plan_description{
+                flex-wrap: wrap;
+                justify-content: center;
+                .plan_description_text{
+                    width:100%;
+                }
+                .plan_description_img{
+                    min-width: 50%;
+                    min-width: 50%;
+                }
+            }
+        }
+    }
+}
+
+.plan_section_4{
+    .plan_section_4_content{
+        // padding-top:$plan_section_content_paddingTop;
+        width:$plan_section_content_width;
+        margin: auto;
+        h1{
+            margin-bottom: $plan_section_content_marginTop;
+        }
+        .plan_buy{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            .plan_buy_box{
+                border: 1px solid rgb(156, 154, 154);
+                width:200px;
+                text-align: center;
+                margin-bottom: 30px;
+                .number{
+                    font-size: 2rem;
+                    padding: 20px 0;
+                }
+                .text{
+                    font-size: 1rem;
+                }
+                .plan_buy_btn{
+                    display: block;
+                    width:50%;
+                    margin: auto;
+                    margin-bottom: 20px;
+                    padding: 10px 10%;
+                    text-decoration: none;
+                    @include btn;
+                }
+                .plan_buy_btn:hover{
+                    @include btn_hover;
+                }
+            }
+            @media(max-width: 1100px) {
+                .plan_buy_box{
+                    min-width:40%;
+                }
+            }
+        }
+    }
+}
+

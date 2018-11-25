@@ -1,0 +1,93 @@
+$footer_hover: #fff78c;
+
+.footer{
+    background-color: rgb(248, 162, 3);
+    .footer_content{
+        width: 80%;
+        padding: 20px 0;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .left_footer{
+            width: 40%;
+            .left_footer_top{
+                display: flex;
+                justify-content: space-around;
+                height: 80px;
+                .link_img{
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    font-size: 50px;
+                    color: black;
+                }
+                .link_img:hover{
+                    color: $footer_hover;
+                }
+            }
+            .left_footer_middle{
+                width: 70%;
+                margin: auto;
+                height: 2px;
+                border-top: 1px solid black;
+                padding-bottom: 10px;
+            }
+            .left_footer_bottom{
+                height: 100px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+        .right_footer{
+            width: 60%;
+            display: flex;
+            justify-content: space-around;
+            ul{
+                text-align: center;
+                li{
+                    padding-bottom: 10px;
+                }
+                a{
+                    text-decoration: none;
+                    color: black;
+                    font-size: 1rem;
+                }
+                a:hover{
+                    color:$footer_hover;
+                }
+                .footer_title{
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+                @media(max-width:600px){
+                    .footer_title{
+                        font-size: 1.1rem;
+                        font-weight: 700;
+                    }
+                }
+            }
+            @media(max-width:600px){
+                ul{
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+    @media(max-width:900px){
+        .footer_content{
+            flex-wrap: wrap;
+            .left_footer{
+                width: 100%;
+            }
+            .right_footer{
+                width: 100%;
+                margin-bottom: 50px;
+                order:-1;
+            }
+        }
+    }
+}

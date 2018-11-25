@@ -1,0 +1,73 @@
+.slider_wrapper {
+    width: 800px;
+    height: 400px;
+    background-color: rgb(80, 184, 161);
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    .slider_wrap {
+        /* width: 3200px; */
+        left: 0px;
+        /* 如果沒有預設0，在做功能transition的時候，第一次移動會因為不是從0到-800移動，而是建立left-800沒有漸變 */
+        transition: .5s;
+        position: absolute;
+        list-style: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        li {
+            height: 400px;
+            width: 800px; /* 可以限制圖片大小，避免不同圖片寬度不同造成flex均分圖片沒有均等 */
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    .paging {
+        bottom: 5px;
+        width: 100%;
+        list-style: none;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        li {
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            &:hover {
+                background: #fff;
+            }
+        }
+    }
+    .arrow_area {
+        /* background-color: gold; */
+        z-index: 10;
+        cursor: pointer;
+        height: 100%;
+        width: 48px;
+        top: 0;
+        font-size: 48px;
+        opacity: .5;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            opacity: 1;
+        }
+        .fas {
+            color: rgb(255, 255, 255);
+        }
+    }
+    .arrow_area_left {
+        left: 0;
+    }
+    .arrow_area_right {
+        right: 0;
+    }
+}

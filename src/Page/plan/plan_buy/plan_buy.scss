@@ -1,0 +1,166 @@
+$padding_left:2%;
+@mixin Width($width:90%) {
+    width: $width;
+    margin: auto;
+    padding: 50px 0;
+}
+
+// ------------
+.title{
+    font-size: 2rem;
+    font-weight: 900;
+}
+.line{
+    width: 100%;
+    margin: auto;
+    height: 1px;
+    border-bottom: 1px solid black;
+    margin: 15px 0 25px 0;
+}
+.white_section{
+    height: 50px;
+    background-color: #fff;
+}
+// ------------
+.plan_buy{
+    .plan_buy_content{
+        width: 80%;
+        margin: auto;
+        background-color: rgb(221, 190, 190);
+        .choose{
+            @include Width;
+            // .title{
+            //     font-size: 2rem;
+            //     font-weight: 900;
+            // }
+            // .line{
+            //     width: 100%;
+            //     margin: auto;
+            //     height: 1px;
+            //     border-bottom: 1px solid black;
+            //     margin: 25px 0;
+            // }
+            .choose_plan{
+                display: flex;
+                justify-content: space-between;
+                .plan_buy_box{
+                    width:20%;
+                    border: 1px solid rgb(156, 154, 154);
+                    text-align: center;
+                    margin-bottom: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    .number{
+                        font-size: 2rem;
+                        padding: 20px 0;
+                    }
+                    .text{
+                        font-size: 1rem;
+                    }
+                }
+                .final_check{
+                    width:70%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .final_check_title_div{
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        .final_check_change{
+                            color: black;
+                            text-decoration: none;
+                        }
+                        .final_check_change:hover{
+                            color:red;
+                        }
+                    }
+                    .final_check_content{
+                        word-break: break-all;
+                        line-height: 2rem;
+                    }
+                    .final_check_money{
+                        font-size: 2rem;
+                        font-weight: 700;
+                        text-align: right;
+                    }
+                }
+            }
+            @media (max-width:860px){
+                .choose_plan{
+                    flex-direction: column;
+                    .plan_buy_box{
+                        width: 50%;
+                        margin: 0 auto 50px auto;
+                    }
+                    .final_check{
+                        width: 100%; 
+                    }
+                }
+            }  
+        }
+        .ATM{
+            @include Width(80%);
+            margin-top: 50px;
+            .form{
+                .form_content{
+                    margin-bottom: 50px;
+                }
+                .p_input_radio{
+                    margin-bottom: 30px;
+                }
+                .nameEmail{
+                    display: flex;
+                    margin-bottom: 40px;
+                    flex-wrap: wrap;
+                    div{
+                        display: flex;
+                        flex-direction: column;
+                        margin-right: 5%;
+                        label{
+                            margin-bottom: 10px;
+                        }
+                        .enter{}
+                    }
+                }
+                .ul>li:first-child>p{
+                    margin-left: 12.8px;
+                    margin-bottom: 10px;
+                }
+                .ul ul{
+                    margin-left: 40px;
+                }
+                .form_bottom{
+                    width: 300px;
+                    margin-left: auto;
+                    display: flex;
+                    flex-direction: column;
+                    p{
+                        font-size: 1.2rem;
+                        text-align: center;
+                        margin-bottom: 10px;
+                        span{
+                            font-size: 2rem;
+                            font-weight: 700;
+                        }
+                    }
+                    button{
+                        margin: auto;
+                    }
+                }
+                @media (max-width:550px){
+                    .form_bottom{
+                        margin: auto;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width:550px){
+        .plan_buy_content{
+            width: 100%;
+        }
+    }
+}

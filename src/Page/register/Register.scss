@@ -1,0 +1,36 @@
+@import '../../App.scss';
+
+
+.register_container{
+    width: 1366px;
+    margin: 0 auto;
+    padding: 50px;
+    form{
+        padding: 10px;
+    }
+}
+
+
+
+.register_btn_top{
+    button{
+        margin: 20px;
+        a{
+            padding: 30px;
+        }
+    }
+}
+
+.btn{
+    background-color: rgb(255, 137, 34);
+    transition: 0.5s;
+    margin: 30px;
+    &:hover{
+        background-color: rgb(189, 104, 29);
+        border-radius: 100%;
+    }
+    a{
+        padding: 20px;
+        color:#000;
+    }
+}
