@@ -53,15 +53,13 @@ class Publish extends Component {
         // console.log(cookies.load('userId2'))
 
     }
-
         // test
         // cookies.save('userTest',cookies.load('userId')[0])
         // cookies.save('userTest',{
         //     ...cookies.load('userTest'),
         //     BS_poi:"200"})
         // console.log(cookies.load('userTest'))
-
-
+        
     }
     fetchPoints = (userSid)=>{
         return fetch('http://localhost:3000/api3/bsmembers/'+userSid);

@@ -27,7 +27,6 @@ class Navbar extends Component{
         console.log("printCookie:")
         console.log(cookie.load('userId')[0])
     }
-    
 
     userClick =(evt)=>{
         // document.querySelector('.menu-container').classList.toggle('active');
@@ -35,7 +34,6 @@ class Navbar extends Component{
         evt.stopPropagation();
         $('html').click(function(){
             $('.menu-container').removeClass('active');  
-            this.open=false 
         })     
  
     }
@@ -63,7 +61,6 @@ class Navbar extends Component{
                         <Link to="/home"><img src="/images/logo.svg" alt="website_logo" /></Link>
                     </div>
                     <ul className="nav_option_container">
-                       
                         <li><Link to="/plan">購買方案</Link></li>
                         <li><Link to="/publish">刊登方案</Link></li>
                         <li style={{display:this.islogIn()?"block":"none"}}>
