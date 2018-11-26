@@ -59,7 +59,7 @@ class Publish extends Component {
         //     ...cookies.load('userTest'),
         //     BS_poi:"200"})
         // console.log(cookies.load('userTest'))
-        
+
     }
     fetchPoints = (userSid)=>{
         return fetch('http://localhost:3000/api3/bsmembers/'+userSid);
@@ -119,8 +119,8 @@ class Publish extends Component {
     }
     
     render(){
-
-        this.cookie = cookies.load('userId')[0] 
+        
+        
         let rows=[];
         for (var i = 1; i < 3; i++) {
             rows.push(<option value={i}>{i}</option>);
@@ -134,7 +134,8 @@ class Publish extends Component {
                 </React.Fragment>
             )
         }
-        else if(this.cookie.BS_point<100){
+        this.cookie = cookies.load('userId')[0] 
+        if(this.cookie.BS_point<100){
             return(
                 <React.Fragment>
                     {alert("點數不足，請先去買點數!")}
@@ -145,6 +146,7 @@ class Publish extends Component {
         else{
         return(
             <React.Fragment>
+                <Link to="/plan">購買方案</Link>
                 <form className="publish_container">
                 <h3>專案刊登</h3>
                 <br/>

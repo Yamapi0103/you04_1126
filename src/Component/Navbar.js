@@ -7,9 +7,6 @@ import $ from 'jquery';
 class Navbar extends Component{
     constructor(props){
         super(props)
-        this.state={
-            cookie:""
-        }        
     }
     islogIn = () =>{
         return cookie.load('userId')? true : false;
@@ -23,10 +20,10 @@ class Navbar extends Component{
         // this.props.history.push("/"); //轉跳到首頁(會當掉)
         // window.location.reload();
     }
-    printCookie = ()=>{
-        console.log("printCookie:")
-        console.log(cookie.load('userId')[0])
-    }
+    // printCookie = ()=>{
+    //     console.log("printCookie:")
+    //     console.log(cookie.load('userId')[0])
+    // }
 
     userClick =(evt)=>{
         // document.querySelector('.menu-container').classList.toggle('active');
@@ -38,22 +35,12 @@ class Navbar extends Component{
  
     }
     componentDidMount=()=> {      
-        // this.logOut()
+        
     }
     render(){ 
-        if(this.islogIn())
-            {
-                if(this.state.cookie==""){
-                    this.setState({
-                        cookie:cookie.load('userId')[0]
-                    })
-                }          
-                this.printCookie()    
-            }
-        let userType = this.islogIn()? this.state.cookie.userType:null
-        // if(this.islogIn())
-        console.log("Login cookie")
-        console.log(this.state.cookie)
+        
+        //有登入的話 userType=>"BS" or "IC"，否則為null
+        let userType = this.islogIn()? cookie.load('userId')[0].userType:null
         return(
             <React.Fragment>
                 <div className="nav_container">
@@ -61,11 +48,27 @@ class Navbar extends Component{
                         <Link to="/home"><img src="/images/logo.svg" alt="website_logo" /></Link>
                     </div>
                     <ul className="nav_option_container">
-                        <li><Link to="/plan">購買方案</Link></li>
+                    
+                    {
+                        //還沒登入 or BSmember才能看到 刊登方案"
+                        //(還沒登入若點刊登方案 會叫你先去登入)
+                        //(BSmember點數不足點刊登方案 會叫你先去儲值)
+                        (!this.islogIn() || (cookie.load('userId')[0].userType==='BS'))?                        
+                        <React.Fragment>
+                        {/* <li><Link to="/plan">購買方案</Link></li> */}
                         <li><Link to="/publish">刊登方案</Link></li>
-                        <li style={{display:this.islogIn()?"block":"none"}}>
-                                <span>歡迎~{this.state.cookie[userType+'_name']}</span>
-                        </li>
+                        </React.Fragment>
+                        :null             
+                    }
+
+                    
+                        {//登入後 出現歡迎~XXX
+                            this.islogIn()?
+                            <li>
+                            <span>歡迎~{cookie.load('userId')[0][userType+'_name']}</span>
+                            </li>
+                            :null                   
+                        }
                         {!this.islogIn()?
                         <React.Fragment>
                         <li><Link to="/login">會員登入</Link></li>
