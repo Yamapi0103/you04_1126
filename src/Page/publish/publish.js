@@ -121,6 +121,7 @@ class Publish extends Component {
     }
     
     render(){
+
         this.cookie = cookies.load('userId')[0] 
         let rows=[];
         for (var i = 1; i < 3; i++) {
