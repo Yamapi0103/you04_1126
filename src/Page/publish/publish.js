@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import{Link} from 'react-router-dom';
 import './publish.scss';
 import cookies from 'react-cookies';
-// import myCookie from '../../Component/cookie/cookie';
+
 
 class Publish extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Publish extends Component {
         this.userSid = 0;
         this.state={
             BScase_name:'',
-            BS_sid:'', // 存發布專案的人, add by joshua
+            BS_sid:'', // 存發布專案的人(BS_sid)
             BScase_photo:'',
             BScase_ask_people:'1',
             BScase_pay:'',
@@ -39,13 +39,11 @@ class Publish extends Component {
         })
     }
 
-    fetchPoints = (userSid)=>{
-        return fetch('http://localhost:3000/api3/bsmembers/'+userSid);
-    }
+
     componentDidMount =()=>{
         if(this.isLogin()){
-            this.cookie = cookies.load('userId')[0] 
-        // console.log(this.cookie)  //看cookie內容
+            // this.cookie = cookies.load('userId')[0] 
+        console.log(this.cookie)  //看cookie內容
 
         // 將下面code放componentDidMount才能新增BS_sid進DB，放addHandler就不行 ((怪怪的
         this.setState({
@@ -55,7 +53,6 @@ class Publish extends Component {
         // console.log(cookies.load('userId2'))
 
     }
- 
 
         // test
         // cookies.save('userTest',cookies.load('userId')[0])
@@ -65,6 +62,9 @@ class Publish extends Component {
         // console.log(cookies.load('userTest'))
 
 
+    }
+    fetchPoints = (userSid)=>{
+        return fetch('http://localhost:3000/api3/bsmembers/'+userSid);
     }
     addHandler = (evt) =>{
         evt.preventDefault();
@@ -93,19 +93,19 @@ class Publish extends Component {
             })
 
 
-        
+        //扣100點點數 並更新cookie裡的BS_point
         cookies.save('userId',[{
             ...this.cookie,
             BS_point: parseInt(cookies.load('userId')[0].BS_point)-100
         }])
-        this.cookie = cookies.load('userId')[0]  //cookie:userId的point改變了，對this.cookie更新
-        console.log(cookies.load('userId')[0]) 
-        console.log(this.cookie)
+        this.cookie = cookies.load('userId')[0]  //對this.cookie更新
+        // console.log(cookies.load('userId')[0]) 
+        // console.log(this.cookie)
 
         //更新bsmember裡的bs_point
         fetch('http://localhost:3000/you04/updateBSmember/'+this.userSid, {
             method: 'PUT',
-            body: JSON.stringify({BS_point:this.cookie.BS_point}),
+            body: JSON.stringify({BS_point:this.cookie.BS_point}), //只更新bsmember點數
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
@@ -121,18 +121,25 @@ class Publish extends Component {
     }
     
     render(){
+        this.cookie = cookies.load('userId')[0] 
         let rows=[];
         for (var i = 1; i < 3; i++) {
             rows.push(<option value={i}>{i}</option>);
         }
-
-        // fetch('http://localhost:3000/api3/bsmembers/'+this.userSid)
         
         if(!this.isLogin()){
             return(
                 <React.Fragment>
                 {alert("請先登入")}
                 {this.props.history.push("/login")}
+                </React.Fragment>
+            )
+        }
+        else if(this.cookie.BS_point<100){
+            return(
+                <React.Fragment>
+                    {alert("點數不足，請先去買點數!")}
+                    {this.props.history.push("/plan")}
                 </React.Fragment>
             )
         }
