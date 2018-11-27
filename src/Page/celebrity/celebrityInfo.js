@@ -5,14 +5,16 @@ import './celebrityInfo.scss';
 class CelebrityInfo extends Component {
   constructor(props) {
     super(props);
-    this.cname = props.match.params.cname;
+    this.state = {
+        celebrity: [],
+        // celebrity: this.initState,
+    }
+    this.IC_sid = props.match.params.IC_sid;
     // console.log(this.cname)
-    this.celebrity = celebrityAll.filter(c=>c.name===this.cname)[0]; //用名字從json挑出該筆資料
-    this.info = this.celebrity.details;
+    // this.celebrity = celebrityAll.filter(c=>c.name===this.cname)[0]; //用名字從json挑出該筆資料
+    // this.info = this.celebrity.details;
     console.log(this.info)
-    // this.info.map((v,k)=>
-    //     console.log(v,k)
-    // )
+
   }
 
   render() {
@@ -22,7 +24,7 @@ class CelebrityInfo extends Component {
           <div className="Total_wrap">
             <div className="Upper_wrap">
             <figure>
-                <img src={"/images/" + this.celebrity['fileName'] + ".jpg"}  />
+                <img src={"/images/" + this.celebrity['IC_photo'] + ".jpg"}  />
             </figure>   
 
                 <div className="formalInfo">

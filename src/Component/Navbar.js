@@ -24,7 +24,6 @@ class Navbar extends Component{
     //     console.log("printCookie:")
     //     console.log(cookie.load('userId')[0])
     // }
-
     userClick =(evt)=>{
         // document.querySelector('.menu-container').classList.toggle('active');
         $('.menu-container').toggleClass('active')
