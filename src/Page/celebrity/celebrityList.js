@@ -34,8 +34,6 @@ class CelebrityList extends Component {
                 console.log(this.state.celebrities)
             } )
             // .then(members => { return members })
-
-
     }
     render() {
         return (

@@ -86,20 +86,6 @@ class CelebrityItem extends Component {
   }
       
     )
-      // .then(
-      //     fetch('http://localhost:3000/api/BSAddFavor/'+this.BF_sid,{
-      // method:'DELETE',
-      // body: JSON.stringify(this.BS_favor),
-      // headers:new Headers({
-      //     'content-type':'application/json'
-      //     })
-      // })
-      // .then(res=>res.json())
-      // .then(data => {
-      //     alert(data.message)
-      // })
-      // )
-
 
 }
   render() {

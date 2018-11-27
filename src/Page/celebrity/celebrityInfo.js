@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import celebrityAll from './celebrity.json';
 import './celebrityInfo.scss';
 
 class CelebrityInfo extends Component {
@@ -9,14 +8,24 @@ class CelebrityInfo extends Component {
         celebrity: [],
         // celebrity: this.initState,
     }
-    this.IC_sid = props.match.params.IC_sid;
-    // console.log(this.cname)
-    // this.celebrity = celebrityAll.filter(c=>c.name===this.cname)[0]; //用名字從json挑出該筆資料
-    // this.info = this.celebrity.details;
-    console.log(this.info)
+    this.IC_sid = props.match.params.icsid;
+
+    console.log(this.IC_sid)
 
   }
-
+  componentDidMount() {
+    this.getMembers();
+}
+getMembers() {
+    fetch("http://localhost:3000/api2/icmembers/"+this.IC_sid)
+        .then(res => res.json())
+        .then(member =>{
+            this.setState({ 
+                celebrity: member[0]
+            })
+            console.log(this.state.celebrity)
+        } )
+}
   render() {
     return (
       <React.Fragment>
@@ -24,23 +33,22 @@ class CelebrityInfo extends Component {
           <div className="Total_wrap">
             <div className="Upper_wrap">
             <figure>
-                <img src={"/images/" + this.celebrity['IC_photo'] + ".jpg"}  />
+                <img src={"/images/" + this.state.celebrity['IC_photo'] + ".jpg"}  />
             </figure>   
 
                 <div className="formalInfo">
                     <h3>
-                        姓名:{this.celebrity.name}
+                        姓名:{this.state.celebrity['IC_name']}
                     </h3>            
-                    <div className="">
-                    <p><span>年紀: </span>{this.celebrity['age']}</p>
-                    <p><span>類型: </span>{this.celebrity['type']}</p>
-                    <p><span>粉絲數: </span>{this.celebrity['fans']}</p>
+                    <div>
+                        <p><span>類型: </span>{this.state.celebrity['IC_media']}</p>
                     </div>             
                 </div>
             </div>
 
+            <p>詳細的內容</p>
             <div className="Lower_wrap">
-                <p>詳細的內容</p>
+                {/* 顯示 this.state.celebrity裡的資訊 */}
             </div>
           </div>
       </React.Fragment>
