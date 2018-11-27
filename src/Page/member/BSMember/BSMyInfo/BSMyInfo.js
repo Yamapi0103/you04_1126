@@ -21,7 +21,7 @@ class BSMyInfo extends Component {
         };
         this.Data='';
         this.sid = cookie.load('userId')[0]['BS_sid'];
-        // console.log(this.sid)
+        // alert(this.sid)
     }
 
     change=(evt)=>{
@@ -32,60 +32,28 @@ class BSMyInfo extends Component {
         })
     }
    
-    /*要問老師為什麼fetch裡面不能用迴圈,還有作用域的問題
-    show = ()=>{   //網頁創好之後觸發,這時才能寫jquery和ajax
-        console.log('Component Did Mount');
-        
-        fetch('http://localhost:3000/api3/bsmembers/1')
+    //要問老師為什麼fetch裡面不能用迴圈,還有作用域的問題
+    show = ()=>{  
+        fetch('http://localhost:3000/api3/bsmembers/'+this.sid)
             .then(res=>res.json())
             .then(data=>{
-                // console.log(data);   //data['BS_email'] =  BS@yahoo.com.tw
-               
-                //    for(let i in this.state ){
-                //        this.setState(
-                //          this.state[i] = data[0][i]
-                //        )
-                //    }
-                this.Data = data;
-                // console.log(this.Data)
+                console.log(data);   //data['BS_email'] =  BS@yahoo.com.tw
+                 //防止使用者在網址/:sid打上不存在的BS_sid => 就會回傳{"Message":"XXXX"},再跳回首頁
+                 if(data.hasOwnProperty("Message")){  
+                    this.props.history.push("/home");
+                }
+                else{
+                    this.setState(data[0])
+                }
             })
-        // console.log(this.Data)
-        // for(let i in this.state ){
-        //     this.setState(
-        //       this.state[i] = this.Data[0][i]
-        //     )
-        // }
-    }
-    */
 
+    }
+    
     // 網頁產生後會觸發此事件  
     componentDidMount() {
         this.show();
     }
     
-    show = ()=>{   //網頁創好之後觸發,這時才能寫jquery和ajax
-        console.log(this.sid)
-        fetch('http://localhost:3000/api3/bsmembers/'+this.sid)
-            .then(res=>res.json())
-            .then(data=>{     
-                let Data = data[0];
-                //防止使用者在網址/:sid打上不存在的BS_sid => 就會回傳{"Message":"XXXX"},再跳回首頁
-                if(data.hasOwnProperty("Message")){  
-                    this.props.history.push("/home");
-                }
-                else{
-                    this.setState({
-                        BS_email : Data['BS_email'],
-                        BS_password : Data['BS_password'],
-                        BS_name : Data['BS_name'],
-                        BS_type : Data['BS_type'],
-                        BS_phone : Data['BS_phone'],
-                        BS_link : Data['BS_link'],
-                        BS_info : Data['BS_info']
-                    });
-                }
-            })
-    }
     update = (bsInfo) => {
         const onTime = () => {
             const date = new Date();
@@ -142,11 +110,11 @@ class BSMyInfo extends Component {
                                 </div>
                                 <div class="form-group">
                                     <label htmlFor="exampleInputPassword1">密碼</label>
-                                    <input type="password" name='BS_password' value={this.state.BS_password} onChange={this.change} className="form-control" />
+                                    <input type="password" className="form-control" name='BS_password' value={this.state.BS_password} onChange={this.change} className="form-control" />
                                 </div>
 
                                 <div>
-                                <button type="submit" className="btn btn-primary">修改密碼</button>
+                                {/* <button type="submit" className="btn btn-primary">修改密碼</button> */}
                                 </div>
 
 

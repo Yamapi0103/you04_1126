@@ -23,16 +23,16 @@ class ICMember extends Component {
                         </div>
                         <ul>
                             <li className="transition">
-                                <Link to={`${this.props.match.url}/ICMyInfo`}>帳戶資訊</Link>
+                                <Link to={`${this.props.match.url}/ICMyInfo`}><i class="fas fa-home"></i>&nbsp;帳戶資訊</Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/ICMyCase/ICMyCase_Open`}>接案管理</Link>
+                                <Link to={`${this.props.match.url}/ICMyCase/ICMyCase_Open`}><i class="fas fa-book-open"></i>&nbsp;接案管理</Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/ICChat`}>對話紀錄</Link>
+                                <Link to={`${this.props.match.url}/ICChat`}><i class="fas fa-comment"></i>&nbsp;對話紀錄</Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/ICMyFavor`}>我的收藏</Link>
+                                <Link to={`${this.props.match.url}/ICMyFavor`}><i class="fas fa-heart"></i>&nbsp;我的收藏</Link>
                             </li>
                            
                             

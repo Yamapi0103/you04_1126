@@ -1,141 +1,131 @@
+@import "../../../../App.scss";
 
-    .form-basic {
-        width: 952px;
-        margin: 0 auto;
-        padding:35px;
-        box-sizing: border-box;
-        background-color: rgb(202, 224, 228);
-        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-        font: bold 14px sans-serif;
-        text-align: center;
-        .form-row {
-            text-align: center;
-            margin-bottom: 22px;
-            >label {
-                span {
-                    display: inline-block;
-                    box-sizing: border-box;
-                    color: #5F5F5F;
-                    width: 180px;
-                    text-align: right;
-                    vertical-align: top;
-                    padding: 12px 25px;
-                }
-            }
+.imco_card {
+  width: 100%;
+  margin: 10px 0;
+  padding: 30px;
+  // background: #e7e7e7;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  h6 {
+    width: 60%;
+  }
+  .imco_card_right {
+    // width: 40%;
+    .btn {
+      color: #fff;
+    }
+  }
+  .show {
+    margin-top: 30px;
+    max-height: 3000px;
+  }
+}
+.imco_card_IC {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    // margin-top: 20px;
+    // background-color: #ffffff;
+    // background: #e7e7e7;
+    .imco_card_IC_container {
+      padding: 15px;
+      margin-bottom: 10px;
+      background-color: #e7dede;
+      border: 3px solid black;
+      .imco_card_IC_content {
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        .imco_card_IC_img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
-        .form-title-row {
-            text-align: center;
-            margin-bottom: 55px;
+        .introduction {
+          margin-left: 10%;
+          width: calc(100% - 10% - 100px);
+          word-wrap: break-word;
         }
-        h1 {
-            display: inline-block;
-            box-sizing: border-box;
-            color: #4c565e;
-            font-size: 24px;
-            padding: 0 10px 15px;
-            border-bottom: 2px solid #6caee0;
-            margin: 0;
+      }
+    }
+    .btn_div {
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 10px;
+      .btn {
+        height: 50px;
+        background-color: rgb(94, 247, 107);
+        align-self: flex-end;
+      }
+      .bth:first-child {
+        margin-right: 10%;
+      }
+      .btn:hover {
+        background-color: rgb(94, 247, 214);
+      }
+    }
+    @media (max-width: 400px) {
+      .imco_card_IC_container {
+        padding: 0;
+        .imco_card_IC_content {
+          flex-direction: column;
+          align-items: center;
+          .introduction {
+            margin-left: 0;
+            width: 100%;
+            word-wrap: break-word;
+          }
         }
-        input {
-            color: #5f5f5f;
-            box-sizing: border-box;
-            width: 300px;
-            box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.08);
-            padding: 12px;
-            border: 1px solid #dbdbdb;
+      }
+      .btn_div {
+        justify-content: center;
+      }
+    }
+  }
 
-        }
-        input[type=radio] {
-            box-shadow: none;
-            width: auto;
-        }
-        input[type=checkbox] {
-            box-shadow: none;
-            width: auto;
-            margin-top: 13px;
-        }
-        select {
-            background-color: #ffffff;
-            color: #5f5f5f;
-            box-sizing: border-box;
-            max-width: 240px;
-            box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-            padding: 12px 8px;
-            border: 1px solid #dbdbdb;
-        }
-        textarea {
-            color: #5f5f5f;
-            box-sizing: border-box;
-            width: 240px;
-            height: 80px;
-            box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-            font: normal 13px sans-serif;
-            padding: 12px;
-            border: 1px solid #dbdbdb;
-            resize: vertical;
-        }
-        .form-radio-buttons {
-            display: inline-block;
-            vertical-align: top;
-            >div {
-                margin-top: 10px;
-            }
-            label {
-                span {
-                    margin-left: 8px;
-                    color: #5f5f5f;
-                    font-weight: normal;
-                }
-            }
-            input {
-                width: auto;
-            }
-        }
-        button {
-            display: block;
-            border-radius: 2px;
-            background-color: #6caee0;
-            color: #ffffff;
-            font-weight: bold;
-            box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-            padding: 14px 22px;
-            border: 0;
-            margin: 40px 183px 0;
-        }
-    }
-    @media (max-width: 950px) {
-        .form-basic {
-            padding: 30px;
-            max-width: 480px;
-            .form-row {
-                max-width: 300px;
-                margin: 25px auto;
-                text-align: left;
-                >label {
-                    span {
-                        display: block;
-                        text-align: left;
-                        padding: 0 0 15px;
-                    }
-                }
-            }
-            .form-title-row {
-                margin-bottom: 50px;
-            }
-            select {
-                width: 240px;
-            }
-            input[type=checkbox] {
-                margin-top: 0;
-            }
-            .form-radio-buttons {
-                >div {
-                    margin: 0 0 10px;
-                }
-            }
-            button {
-                margin: 0;
-            }
-        }
-    }
-    
+.register_container {
+  width: 600px;
+  margin: 0 auto;
+  form {
+    padding: 5px;
+  }
+}
+
+.register_btn {
+  font-size: 1.6rem;
+  background-color: rgb(78, 143, 173);
+  margin: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  transition: 0.5s;
+  &:hover {
+    background-color: rgb(147, 221, 231);
+    text-decoration: none;
+  }
+}
+
+.btn {
+  background-color: rgb(113, 174, 192);
+  // width: 30%;
+  transition: 0.5s;
+  margin: 3px;
+  &:hover {
+    background-color: rgb(147, 221, 231);
+    text-decoration: none;
+    border-radius: 3px;
+  }
+  a {
+    text-decoration: none;
+  }
+}

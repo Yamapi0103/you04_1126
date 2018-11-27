@@ -44,6 +44,7 @@ class ICMyInfo extends Component {
         .then(res=>res.json())
         .then(data=>{
                 let Data = data[0];
+                alert(Data);
                 //防止使用者在網址/:sid打上不存在的IC_sid => 就會回傳{"Message":"XXXX"},再跳回首頁
                 if(data.hasOwnProperty("Message")){  
                     this.props.history.push("/home");
@@ -128,11 +129,11 @@ class ICMyInfo extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputPassword1">密碼</label>
-                                    <input type="password" value={this.state.IC_password} name="IC_password" onChange={this.change} />
+                                    <input type="password" className="form-control" value={this.state.IC_password} name="IC_password" onChange={this.change} />
                                 </div>
 
                                 <div>
-                                    <button type="submit" className="btn btn-primary">修改密碼</button>
+                                    {/* <button type="submit" className="btn btn-primary">修改密碼</button> */}
                                 </div>
 
                                 <hr></hr>

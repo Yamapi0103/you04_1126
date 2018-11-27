@@ -1,22 +1,43 @@
 @import '../../../../App.scss';
 
+
+.member_form_box,.member_form_box_top{
+    width:80%;
+    margin: auto;
+}
+@media(max-width:950px){
+    .member_form_box,.member_form_box_top{
+        width:100%;
+        // margin: 0;
+    }
+}
+.member_form_box_top{
+    
+}
 .member_form_box{
-    width: 600px;
-    background: rgb(221, 240, 243);
-    padding: 20px;
+    background-color: rgb(78, 143, 173);
 }
 
-.member_form_content{
-    margin: 0 auto;
-    background: rgb(157, 205, 212);
-    padding: 20px;
-    box-sizing: border-box;
-}
-.register_container{
-    width: 600px;
-    margin: 0 auto;
-    form{
-        padding: 5px;
+.register_container1{
+    margin: 51px auto -5px auto;
+    .register_outside{
+        div{
+            display: flex;
+        }
+        .btn{
+            background-color: #4e8fad;
+            width: 30%;
+            transition: 0.5s;
+            margin: 0 5px 0 0 !important;
+            &:hover{
+                background-color: rgb(147, 221, 231);
+                text-decoration:none;
+                border-radius: 3px;
+            }
+            a {
+                text-decoration:none;
+            }
+        }
     }
 }
 
@@ -31,34 +52,19 @@
         background-color: rgb(147, 221, 231);
         text-decoration:none;
          }
-    }
-
-
-
-.register_form{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 600px;
-    margin: 0 auto;
-    div{
-        margin: 10px;
-    }
-    button{
-        margin: 10px;
-    }
 }
-.btn{
-    background-color: rgb(113, 174, 192);
-    width: 30%;
-    transition: 0.5s;
-    margin: 3px;
-    &:hover{
-        background-color: rgb(147, 221, 231);
-        text-decoration:none;
-        border-radius: 3px;
-    }
-    a {
-        text-decoration:none;
-    }
-}
+
+// .btn{
+//     background-color: #4e8fad;
+//     width: 30%;
+//     transition: 0.5s;
+//     margin: 0 5px 0 0 !important;
+//     &:hover{
+//         background-color: rgb(147, 221, 231);
+//         text-decoration:none;
+//         border-radius: 3px;
+//     }
+//     a {
+//         text-decoration:none;
+//     }
+// }

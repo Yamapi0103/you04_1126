@@ -1,27 +1,102 @@
 @import '../../../../App.scss';
 
-.member_form_box{
-    width: 600px;
-    background-color: rgb(221, 240, 243);
-    padding: 20px;
-}
 
 .imco_card{
-    width: 95%;
-    margin: 10px;
-    padding: 15px;
-    background: rgb(42, 131, 153);
+    width: 100%;
+    margin: 30px 0;
+    padding: 30px;
+    // background: #e7e7e7;
+    background-color: #ffffff;
     box-sizing: border-box;
-    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    h6{
+        width: 60%;
+    }
+    .imco_card_right{
+        // width: 40%;
+        .btn{
+            color: #fff;
+        }
+    }
+    .imco_card_IC{
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: .5s;
+        .imco_card_IC_container{
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #e7dede;
+            border: 3px solid black;     
+            .imco_card_IC_content{
+                width: 100%;
+                padding: 10px 0;
+                display: flex;            
+                .imco_card_IC_img{
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .introduction{
+                    
+                    margin-left: 10%;
+                    width: calc(100% - 10% - 100px);
+                    word-wrap:break-word;
+                   
+                }
+            }
+        }
+        .btn_div{
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 10px;
+            .btn{
+                height: 50px;
+                background-color: rgb(94, 247, 107);
+                align-self:flex-end;
+            }
+            .bth:first-child{
+                margin-right: 10%;
+            }
+            .btn:hover{
+                background-color: rgb(94, 247, 214);
+            }
+        }
+        @media(max-width:400px){
+            .imco_card_IC_container{
+                padding: 0;
+                .imco_card_IC_content{
+                    flex-direction: column;
+                    align-items: center;
+                    .introduction{
+                        margin: auto;
+                        width: 80%;
+                        word-wrap:break-word;
+                       
+                    }
+                }
+            }
+            .btn_div{
+                justify-content: center;
+            }
+        }
+    }
+    .show{
+        margin-top: 30px;
+        max-height: 5000px ;
+        
+    }
 }
 
 
-.member_form_content{
-    margin: 0 auto;
-    background: rgb(157, 205, 212);
-    padding: 20px;
-    box-sizing: border-box;
-}
 .register_container{
     width: 600px;
     margin: 0 auto;
@@ -44,23 +119,9 @@
     }
 
 
-
-.register_form{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 600px;
-    margin: 0 auto;
-    div{
-        margin: 10px;
-    }
-    button{
-        margin: 10px;
-    }
-}
 .btn{
     background-color: rgb(113, 174, 192);
-    width: 30%;
+    // width: 30%;
     transition: 0.5s;
     margin: 3px;
     &:hover{

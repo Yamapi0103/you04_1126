@@ -38,7 +38,7 @@ class CelebrityItem extends Component {
       BS_sid:cookies.load('userId')[0].BS_sid,
       IC_sid:this.celebrity.IC_sid
     }
-    
+     
     console.log(this.state);
     // this.BS_favor = Object.assign({},this.state)
     // delete this.BS_favor.saved
@@ -47,8 +47,8 @@ class CelebrityItem extends Component {
     //
     if(!this.state.saved)
       this.addHandler();
-    // else  
-    //   this.delHandler()
+    else  
+      this.delHandler()
   }
   addHandler = (evt) =>{
     // evt.preventDefault();
@@ -65,9 +65,14 @@ class CelebrityItem extends Component {
     .then(data => {
         alert(data.message)
     })
-}
-delHandle=()=>{
-  fetch('http://localhost:3000/api/BSAddFavor/'+this.state.BF_sid,{
+  }
+  delHandler=()=>{
+    console.log(this.BS_case.BS_sid,this.BS_case.IC_sid)
+  fetch('http://localhost:3000/api/BSGetFavor/'+this.BS_case.BS_sid+'/'+this.BS_case.IC_sid)
+  .then(res => res.json())
+  .then(result => {
+    console.log(result[0].BF_sid)  
+    fetch('http://localhost:3000/api/BSAddFavor/'+result[0].BF_sid,{
     method:'DELETE',
     body: JSON.stringify(this.BS_favor),
     headers:new Headers({
@@ -78,6 +83,24 @@ delHandle=()=>{
     .then(data => {
         alert(data.message)
     })
+  }
+      
+    )
+      // .then(
+      //     fetch('http://localhost:3000/api/BSAddFavor/'+this.BF_sid,{
+      // method:'DELETE',
+      // body: JSON.stringify(this.BS_favor),
+      // headers:new Headers({
+      //     'content-type':'application/json'
+      //     })
+      // })
+      // .then(res=>res.json())
+      // .then(data => {
+      //     alert(data.message)
+      // })
+      // )
+
+
 }
   render() {
     var imgSrc = "/images/"+(this.state.saved?"heart-solid.png":"heart-regular.png");
