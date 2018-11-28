@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import cookie from 'react-cookies';
 import $ from 'jquery';
+import './Login.scss';
 class Login extends Component{
     constructor(props){
         super(props)
@@ -68,7 +69,7 @@ class Login extends Component{
             {/* {if(islogIn)
                 <Route exact path="/" component={Home}  />
             } */}
-            <div>   
+                <div className="login_container">   
             <div className="member_r">
                 <h4>登入</h4>
                 

@@ -6,6 +6,8 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import Home from './Page/home/Home';
 import Login from './Page/login/Login';
 import Register from './Page/register/Register';
+import CompanyRegister from './Page/register/CompanyRegister';
+import ICRegister from './Page/register/ICRegister';
 import Plan_explain from './Page/plan/plan_explain';
 import Plan_buy from './Page/plan/plan_buy/plan_buy'
 import Navbar from './Component/Navbar';
@@ -29,10 +31,8 @@ class App extends Component {
           <Navbar />
           <div className="container margin-top70">
           {/* Link Page */}
-          <Route exact path="/" component={Home}  />
-          <Route exact path="/home" component={Home}  />
+
           <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
           <Route path="/plan" component={Plan_explain} />
           <Route path="/BSMember" component={BSMember} />
           <Route path="/ICMember" component={ICMember} />
@@ -44,8 +44,16 @@ class App extends Component {
           <Route path="/publish" component={Publish} />
           <Route path="/celebrity" component={CelebrityList} />
           <Route path="/celebrityInfo/:icsid" component={CelebrityInfo} />
+            <Route exact path="/register" component={Register} />
+            <Route path="/register/CompanyRegister" component={CompanyRegister}/>
+            <Route path="/register/ICRegister" component={ICRegister} />
 
           </div>
+            <Route exact path="/" component={Home}  />
+            <Route exact path="/home" component={Home}  />
+
+
+
           <Footer />
 
         </React.Fragment>

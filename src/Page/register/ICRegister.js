@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Register.scss';
+import './CicRegister.scss';
 
 class ICRegister extends Component{
     constructor(props){
@@ -42,6 +42,7 @@ class ICRegister extends Component{
             if(this.state.email == ''){
                 //沒有輸入email
                 this.flag_email = false;
+                document.querySelector('.blank_text1').style.display='none';
                 document.querySelector('#email_content_text').style.display='block';
             }else{
                 //有輸入email，開始檢查格式
@@ -50,11 +51,13 @@ class ICRegister extends Component{
                 if(emailRule.test(evt.target.value) == false){
                     //格式錯誤
                     document.querySelector('#email_format_text').style.display='block';
+                    document.querySelector('.blank_text1').style.display='none';
                 }
                 else{
                     //檢查完都沒問題
                     this.flag_email = true;
                     document.querySelector('#email_format_text').style.display='none';
+                    document.querySelector('.blank_text1').style.display='block';
                 }
             }
         }
@@ -63,21 +66,25 @@ class ICRegister extends Component{
             if(this.state.password == ''){
                 //沒有輸入密碼
                 this.flag_password = false;
+                document.querySelector('.blank_text2').style.display='none';
                 document.querySelector('#password_content_text').style.display='block';
             }else{
                 //有輸入密碼
                 document.querySelector('#password_content_text').style.display='none';
+                document.querySelector('.blank_text2').style.display='block';
             }
         }
         //檢查password是否跟確認密碼一致
         if(evt.target == document.querySelector('#password_check')){
             if(this.state.password != this.state.password_check){
                 document.querySelector('#password_check_text').style.display='block';
+                document.querySelector('.blank_text3').style.display='none';
             }
             else{
                 //檢查完都沒問題
                 this.flag_password = true;
                 document.querySelector('#password_check_text').style.display='none';
+                document.querySelector('.blank_text3').style.display='block';
             }
         }
     }
@@ -86,10 +93,12 @@ class ICRegister extends Component{
         if(document.querySelector('#read_check').checked){
             //有勾選
             this.flag_read = true;
+            document.querySelector('.blank_text4').style.display='block';
             document.querySelector('#read_check_text').style.display='none';
         }else{
             //無勾選
             this.flag_read = false;
+            document.querySelector('.blank_text4').style.display='none';
             document.querySelector('#read_check_text').style.display='block';
         }
         //當確認都沒問題後才可以上傳
@@ -137,36 +146,38 @@ class ICRegister extends Component{
 
     render() {
         return (
-            <div >
-            <h3>請填寫相關資料</h3>
-        <form className="register_form">
-           <div className="form-group">
-               <label htmlFor="email">電子信箱</label>
-               <input type="email" id="email" name="email" value={this.state.email} onChange={this.change} onBlur={this.blur} className="form-control"  aria-describedby="emailHelp" placeholder="Enter email" />
-               <small id="email_content_text" className="form-text" style={{color:'red',display:'none'}}>請輸入您的電子信箱</small>
-               <small id="email_format_text" className="form-text" style={{color:'red',display:'none'}}>電子信箱格式錯誤</small>
-           </div>
-           <div className="form-group">
-               <label htmlFor="exampleInputPassword1">密碼</label>
-               <input type="password" id='password' name="password" value={this.state.password} onChange={this.change} onBlur={this.blur} className="form-control" placeholder="Password" />
-               <small id="password_content_text" className="form-text" style={{color:'red',display:'none'}}>請填寫密碼</small>
-           </div>
-           <div className="form-group">
-               <label htmlFor="exampleInputPassword1">再度確認密碼</label>
-               <input type="password" name="password_check" id='password_check'  value={this.state.password_check} onChange={this.change} onBlur={this.blur} className="form-control"  placeholder="Password" disabled/>
-               <small id="password_check_text" className="form-text" style={{color:'red',display:'none'}}>確認密碼不符</small>
-           </div>
-           <div className="form-group form-check">
-               <input type="checkbox"  className="form-check-input"  id='read_check'/>
-               <label className="form-check-label" for="exampleCheck1">我已經閱讀相關政策</label>
-               <small id="read_check_text" className="form-text" style={{color:'red',display:'none'}}>必須勾選閱讀條款</small>
-           </div>
-           <div className="">
-           <button type="submit" onClick={this.register}  className="btn btn-primary">提交</button>
-           </div>
-
-
-       </form>
+            <div className="cic_register_container">
+                <form className="register_form">
+                    <h3>請填寫相關資料</h3>
+                    <div className="form-group">
+                        <label htmlFor="email">電子信箱</label>
+                        <input type="email" id="email" name="email" value={this.state.email} onChange={this.change} onBlur={this.blur} className="form-control"  aria-describedby="emailHelp" placeholder="Enter email" />
+                        <small className="blank_text1 form-text" style={{color:'transparent',display:'block'}}>&nbsp;</small>
+                        <small id="email_content_text" className="form-text" style={{color:'red',display:'none'}}>請輸入您的電子信箱</small>
+                        <small id="email_format_text" className="form-text" style={{color:'red',display:'none'}}>電子信箱格式錯誤</small>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">密碼</label>
+                        <input type="password" id='password' name="password" value={this.state.password} onChange={this.change} onBlur={this.blur} className="form-control" placeholder="Password" />
+                        <small className="blank_text2 form-text" style={{color:'transparent',display:'block'}}>&nbsp;</small>
+                        <small id="password_content_text" className="form-text" style={{color:'red',display:'none'}}>請填寫密碼</small>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">再度確認密碼</label>
+                        <input type="password" name="password_check" id='password_check'  value={this.state.password_check} onChange={this.change} onBlur={this.blur} className="form-control"  placeholder="Password" disabled/>
+                        <small className="blank_text3 form-text" style={{color:'transparent',display:'block'}}>&nbsp;</small>
+                        <small id="password_check_text" className="form-text" style={{color:'red',display:'none'}}>確認密碼不符</small>
+                    </div>
+                    <div className="form-group form-check">
+                        <input type="checkbox"  className="form-check-input"  id='read_check'/>
+                        <label className="form-check-label" for="exampleCheck1">我已經閱讀相關政策</label>
+                        <small className="blank_text4 form-text" style={{color:'transparent',display:'block'}}>&nbsp;</small>
+                        <small id="read_check_text" className="form-text" style={{color:'red',display:'none'}}>必須勾選閱讀條款</small>
+                    </div>
+                    <div className="submit_container">
+                        <button type="submit" onClick={this.register}>提交</button>
+                    </div>
+                </form>
        </div>
         )
     }
