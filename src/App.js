@@ -37,10 +37,10 @@ class App extends Component {
           <Route path="/BSMember" component={BSMember} />
           <Route path="/ICMember" component={ICMember} />
 
-          <Route path="/list" component={List} />
+            <Route path="/list/:ids/:bas" component={List} />
           <Route path ="/plan_buy/:point/:text/:money" component={Plan_buy} />
           <Route path="/celebrity" component={CelebrityList} />
-          <Route path="/job" component={Job} />
+            <Route path="/publish_content/:category" component={Job} />
           <Route path="/publish" component={Publish} />
           <Route path="/celebrity" component={CelebrityList} />
           <Route path="/celebrityInfo/:icsid" component={CelebrityInfo} />

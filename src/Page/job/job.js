@@ -5,7 +5,6 @@ class Job extends Component {
   constructor(props) {
     super(props);
     //設定初始值
-
     this.state ={
       BScase_name:'',
       BScase_ask_people:'',
@@ -17,14 +16,40 @@ class Job extends Component {
       BScase_active:'',
       BScase_contact:'',
       BScase_info:'',
+      industry_name:'',
+      active_name:'',
+      active:'',
+      industry_id:'',
+      industry:'',
+      source:'http://localhost:3000/api/pair/'
     }
   }
 
-  
+//   getSearchIndustry(){
+//     fetch("http://localhost:3000/api/searchIndustry/")
+//         .then(res =>res.json())
+//         .then(data=>{  
+//             let Data = data[0]
+//             this.setState({
+//             industry_name:Data['industry_name']
+//         })
+//     })      
+// }
+// getSearchActive(){
+//     fetch("http://localhost:3000/api/searchActive/")
+//         .then(res =>res.json())
+//         .then(data=>{ 
+//             let Data=data[0]
+//             this.setState({
+//             active_name:Data['active_name']
+//         })
+//     })      
+// }
 
 
   getMembers(Bscase_sid) {
-    fetch("http://localhost:3000/api/publish/")
+
+    fetch("http://localhost:3000/api/publish/" + Bscase_sid)
         .then(res => res.json())
         .then(data => {
           let Data = data[0];
@@ -43,15 +68,57 @@ class Job extends Component {
             BScase_active:Data['BScase_active'],
             BScase_contact:Data['BScase_contact'],
             BScase_info:Data['BScase_info'],
+            industry_name:Data['industry_name']
           })
+          this.getIndustry();
+          this.getActive();
         })
   }
 
-  componentDidMount = () =>{
-    console.log(this.props.match.params);
-    // let BScaselist = this.props.match.params.BScaselist;
+  
 
-    this.getMembers();
+  getIndustry = () =>{
+    fetch("http://localhost:3000/api/pairIndustry/" + this.state.industry_name,{
+      method:'GET',
+      headers:{
+        'content-type': 'application/json',
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      let Data = data[0]
+      console.log(Data);
+      this.setState({
+        industry: Data['industry_name']
+      })
+      console.log(this.state.industry)
+
+    })
+  }
+  getActive = () =>{
+    fetch("http://localhost:3000/api/pairActive/" + this.state.BScase_active,{
+      method:'GET',
+      headers:{
+        'content-type': 'application/json',
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      let Data = data[0]
+      console.log(Data);
+      this.setState({
+        active: Data['active_name']
+      })
+    })
+  }
+
+  
+  componentDidMount = () =>{
+    // console.log(this.props.match.params);
+    let category = this.props.match.params.category
+    this.getMembers(category);
   }
 
   render() {
@@ -64,9 +131,10 @@ class Job extends Component {
               <img className="photo" src="images/project1.jpg" />
             </figure>
             <aside className="upper_right">
-              <h3 Bscase_name={this.state}>{this.state.BScase_sid}</h3>
-              <p><b>產品名稱</b>{this.state.BScase_name}</p>
-              <p><b>薪資待遇</b>{this.state.BScase_pay}</p>
+
+              <p><b>產品名稱: </b>{this.state.BScase_name}</p>
+              <p><b>薪資待遇: </b>{this.state.BScase_pay}</p>
+              
               <div className="btn_wrap">
                 <a class="job_btn" role="button">應徵</a>
                 <a class="job_btn" role="button">收藏</a>
@@ -77,9 +145,10 @@ class Job extends Component {
               <article className="job_content">
                 <h2 className="text_align_center ">工作內容</h2>
                 <div className="container720">
-                <p><b>工作形式:</b>{this.state.BScase_active}</p>
-                <p><b>期限要求:</b> {this.state.BScase_time_limit}</p>
-                <p><b>地點:</b> {this.state.BScase_location}</p>
+                <p><b>產業類別: </b>{this.state.industry}</p>
+                <p><b>工作形式: </b>{this.state.active}</p>
+                <p><b>期限要求: </b> {this.state.BScase_time_limit}</p>
+                <p><b>地點: </b> {this.state.BScase_location}</p>
                 </div>
               </article>
               <article className="job_content">
@@ -87,7 +156,7 @@ class Job extends Component {
               <div className="container720">
                 <p><b>經驗:</b> {this.state.BScase_experience}</p>
                 <p><b>人氣:</b> {this.state.BScase_fans}</p>
-                <p><b>技能要求:</b> {this.state.BScase_active}</p>
+                <p><b>技能要求:</b> {this.state.active_name}</p>
                 </div>
               </article>
               <article className="job_content">

@@ -26,7 +26,7 @@ class ListCaseCard extends Component{
                                     <span>薪資待遇：{ct.BScase_pay}</span>
                                 </div>
                                 <div className="button_container">
-                                    <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/job/${ct.BScase_sid}`}>應徵</Link>
+                                    <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>應徵</Link>
                                     <Link className="list_case_ctn_btn list_case_ctn_save" to="">儲存</Link>
                                 </div>
                             </div>
