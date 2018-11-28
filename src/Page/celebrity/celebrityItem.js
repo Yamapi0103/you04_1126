@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import $ from 'jquery';
 import cookies from 'react-cookies'
+import swal from 'sweetalert';
+
 class CelebrityItem extends Component {
   constructor(props) {
     super(props);

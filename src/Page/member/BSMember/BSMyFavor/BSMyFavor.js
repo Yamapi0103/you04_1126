@@ -3,6 +3,7 @@ import './BSMyFavor.scss';
 import cookies from 'react-cookies'
 import {Link} from 'react-router-dom'
 
+
 class BSMyFavor extends Component {
     constructor(props) {
         super(props);
