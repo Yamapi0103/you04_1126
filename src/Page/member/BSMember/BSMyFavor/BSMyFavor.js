@@ -1,206 +1,203 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import './BSMyFavor.scss';
+import cookies from 'react-cookies'
 
 class BSMyFavor extends Component {
     constructor(props) {
-        super([props]);
+        super(props);
+        this.state = {
+            // bsfavorArray: [],
+            // celebrities: [],
+            saveCelebrity:[]
+        };
+
+        this.bsfavorArray=[];
+        this.celebrities=[];
+        
+        this.BS_sid = cookies.load('userId')[0].BS_sid
+
     }
 
+    FavorList = () => {
+        // fetch('http://localhost:3000/api/BSAddFavor/' + this.BS_sid)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         // this.setState({
+        //             // bsfavorArray: data
+        //         // })
+        //         this.bsfavorArray= data
+        //         console.log(this.bsfavorArray)
+        //     })
+    }
+
+    getMembers=()=> {
+        // fetch("http://localhost:3000/api2/icmembers")
+        //     .then(res => res.json())
+        //     .then(members =>{
+        //         // this.setState({ 
+        //         //     celebrities: members
+        //         // })
+        //         this.celebrities = members
+        //         console.log(this.celebrities)
+        //     } )
+        
+    }
+
+    componentDidMount = () => {
+        // this.getMembers();
+        // this.FavorList();
+
+        fetch("http://localhost:3000/api2/icmembers")
+        .then(res => res.json())
+        .then(members =>{
+            // this.setState({ 
+            //     celebrities: members
+            // })
+            this.celebrities = members
+            console.log(this.celebrities)
+
+            fetch('http://localhost:3000/api/BSAddFavor/' + this.BS_sid)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // this.setState({
+                    // bsfavorArray: data
+                // })
+                this.bsfavorArray= data
+                console.log(this.bsfavorArray)
+                console.log(this.celebrities)
+
+
+                let saveIC = this.celebrities.filter(v=>{
+                    let a = this.bsfavorArray.some(vv=>
+                              vv['IC_sid']==v['IC_sid']
+                              )
+                    if(a) return v          
+                  })
+                  console.log(saveIC)
+                this.setState({
+                    saveCelebrity:saveIC
+                })
+            })
+        })
+        
+                
+
+
+
+    }
     render() {
-        return (
-            <React.Fragment>
-                <div class="member_form_box">
-                    <div class="member_form_content">
+        console.log(this.state)
+         return (
+            this.state.saveCelebrity.map((k) => {
+                return (
+                    <div key={k.bs_sid} className="card radius-border card_shadow">
 
-                        <form class="form-basic" method="post" action="#">
-
-                            <div className="form-title-row">
-                                <h1>我的收藏</h1>
+                        <div className="card_body">
+                            <div className="celebrity_name_box">
+                                <h2 className="text_cut">
+                                    {/* 姓名:{k.celebrity.name} */}
+                                </h2>
                             </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Full name</span>
-                                    <input type="text" name="name" />
-                                </label>
+                            <div className="text_align">
+                                <p><span>IC_sid:</span>{k.IC_sid}</p>
+                                <p><span>性別:</span>{k.IC_gender}</p>
+                                <p><span>類型: </span>{k.IC_media}</p>
+                                <p><span>最低接案金:</span>{k.IC_price}</p>
+                                <p><span>經手業配數: </span>{k.IC_case}</p>
                             </div>
+                        </div>
 
-                            <div className="form-row">
-                                <label>
-                                    <span>Email</span>
-                                    <input type="email" name="email" />
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Dropdown</span>
-                                    <select name="dropdown">
-                                        <option>Option One</option>
-                                        <option>Option Two</option>
-                                        <option>Option Three</option>
-                                        <option>Option Four</option>
-                                    </select>
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Textarea</span>
-                                    <textarea name="textarea"></textarea>
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Checkbox</span>
-                                    <input type="checkbox" name="checkbox" checked />
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label><span>Radio</span></label>
-                                <div className="form-radio-buttons">
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 1</span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 2</span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 3</span>
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div className="form-row">
-                                <button type="submit">Submit Form</button>
-                            </div>
-
-                        </form>
                     </div>
-                </div>
-            </React.Fragment>
+                )
+            })
         )
     }
 }
 
 export default BSMyFavor;
 
-// import React, { Component } from 'react';
-// import './BSMyFavor.scss';
-// import cookie from 'react-cookies';
-// import $ from 'jquery';
+
+
+
+
+
+
+
+
+
+
+
 
 // class BSMyFavor extends Component {
 //     constructor(props) {
-//         super([props]);
-//         this.state = {
-//             bsFavorArray: [],
-//             icFavorArray: [],
+//         super(props);
+//         this.initState = {
+//             name: "",
+//             gender: "",
+//             media: "",
+//             price: "",
+//             case: "",
+//             sid: ""
+//         }
 
-//         };
-//         this.sid = cookie.load('userId')[0]['BS_sid'];  //廠商id
-//         this.favor = null
 //     }
-
-//     //顯示網紅列表
-//     showFavor = () => {
-//         fetch('http://localhost:3000/case/bs_favor/' + this.sid)
-//             .then(res => res.json())
-//             .then(data => {
-//                 this.setState({
-//                     bsFavorArray: data
-//                 })//回傳此廠商 收藏的網紅 [{},{}....]
-//             })
+//     componentDidMount() {
+//         this.getfavor();
 //     }
-//     check = (evt) => {
-//         let bs_sid = evt.target.dataset.bs_sid;  //藉由button的data-bs_sid屬性紀錄每項案子的sid
-//         this.favor = "icFavorArray" + bs_sid;
-//         fetch('http://localhost:3000/case/ic_member/' + IC_sid)
+//     getfavor() {
+//         fetch("http://localhost:3000/api/BSMyFavor")
 //             .then(res => res.json())
-//             .then(data => {   //回傳 應徵此專案的所有網紅資料
-
+//             .then(members => {
 //                 this.setState({
-//                     favor: data
+//                     celebrities: members
 //                 })
+//                 console.log(this.state.celebrities)
 //             })
+//         this.BS_case = {
+//             BS_sid: cookies.load('userId')[0].BS_sid,
+//             IC_sid: this.celebrity.IC_sid
+//         }
 
-
-//         $(evt.target).parent().next().toggleClass('show');
 //     }
-
-
-//     componentDidMount = () => {
-//         this.showFavor();
-//         console.log('finsih');
-//     };
-
 //     render() {
-
+//         var imgSrc = "/images/" + (this.state.saved ? "heart-solid.png" : "heart-regular.png");
 //         return (
 //             <React.Fragment>
-//                 <div class="member_form_box">
-//                     <div class="member_form_content">
-//                         <div >
-//                             {/* {console.log(this.state.bsFavorArray)}  第一次會是空陣列,當網頁完成後執行showFavor() => 執行setState(),賦值給this.state.bsFavorArray,同時讓網頁更新 */}
-
-//                             {
-//                                 this.state.bsFavorArray.map((v) => {
-//                                     // console.log(v)
-//                                     return (
-//                                         <React.Fragment>
-//                                             <div className="card radius-border card_shadow">
-//                                                 <header className="banner">
-//                                                     <img src={"/images/" + this.celebrity['fileName'] + ".jpg"} alt="e0 " />
-//                                                     <div className="middle">
-//                                                         <Link to={`/celebrityInfo/${this.celebrity.name}`}>
-//                                                             <div className="text">查看詳細資料</div>
-//                                                         </Link>
-//                                                     </div>
-//                                                 </header>
-//                                                 <div className="card_body">
-//                                                     <div className="celebrity_name_box">
-//                                                         <h2 className="text_cut" >
-//                                                             姓名:{this.celebrity.name}
-//                                                         </h2>
-//                                                     </div>
-//                                                     <div className="text_align">
-//                                                         <p><span>年紀: </span>{this.celebrity['age']}</p>
-//                                                         <p><span>類型: </span>{this.celebrity['type']}</p>
-//                                                         <p><span>粉絲數: </span>{this.celebrity['fans']}</p>
-
-//                                                         {/* <button className="" onClick={this.Favorite}>{this.state.save}</button> */}
-//                                                     </div>
-//                                                     {this.state.saved ? <h5 id="saved">已收藏</h5> : null}
-//                                                     <a onClick={this.Favorite}><img id={this.celebrity['fileName']} className="heart" src={imgSrc} /></a>
-//                                                 </div>
-//                                             </div>
-//                                         </React.Fragment>
-//                                     )
-//                                 })
-
-//                             }
-
+//                 <div className="card radius-border card_shadow">
+//                     <header className="banner">
+//                         <img src={"/images/" + this.celebrity['IC_photo'] + ".jpg"} alt="" /> */}
+//                          <div className="middle">
+//                             <Link to={`/celebrityInfo/${this.celebrity.IC_sid}`}>
+//                                 <div className="text">查看詳細資料</div>
+//                             </Link>
 //                         </div>
+//                     </header>
+//                     <div className="card_body">
+//                         <div className="celebrity_name_box">
+//                             <h2 className="text_cut" >
+//                                 姓名:{this.celebrity.name}
+//                             </h2>
+//                         </div>
+//                         <div className="text_align">
+//                             <p><span>性別: </span>{this.celebrity.IC_gender}</p>
+//                             <p><span>類型: </span>{this.celebrity.IC_media}</p>
+//                             <p><span>最低接案金: </span>{this.celebrity.IC_price}</p>
+//                             <p><span>經手業配數: </span>{this.celebrity.IC_case}</p>
+//                              <button className="" onClick={this.Favorite}>{this.state.save}</button> 
+//                         </div>
+//                          {this.state.saved?<h5 id="saved">已收藏</h5>:null }
+//               <a onClick={this.Favorite}><img id={this.celebrity['IC_photo']} className="heart" src={imgSrc} /></a> 
 //                     </div>
 //                 </div>
 //             </React.Fragment>
-//         )
+//         );
 //     }
+
+//      componentDidUpdate = ()=>{
+
+//      }
 // }
 
 // export default BSMyFavor;
