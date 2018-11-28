@@ -5,7 +5,7 @@ import './SearchBar.scss';
 class ISearchBarOption extends Component{
     constructor(props){
         super(props)
-
+console.log(this.props.industry_option)
     }
 
     render(){
