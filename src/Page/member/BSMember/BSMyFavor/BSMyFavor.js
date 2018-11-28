@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './BSMyFavor.scss';
 import cookies from 'react-cookies'
+import {Link} from 'react-router-dom'
 
 class BSMyFavor extends Component {
     constructor(props) {
@@ -81,19 +82,23 @@ class BSMyFavor extends Component {
                 })
             })
         })
-        
-                
-
-
-
     }
     render() {
         console.log(this.state)
+                // var imgSrc = "/images/" + (this.state.saved ? "heart-solid.png" : "heart-regular.png");
+
          return (
             this.state.saveCelebrity.map((k) => {
                 return (
                     <div key={k.bs_sid} className="card radius-border card_shadow">
-
+                    <header className="banner">
+                        {/* <img src={"/images/" + k['IC_photo'] + ".jpg"} alt="" />  */}
+                        <div className="middle">
+                            <Link to={`/celebrityInfo/${k.IC_sid}`}>
+                                <div className="text">查看詳細資料</div>
+                            </Link>
+                        </div>
+                    </header>
                         <div className="card_body">
                             <div className="celebrity_name_box">
                                 <h2 className="text_cut">
