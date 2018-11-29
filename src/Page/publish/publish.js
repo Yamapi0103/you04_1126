@@ -24,10 +24,8 @@ class Publish extends Component {
             BScase_pay:'',
             BScase_location:'',
             BScase_time_limit:dateNow,
-            BScase_experience:'',
             BScase_fans:'',
             BScase_active:'',
-            BScase_contact:'',
             BScase_info:'',
             BScase_publish_at:dateTimeNow,
             selectPhoto:null
@@ -280,12 +278,6 @@ class Publish extends Component {
                     <h4>條件內容</h4>
                 
                 <div className="form-group">
-                    <label>經驗要求</label>
-                    <select value={this.state.case_BScase_experience} name="BScase_experience" onChange={this.handleChange} className="form-control" >
-                        <option>無經驗可</option>
-                        <option>1~4件案子</option>
-                        <option>5件以上</option>
-                    </select>
                     <label>人氣要求</label>
                     <select value={this.state.BScase_fans} name="BScase_fans" onChange={this.handleChange} className="form-control" >
                         <option>100-500</option>
@@ -298,14 +290,6 @@ class Publish extends Component {
                 </div>
                 </div>
                 
-                <div>
-                    <h4>聯絡人資訊</h4>
-                
-                    <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect1">聯絡人</label>
-                        <input type="text" value={this.BScase_contact} name="BScase_contact" onChange={this.handleChange} className="form-control" placeholder="請填入姓名及聯絡方式"/>
-                    </div>
-                </div>
 
                 <div>
                     <h4>其他補充</h4>
