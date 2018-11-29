@@ -14,79 +14,20 @@ class BSMyFavor extends Component {
             saveCelebrity:[]
         };
 
-        this.bsfavorArray=[];
-        this.celebrities=[];
-        
-        this.BS_sid = cookies.load('userId')[0].BS_sid
+    this.BS_sid = cookies.load('userId')[0].BS_sid
 
-    }
-
-    FavorList = () => {
-        // fetch('http://localhost:3000/api/BSAddFavor/' + this.BS_sid)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         // this.setState({
-        //             // bsfavorArray: data
-        //         // })
-        //         this.bsfavorArray= data
-        //         console.log(this.bsfavorArray)
-        //     })
-    }
-
-    getMembers=()=> {
-        // fetch("http://localhost:3000/api2/icmembers")
-        //     .then(res => res.json())
-        //     .then(members =>{
-        //         // this.setState({ 
-        //         //     celebrities: members
-        //         // })
-        //         this.celebrities = members
-        //         console.log(this.celebrities)
-        //     } )
-        
     }
 
     componentDidMount = () => {
-        // this.getMembers();
-        // this.FavorList();
-
-        //取得所有網紅詳細資訊,並存入this.celebrities
-        fetch("http://localhost:3000/info/icmembers")
+        fetch("http://localhost:3000/api/BSFavorIC/"+this.BS_sid)
         .then(res => res.json())
-        .then(members =>{
-            // this.setState({ 
-            //     celebrities: members
-            // })
-            this.celebrities = members
-            // console.log(this.celebrities)
-
-            //取得廠商收藏的網紅sid,並存入this.bsfavorArrsy
-            fetch('http://localhost:3000/api/BSAddFavor/' + this.BS_sid)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                // this.setState({
-                    // bsfavorArray: data
-                // })
-                this.bsfavorArray= data
-                console.log(this.bsfavorArray)
-                console.log(this.celebrities)
-
-                //篩選廠商收藏的網紅詳細資訊
-                let saveIC = this.celebrities.filter(celebrity=>{
-                    let isSaved = this.bsfavorArray.some(favor=>
-                              favor['IC_sid']==celebrity['IC_sid']
-                              )
-                    if(isSaved) return celebrity          
-                  })
-
-                  console.log(saveIC)
-                this.setState({
-                    saveCelebrity:saveIC
-                })
-            })
+        .then(data=>{
+            console.log(data)
+                    this.setState({
+                        saveCelebrity:data
+                    })
         })
+
     }
     render() {
         console.log(this.state)
