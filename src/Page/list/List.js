@@ -20,15 +20,16 @@ class List extends Component{
     componentDidMount() {
         
         let ids = this.props.match.params.ids,
-            bas = this.props.match.params.bas;
+            bas = this.props.match.params.bas,
+            keyword = this.props.match.params.keyword;
         this.getCase(ids, bas)
     }
 
     
 
 
-    getCase(ids, bas){
-        fetch("http://localhost:3000/api/search/"+ ids +'/' +bas)
+    getCase(ids, bas, keyword){
+        fetch("http://localhost:3000/api/search/"+ ids +'/' +bas + '/'+ keyword + '/')
         .then(res => res.json())
         .then(data=>{
             console.log(data)

@@ -37,15 +37,15 @@ class App extends Component {
           <Route path="/BSMember" component={BSMember} />
           <Route path="/ICMember" component={ICMember} />
 
-            <Route path="/list/:ids/:bas" component={List} />
+          <Route path="/list/:ids/:bas/:keyword" component={List} />
           <Route path ="/plan_buy/:point/:text/:money" component={Plan_buy} />
           <Route path="/publish_content/:category" component={Job} />
           <Route path="/publish" component={Publish} />
           <Route path="/celebrity" component={CelebrityList} />
           <Route path="/celebrityInfo/:icsid" component={CelebrityInfo} />
-            <Route exact path="/register" component={Register} />
-            <Route path="/register/CompanyRegister" component={CompanyRegister}/>
-            <Route path="/register/ICRegister" component={ICRegister} />
+          <Route exact path="/register" component={Register} />
+          <Route path="/register/CompanyRegister" component={CompanyRegister}/>
+          <Route path="/register/ICRegister" component={ICRegister} />
 
           </div>
             <Route exact path="/" component={Home}  />

@@ -11,7 +11,8 @@ class SearchBar extends Component{
             industry_option:[],
             active_option:[],
             ids:'',
-            bas:''
+            bas:'',
+            keyword:''
         }
     
     }
@@ -20,6 +21,7 @@ class SearchBar extends Component{
             .then(res =>res.json())
             .then(data=>{  
                 let Data = data[0]
+                // console.log(Data['id'])
                 this.setState({
                 industry_option:data,
                 ids:Data['id']
@@ -47,6 +49,7 @@ class SearchBar extends Component{
     }
 
     search=(evt)=>{
+        // console.log(evt.target)
             let key = evt.target.name;
             let value = evt.target.value;
             this.setState({
@@ -54,7 +57,6 @@ class SearchBar extends Component{
             })
         this.getSearch()
     }
-
 
     componentDidMount(){
         this.getSearchIndustry()
@@ -74,9 +76,9 @@ class SearchBar extends Component{
                             <ATSearchBarOption active_option={this.state.active_option} />
                         </select>
                     
-                    <input className=" searchbar_btn searchbar_btn3" placeholder="關鍵字搜尋：產品名稱等" />
+                    <input onChange={this.handleChange} name="keyword" className="searchbar_btn searchbar_btn3" placeholder="關鍵字搜尋：產品名稱等" />
                 </div>
-                <Link to={`/list/${this.state.ids}/${this.state.bas}`} className="startsearch_btn" onClick={this.search}>
+                <Link exact to={`/list/${this.state.ids}/${this.state.bas}/${this.state.keyword}`} className="startsearch_btn" onClick={this.search}>
                 <i className="fas fa-search"></i><span>開始搜尋</span>
                 </Link>
             </React.Fragment>

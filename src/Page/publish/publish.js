@@ -3,7 +3,6 @@ import{Link} from 'react-router-dom';
 import './publish.scss';
 import ISearchBarOption from '../home/ISearchBarOption';
 import ATSearchBarOption from '../home/ATSearchBarOption';
-import $ from 'jquery';
 import cookies from 'react-cookies';
 class Publish extends Component {
     constructor(props) {
@@ -16,6 +15,7 @@ class Publish extends Component {
         this.state={
             active_option:[],
             industry_option:[],
+            tag_option:[],
             industry_name:'',
             BScase_name:'',
             BS_sid:'', // 存發布專案的人(BS_sid)
@@ -28,8 +28,13 @@ class Publish extends Component {
             BScase_active:'',
             BScase_info:'',
             BScase_publish_at:dateTimeNow,
-            selectPhoto:null
+            selectPhoto:null,
+            selectTag:{}
         }
+    }
+    tagChangeState(index){
+        this.state.selectTag[index]=!this.state.selectTag[index]
+        console.log(this.state.selectTag)
     }
     //下面兩隻都是呼叫
     getSearchIndustry(){
@@ -56,6 +61,19 @@ class Publish extends Component {
             })
         })      
     }
+    getTagOption(){
+        fetch("http://localhost:3000/api/getTag")
+        .then(res =>res.json())
+            .then(data=>{
+                let Data = data[0]
+                // console.log(data) 
+                this.setState({
+                tag_option:data,
+                tag_name:Data['tag_name']
+                
+            })
+        })
+    }
     //從資料庫呼叫資料製造表單選項
     componentDidMount(){
         if(this.isLogin()){
@@ -69,7 +87,8 @@ class Publish extends Component {
     }
         this.getSearchIndustry();
         this.getSearchActive();
-}
+        this.getTagOption();
+    }
 
     //處理受控表單
     handleChange = (evt) => {
@@ -123,7 +142,8 @@ class Publish extends Component {
             alert('點數不夠')
             return
         }
-
+        delete this.tag_option
+        delete this.tag_name
         delete this.state.industry_option;
         delete this.state.active_option;
         delete this.state.selectPhoto;
@@ -166,7 +186,11 @@ class Publish extends Component {
     isLogin = ()=>{
         return cookies.load('userId')?true:false
     }
-    
+    selectClick = evt =>{
+        let select =evt.target;
+        
+        select[0].setAttribute('disabled', 'disabled')
+    }
     render(){
         // let rows=[];
         // for (var i = 1; i < 3; i++) {
@@ -239,12 +263,11 @@ class Publish extends Component {
                 </div>
                 <div className="form-group">
                     <label>請選擇產業類型</label>
-                    <select value={this.state.industry_name} name="industry_name" onChange={this.handleChange} className="form-control" >
-                    <ISearchBarOption industry_option={this.state.industry_option}/>
-                    
+                    <select value={this.state.industry_name} onClick={this.selectClick} name="industry_name" onChange={this.handleChange} className="form-control" >
+                        <ISearchBarOption industry_option={this.state.industry_option}/>                    
                     </select>
                     <label>請選擇活動型態</label>
-                    <select value={this.state.BScase_active} name="BScase_active" onChange={this.handleChange} className="form-control" >
+                    <select value={this.state.BScase_active} onClick={this.selectClick} name="BScase_active" onChange={this.handleChange} className="form-control" >
                         <ATSearchBarOption active_option={this.state.active_option}/>
                     </select>
                 </div>
@@ -295,7 +318,19 @@ class Publish extends Component {
                     <h4>其他補充</h4>
                     <textarea value={this.state.BScase_info} name="BScase_info" onChange={this.handleChange} className="form-control" rows="5"></textarea>
                 </div>
-                <br/>
+                <div className="form-group" value={this.state.tag_name} name="tag_name" onChange={this.handleChange}>
+                    {/* <label>請選擇符合您的tag標籤</label>
+                    <div >
+                        {this.state.tag_option.map((tg,index)=>
+                        
+                                <div key={index}>
+                                <input type="checkbox" id="scales" checked={this.state.selectTag[index]|| false} onChange={()=>this.tagChangeState(index)} name="scales"/>
+                                <label>{tg.tag_name}</label>
+                                </div>
+                            )
+                        }
+                    </div> */}
+                </div>
                 <div className="alert alert-primary" role="alert">
                     本次刊登將會扣除您100點點數
                 </div>
