@@ -126,7 +126,7 @@ class Publish extends Component {
             alert('點數不夠')
             return
         }
-
+        delete this.state.industry_name;
         delete this.state.industry_option;
         delete this.state.active_option;
         delete this.state.selectPhoto;
