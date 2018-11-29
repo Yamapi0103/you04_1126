@@ -44,7 +44,7 @@ class ICMyInfo extends Component {
         .then(res=>res.json())
         .then(data=>{
                 let Data = data[0];
-                alert(Data);
+                // alert(Data);
                 //防止使用者在網址/:sid打上不存在的IC_sid => 就會回傳{"Message":"XXXX"},再跳回首頁
                 if(data.hasOwnProperty("Message")){  
                     this.props.history.push("/home");

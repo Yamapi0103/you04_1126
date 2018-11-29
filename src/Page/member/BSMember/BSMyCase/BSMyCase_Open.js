@@ -11,7 +11,6 @@ class BSMyCase_Open extends Component {
         this.state={
             bsCaseArray:[],
             count:[]
-            
         };
         this.sid = cookie.load('userId')[0]['BS_sid'];  //廠商id
     }

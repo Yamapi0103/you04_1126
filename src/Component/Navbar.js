@@ -28,9 +28,9 @@ class Navbar extends Component{
         // document.querySelector('.menu-container').classList.toggle('active');
         $('.menu-container').toggleClass('active')
         evt.stopPropagation();
-        $('html').click(function(){
-            $('.menu-container').removeClass('active');  
-        })     
+        // $('html').click(function(){
+        //     $('.menu-container').removeClass('active');  
+        // })     
  
     }
     componentDidMount=()=> {      

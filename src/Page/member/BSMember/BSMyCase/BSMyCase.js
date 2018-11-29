@@ -18,8 +18,8 @@ class BSMyCase extends Component {
                         <form className="register_outside">
 
                             <div>
-                                <button className="btn" ><Link to={`${this.props.match.url}/BSMyCase_Open`}>發布中</Link></button>
-                                <button  className="btn"><Link to={`${this.props.match.url}/BSMyCase_Close`}>已關閉</Link></button>
+                                <Link to={`${this.props.match.url}/BSMyCase_Open`}>發布中</Link>
+                                <Link to={`${this.props.match.url}/BSMyCase_Close`}>已關閉</Link>
                             </div>
                         </form>
                     </div>

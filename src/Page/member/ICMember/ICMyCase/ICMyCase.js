@@ -18,8 +18,8 @@ class ICMyCase extends Component {
                         <form className="register_outside">
 
                             <div>
-                                <button type="submit" className="btn" ><Link to={`${this.props.match.url}/ICMyCase_Open`}>發布中</Link></button>
-                                <button type="submit" className="btn"><Link to={`${this.props.match.url}/ICMyCase_Close`}>已關閉</Link></button>
+                                <Link to={`${this.props.match.url}/ICMyCase_Open`}>發布中</Link>
+                                <Link to={`${this.props.match.url}/ICMyCase_Close`}>已關閉</Link>
                             </div>
                         </form>
                     </div>
