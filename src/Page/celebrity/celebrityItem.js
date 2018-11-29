@@ -19,9 +19,10 @@ class CelebrityItem extends Component {
 
     //解決setState會去render的問題
     this.BS_case={
-      BS_sid:"",
-      IC_sid:""
+      BS_sid:cookies.load('userId')[0].BS_sid,
+      IC_sid:this.celebrity.IC_sid
     }
+    this.savedOrNot()
     // console.log(this.state)
     // console.log(cookies.load('userId')[0].BS_sid)
   }
@@ -35,11 +36,6 @@ class CelebrityItem extends Component {
       // BS_sid:cookies.load('userId')[0].BS_sid,
       // IC_sid:this.celebrity.IC_sid
     })
-
-    this.BS_case={
-      BS_sid:cookies.load('userId')[0].BS_sid,
-      IC_sid:this.celebrity.IC_sid
-    }
      
     console.log(this.state);
     // this.BS_favor = Object.assign({},this.state)
@@ -90,8 +86,21 @@ class CelebrityItem extends Component {
     )
 
 }
+
+savedOrNot =()=>{
+   fetch("http://localhost:3000/api/BSGetFavor/"+this.BS_case.BS_sid+"/"+this.BS_case.IC_sid)
+   .then(res=>res.json())
+   .then(result=>{
+     if(result.length==1)
+        this.setState({
+          saved:true
+        })
+   })
+}
+
   render() {
-    var imgSrc = "/images/"+(this.state.saved?"heart-solid.png":"heart-regular.png");
+    
+    // var imgSrc = "/images/"+(this.state.saved?"heart-solid.png":"heart-regular.png");
     return (
       <React.Fragment>
         <div className="card radius-border card_shadow">
@@ -117,7 +126,7 @@ class CelebrityItem extends Component {
               {/* <button className="" onClick={this.Favorite}>{this.state.save}</button> */}
             </div>  
               {this.state.saved?<h5 id="saved">已收藏</h5>:null }
-              <a onClick={this.Favorite}><img id={this.celebrity['IC_photo']} className="heart" src={imgSrc} /></a>
+              <a onClick={this.Favorite}><img id={this.celebrity['IC_photo']} className="heart" src={this.state.saved?"/images/heart-solid.png":"/images/heart-regular.png"} /></a>
           </div>
         </div>
       </React.Fragment>

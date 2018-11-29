@@ -125,7 +125,7 @@ class Publish extends Component {
             alert('點數不夠')
             return
         }
-        delete this.state.industry_name;
+
         delete this.state.industry_option;
         delete this.state.active_option;
         delete this.state.selectPhoto;
@@ -242,13 +242,11 @@ class Publish extends Component {
                 <div className="form-group">
                     <label>請選擇產業類型</label>
                     <select value={this.state.industry_name} name="industry_name" onChange={this.handleChange} className="form-control" >
-                    <option value="0">請選擇</option>
                     <ISearchBarOption industry_option={this.state.industry_option}/>
                     
                     </select>
                     <label>請選擇活動型態</label>
                     <select value={this.state.BScase_active} name="BScase_active" onChange={this.handleChange} className="form-control" >
-                        <option value="0">請選擇</option>
                         <ATSearchBarOption active_option={this.state.active_option}/>
                     </select>
                 </div>
