@@ -164,6 +164,12 @@ class Plan_buy extends Component{
                         }
                         , 3000);
                     swal("結帳成功", "感謝您的購買，將為您將畫面轉至首頁", "success");
+
+                    cookie.save('userId',[{
+                        ...cookie.load('userId')[0],
+                        BS_point: parseInt(cookie.load('userId')[0].BS_point)+parseInt(this.point)
+                    }])
+
                     //申請成功就跳回首頁
                     this.props.history.push("/home");
                 }

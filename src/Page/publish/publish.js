@@ -115,10 +115,9 @@ class Publish extends Component {
     addHandler = (evt) =>{
         evt.preventDefault();
         console.log(this.state)
-
         this.userSid = this.cookie.BS_sid
         this.userPoints = this.cookie.BS_point //cookie紀錄的point
-        // console.log(this.userPoints)
+        console.log(this.userPoints)
         // console.log(this.userSid)
 
         //判斷點數是否足夠
