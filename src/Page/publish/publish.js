@@ -4,19 +4,21 @@ import './publish.scss';
 import ISearchBarOption from '../home/ISearchBarOption';
 import ATSearchBarOption from '../home/ATSearchBarOption';
 import $ from 'jquery';
-
+import cookies from 'react-cookies';
 class Publish extends Component {
     constructor(props) {
         super(props);
         var a = new Date();
         var dateTimeNow = a.getFullYear()+'-' +a.getMonth()+'-'+a.getDay()+" "+a.getHours()+':'+a.getMinutes()+':'+a.getSeconds()
         var dateNow = a.getFullYear()+'/' +a.getMonth()+'/'+a.getDay();
-
+        this.userPoints = 0;
+        this.userSid = 0;
         this.state={
             active_option:[],
             industry_option:[],
             industry_name:'',
             BScase_name:'',
+            BS_sid:'', // 存發布專案的人(BS_sid)
             BScase_photo:'',
             BScase_ask_people:'1',
             BScase_pay:'',
@@ -40,8 +42,7 @@ class Publish extends Component {
                 console.log(Data['industry_name'])
                 this.setState({
                 industry_option:data,
-                industry_name:Data['industry_name'],
-                
+                industry_name:Data['industry_name'],                
             })
         })      
     };
@@ -59,9 +60,18 @@ class Publish extends Component {
     }
     //從資料庫呼叫資料製造表單選項
     componentDidMount(){
+        if(this.isLogin()){
+        // this.cookie = cookies.load('userId')[0] 
+        console.log(this.cookie)  //看cookie內容
+
+        // 將下面code放componentDidMount才能新增BS_sid進DB，放addHandler就不行 ((怪怪的
+        this.setState({
+            BS_sid:this.cookie.BS_sid
+        })   
+    }
         this.getSearchIndustry();
         this.getSearchActive();
-    }
+}
 
     //處理受控表單
     handleChange = (evt) => {
@@ -97,15 +107,30 @@ class Publish extends Component {
         })
         
     }
-    //post表單到資料庫
-
     
+    fetchPoints = (userSid)=>{
+        return fetch('http://localhost:3000/api3/bsmembers/'+userSid);
+    }
+    //post表單到資料庫
     addHandler = (evt) =>{
         evt.preventDefault();
         console.log(this.state)
+
+        this.userSid = this.cookie.BS_sid
+        this.userPoints = this.cookie.BS_point //cookie紀錄的point
+        // console.log(this.userPoints)
+        // console.log(this.userSid)
+
+        //判斷點數是否足夠
+        if(this.userPoints<100){
+            alert('點數不夠')
+            return
+        }
+
         delete this.state.industry_option;
         delete this.state.active_option;
         delete this.state.selectPhoto;
+        //新增bs_case
         fetch('http://localhost:3000/api/publish',{
         method:'POST',
         body: JSON.stringify(this.state),
@@ -116,15 +141,62 @@ class Publish extends Component {
         .then(data => {
             alert(data.message)
         })
-        this.props.history.push('/home')
+        
+
+        //扣100點點數 並更新cookie裡的BS_point
+        cookies.save('userId',[{
+            ...this.cookie,
+            BS_point: parseInt(cookies.load('userId')[0].BS_point)-100
+        }])
+        this.cookie = cookies.load('userId')[0]  //對this.cookie更新
+        // console.log(cookies.load('userId')[0]) 
+        // console.log(this.cookie)
+
+        //更新bsmember裡的bs_point
+        fetch('http://localhost:3000/you04/updateBSmember/'+this.userSid, {
+            method: 'PUT',
+            body: JSON.stringify({BS_point:this.cookie.BS_point}), //只更新bsmember點數
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then(res => res.json())
+            .then(data => {
+                alert(data.message);
+           })
+        // this.props.history.push('/home')
     }
     
-    
+    isLogin = ()=>{
+        return cookies.load('userId')?true:false
+    }
     
     render(){
+        // let rows=[];
+        // for (var i = 1; i < 3; i++) {
+        //     rows.push(<option value={i}>{i}</option>);
+        // }
+        
+        if(!this.isLogin()){
+            return(
+                <React.Fragment>
+                {alert("請先登入")}
+                {this.props.history.push("/login")}
+                </React.Fragment>
+            )
+        }
+        this.cookie = cookies.load('userId')[0] 
+        if(this.cookie.BS_point<100){
+            return(
+                <React.Fragment>
+                    {alert("點數不足，請先去買點數!")}
+                    {this.props.history.push("/plan")}
+                </React.Fragment>
+            )
+        }
+        else{
         return(
             <React.Fragment>
-                
+                <Link to="/plan">購買方案</Link>
                 <form className="publish_container">
                 <h3>專案刊登</h3>
                 <br/>
@@ -260,8 +332,8 @@ class Publish extends Component {
 
                 </form>
             </React.Fragment>
-
-        )
+            )
+        }
     }
 }
 
