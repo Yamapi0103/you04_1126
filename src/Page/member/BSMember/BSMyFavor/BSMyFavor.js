@@ -9,8 +9,6 @@ class BSMyFavor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // bsfavorArray: [],
-            // celebrities: [],
             saveCelebrity:[]
         };
 
@@ -31,8 +29,6 @@ class BSMyFavor extends Component {
     }
     render() {
         console.log(this.state)
-                // var imgSrc = "/images/" + (this.state.saved ? "heart-solid.png" : "heart-regular.png");
-
          return (
             this.state.saveCelebrity.map((k) => {
                 return (

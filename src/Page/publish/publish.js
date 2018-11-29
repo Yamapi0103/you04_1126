@@ -85,6 +85,10 @@ class Publish extends Component {
             BS_sid:this.cookie.BS_sid
         })   
     }
+    else{
+        this.props.history.push('/login')
+        return
+    }
         this.getSearchIndustry();
         this.getSearchActive();
         this.getTagOption();
