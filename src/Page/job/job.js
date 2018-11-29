@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./job.scss";
+import cookie from 'react-cookies';
+import swal from 'sweetalert';
 
 class Job extends Component {
   constructor(props) {
@@ -76,7 +78,28 @@ class Job extends Component {
   }
 
   
-
+  //網紅應徵
+  hire = (evt)=>{
+    // alert(evt.target);
+    let ICmember_sid = cookie.load('userId')[0]['IC_sid'];
+    let hire = {
+      BScase_sid : this.state.BScase_sid,
+      ICmember_sid : ICmember_sid,
+    };
+    //先確認之前有沒有應徵
+    //之前沒應徵 => 可以應徵
+    fetch('http://localhost:3000/hire/IC_hire',{
+        method:'POST',
+        body:JSON.stringify(hire),
+        headers:new Headers({   
+            'content-Type': 'application/json'  
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        swal(data.message);
+      })
+  };
   getIndustry = () =>{
     fetch("http://localhost:3000/api/pairIndustry/" + this.state.industry_name,{
       method:'GET',
@@ -136,7 +159,7 @@ class Job extends Component {
               <p><b>薪資待遇: </b>{this.state.BScase_pay}</p>
               
               <div className="btn_wrap">
-                <a class="job_btn" role="button">應徵</a>
+                <a onClick={this.hire} id='hire' class="job_btn" role="button">應徵</a>
                 <a class="job_btn" role="button">收藏</a>
               </div>
             </aside>

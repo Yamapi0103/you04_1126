@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './CicRegister.scss';
+import swal from 'sweetalert';
 
 class ICRegister extends Component{
     constructor(props){
@@ -121,7 +122,7 @@ class ICRegister extends Component{
                 ].join('');
             }
             this.state.now = onTime();
-            fetch('//localhost:3000/api/icmembers',{
+            fetch('//localhost:3000/register/icmembers',{
                 method:'POST',
                 body:JSON.stringify(this.state),
                 headers:new Headers({   
@@ -130,7 +131,7 @@ class ICRegister extends Component{
             })
             .then(res=>res.json())
             .then(data=>{
-                alert(data.message);
+                swal(data.message, "歡迎加入You04", "success");
                 if(data.stay==false){
                     //申請成功就跳回首頁
                     this.props.history.push("/home");
@@ -138,7 +139,7 @@ class ICRegister extends Component{
             })
         }
         else{
-            alert('欄位有錯誤')
+            swal('欄位有錯誤')
         }
     }
     

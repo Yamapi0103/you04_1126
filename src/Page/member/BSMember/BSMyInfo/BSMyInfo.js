@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './BSMyInfo.scss';
 import cookie from 'react-cookies';
+import $ from 'jquery';
 
 class BSMyInfo extends Component {
     constructor(props) {
@@ -34,10 +35,10 @@ class BSMyInfo extends Component {
    
     //要問老師為什麼fetch裡面不能用迴圈,還有作用域的問題
     show = ()=>{  
-        fetch('http://localhost:3000/api3/bsmembers/'+this.sid)
+        fetch('http://localhost:3000/info/bsmembers/'+this.sid)
             .then(res=>res.json())
             .then(data=>{
-                console.log(data);   //data['BS_email'] =  BS@yahoo.com.tw
+                // console.log(data);   //data['BS_email'] =  BS@yahoo.com.tw
                  //防止使用者在網址/:sid打上不存在的BS_sid => 就會回傳{"Message":"XXXX"},再跳回首頁
                  if(data.hasOwnProperty("Message")){  
                     this.props.history.push("/home");
@@ -72,7 +73,7 @@ class BSMyInfo extends Component {
             ].join('');
         };
         this.state.BS_create_at = onTime();
-        fetch('http://localhost:3000/api3/bsmembers/'+this.sid, {
+        fetch('http://localhost:3000/info/bsmembers/'+this.sid, {
             method: 'PUT',
             body: JSON.stringify(bsInfo),
             headers: new Headers({
@@ -80,9 +81,9 @@ class BSMyInfo extends Component {
             })
         }).then(res => res.json())
             .then(data => {
-                alert(data.message);
+                // alert(data.message);
                 this.show();
-
+                $('.case_successAlert').attr('style','display:block');
             })
     }
     sent=(evt)=>{
@@ -160,6 +161,7 @@ class BSMyInfo extends Component {
                                 </div>
                                 <br></br>
                                 <div className="">
+                                    <div className="case_successAlert alert alert-success" role="alert" >修改成功!</div>
                                     <button type="submit" onClick={this.sent} className="btn btn-primary">儲存</button>
                                 </div>
                                 <br></br>

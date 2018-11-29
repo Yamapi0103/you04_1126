@@ -1,6 +1,13 @@
 @import '../../../../App.scss';
 
-
+.NoneCaseOpen{
+    padding: 100px 0;
+    text-align: center;
+    color: rgb(14, 13, 13);
+    background-color: #fff;
+    font-size: 3rem;
+    font-weight: 600;
+}
 .imco_card{
     width: 100%;
     margin: 30px 0;
@@ -11,9 +18,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    h6{
+    .imco_card_left{
         width: 60%;
-    }
+        
+        h6{
+            width: 100%;
+        }
+    }   
     .imco_card_right{
         // width: 40%;
         .btn{
@@ -59,12 +70,9 @@
             justify-content: flex-end;
             padding-bottom: 10px;
             .btn{
-                height: 50px;
+                color: black;
+                padding: 10px 20px;
                 background-color: rgb(94, 247, 107);
-                align-self:flex-end;
-            }
-            .bth:first-child{
-                margin-right: 10%;
             }
             .btn:hover{
                 background-color: rgb(94, 247, 214);

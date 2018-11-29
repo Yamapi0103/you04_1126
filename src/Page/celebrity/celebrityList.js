@@ -25,7 +25,7 @@ class CelebrityList extends Component {
         this.getMembers();
     }
     getMembers() {
-        fetch("http://localhost:3000/api2/icmembers")
+        fetch("http://localhost:3000/info/icmembers")
             .then(res => res.json())
             .then(members =>{
                 this.setState({ 

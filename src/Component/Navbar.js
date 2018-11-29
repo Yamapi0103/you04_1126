@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom';
 import './NavBar.scss';
 import cookie from 'react-cookies';
 import $ from 'jquery';
+import swal from 'sweetalert';
 
 class Navbar extends Component{
     constructor(props){
@@ -12,7 +13,7 @@ class Navbar extends Component{
         return cookie.load('userId')? true : false;
     }
     logOut = () =>{
-        alert("已登出")
+        swal("已登出")
         cookie.remove('userId')
         this.setState({
             cookie:""

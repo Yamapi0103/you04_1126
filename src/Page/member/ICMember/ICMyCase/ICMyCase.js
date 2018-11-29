@@ -12,18 +12,18 @@ class ICMyCase extends Component {
     render() {
         return (
             <React.Fragment>
-                <div class="member_form_box">
+                <div class="member_form_box_top">
 
-                    <div className="register_container">
+                    <div className="register_container1">
                         <form className="register_outside">
 
                             <div>
-                                <Link to={`${this.props.match.url}/ICMyCase_Open`}>發布中</Link>
-                                <Link to={`${this.props.match.url}/ICMyCase_Close`}>已關閉</Link>
+                                <Link className="btn OpenOrClose" to={`${this.props.match.url}/ICMyCase_Open`}>發布中</Link>
+                                <Link className="btn OpenOrClose" to={`${this.props.match.url}/ICMyCase_Close`}>已關閉</Link>
                             </div>
                         </form>
                     </div>
-                    <hr />
+                    {/* <hr /> */}
                 </div>
                 <switch>
                     <Route path={`${this.props.match.url}/ICMyCase_Open`} component={ICMyCase_Open} />

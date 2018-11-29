@@ -17,7 +17,7 @@ class CelebrityInfo extends Component {
     this.getMembers();
 }
 getMembers() {
-    fetch("http://localhost:3000/api2/icmembers/"+this.IC_sid)
+    fetch("http://localhost:3000/info/icmembers/"+this.IC_sid)
         .then(res => res.json())
         .then(member =>{
             this.setState({ 

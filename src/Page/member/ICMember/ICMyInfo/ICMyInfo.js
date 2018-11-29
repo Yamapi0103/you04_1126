@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ICMyInfo.scss';
 import cookie from 'react-cookies';
+import $ from 'jquery';
 
 class ICMyInfo extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class ICMyInfo extends Component {
 
     show = ()=>{
         // console.log('Component Did Mount');
-        fetch('http://localhost:3000/api2/icmembers/'+this.sid)
+        fetch('http://localhost:3000/info/icmembers/'+this.sid)
         .then(res=>res.json())
         .then(data=>{
                 let Data = data[0];
@@ -90,7 +91,7 @@ class ICMyInfo extends Component {
             ].join('');
         };
         this.state.IC_create_at = onTime();
-        fetch('http://localhost:3000/api2/icmembers/'+this.sid, {
+        fetch('http://localhost:3000/info/icmembers/'+this.sid, {
             method: 'PUT',
             body: JSON.stringify(icInfo),
             headers: new Headers({
@@ -101,6 +102,7 @@ class ICMyInfo extends Component {
         .then(data => {
             // alert(data.message);
             this.show();
+            $('.case_successAlert').attr('style','display:block');
 
         })
     }
@@ -265,6 +267,7 @@ class ICMyInfo extends Component {
                                 <br></br>
 
                                 <div className="">
+                                    <div className="case_successAlert alert alert-success" role="alert" >修改成功!</div>
                                     <button type="submit" onClick={this.sent}  className="btn btn-primary">儲存</button>
 
                                 </div>

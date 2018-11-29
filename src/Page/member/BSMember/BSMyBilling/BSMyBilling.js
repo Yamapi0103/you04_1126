@@ -1,97 +1,74 @@
 import React, { Component } from 'react';
 import './BSMyBilling.scss';
+import BillingCard from './BillingCard';
+import {Link} from 'react-router-dom';
+import cookie from 'react-cookies';
 
 class BSMyBilling extends Component {
     constructor(props) {
         super([props]);
+        this.state = {
+            bills: [],
+            bs_email:cookie.load('userId')[0].BS_email,
+            point: []
+        }
+    }
+    
+    getBill(bs_email) {   //這個的res是totalpage+商品資料(datas)，所以需要cases:後面需要指定到.datas
+        fetch("http://localhost:3000/bsbilling_api/" + bs_email)
+            .then(res => res.json())
+            .then(bill => {
+                this.setState({ 
+                bills: bill
+            })
+        })
+    }
+
+    getPoint(bs_email) {
+        fetch("http://localhost:3000/bsbilling_api/point/" + bs_email)
+            .then(res => res.json())
+            .then(point => {
+                this.setState({ 
+                point: point[0].BS_point
+            })
+        })
+    }
+
+
+    componentDidMount() {
+        this.getBill(this.state.bs_email);
+        this.getPoint(this.state.bs_email);
+    }
+    cc = () => {
+        console.log(this.state.bs_email);
+        console.log(this.state.bills);
+        console.log(this.state.point);
     }
 
     render() {
         return (
             <React.Fragment>
-                <div class="member_form_box">
-                    <div class="member_form_content">
-
-                        <form class="form-basic" method="post" action="#">
-
-                            <div className="form-title-row">
-                                <h1>訂單管理</h1>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Full name</span>
-                                    <input type="text" name="name" />
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Email</span>
-                                    <input type="email" name="email" />
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Dropdown</span>
-                                    <select name="dropdown">
-                                        <option>Option One</option>
-                                        <option>Option Two</option>
-                                        <option>Option Three</option>
-                                        <option>Option Four</option>
-                                    </select>
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Textarea</span>
-                                    <textarea name="textarea"></textarea>
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Checkbox</span>
-                                    <input type="checkbox" name="checkbox" checked />
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label><span>Radio</span></label>
-                                <div className="form-radio-buttons">
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 1</span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 2</span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 3</span>
-                                        </label>
-                                    </div>
-
+                <div className="member_form_box">
+                    <div className="member_form_billing_container">
+                        <div className="mfb_container_top">
+                            <div className="mfb_container_top_credit mfb_container_top_box">
+                                <span>信用卡資訊</span>
+                                <span>4822-XXXX-XXXX-XXXX</span>
+                                <div className="credit_button_container">
+                                    <Link to="#">新增</Link>
+                                    <Link to="#">編輯</Link>
                                 </div>
                             </div>
-
-                            <div className="form-row">
-                                <button type="submit">Submit Form</button>
+                            <div className="mfb_container_top_point mfb_container_top_box">
+                                <span>剩餘點數：<strong>{this.state.point}點</strong></span>
+                                <Link to="#">購買方案</Link>
                             </div>
-
-                        </form>
+                        </div>
+                        <div className="mfb_container_bottom">
+                            <BillingCard bills={this.state.bills}/>
+                        </div>
                     </div>
+                    <button onClick={this.cc}>123</button>
                 </div>
             </React.Fragment>
         )

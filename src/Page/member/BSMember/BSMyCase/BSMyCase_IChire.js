@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link} from 'react-router-dom';
 
-class BSMyCase_Open_IChire extends Component {
+class BSMyCase_IChire extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -14,7 +15,7 @@ class BSMyCase_Open_IChire extends Component {
         fetch('http://localhost:3000/case/showHire/'+this.BScase_sid)
         .then(res=>res.json())
         .then(data=>{   //回傳 應徵此案子的所有網紅資料 [{網紅1},{網紅2}...]
-            console.log(data.length);
+          
             this.Count(data.length);
             this.setState({
                 icHireArray:data
@@ -23,7 +24,7 @@ class BSMyCase_Open_IChire extends Component {
     }
     componentDidMount=()=>{
        this.showIChire();
-       console.log('finsih2')
+      
     };
 
     render() {
@@ -46,7 +47,7 @@ class BSMyCase_Open_IChire extends Component {
                             </p>
                         </div>
                         <div className='btn_div'>
-                            <button className="btn" >開啟對話</button>
+                          <Link className="btn" to={`/BSMember/BSMyChat`}>開啟對話</Link>
                         </div>
                     </div>
                 )
@@ -55,4 +56,4 @@ class BSMyCase_Open_IChire extends Component {
     }
 }
 
-export default BSMyCase_Open_IChire;
+export default BSMyCase_IChire;

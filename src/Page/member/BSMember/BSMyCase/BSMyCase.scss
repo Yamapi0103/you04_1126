@@ -1,21 +1,15 @@
 @import '../../../../App.scss';
 
 
-.member_form_box,.member_form_box_top{
-    width:80%;
+.member_form_box_top {
+    width:90%;
     margin: auto;
 }
 @media(max-width:950px){
-    .member_form_box,.member_form_box_top{
+    .member_form_box_top{
         width:100%;
         // margin: 0;
     }
-}
-.member_form_box_top{
-    
-}
-.member_form_box{
-    background-color: rgb(78, 143, 173);
 }
 
 .register_container1{
@@ -23,6 +17,9 @@
     .register_outside{
         div{
             display: flex;
+            .OpenOrClose{
+                color: #ffffff;
+            }
         }
         .btn{
             background-color: #4e8fad;
