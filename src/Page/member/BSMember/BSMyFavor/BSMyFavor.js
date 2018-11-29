@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './BSMyFavor.scss';
+
 import cookies from 'react-cookies'
 import {Link} from 'react-router-dom'
 
@@ -50,6 +51,7 @@ class BSMyFavor extends Component {
         // this.getMembers();
         // this.FavorList();
 
+        //取得所有網紅詳細資訊,並存入this.celebrities
         fetch("http://localhost:3000/info/icmembers")
         .then(res => res.json())
         .then(members =>{
@@ -57,8 +59,9 @@ class BSMyFavor extends Component {
             //     celebrities: members
             // })
             this.celebrities = members
-            console.log(this.celebrities)
+            // console.log(this.celebrities)
 
+            //取得廠商收藏的網紅sid,並存入this.bsfavorArrsy
             fetch('http://localhost:3000/api/BSAddFavor/' + this.BS_sid)
             .then(res => res.json())
             .then(data => {
@@ -70,13 +73,14 @@ class BSMyFavor extends Component {
                 console.log(this.bsfavorArray)
                 console.log(this.celebrities)
 
-
-                let saveIC = this.celebrities.filter(v=>{
-                    let a = this.bsfavorArray.some(vv=>
-                              vv['IC_sid']==v['IC_sid']
+                //篩選廠商收藏的網紅詳細資訊
+                let saveIC = this.celebrities.filter(celebrity=>{
+                    let isSaved = this.bsfavorArray.some(favor=>
+                              favor['IC_sid']==celebrity['IC_sid']
                               )
-                    if(a) return v          
+                    if(isSaved) return celebrity          
                   })
+
                   console.log(saveIC)
                 this.setState({
                     saveCelebrity:saveIC
@@ -91,9 +95,9 @@ class BSMyFavor extends Component {
          return (
             this.state.saveCelebrity.map((k) => {
                 return (
-                    <div key={k.bs_sid} className="card radius-border card_shadow">
+                    <div key={k.bs_sid} className="card flex radius-border card_shadow">
                     <header className="banner">
-                        {/* <img src={"/images/" + k['IC_photo'] + ".jpg"} alt="" />  */}
+                        <img src={"/images/" + k['IC_photo'] + ".jpg"} alt="" /> 
                         <div className="middle">
                             <Link to={`/celebrityInfo/${k.IC_sid}`}>
                                 <div className="text">查看詳細資料</div>
@@ -123,87 +127,3 @@ class BSMyFavor extends Component {
 }
 
 export default BSMyFavor;
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class BSMyFavor extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.initState = {
-//             name: "",
-//             gender: "",
-//             media: "",
-//             price: "",
-//             case: "",
-//             sid: ""
-//         }
-
-//     }
-//     componentDidMount() {
-//         this.getfavor();
-//     }
-//     getfavor() {
-//         fetch("http://localhost:3000/api/BSMyFavor")
-//             .then(res => res.json())
-//             .then(members => {
-//                 this.setState({
-//                     celebrities: members
-//                 })
-//                 console.log(this.state.celebrities)
-//             })
-//         this.BS_case = {
-//             BS_sid: cookies.load('userId')[0].BS_sid,
-//             IC_sid: this.celebrity.IC_sid
-//         }
-
-//     }
-//     render() {
-//         var imgSrc = "/images/" + (this.state.saved ? "heart-solid.png" : "heart-regular.png");
-//         return (
-//             <React.Fragment>
-//                 <div className="card radius-border card_shadow">
-//                     <header className="banner">
-//                         <img src={"/images/" + this.celebrity['IC_photo'] + ".jpg"} alt="" /> */}
-//                          <div className="middle">
-//                             <Link to={`/celebrityInfo/${this.celebrity.IC_sid}`}>
-//                                 <div className="text">查看詳細資料</div>
-//                             </Link>
-//                         </div>
-//                     </header>
-//                     <div className="card_body">
-//                         <div className="celebrity_name_box">
-//                             <h2 className="text_cut" >
-//                                 姓名:{this.celebrity.name}
-//                             </h2>
-//                         </div>
-//                         <div className="text_align">
-//                             <p><span>性別: </span>{this.celebrity.IC_gender}</p>
-//                             <p><span>類型: </span>{this.celebrity.IC_media}</p>
-//                             <p><span>最低接案金: </span>{this.celebrity.IC_price}</p>
-//                             <p><span>經手業配數: </span>{this.celebrity.IC_case}</p>
-//                              <button className="" onClick={this.Favorite}>{this.state.save}</button> 
-//                         </div>
-//                          {this.state.saved?<h5 id="saved">已收藏</h5>:null }
-//               <a onClick={this.Favorite}><img id={this.celebrity['IC_photo']} className="heart" src={imgSrc} /></a> 
-//                     </div>
-//                 </div>
-//             </React.Fragment>
-//         );
-//     }
-
-//      componentDidUpdate = ()=>{
-
-//      }
-// }
-
-// export default BSMyFavor;
