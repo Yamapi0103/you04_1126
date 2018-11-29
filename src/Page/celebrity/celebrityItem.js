@@ -61,7 +61,8 @@ class CelebrityItem extends Component {
     })
     .then(res=>res.json())
     .then(data => {
-        alert(data.message)
+        // alert(data.message)
+        swal(data.message,"可到我的收藏查看");
     })
   }
   delHandler=()=>{
@@ -79,7 +80,8 @@ class CelebrityItem extends Component {
     })
     .then(res=>res.json())
     .then(data => {
-        alert(data.message)
+        // alert(data.message)
+        swal(data.message,"已從我的收藏移除");
     })
   }
       
@@ -115,7 +117,7 @@ savedOrNot =()=>{
           <div className="card_body">
             <div className="celebrity_name_box">
               <h2 className="text_cut" >
-                姓名:{this.celebrity.name}
+                姓名:{this.celebrity.IC_name}
               </h2>
             </div>
             <div className="text_align">
