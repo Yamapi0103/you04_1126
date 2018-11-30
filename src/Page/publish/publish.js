@@ -15,7 +15,6 @@ class Publish extends Component {
         this.state={
             active_option:[],
             industry_option:[],
-            tag_option:[],
             industry_name:'',
             BScase_name:'',
             BS_sid:'', // 存發布專案的人(BS_sid)
@@ -29,7 +28,6 @@ class Publish extends Component {
             BScase_info:'',
             BScase_publish_at:dateTimeNow,
             selectPhoto:null,
-            selectTag:{}
         }
     }
     tagChangeState(index){
@@ -61,19 +59,7 @@ class Publish extends Component {
             })
         })      
     }
-    getTagOption(){
-        fetch("http://localhost:3000/api/getTag")
-        .then(res =>res.json())
-            .then(data=>{
-                let Data = data[0]
-                // console.log(data) 
-                this.setState({
-                tag_option:data,
-                tag_name:Data['tag_name']
-                
-            })
-        })
-    }
+   
     //從資料庫呼叫資料製造表單選項
     componentDidMount(){
         if(this.isLogin()){
@@ -91,7 +77,7 @@ class Publish extends Component {
     }
         this.getSearchIndustry();
         this.getSearchActive();
-        this.getTagOption();
+
     }
 
     //處理受控表單
@@ -146,8 +132,6 @@ class Publish extends Component {
             alert('點數不夠')
             return
         }
-        delete this.tag_option
-        delete this.tag_name
         delete this.state.industry_option;
         delete this.state.active_option;
         delete this.state.selectPhoto;
@@ -163,7 +147,6 @@ class Publish extends Component {
             alert(data.message)
         })
         
-
         //扣100點點數 並更新cookie裡的BS_point
         cookies.save('userId',[{
             ...this.cookie,
@@ -196,10 +179,6 @@ class Publish extends Component {
         select[0].setAttribute('disabled', 'disabled')
     }
     render(){
-        // let rows=[];
-        // for (var i = 1; i < 3; i++) {
-        //     rows.push(<option value={i}>{i}</option>);
-        // }
         
         if(!this.isLogin()){
             return(

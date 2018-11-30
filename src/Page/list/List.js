@@ -23,9 +23,7 @@ class List extends Component{
             bas = this.props.match.params.bas,
             keyword = this.props.match.params.keyword;
         this.getCase(ids, bas, keyword)
-    }
-
-    
+    }   
 
 
     getCase(ids, bas, keyword){
