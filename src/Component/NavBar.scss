@@ -2,7 +2,8 @@
 .nav_container {
     margin: 0;
     padding: 0;
-    background:rgb(56, 124, 163);
+    background: #ffbe33 url("/images/pexels-photo-1230665.jpeg") no-repeat 0 0;
+    background-size: cover;
     width: 100%;
     height: 70px;
     clear: both;
@@ -15,6 +16,7 @@
     top: 0;
     left: 0;
     z-index: 15;
+    font-weight: bold;
     .nav_logo_container {
         img {
             width: auto;

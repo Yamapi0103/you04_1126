@@ -1,81 +1,70 @@
 $footer_hover: #fff78c;
 
 .footer{
-    background-color: rgb(248, 162, 3);
+    background-color: #212121;
+    color: #fff;
+    padding-bottom: 20px;
     .footer_content{
         width: 80%;
-        padding: 20px 0;
+        padding: 50px 0 30px 0;
         margin: auto;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        .left_footer{
-            width: 40%;
-            .left_footer_top{
+        flex-direction: column;
+        .footer_content_top {
+            display: flex;
+            width: 100%;
+            .footer_content_top_left {
+                // background: #000;
+                width: 40%;
                 display: flex;
-                justify-content: space-around;
-                height: 80px;
-                .link_img{
+                justify-content: center;
+                align-items: center;
+                img {
                     display: block;
-                    width: 50px;
-                    height: 50px;
+                    width: 200px;
+                    height: auto;
                     font-size: 50px;
                     color: black;
                 }
-                .link_img:hover{
-                    color: $footer_hover;
-                }
             }
-            .left_footer_middle{
-                width: 70%;
-                margin: auto;
-                height: 2px;
-                border-top: 1px solid black;
-                padding-bottom: 10px;
-            }
-            .left_footer_bottom{
-                height: 100px;
-                img{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                }
-            }
-        }
-        .right_footer{
-            width: 60%;
-            display: flex;
-            justify-content: space-around;
-            ul{
-                text-align: center;
-                li{
-                    padding-bottom: 10px;
-                }
-                a{
-                    text-decoration: none;
-                    color: black;
-                    font-size: 1rem;
-                }
-                a:hover{
-                    color:$footer_hover;
-                }
-                .footer_title{
-                    font-size: 1.5rem;
-                    font-weight: 700;
-                }
-                @media(max-width:600px){
+            .footer_content_top_right{
+                width: 60%;
+                display: flex;
+                justify-content: space-around;
+                ul{
+                    text-align: center;
+                    li{
+                        padding-bottom: 10px;
+                    }
+                    a{
+                        text-decoration: none;
+                        color: #aaa;;
+                        font-size: 1rem;
+                    }
+                    a:hover{
+                        color:$footer_hover;
+                    }
                     .footer_title{
                         font-size: 1.1rem;
                         font-weight: 700;
                     }
+                    @media(max-width:600px){
+                        .footer_title{
+                            font-size: 1.1rem;
+                            font-weight: 700;
+                        }
+                    }
                 }
-            }
-            @media(max-width:600px){
-                ul{
-                    font-size: 0.8rem;
+                @media(max-width:600px){
+                    ul{
+                        font-size: 0.8rem;
+                    }
                 }
             }
         }
+        
     }
     @media(max-width:900px){
         .footer_content{
@@ -89,5 +78,26 @@ $footer_hover: #fff78c;
                 order:-1;
             }
         }
+    }
+    .footer_bottom {
+        width: 100%;
+        border-top: 1px solid #fff;
+        .footer_bottom_icon_container {
+            // padding: 5px 0;
+            margin: 10px auto 0 auto;
+            width: 70%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            i {
+                color: #fff;
+                font-size: 1rem;
+                margin: 0 10px 0 20px;
+            }
+            a {
+                color: #fff;
+            }
+        }
+
     }
 }

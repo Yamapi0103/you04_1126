@@ -34,7 +34,7 @@ class Slider extends Component{
         //不可以這樣寫var slideMove, slideNum = 0，這樣只有後者被列為0，前者一開始是undefined
         //第一次的左右icon的left right click會失效
 
-        var sliderArray= ["slide1.jpeg", "slide2.jpeg", "slide3.jpeg", "slide4.jpeg"];
+        var sliderArray= ["slider_image1.jpg", "slider_image2.jpg", "slider_image3.jpg", "slider_image4.jpg"];
         var slideCount = sliderArray.length;
 
         var slideWidth = 100;

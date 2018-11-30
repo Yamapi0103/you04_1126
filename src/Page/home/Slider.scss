@@ -1,6 +1,6 @@
 .slider_wrapper {
     width: 80%;
-    height: 400px;
+    height: 470px;
     background-color: rgb(80, 184, 161);
     margin: 0 auto;
     overflow: hidden;
@@ -16,7 +16,7 @@
         padding: 0;
         margin: 0;
         li {
-            height: 400px;
+            height: 470px;
             width: 100%; /* 可以限制圖片大小，避免不同圖片寬度不同造成flex均分圖片沒有均等 */
             img {
                 width: 100%;

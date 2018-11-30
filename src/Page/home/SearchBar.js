@@ -21,7 +21,6 @@ class SearchBar extends Component{
             .then(res =>res.json())
             .then(data=>{  
                 let Data = data[0]
-                // console.log(Data['id'])
                 this.setState({
                 industry_option:data,
                 ids:Data['id']
@@ -68,19 +67,19 @@ class SearchBar extends Component{
             <React.Fragment>
                 
                 <div className="searchbar">    
-                        <select className="searchbar_btn_dropdown_toggle" name="ids" onChange={this.handleChange}>
+                    <select className="searchbar_btn_dropdown_toggle searchbar_btn" name="ids" onChange={this.handleChange}>
                             <ISearchBarOption industry_option={this.state.industry_option} />
                         </select>
 
-                        <select onChange={this.handleChange} name="bas">
+                    <select className="searchbar_btn_dropdown_toggle searchbar_btn" onChange={this.handleChange} name="bas">
                             <ATSearchBarOption active_option={this.state.active_option} />
                         </select>
                     
                     <input onChange={this.handleChange} name="keyword" className="searchbar_btn searchbar_btn3" placeholder="關鍵字搜尋：產品名稱等" />
-                </div>
                 <Link exact to={`/list/${this.state.ids}/${this.state.bas}/${this.state.keyword}`} className="startsearch_btn" onClick={this.search}>
                 <i className="fas fa-search"></i><span>開始搜尋</span>
                 </Link>
+                </div>
             </React.Fragment>
         )
     }

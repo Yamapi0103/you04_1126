@@ -1,20 +1,22 @@
 .home_section2_case {
     display: flex;
     flex-direction: column;
-    width: 23%;
+    height: 450px;
+    width: 28%;
     background: rgb(255, 255, 255);
-    height: 100%;
-    border: 2px solid grey;
+    // border: 2px solid grey;
+    box-shadow: 0 0 15px grey;
+    margin-bottom: 40px;
     .home_section2_case_top {
-      height: 40%;
-      background: #ffbe33 url("/images/7.png") no-repeat 0 0;
+      height: 45%;
+      background: #ffbe33 url("/images/project1.jpg") no-repeat 0 0;
       background-size: cover;
     }
     .home_section2_case_bottom {
       margin: 0 auto;
       width: 80%;
       // background: rgb(233, 164, 164);
-      height:60%;
+      height: 55%;
       display: flex;
       flex-direction: column;
       h5 {

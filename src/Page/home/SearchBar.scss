@@ -1,13 +1,14 @@
 .searchbar {
     height: 50px;
-    width:80%;
+    width:60%;
     // background: lightgreen;
     display: flex;
     justify-content: space-around;
     .searchbar_btn {
-      width: 25%;
+      width: 170px;
       background: #ffffff;
       border: 2px solid grey;
+      margin-right: 10px;
     //   border-radius: 20px;
       .searchbar_btn_dropdown_toggle {
         // box-sizing: border-box;
@@ -48,7 +49,8 @@
       }
     }
     .searchbar_btn3 {
-      width: 40%;
+      // width: 35%;
+      flex-grow: 1;
       font-family: "微軟正黑體";
       font-size: 1rem;
       padding-left: 3%;
@@ -59,15 +61,16 @@
       display: block;
       width: 200px;
       height: 50px;
-      border-radius: 20px;
-      background: orange;
+      border-radius: 5px;
+      background: #ffb900;
       display: flex;
       justify-content: center;
       text-decoration: none;
       font-family: "微軟正黑體";
       color: white;
       &:hover {
-        background: rgb(216, 140, 0);
+        background: rgb(29, 197, 189);
+        color: white;
       }
       i{
         line-height: 50px;

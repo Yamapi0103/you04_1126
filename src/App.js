@@ -20,6 +20,8 @@ import Publish from './Page/publish/publish';
 import CelebrityList from './Page/celebrity/celebrityList';
 import CelebrityInfo from './Page/celebrity/celebrityInfo';
 
+
+
 class App extends Component {
 
   render() {
@@ -36,6 +38,7 @@ class App extends Component {
           <Route path="/plan" component={Plan_explain} />
           <Route path="/BSMember" component={BSMember} />
           <Route path="/ICMember" component={ICMember} />
+
 
           <Route path="/list/:ids/:bas/:keyword" component={List} />
           <Route path ="/plan_buy/:point/:text/:money" component={Plan_buy} />
