@@ -10,9 +10,9 @@ class SearchBar extends Component{
         this.state={
             industry_option:[],
             active_option:[],
-            ids:'',
-            bas:'',
-            keyword:''
+            ids:'1',
+            bas:'1',
+            keyword:'1'
         }
     
     }
@@ -25,7 +25,7 @@ class SearchBar extends Component{
                 this.setState({
                 industry_option:data,
                 ids:Data['id']
-            })
+            }) 
         })      
     }
     getSearchActive(){

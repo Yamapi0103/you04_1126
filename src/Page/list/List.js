@@ -22,7 +22,7 @@ class List extends Component{
         let ids = this.props.match.params.ids,
             bas = this.props.match.params.bas,
             keyword = this.props.match.params.keyword;
-        this.getCase(ids, bas)
+        this.getCase(ids, bas, keyword)
     }
 
     
