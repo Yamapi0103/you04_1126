@@ -15,13 +15,10 @@ class BSMyCase extends Component {
                 <div class="member_form_box_top">
 
                     <div className="register_container1">
-                        <form className="register_outside">
-
-                            <div>
-                                <Link className="btn OpenOrClose" to={`${this.props.match.url}/BSMyCase_Open`}>發布中</Link>
-                                <Link className="btn OpenOrClose" to={`${this.props.match.url}/BSMyCase_Close`}>已關閉</Link>
-                            </div>
-                        </form>
+                        <div className="register_outside">
+                            <Link className="OpenOrClose OpenOrClose1" to={`${this.props.match.url}/BSMyCase_Open`}>發布中</Link>
+                            <Link className="OpenOrClose OpenOrClose2" to={`${this.props.match.url}/BSMyCase_Close`}>已關閉</Link>
+                        </div>
                     </div>
                     {/* <hr /> */}
                 </div>

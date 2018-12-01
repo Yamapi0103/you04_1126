@@ -17,26 +17,42 @@ class BSMember extends Component {
         return (
 
             <React.Fragment>
-                <div id="" className="flex" >
+                <div id="member_container" className="flex" >
                     <div className="register_navbar">
                         <div className="member_head">
-                            <img src="/images/me.jpg" alt="me" />
+                            <img src="/images/member.png" alt="me" />
+                            <span>金 城武</span>
                         </div>
                         <ul>
                             <li className="transition">
-                                <Link to={`${this.props.match.url}/BSMyInfo`}><i class="fas fa-home"></i>&nbsp;帳戶資訊</Link>
+                                <Link to={`${this.props.match.url}/BSMyInfo`}>
+                                    <i class="fas fa-home"></i>
+                                    <span>帳戶資訊</span>
+                                </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/BSMyCase/BSMyCase_Open`}><i class="fas fa-book-open"></i>&nbsp;接案管理</Link>
+                                <Link to={`${this.props.match.url}/BSMyCase/BSMyCase_Open`}>
+                                    <i class="fas fa-book-open"></i>
+                                    <span>接案管理</span>
+                                </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/BSMyChat`}><i class="fas fa-comment"></i>&nbsp;對話紀錄</Link>
+                                <Link to={`${this.props.match.url}/BSMyChat`}>
+                                    <i class="fas fa-comment"></i>
+                                    <span>對話紀錄</span>
+                                </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/BSMyFavor`}><i class="fas fa-heart"></i>&nbsp;我的收藏</Link>
+                                <Link to={`${this.props.match.url}/BSMyFavor`}>
+                                    <i class="fas fa-heart"></i>
+                                    <span>我的收藏</span>
+                                </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/BSMyBilling`}><i class="fas fa-folder"></i>&nbsp;訂單管理</Link>
+                                <Link to={`${this.props.match.url}/BSMyBilling`}>
+                                    <i class="fas fa-folder"></i>
+                                    <span>訂單管理</span>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -46,8 +62,7 @@ class BSMember extends Component {
                         {/* 接案管理 */}
                         <Route  path={`${this.props.match.url}/BSMyCase`} component={BSMyCase} />
                         {/* 對話紀錄 */}
-                        <Route exact path={`${this.props.match.url}/BSMyChat/:bs_case_detail_sid`} component={BSMyChat} />
-                        <Route exact path={`${this.props.match.url}/BSMyChat/`} component={BSMyChat} />
+                        <Route exact path={`${this.props.match.url}/BSMyChat`} component={BSMyChat} />
                         {/* 訂單管理 */}
                         <Route exact path={`${this.props.match.url}/BSMyBilling`} component={BSMyBilling} />
                         {/* 我的收藏 */}

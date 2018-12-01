@@ -28,7 +28,7 @@ class Home extends Component{
                             {(!this.islogIn() || (cookie.load('userId')[0].userType!=='BS'))? 
                             <SearchBar />
                             :
-                            <CelebrityList />}
+                            <CelebrityList/>}
                         </div>
                     </div>
                     <div className="home_section1_bottom">

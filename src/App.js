@@ -36,8 +36,7 @@ class App extends Component {
 
           <Route path="/login" component={Login} />
           <Route path="/plan" component={Plan_explain} />
-          <Route path="/BSMember" component={BSMember} />
-          <Route path="/ICMember" component={ICMember} />
+
 
 
           <Route path="/list/:ids/:bas/:keyword" component={List} />
@@ -53,6 +52,8 @@ class App extends Component {
           </div>
             <Route exact path="/" component={Home}  />
             <Route exact path="/home" component={Home}  />
+            <Route path="/BSMember" component={BSMember} />
+          <Route path="/ICMember" component={ICMember} />
 
 
 

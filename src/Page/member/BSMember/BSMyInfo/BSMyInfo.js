@@ -159,12 +159,10 @@ class BSMyInfo extends Component {
                                     <label htmlFor="exampleInputEmail1">公司簡介</label>
                                     <textarea type="textarea" name='BS_info' value={this.state.BS_info} onChange={this.change} className="form-control" aria-describedby="emailHelp" placeholder="請填寫您的名稱" />
                                 </div>
-                                <br></br>
                                 <div className="">
-                                    <div className="case_successAlert alert alert-success" role="alert" >修改成功!</div>
-                                    <button type="submit" onClick={this.sent} className="btn btn-primary">儲存</button>
+                                    <div className="case_successAlert" role="alert" >修改成功!</div>
+                                    <button type="submit" onClick={this.sent} className="save_button member_button">儲存</button>
                                 </div>
-                                <br></br>
                             </form>
                         </div>
 

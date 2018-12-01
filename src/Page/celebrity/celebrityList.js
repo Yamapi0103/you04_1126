@@ -6,14 +6,7 @@ import './celebrity.scss';
 class CelebrityList extends Component {
     constructor(props) {
         super(props);
-        this.initState = {
-            name: "",
-            gender:"",
-            media: "",
-            price:"",
-            case:"",
-            sid: ""
-        }
+
         this.state = {
             celebrities: [],
             // celebrity: this.initState,

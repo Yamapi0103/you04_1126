@@ -10,7 +10,7 @@
 }
 .imco_card{
     width: 100%;
-    margin: 30px 0;
+    margin-bottom: 30px;
     padding: 30px;
     // background: #e7e7e7;
     background-color: #ffffff;
@@ -18,17 +18,39 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    box-shadow: 0 0 5px rgb(221, 221, 221);
     .imco_card_left{
-        width: 60%;
-        
+        width: 48%;
+        // background: #000;
         h6{
             width: 100%;
         }
     }   
     .imco_card_right{
-        // width: 40%;
-        .btn{
-            color: #fff;
+        width: 48%;
+        // background: rgb(248, 67, 67);
+        .imco_card_right_btn_container {
+            display: flex;
+            // justify-content: space-between;
+            .case_open_button {
+                padding: 3px 10px;
+                border: 1px solid rgb(214, 214, 214);
+                // background: rgb(255, 217, 114);
+                background: rgb(226, 226, 226);
+                border-radius: 3px;
+                font-weight: bold;
+                margin: 5px 10px 0 0;
+                cursor: pointer;
+            }
+            a {
+                display: block;
+                width: 60px;
+                height: 34.91px;
+                // line-height: 34.91px;
+                text-align: center;
+                padding: 0;
+                color: black;
+            }
         }
     }
     .imco_card_IC{

@@ -109,6 +109,14 @@ class ICMyInfo extends Component {
     sent=(evt)=>{
         evt.preventDefault();
         this.update(this.state)
+        console.log(this.state.IC_name)
+        // console.log(cookie.load('userId')[0].IC_name)
+        // cookie.load('userId')[0].IC_name = this.state.IC_name
+        cookie.save('userId',[{
+            ...cookie.load('userId')[0],
+            IC_name: this.state.IC_name
+        }])
+
     }
     selectClick=(evt)=>{
         let select = evt.target;

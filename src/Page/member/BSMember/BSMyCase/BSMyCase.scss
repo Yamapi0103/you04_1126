@@ -2,8 +2,42 @@
 
 
 .member_form_box_top {
-    width:90%;
-    margin: auto;
+    width: 90%;
+    margin: 0px auto 5px auto;
+    // background: #000;
+    .register_container1{
+        .register_outside{
+            display: flex;
+            .OpenOrClose{
+                color: #3f3f3f;
+                font-weight: bold;
+                width: 30%;
+                transition: 0.5s;
+                height: 45px;
+                background-color: #f2fdf0;
+                border: 1px 1px 0px 1px;
+                border-style: solid;
+                border-color: #3f3f3f;
+                margin: 0 20px 0 0;
+                border-radius: 3px;
+                box-shadow: 0 0 5px rgb(221, 221, 221);
+                line-height: 45px;
+                text-align: center;
+            }
+            .OpenOrClose1 {
+                &:hover{
+                    background-color: #93a57c;
+                    color: white;
+                }
+            }
+            .OpenOrClose2 {
+                &:hover{
+                    background-color: #ff6e6e;
+                    color: white;
+                }
+            }
+        }
+    }
 }
 @media(max-width:950px){
     .member_form_box_top{
@@ -11,57 +45,3 @@
         // margin: 0;
     }
 }
-
-.register_container1{
-    margin: 51px auto -5px auto;
-    .register_outside{
-        div{
-            display: flex;
-            .OpenOrClose{
-                color: #ffffff;
-            }
-        }
-        .btn{
-            background-color: #4e8fad;
-            width: 30%;
-            transition: 0.5s;
-            margin: 0 5px 0 0 !important;
-            &:hover{
-                background-color: rgb(147, 221, 231);
-                text-decoration:none;
-                border-radius: 3px;
-            }
-            a {
-                text-decoration:none;
-            }
-        }
-    }
-}
-
-.register_btn{
-    font-size: 1.6rem;
-    background-color: rgb(78, 143, 173);
-    margin: 5px;
-    border-radius: 5px;
-    padding: 5px;
-    transition:0.5s;
-    &:hover{
-        background-color: rgb(147, 221, 231);
-        text-decoration:none;
-         }
-}
-
-// .btn{
-//     background-color: #4e8fad;
-//     width: 30%;
-//     transition: 0.5s;
-//     margin: 0 5px 0 0 !important;
-//     &:hover{
-//         background-color: rgb(147, 221, 231);
-//         text-decoration:none;
-//         border-radius: 3px;
-//     }
-//     a {
-//         text-decoration:none;
-//     }
-// }

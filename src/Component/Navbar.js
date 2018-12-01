@@ -35,7 +35,7 @@ class Navbar extends Component{
  
     }
     componentDidMount=()=> {      
-        
+        console.log(cookie.load('userId'))
     }
     render(){ 
         
