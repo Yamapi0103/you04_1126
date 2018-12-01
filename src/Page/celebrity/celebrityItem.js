@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import $ from 'jquery';
 import cookies from 'react-cookies'
 import swal from 'sweetalert';
 
@@ -47,13 +46,12 @@ class CelebrityItem extends Component {
       this.addHandler();
     else  
       this.delHandler()
+    evt.preventDefault();
   }
   addHandler = (evt) =>{
-    // evt.preventDefault();
-    // console.log(JSON.stringify(this.BS_favor))
+    
     fetch('http://localhost:3000/api/BSAddFavor',{
     method:'POST',
-    // body: JSON.stringify(this.BS_favor),
     body: JSON.stringify(this.BS_case),
     headers:new Headers({
         'content-type':'application/json'
@@ -62,31 +60,19 @@ class CelebrityItem extends Component {
     .then(res=>res.json())
     .then(data => {
         // alert(data.message)
-        swal(data.message,"可到我的收藏查看");
+        // swal(data.message,"可到我的收藏查看");
     })
   }
   delHandler=()=>{
     console.log(this.BS_case.BS_sid,this.BS_case.IC_sid)
-  fetch('http://localhost:3000/api/BSGetFavor/'+this.BS_case.BS_sid+'/'+this.BS_case.IC_sid)
+  
+  fetch('http://localhost:3000/api/BSGetFavor/'+this.BS_case.BS_sid+'/'+this.BS_case.IC_sid,{
+      method:'DELETE'})      
   .then(res => res.json())
-  .then(result => {
-    console.log(result[0].BF_sid)  
-    fetch('http://localhost:3000/api/BSAddFavor/'+result[0].BF_sid,{
-    method:'DELETE',
-    body: JSON.stringify(this.BS_favor),
-    headers:new Headers({
-        'content-type':'application/json'
-        })
-    })
-    .then(res=>res.json())
-    .then(data => {
-        // alert(data.message)
-        swal(data.message,"已從我的收藏移除");
-    })
-  }
-      
-    )
-
+  .then(data => {
+          // alert(data.message)
+          swal(data.message,"已從我的收藏移除");
+      })
 }
 
 savedOrNot =()=>{

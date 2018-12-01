@@ -11,7 +11,7 @@ import FilterRight from '../../Component/FilterRight'
 class List extends Component{
     constructor(props){
         super(props);
-        this.state= {
+        this.state= {   
             cases:[]
         }
         // console.log(Listjson);
