@@ -45,7 +45,8 @@ class ICMember extends Component {
                         {/* 接案管理 */}
                         <Route  path={`${this.props.match.url}/ICMyCase`} component={ICMyCase} />
                         {/* 對話紀錄 */}
-                        <Route  path={`${this.props.match.url}/ICChat`} component={ICChat} />
+                        <Route  path={`${this.props.match.url}/ICChat/:bs_case_detail_sid`} component={ICChat} />
+                        <Route exact path={`${this.props.match.url}/ICChat/`} component={ICChat} />
                         {/* 我的收藏 */}
                         <Route  path={`${this.props.match.url}/ICMyFavor`} component={ICMyFavor} />
     

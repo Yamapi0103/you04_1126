@@ -1,0 +1,67 @@
+$bg_color:rgb(243, 239, 233);
+
+.chat{
+    display: flex;
+    justify-content: space-around;
+    .chat_left{
+        width: 40%;
+        height: 600px;
+        overflow: auto;
+        background:$bg_color;
+        .case{
+            padding: 10px 10px;
+            margin-bottom: 10px;
+            background: #ffff;
+            h6{
+                font-size: 1.5rem;
+            }
+        }
+        .case:hover{
+            background-color: rgb(247, 210, 203);
+        }
+        .choose{
+            background: rgb(243, 171, 158) !important;
+        }
+    }
+    .chat_right{
+        width: 55%;
+        height: 600px;
+        background:$bg_color;
+        .chatContent{
+            // width:450px;  //暫時先寫死,不然當<p>太長時就會爆版
+            height: 520px;
+            overflow: auto;
+            .bsChat,.icChat{
+                width: 100%;
+                padding: 10px 0;
+                word-wrap:break-word;
+            }
+            .bsChat{
+                color: rgb(6, 138, 28);
+                background: rgb(226, 225, 225);
+            }
+            .icChat{
+                
+            }
+        }
+        .inputDiv{
+            display: flex;
+            flex-wrap: wrap;
+            height: 80px;
+            .text{
+                width: 80%;
+            }
+            .sent{
+                cursor: pointer;
+                color: #ffff;
+                text-align: center;
+                width: 20%;
+                line-height: 80px;
+                background: rgb(41, 209, 181);
+            }
+            .sent:hover{
+                background: rgb(35, 177, 153);
+            }
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cookie from 'react-cookies';
 import $ from 'jquery';
+import { Link} from 'react-router-dom';
 
 class ICMyCase_Open extends Component {
     constructor(props) {
@@ -64,7 +65,8 @@ class ICMyCase_Open extends Component {
                                                 <p>發佈日期:{this.fixDate(v.BScase_publish_at)}</p>
                                                 <p>截止日期:{this.fixDate(v.BScase_time_limit)}</p>
                                               
-                                                <button  className="btn" >查看對話</button>
+                                                {/* <button  className="btn" >查看對話</button> */}
+                                                <Link className="btn" to={`/ICMember/ICChat/${v.sid}`}>查看對話</Link>
                                             </div>
                                         </div>
                                 )

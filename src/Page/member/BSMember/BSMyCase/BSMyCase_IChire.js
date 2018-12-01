@@ -15,13 +15,16 @@ class BSMyCase_IChire extends Component {
         fetch('http://localhost:3000/case/showHire/'+this.BScase_sid)
         .then(res=>res.json())
         .then(data=>{   //回傳 應徵此案子的所有網紅資料 [{網紅1},{網紅2}...]
-          
+            
             this.Count(data.length);
             this.setState({
                 icHireArray:data
             })
         }) 
     }
+    
+
+
     componentDidMount=()=>{
        this.showIChire();
       
@@ -47,7 +50,7 @@ class BSMyCase_IChire extends Component {
                             </p>
                         </div>
                         <div className='btn_div'>
-                          <Link className="btn" to={`/BSMember/BSMyChat`}>開啟對話</Link>
+                          <Link className="btn" to={`/BSMember/BSMyChat/${k.sid}`}>開啟對話</Link>
                         </div>
                     </div>
                 )
