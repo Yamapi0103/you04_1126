@@ -11,14 +11,16 @@ class CelebrityList extends Component {
             celebrities: [],
             // celebrity: this.initState,
         }
+        // 沒給:ic_media(http://localhost:3001/celebrity/) =>預設為看到全部網紅
+        this.ic_media = this.props.match.params.ic_media||"all"; 
+        console.log(this.ic_media);
 
-        // console.log("CelebrityList"+this.state.celebrity)
     }
     componentDidMount() {
         this.getMembers();
     }
     getMembers() {
-        fetch("http://localhost:3000/info/icmembers")
+        fetch("http://localhost:3000/info/icmedia/"+this.ic_media)
             .then(res => res.json())
             .then(members =>{
                 this.setState({ 

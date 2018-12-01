@@ -17,9 +17,9 @@ import BSMember from './Page/member/BSMember/BSMember';
 import List from './Page/list/List';
 import Job from './Page/job/job';
 import Publish from './Page/publish/publish';
-import CelebrityList from './Page/celebrity/celebrityList';
+import CelebrityHome from './Page/celebrity/celebrityHome';
 import CelebrityInfo from './Page/celebrity/celebrityInfo';
-
+import CelebrityList from './Page/celebrity/celebrityList'
 
 
 class App extends Component {
@@ -43,8 +43,9 @@ class App extends Component {
           <Route path ="/plan_buy/:point/:text/:money" component={Plan_buy} />
           <Route path="/publish_content/:category" component={Job} />
           <Route path="/publish" component={Publish} />
-          <Route path="/celebrity" component={CelebrityList} />
-          <Route path="/celebrityInfo/:icsid" component={CelebrityInfo} />
+          
+          <Route path="/celebrity/:ic_media?" component={CelebrityList} /> 
+          <Route path="/celebrityInfo/:icsid?" component={CelebrityInfo} />
           <Route exact path="/register" component={Register} />
           <Route path="/register/CompanyRegister" component={CompanyRegister}/>
           <Route path="/register/ICRegister" component={ICRegister} />

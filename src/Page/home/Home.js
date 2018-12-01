@@ -6,7 +6,7 @@ import CaseCard from './CaseCard';
 import Slider from './Slider';
 
 import cookie from 'react-cookies'
-import CelebrityList from '../celebrity/celebrityList';
+import CelebrityHome from '../celebrity/celebrityHome';
 
 
 class Home extends Component{
@@ -23,12 +23,13 @@ class Home extends Component{
                 <div className="home_section1">
                     <div className="home_section1_top">
                         <div className="home_section1_top_container">
-                            <h2>選擇你喜歡的工作種類<br />按下搜尋開始尋找適合你的工作！
-                            </h2>
                             {(!this.islogIn() || (cookie.load('userId')[0].userType!=='BS'))? 
+                            <React.Fragment>
+                            <h2>選擇你喜歡的工作種類<br />按下搜尋開始尋找適合你的工作！</h2>
                             <SearchBar />
+                            </React.Fragment>
                             :
-                            <CelebrityList/>}
+                            <CelebrityHome/>}
                         </div>
                     </div>
                     <div className="home_section1_bottom">
