@@ -139,7 +139,7 @@ class Job extends Component {
 
   
   componentDidMount = () =>{
-    // console.log(this.props.match.params);
+    console.log(this.props.match.params);
     let category = this.props.match.params.category
     this.getMembers(category);
   }

@@ -17,7 +17,7 @@ class Home extends Component{
         return cookie.load('userId')? true : false;
     }
     render(){
-        let userType = this.islogIn()? cookie.load('userId')[0].userType:null
+        // let userType = this.islogIn()? cookie.load('userId')[0].userType:null
         return(
             <React.Fragment>
                 <div className="home_section1">
