@@ -8,7 +8,7 @@ class Publish extends Component {
     constructor(props) {
         super(props);
         var a = new Date();
-        var dateTimeNow = a.getFullYear()+'-' +a.getMonth()+'-'+a.getDay()+" "+a.getHours()+':'+a.getMinutes()+':'+a.getSeconds()
+        var dateTimeNow = a.getFullYear()+'-' +(a.getMonth()+1)+'-'+a.getDate()+" "+a.getHours()+':'+a.getMinutes()+':'+a.getSeconds()
         var dateNow = a.getFullYear()+'/' +a.getMonth()+'/'+a.getDay();
         this.userPoints = 0;
         this.userSid = 0;
@@ -168,6 +168,7 @@ class Publish extends Component {
                 alert(data.message);
            })
         // this.props.history.push('/home')
+        console.log(this.state)
     }
     
     isLogin = ()=>{
