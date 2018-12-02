@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import CelebrityList from './celebrityList';
-import CelebrityInfo from './celebrityInfo';
+// import CelebrityList from './celebrityList';
+// import CelebrityInfo from './celebrityInfo';
 
 
 class CelebrityHome extends Component{

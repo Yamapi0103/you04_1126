@@ -17,7 +17,7 @@ import BSMember from './Page/member/BSMember/BSMember';
 import List from './Page/list/List';
 import Job from './Page/job/job';
 import Publish from './Page/publish/publish';
-import CelebrityHome from './Page/celebrity/celebrityHome';
+
 import CelebrityInfo from './Page/celebrity/celebrityInfo';
 import CelebrityList from './Page/celebrity/celebrityList'
 
