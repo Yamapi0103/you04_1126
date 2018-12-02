@@ -148,3 +148,17 @@ header.banner:hover {
   }
 }
 
+.btn{
+  background-color: transparent;
+}
+.media-nav{
+  display: flex;
+  justify-content: center;
+  padding:10px;
+  top:80px;
+  position: sticky;
+  a{
+    display: block;
+    padding: 0 50px;
+  }
+}

@@ -15,8 +15,8 @@ class CelebrityHome extends Component{
             <h2>選擇你喜歡的網紅<br/>可按照類型或熱門程度做查詢</h2>
 
             <ul className="flex">
-                <li><Link to="celebrity/Youtube">YouTube</Link></li>
-                <li><Link to="celebrity/Facebook">Facebook</Link></li>
+                <li><Link to="celebrity/youtube">YouTube</Link></li>
+                <li><Link to="celebrity/facebook">Facebook</Link></li>
                 <li><Link to="celebrity/instgram">Instagram</Link></li>
                 <li><Link to="celebrity/blog">部落客</Link></li>
                 <li><Link to="celebrity/all">查看全部</Link></li>
