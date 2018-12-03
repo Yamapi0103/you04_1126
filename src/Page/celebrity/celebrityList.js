@@ -46,11 +46,11 @@ class CelebrityList extends Component {
             <React.Fragment>
                 <section>
                 <nav className="media-nav">
-                    <Link to="/celebrity/youtube" data-type="youtube" onClick={this.changeMedia} class="btn btn-outline-danger">youtube</Link>
-                    <Link to="/celebrity/facebook" data-type="facebook" onClick={this.changeMedia} class="btn btn-outline-primary">facebook</Link>
-                    <Link to="/celebrity/instgram" data-type="instgram" onClick={this.changeMedia} class="btn btn-outline-success">instagram</Link>
-                    <Link to="/celebrity/blog" data-type="blog" onClick={this.changeMedia} class="btn btn-outline-dark">blog</Link>
-                    <Link to="/celebrity/all" data-type="all" onClick={this.changeMedia} class="btn btn-outline-warning">all</Link>
+                    <Link to="/celebrity/youtube" data-type="youtube" onClick={this.changeMedia} class=" btn-outline-danger">youtube</Link>
+                    <Link to="/celebrity/facebook" data-type="facebook" onClick={this.changeMedia} class=" btn-outline-primary">facebook</Link>
+                    <Link to="/celebrity/instgram" data-type="instgram" onClick={this.changeMedia} class=" btn-outline-success">instagram</Link>
+                    <Link to="/celebrity/blog" data-type="blog" onClick={this.changeMedia} class=" btn-outline-dark">blog</Link>
+                    <Link to="/celebrity/all" data-type="all" onClick={this.changeMedia} class=" btn-outline-warning">all</Link>
                 </nav>
                 
                     <h2 className="">網紅清單</h2>
