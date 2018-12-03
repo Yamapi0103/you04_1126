@@ -29,15 +29,34 @@ class BSMyFavor extends Component {
         this.getFavorIC()
     }
     unSaved=(evt)=>{
-        console.log(evt.target)
         let IC_sid = evt.target.id
-        fetch('http://localhost:3000/api/BSGetFavor/'+this.BS_sid+'/'+IC_sid,{
-            method:'DELETE'})      
-        .then(res => res.json())
-        .then(data => {
-                swal(data.message,"已從我的收藏移除");
-                this.getFavorIC()
-            })
+        let IC_name = evt.target.name
+        swal({
+            title: "確定要將"+IC_name+"移除收藏嗎?",
+            // text: "",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("已移除收藏", {
+                icon: "success",
+              });
+              fetch('http://localhost:3000/api/BSGetFavor/'+this.BS_sid+'/'+IC_sid,{
+                method:'DELETE'})      
+            .then(res => res.json())
+            .then(data => {
+                    // swal(data.message,"已從我的收藏移除");
+                    this.getFavorIC()
+                })
+            } else {
+            //   swal("Your imaginary file is safe!");
+            }
+          });
+
+       
+
         
     }
     render() {
@@ -66,7 +85,7 @@ class BSMyFavor extends Component {
                                 <p><span>最低接案金:</span>{k.IC_price}</p>
                                 <p><span>經手業配數: </span>{k.IC_case}</p>
                             </div>
-                            <a id={k.IC_sid} onClick={this.unSaved} className="unsaved">
+                            <a id={k.IC_sid} name={k.IC_name} onClick={this.unSaved} className="unsaved">
                                 移除</a>
                         </div>
                     
