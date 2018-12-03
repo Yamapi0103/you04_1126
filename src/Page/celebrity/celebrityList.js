@@ -38,22 +38,20 @@ class CelebrityList extends Component {
         this.getMembers(this.ic_media )
         window.location.reload()
         // console.log(this.ic_media)
-
     }
 
     render() {
         return (
             <React.Fragment>
                 <section>
-                <nav className="media-nav">
-                    <Link to="/celebrity/youtube" data-type="youtube" onClick={this.changeMedia} class=" btn-outline-danger">youtube</Link>
-                    <Link to="/celebrity/facebook" data-type="facebook" onClick={this.changeMedia} class=" btn-outline-primary">facebook</Link>
-                    <Link to="/celebrity/instgram" data-type="instgram" onClick={this.changeMedia} class=" btn-outline-success">instagram</Link>
-                    <Link to="/celebrity/blog" data-type="blog" onClick={this.changeMedia} class=" btn-outline-dark">blog</Link>
-                    <Link to="/celebrity/all" data-type="all" onClick={this.changeMedia} class=" btn-outline-warning">all</Link>
-                </nav>
-                
-                    <h2 className="">網紅清單</h2>
+                    <nav className="media-nav">
+                        <Link to="/celebrity/youtube" data-type="youtube" onClick={this.changeMedia} className="btn btn-yt">YouTube</Link>
+                        <Link to="/celebrity/facebook" data-type="facebook" onClick={this.changeMedia} className="btn btn-fb">Facebook</Link>
+                        <Link to="/celebrity/instgram" data-type="instgram" onClick={this.changeMedia} className="btn btn-ig">Instagram</Link>
+                        <Link to="/celebrity/blog" data-type="blog" onClick={this.changeMedia} className="btn btn-blog">Blog</Link>
+                        <Link to="/celebrity/all" data-type="all" onClick={this.changeMedia} className="btn btn-all">所有</Link>
+                    </nav>
+
                 </section>
                 <section className="celebrity_wrap">
                 {this.state.celebrities.map((c,idx)=>

@@ -46,28 +46,28 @@ class BSMyFavor extends Component {
             this.state.saveCelebrity.map((k) => {
                 return (
                     <div key={k.bs_sid} className="card flex radius-border card_shadow">
-                    <header className="banner">
-                        <img src={"/images/" + k['IC_photo'] + ".jpg"} alt="" /> 
-                        <div className="middle">
-                            <Link to={`/celebrityInfo/${k.IC_sid}`}>
-                                <div className="text">查看詳細資料</div>
-                            </Link>
-                        </div>
-                    </header>
+                        <header className="banner">
+                            <img src={"/images/" + k['IC_photo'] + ".jpg"} alt="" />
+                            <div className="middle">
+                                <Link to={`/celebrityInfo/${k.IC_sid}`}>
+                                    <div className="text">詳細資料</div>
+                                </Link>
+                            </div>
+                        </header>
                         <div className="card_body">
                             <div className="celebrity_name_box">
-                                <h2 className="text_cut">
-                                    {/* 姓名:{k.celebrity.name} */}
-                                </h2>
+                                <p className="text_cuthead" >
+                                    {k.IC_name}
+                                </p>
                             </div>
                             <div className="text_align">
-                                <p><span>IC_sid:</span>{k.IC_sid}</p>
                                 <p><span>性別:</span>{k.IC_gender}</p>
                                 <p><span>類型: </span>{k.IC_media}</p>
                                 <p><span>最低接案金:</span>{k.IC_price}</p>
                                 <p><span>經手業配數: </span>{k.IC_case}</p>
                             </div>
-                            <button id={k.IC_sid} onClick={this.unSaved} className="unsaved">取消收藏</button>
+                            <a id={k.IC_sid} onClick={this.unSaved} className="unsaved">
+                                移除</a>
                         </div>
                     
                     </div>

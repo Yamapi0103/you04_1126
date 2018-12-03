@@ -63,15 +63,16 @@ class CelebrityItem extends Component {
         // swal(data.message,"可到我的收藏查看");
     })
   }
-  delHandler=()=>{
-    console.log(this.BS_case.BS_sid,this.BS_case.IC_sid)
-  
-  fetch('http://localhost:3000/api/BSGetFavor/'+this.BS_case.BS_sid+'/'+this.BS_case.IC_sid,{
-      method:'DELETE'})      
-  .then(res => res.json())
-  .then(data => {
-          // alert(data.message)
-          swal(data.message,"已從我的收藏移除");
+  delHandler = () => {
+    console.log(this.BS_case.BS_sid, this.BS_case.IC_sid)
+
+    fetch('http://localhost:3000/api/BSGetFavor/' + this.BS_case.BS_sid + '/' + this.BS_case.IC_sid, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {
+        // alert(data.message)
+        swal(data.message, "已取消收藏");
       })
 }
 
@@ -96,20 +97,20 @@ savedOrNot =()=>{
             <img src={"/images/" + this.celebrity['IC_photo'] + ".jpg"} alt="" />
             <div className="middle">
               <Link to={`/celebrityInfo/${this.celebrity.IC_sid}`}>
-                <div className="text">查看詳細資料</div>
+                <div className="text">詳細資料</div>
               </Link>
             </div>
           </header>   
           <div className="card_body">
             <div className="celebrity_name_box">
-              <h2 className="text_cut" >
-                姓名:{this.celebrity.IC_name}
-              </h2>
+              <p className="text_cuthead" >
+                {this.celebrity.IC_name}
+              </p>
             </div>
             <div className="text_align">
             <p><span>性別: </span>{this.celebrity.IC_gender}</p>
               <p><span>類型: </span>{this.celebrity.IC_media}</p>
-              <p><span>最低接案金: </span>{this.celebrity.IC_price}</p>
+              <p><span>最低接案金: </span>{this.celebrity.IC_price},000</p>
               <p><span>經手業配數: </span>{this.celebrity.IC_case}</p>
               {/* <button className="" onClick={this.Favorite}>{this.state.save}</button> */}
             </div>  

@@ -132,6 +132,24 @@
 
 
 .unsaved{
+  background: url(/public/images/heart-solid.png);
   position: absolute;
   right:0;
+  bottom:1%;
+  background: rgb(209, 128, 128);
+  border-radius: 4px;
+  color:fff; 
+  font-size: 13px;
+  padding: 3px 10px;
+  box-shadow: 1px 1px rgb(165, 98, 98);
+  cursor: pointer;
+  &:hover{
+    background: rgb(207, 97, 97);
+    box-shadow: 1px 1px rgb(102, 58, 58);
+    bottom:1.2%;
+  }
+}
+
+.unsaved p{
+  color: #fff;
 }

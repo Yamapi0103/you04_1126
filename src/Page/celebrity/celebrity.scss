@@ -1,23 +1,25 @@
 section {
   // &.celebrity_container {
   //   width: 1280px;
-  //   margin: 0 auto;
+  // margin: 0 auto;
   // }
   &.celebrity_wrap {
     min-height:100vh;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 60px;
     // justify-content: center;
   }
 }
 
 .card {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   // width: 70%;
-  max-width: 320px;
-  margin: 20px 10px;
+  max-width: 300px;
+  margin: 2% 1.2%;
   position: relative;
-  transition: 0.5s;
+  transition: 0.3s;
+  
 }
 .card:hover {
   transform: translateY(-2px);
@@ -28,13 +30,13 @@ section {
 }
 
 .radius-border {
-  border-radius: 10px;
+  border-radius: 7px;
   overflow: hidden;
 }
 
 header.banner {
-  width: 320px;
-  height: 220px;
+  width: 300px;
+  height: 200px;
   overflow: hidden;
   position: relative;
   // border: 3px solid rgb(196, 61, 61);
@@ -57,10 +59,10 @@ header.banner {
     text-align: center;
     .text {
       border-radius: 5px;
-      background-color: #4CAF50;
+      background-color: rgb(98, 201, 103);
       color: white;
       font-size: 16px;
-      padding: 16px 32px;
+      padding: 10px 25px;
       transition: .4s ease;
     }
   }
@@ -72,40 +74,45 @@ header.banner:hover {
   .middle {
     opacity: 1;
     .text:hover{
-      box-shadow: 2px 2px 10px rgba(44, 44, 44, 0.5);
+      box-shadow: 2px 2px 6px rgba(44, 44, 44, 0.5);
     }
   }
 }
 
 .card_body {
-  padding: 10px 5px 40px;
+  padding: 1px 3px 3px 3px;
   border: 20px solid transparent;
   text-align: center;
   position: relative;
-  border-image: url(/images/border-image2.png) 20 round;
+  border-image: url(/images/border-image5.png) 20 round;
   .celebrity_name_box {
     width: 100%;
     // border: 1px solid #ccc;
     h2 {
-      text-align: center;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #c0c0c0;
+      text-align: left;
+      font-weight: 550;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #dbdbdb;
       margin-bottom: 20px;
     }
   }
+
   .heart {
     display: block;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 15%;
+    right: 3%;
+    bottom: 3%;
+    width: 11%;
     cursor: pointer;
   }
+
   h5{
     position: absolute;
-    right:20%;
+    right:16%;
     bottom:10px;
-    color:rgb(126, 126, 126);
+    color:rgb(204, 127, 127);
+    font-size: 13px;
+    font-weight: 700;
     // transition: .5s;
   }
   // .heart::before{
@@ -114,12 +121,14 @@ header.banner:hover {
   // }
   .heart:hover {
     transform: translateY(-3px);
-    filter: drop-shadow(2px 2px 2px rgb(82, 82, 82));
+    filter: drop-shadow(1px 1px 2px rgb(116, 116, 116));
   }
 }
+
 .text_align {
   text-align: left;
 }
+
 .text_cut {
   white-space: nowrap;
   /* 不換行 */
@@ -127,14 +136,26 @@ header.banner:hover {
   overflow: hidden;
 }
 
+.text_cuthead{
+  font-size: 20px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.text_cut h5{
+  font-size: 19px;
+  font-weight: 800;
+  text-align: left;
+}
+
 @media screen and (max-width: 760px) {
   .card {
-    max-width: 100%;
-    width: 100%;
+    max-width: 90%;
+    width: 90%;
   }
   header.banner {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
   }
 }
 @media screen and (min-width: 991px) and (max-width: 1200px) {
@@ -152,11 +173,79 @@ header.banner:hover {
 .media-nav{
   display: flex;
   justify-content: center;
-  padding:10px;
+  padding:30px;
   top:80px;
   position: sticky;
   a{
     display: block;
     padding: 0 50px;
+  }
+  .btn{
+    background-color: transparent;
+    padding: 0.8% 4%;
+    margin: 0.7%;
+    font-weight: bold;
+    border-radius: 7px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .media-nav {
+    margin:10px 5%;
+  }
+}
+
+.btn-yt{
+  color: rgb(196, 60, 60);
+  border: rgb(196, 60, 60) 2px solid;
+  &:hover{
+    color: rgb(255, 255, 255);
+    background: rgb(196, 60, 60);
+  }
+}
+
+.btn-yt{
+  color: rgb(196, 60, 60);
+  border: rgb(196, 60, 60) 2px solid;
+  &:hover{
+    color: rgb(255, 255, 255);
+    background: rgb(196, 60, 60);
+  }
+}
+
+.btn-fb{
+  color: rgb(42, 103, 153);
+  border: rgb(42, 103, 153) 2px solid;
+  &:hover{
+    color: rgb(255, 255, 255);
+    background: rgb(42, 103, 153);
+  }
+}
+
+.btn-ig{
+  color: rgb(175, 64, 147);
+  border: rgb(175, 64, 147) 2px solid;
+  &:hover{
+    color: rgb(255, 255, 255);
+    background: rgb(175, 64, 147);
+  }
+}
+
+.btn-blog{
+  color: rgb(51, 156, 65);
+  border: rgb(51, 156, 65) 2px solid;
+  &:hover{
+    color: rgb(255, 255, 255);
+    background: rgb(51, 156, 65);
+  }
+}
+
+
+.btn-all{
+  color: rgb(99, 99, 99);
+  border: rgb(99, 99, 99) 2px solid;
+  &:hover{
+    color: rgb(255, 255, 255);
+    background: rgb(99, 99, 99);
   }
 }
