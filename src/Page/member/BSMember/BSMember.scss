@@ -10,6 +10,10 @@ $member_main_color:rgb(242, 253, 240);
     background: rgb(255, 255, 255);
     padding: 30px 10%;
     font-weight: bold;
+    switch{
+        display:flex;
+        flex-wrap: wrap;
+    }
     .register_navbar{
         width: 200px;
         background: $member_main_color;

@@ -115,7 +115,7 @@ savedOrNot =()=>{
               {/* <button className="" onClick={this.Favorite}>{this.state.save}</button> */}
             </div>  
               {this.state.saved?<h5 id="saved">已收藏</h5>:null }
-              <a onClick={this.Favorite}><img id={this.celebrity['IC_photo']} className="heart" src={this.state.saved?"/images/heart-solid.png":"/images/heart-regular.png"} /></a>
+              <a onClick={this.Favorite}><img className="heart" src={this.state.saved?"/images/heart-solid.png":"/images/heart-regular.png"} /></a>
           </div>
         </div>
       </React.Fragment>
