@@ -101,6 +101,10 @@ class ICMyInfo extends Component {
         .then(res => res.json())
         .then(data => {
             // alert(data.message);
+            cookie.save('userId',[{
+                ...cookie.load('userId')[0],
+                ...this.state
+            }])
             this.show();
             $('.case_successAlert').attr('style','display:block');
 

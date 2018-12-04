@@ -82,14 +82,21 @@ class BSMyInfo extends Component {
         }).then(res => res.json())
             .then(data => {
                 // alert(data.message);
+                // console.log(this.state)
+                cookie.save('userId',[{
+                    ...cookie.load('userId')[0],
+                    ...this.state
+                }])
                 this.show();
                 $('.case_successAlert').attr('style','display:block');
+                console.log(cookie.load('userId')[0])
             })
     }
     sent=(evt)=>{
         evt.preventDefault();
         console.log(this.state);
         this.update(this.state)
+
     }
     selectClick=(evt)=>{
         let select = evt.target;
