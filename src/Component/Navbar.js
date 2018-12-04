@@ -16,6 +16,7 @@ class Navbar extends Component{
         swal("已登出")
         // window.location.reload();
         cookie.remove('userId')
+        document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         // this.setState({
         //     cookie:""
         // })
