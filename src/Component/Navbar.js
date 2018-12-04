@@ -14,10 +14,11 @@ class Navbar extends Component{
     }
     logOut = () =>{
         swal("已登出")
+        // window.location.reload();
         cookie.remove('userId')
-        this.setState({
-            cookie:""
-        })
+        // this.setState({
+        //     cookie:""
+        // })
         // this.props.history.push("/"); //轉跳到首頁(會當掉)
         // window.location.reload();
     }

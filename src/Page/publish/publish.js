@@ -4,17 +4,19 @@ import './publish.scss';
 import ISearchBarOption from '../home/ISearchBarOption';
 import ATSearchBarOption from '../home/ATSearchBarOption';
 import cookies from 'react-cookies';
+import swal from 'sweetalert'
 class Publish extends Component {
     constructor(props) {
         super(props);
         var a = new Date();
         var dateTimeNow = a.getFullYear()+'-' +(a.getMonth()+1)+'-'+a.getDate()+" "+a.getHours()+':'+a.getMinutes()+':'+a.getSeconds()
-        var dateNow = a.getFullYear()+'/' +a.getMonth()+'/'+a.getDay();
+        var dateNow = a.getFullYear()+'-' +(a.getMonth()+1)+'-'+a.getDay();
         this.userPoints = 0;
         this.userSid = 0;
         this.state={
             active_option:[],
             industry_option:[],
+            case_id:'',
             industry_name:'',
             BScase_name:'',
             BS_sid:'', // 存發布專案的人(BS_sid)
@@ -28,12 +30,16 @@ class Publish extends Component {
             BScase_info:'',
             BScase_publish_at:dateTimeNow,
             selectPhoto:null,
+           
         }
+        this.flag_BScase_name =null;
+        this.flag_industry_name =null;
+        this.flag_BScase_active =null;
     }
-    tagChangeState(index){
-        this.state.selectTag[index]=!this.state.selectTag[index]
-        console.log(this.state.selectTag)
-    }
+    // tagChangeState(index){
+    //     this.state.selectTag[index]=!this.state.selectTag[index]
+    //     console.log(this.state.selectTag)
+    // }
     //下面兩隻都是呼叫
     getSearchIndustry(){
         fetch("http://localhost:3000/api/searchIndustry/")
@@ -104,7 +110,7 @@ class Publish extends Component {
 
         formData.append('image', this.state.selectPhoto, this.state.selectPhoto.name);
 
-        fetch('http://localhost:3000/imgupload/upload', {
+        fetch('http://localhost:3000/api/upload', {
             method: 'POST',
             body: formData
         }).then(function(response){
@@ -118,6 +124,48 @@ class Publish extends Component {
     fetchPoints = (userSid)=>{
         return fetch('http://localhost:3000/api3/bsmembers/'+userSid);
     }
+
+    //表單發送前檢查
+    blur= evt =>{
+        //Publish name checked
+        if(evt.target == document.querySelector('#publish_name')){
+            //no input
+            if(this.state.BScase_name ==''){
+                this.flag_BScase_name =false;
+                // document.querySelector('.blank_text1').style.display='none';
+                // document.querySelector('#publish_name_content_text').style.display='block';
+            }
+            else{
+                this.flag_BScase_name = true;
+                // document.querySelector('#publish_name_content_text').style.display='none';
+                // document.querySelector('.blank_text1').style.display='block';
+            }
+        }
+        if(evt.target == document.querySelector('#industry_name')){
+            //no input
+            if(this.state.BScase_name =='請選擇產業類型'){
+                this.flag_BScase_name =false;
+
+            }
+            else{
+                this.flag_industry_name = true;
+
+            }
+        }
+        if(evt.target == document.querySelector('#active_name')){
+            //no input
+            if(this.state.BScase_name =='請選擇活動類型'){
+                this.flag_BScase_active =false;
+            }
+            else{
+                this.flag_BScase_active = true;
+            }
+        }
+    }
+
+
+
+
     //post表單到資料庫
     addHandler = (evt) =>{
         evt.preventDefault();
@@ -129,48 +177,66 @@ class Publish extends Component {
 
         //判斷點數是否足夠
         if(this.userPoints<100){
-            alert('點數不夠')
+            alert('點數不足，請先到商城購買點數！')
             return
         }
-        delete this.state.industry_option;
-        delete this.state.active_option;
-        delete this.state.selectPhoto;
-        //新增bs_case
-        fetch('http://localhost:3000/api/publish',{
-        method:'POST',
-        body: JSON.stringify(this.state),
-        headers:new Headers({
-            'content-type':'application/json'
-            })
-        }).then(res=>res.json())
-        .then(data => {
-            alert(data.message)
-        })
-        
-        //扣100點點數 並更新cookie裡的BS_point
-        cookies.save('userId',[{
-            ...this.cookie,
-            BS_point: parseInt(cookies.load('userId')[0].BS_point)-100
-        }])
-        this.cookie = cookies.load('userId')[0]  //對this.cookie更新
-        // console.log(cookies.load('userId')[0]) 
-        // console.log(this.cookie)
 
-        //更新bsmember裡的bs_point
-        fetch('http://localhost:3000/you04/updateBSmember/'+this.userSid, {
-            method: 'PUT',
-            body: JSON.stringify({BS_point:this.cookie.BS_point}), //只更新bsmember點數
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            })
-        }).then(res => res.json())
+        if(this.flag_BScase_name ==true && this.flag_industry_name  ==true && this.flag_BScase_active == true){
+            delete this.state.industry_option;
+            delete this.state.case_id;
+            delete this.state.active_option;
+            delete this.state.selectPhoto;
+            //新增bs_case
+            fetch('http://localhost:3000/api/publish',{
+            method:'POST',
+            body: JSON.stringify(this.state),
+            headers:new Headers({
+                'content-type':'application/json'
+                })
+            }).then(res=>res.json())
             .then(data => {
-                alert(data.message);
-           })
-        // this.props.history.push('/home')
-        console.log(this.state)
+                alert(data.message)
+            })
+            
+            //扣100點點數 並更新cookie裡的BS_point
+            cookies.save('userId',[{
+                ...this.cookie,
+                BS_point: parseInt(cookies.load('userId')[0].BS_point)-100
+            }])
+            this.cookie = cookies.load('userId')[0]  //對this.cookie更新
+            // console.log(cookies.load('userId')[0]) 
+            // console.log(this.cookie)
+
+            //更新bsmember裡的bs_point
+            fetch('http://localhost:3000/you04/updateBSmember/'+this.userSid, {
+                method: 'PUT',
+                body: JSON.stringify({BS_point:this.cookie.BS_point}), //只更新bsmember點數
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            }).then(res => res.json())
+                .then(data => {
+                    // alert(data.message);
+            }).then(
+                fetch('http://localhost:3000/api/publishlastOne')
+                .then(res =>res.json())
+                .then(data=>{
+                    
+                    let Data = data[0]
+                    console.log(Data['BScase_sid'])
+                    this.props.history.push('/publish_content/' + Data['BScase_sid'])
+                    
+                })
+            )
+                
+        }else{
+            swal('您有應填寫的欄位未填')
+        }
     }
     
+
+
+
     isLogin = ()=>{
         return cookies.load('userId')?true:false
     }
@@ -179,8 +245,10 @@ class Publish extends Component {
         
         select[0].setAttribute('disabled', 'disabled')
     }
+
+
     render(){
-        
+
         if(!this.isLogin()){
             return(
                 <React.Fragment>
@@ -204,6 +272,7 @@ class Publish extends Component {
                 <Link to="/plan">購買方案</Link>
                 <form className="publish_container">
                 <h3>專案刊登</h3>
+                <p>＊為必填欄位</p>
                 <br/>
                 <br/>
                 <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -231,32 +300,18 @@ class Publish extends Component {
                         </div>
                     </div>
                     </div>
+
                 <div className="form-group">
-                    <label >請填寫專案名稱</label>
-                    <input type="text" value={this.state.BScase_name} name="BScase_name" onChange={this.handleChange} className="form-control"/>
+                    <label>*請填寫專案名稱</label>
+                    <input type="text" value={this.state.BScase_name} id="publish_name" onBlur={this.blur} name="BScase_name" onChange={this.handleChange} className="form-control"/>
                 </div>
+
                 <div className="form-group">
-                <div className="form-row">
-                    <label>選擇需求人數</label>
-                    <select value={this.state.BScase_ask_people} name="BScase_ask_people" onChange={this.handleChange} >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="3">3人以上</option>
-                    </select>
-                </div>
-                <div className="form-group">
-                    <label>請選擇產業類型</label>
-                    <select value={this.state.industry_name} onClick={this.selectClick} name="industry_name" onChange={this.handleChange} className="form-control" >
+                    <h4>專案內容</h4>
+                    <label>*請選擇產業類型</label>
+                    <select value={this.state.industry_name} onClick={this.selectClick} id="industry_name" onBlur={this.blur} name="industry_name" onChange={this.handleChange} className="form-control" >
                         <ISearchBarOption industry_option={this.state.industry_option}/>                    
                     </select>
-                    <label>請選擇活動型態</label>
-                    <select value={this.state.BScase_active} onClick={this.selectClick} name="BScase_active" onChange={this.handleChange} className="form-control" >
-                        <ATSearchBarOption active_option={this.state.active_option}/>
-                    </select>
-                </div>
-                </div>
-                 <div className="form-group">
                     <label>請選擇薪資區間</label>
                     <select className="form-control" value={this.state.BScase_pay} name="BScase_pay" onChange={this.handleChange}>
                         <option>1,000-3,000元</option>
@@ -265,25 +320,23 @@ class Publish extends Component {
                         <option>10,000-50,000元</option>
                         <option>50,001元以上</option>
                     </select>
-                </div>
-                
-                <div>
-                    <h4>工作內容</h4>
-                
-                <div className="form-group">
-                    <label>工作地點</label>
-                    <select value={this.state.BScase_location} name="BScase_location" onChange={this.handleChange} className="form-control" >
-                        <option>不限</option>
-                        <option>台北</option>
-                        <option>台中</option>
+                    <label>選擇需求人數</label>
+                    <select className="form-control" value={this.state.BScase_ask_people} name="BScase_ask_people" onChange={this.handleChange} >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="3">3人以上</option>
                     </select>
-                    <label>期限要求</label>
-                    <input value={this.state.BScase_time_limit} name="BScase_time_limit" type="date" onChange={this.handleChange} className="form-control" />
                 </div>
-                </div>
+                
+
+                <br/>
                 <div>
                     <h4>條件內容</h4>
-                
+                    <label>*請選擇活動型態</label>
+                    <select value={this.state.BScase_active} onClick={this.selectClick} id="active_name" onBlur={this.blur} name="BScase_active" onChange={this.handleChange} className="form-control" >
+                        <ATSearchBarOption active_option={this.state.active_option}/>
+                    </select>
                 <div className="form-group">
                     <label>人氣要求</label>
                     <select value={this.state.BScase_fans} name="BScase_fans" onChange={this.handleChange} className="form-control" >
@@ -292,12 +345,17 @@ class Publish extends Component {
                         <option>1,000-5,000</option>
                         <option>5,001-10,000</option>
                     </select>
-                    <label htmlFor="exampleFormControlSelect1">活動要求</label>
-
+                    <label>*期限要求</label>
+                    <input value={this.state.BScase_time_limit} name="BScase_time_limit" type="date" onChange={this.handleChange} className="form-control" />
                 </div>
                 </div>
-                
-
+                <label>工作地點</label>
+                    <select value={this.state.BScase_location} name="BScase_location" onChange={this.handleChange} className="form-control" >
+                        <option>不限</option>
+                        <option>台北</option>
+                        <option>台中</option>
+                    </select>
+                <br/>
                 <div>
                     <h4>其他補充</h4>
                     <textarea value={this.state.BScase_info} name="BScase_info" onChange={this.handleChange} className="form-control" rows="5"></textarea>

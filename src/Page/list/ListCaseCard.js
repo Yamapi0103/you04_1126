@@ -101,10 +101,10 @@ class ListCaseCard extends Component {
         return (
             <React.Fragment>
                 {
-                    this.props.cases.map(ct =>
-                        <div className="list_case_card_container">
+                    this.props.cases.map(ct => 
+                        <div className="list_case_card_container" people-value={ct.BScase_ask_people} fans-value={ct.BScase_fans} pay-value={ct.BScase_pay} >
                             <Link to="" className="list_case_card_container_left">
-
+                                <img src={(`http://localhost:3000/api/${ct.BScase_photo}`)} /> 
                             </Link>
                             <div className="list_case_card_container_right">
                                 <div className="text_container">
@@ -113,11 +113,13 @@ class ListCaseCard extends Component {
                                     {/* <span>{ct.case_company}</span> */}
                                     <span>需求人數：{ct.BScase_ask_people}人</span>
                                     <span>薪資待遇：{ct.BScase_pay}</span>
+                                    <span>粉絲要求：{ct.BScase_fans}</span>
+                                    {/* <span>產業類型：{ct.industry_name}</span>
+                                    <span>活動方式：{ct.BScase_active}</span> */}
                                 </div>
                                 <div className="button_container">
-                                    <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>查看</Link>
-
-                                    <button onClick={this.addfavor} className=" list_case_ctn_save" data-save={ct.BScase_sid}>收藏</button>
+                                    <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>應徵</Link>
+                                    <Link className="list_case_ctn_btn list_case_ctn_save" to="">儲存</Link>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +127,7 @@ class ListCaseCard extends Component {
                 }
 
             </React.Fragment>
-        );
+        )
     }
 }
 

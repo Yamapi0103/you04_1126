@@ -62,6 +62,7 @@ class Login extends Component{
     }
     logOut = () =>{
         cookie.remove('userId')
+
     }
     render(){
         return(

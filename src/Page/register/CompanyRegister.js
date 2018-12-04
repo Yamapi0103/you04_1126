@@ -134,6 +134,7 @@ class ICRegister extends Component{
                 swal(data.message, "歡迎加入You04", "success");
                 if(data.stay==false){
                     //申請成功就跳回首頁
+                    
                     this.props.history.push("/home");
                 }
             })

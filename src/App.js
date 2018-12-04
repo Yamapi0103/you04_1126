@@ -17,9 +17,9 @@ import BSMember from './Page/member/BSMember/BSMember';
 import List from './Page/list/List';
 import Job from './Page/job/job';
 import Publish from './Page/publish/publish';
-
+import CheckPublish from './Page/publish/publish_upload'
+import CelebrityList from './Page/celebrity/celebrityList';
 import CelebrityInfo from './Page/celebrity/celebrityInfo';
-import CelebrityList from './Page/celebrity/celebrityList'
 
 
 class App extends Component {
@@ -42,6 +42,7 @@ class App extends Component {
           <Route path="/list/:ids/:bas/:keyword" component={List} />
           <Route path ="/plan_buy/:point/:text/:money" component={Plan_buy} />
           <Route path="/publish_content/:category" component={Job} />
+          <Route path="/check_case_publish/:case_id" component={CheckPublish} />
           <Route path="/publish" component={Publish} />
           
           <Route path="/celebrity/:ic_media?" component={CelebrityList} /> 
