@@ -1,0 +1,24 @@
+h4{
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0.5px 1px 3px rgb(96, 122, 98);
+}
+
+.celebtn{
+    position: relative;
+    font-size: 19px;
+    color: #fff;
+    margin: 15px;
+    text-shadow: 0.5px 1px 3px rgb(96, 122, 98);
+    &:hover{
+        color:rgb(207, 228, 149);
+        text-shadow: 0.5px 1px 3px rgb(96, 122, 98);
+        }
+}
+.celebtnline{
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    margin-top: 3%;
+}

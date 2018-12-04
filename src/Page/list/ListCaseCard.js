@@ -1,21 +1,110 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import './ListCaseCard.scss';
 
-class ListCaseCard extends Component{
-    constructor(props){
-        super(props)
-        // console.log(this.props.cases);
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './ListCaseCard.scss';
+import cookies from 'react-cookies';
+import swal from 'sweetalert';
+
+
+class ListCaseCard extends Component {
+    constructor(props) {
+        super(props);
+
+        // this.bscase = this.props.bscase;
+        // this.ic_favor = {}
+        this.state = {
+            saved: false,
+        }
+
+        // this.favor_case = {
+        //     ic_sid: cookies.load('userId')[0].ic_sid,
+        //     bscase_sid: this.bscase_sid
+        // }
+        // this.savedOrNot()
+
     }
 
-    render(){
-        return(
+    //網紅收藏專案
+    addfavor = (evt) => {
+        // alert(evt.target);
+        let ICmember_sid = cookies.load('userId')[0]['IC_sid'];
+
+        let addfavor = {
+            BScase_sid: evt.target.dataset.save,
+            ICmember_sid: ICmember_sid,
+        };
+        console.log(addfavor)
+        //先確認之前有沒有收藏
+        //之前沒收藏 => 可以收藏
+        fetch('http://localhost:3000/api/ICAddFavor', {
+            method: 'POST',
+            body: JSON.stringify(addfavor),
+            headers: new Headers({
+                'content-Type': 'application/json'
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                swal(data.message);
+            })
+    };
+
+
+    Favorite = (evt) => {
+        console.log(this.state.saved);
+        console.log(evt.target.id);
+        this.setState({
+            saved: !(this.state.saved),
+        })
+
+        console.log(this.state);
+
+        if (!this.state.saved)
+            this.addHandler();
+        else
+            this.delHandler()
+    }
+
+
+
+
+
+
+
+    addHandler = (evt) => {
+        fetch('http://localhost:3000/api/ICAddFavor', {
+            method: 'POST',
+            body: JSON.stringify(this.favor_case),
+            headers: new Headers({
+                'content-type': 'application/json'
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                swal(data.message, "已加入收藏");
+            })
+    }
+
+    savedOrNot = () => {
+        fetch("http://localhost:3000/api/ICGetFavor/" + this.favor_case.ic_sid + "/" + this.favor_case.bscase_sid)
+            .then(res => res.json())
+            .then(result => {
+                if (result.length == 1)
+                    this.setState({
+                        saved: true
+                    })
+            })
+    }
+
+
+    render() {
+        return (
             <React.Fragment>
                 {
-                    this.props.cases.map(ct => 
+                    this.props.cases.map(ct =>
                         <div className="list_case_card_container">
                             <Link to="" className="list_case_card_container_left">
-                                
+
                             </Link>
                             <div className="list_case_card_container_right">
                                 <div className="text_container">
@@ -26,8 +115,9 @@ class ListCaseCard extends Component{
                                     <span>薪資待遇：{ct.BScase_pay}</span>
                                 </div>
                                 <div className="button_container">
-                                    <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>應徵</Link>
-                                    <Link className="list_case_ctn_btn list_case_ctn_save" to="">儲存</Link>
+                                    <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>查看</Link>
+
+                                    <button onClick={this.addfavor} className=" list_case_ctn_save" data-save={ct.BScase_sid}>收藏</button>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +125,7 @@ class ListCaseCard extends Component{
                 }
 
             </React.Fragment>
-        )
+        );
     }
 }
 
