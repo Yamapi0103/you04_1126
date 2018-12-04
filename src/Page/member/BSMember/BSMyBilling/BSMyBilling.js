@@ -68,7 +68,6 @@ class BSMyBilling extends Component {
                             <BillingCard bills={this.state.bills}/>
                         </div>
                     </div>
-                    <button onClick={this.cc}>123</button>
                 </div>
             </React.Fragment>
         )

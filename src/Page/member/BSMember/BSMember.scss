@@ -1,4 +1,4 @@
-$member_main_color:rgb(242, 253, 240);
+$member_main_color:rgb(243, 243, 243);
 .member_button {
     border: 1px solid rgb(214, 214, 214);
     background: rgb(255, 255, 255);
@@ -8,16 +8,16 @@ $member_main_color:rgb(242, 253, 240);
 
 #member_container {
     background: rgb(255, 255, 255);
+    // background: #F3F3F4;
     padding: 30px 10%;
     font-weight: bold;
-    switch{
-        display:flex;
-        flex-wrap: wrap;
-    }
+    display: flex;
+    justify-content: space-between;
     .register_navbar{
         width: 200px;
         background: $member_main_color;
         box-shadow: 0 0 5px rgb(221, 221, 221);
+        margin-right: 50px;
         .member_head{
             margin: 20px 0;
             width: 200px;
@@ -75,45 +75,18 @@ $member_main_color:rgb(242, 253, 240);
                         text-align: left;
                     }
                 }
-                @media(max-width: 950px){
-                    a{
-                        width: 10%;
-                    }
-                }
             }
         }
     }
-    
-    @media (max-width:950px){
-        .flex{
-            flex-direction: column;
-            ul{
-                display: flex;
-                li{
-                    flex-grow: 1;
-                    a{
-                        font-size: 0.8rem;
-                        width: auto;
-                    }
-                }
-            }
-            .member_head{
-                img{
-                   display: none;
-                    
-                }
-            }
-        }
-    }
-    
+       
     //-------------member?k?????scss-----------------
     switch{
         width:100%;
     }
     .member_form_box{
         width:95%;
-        float: right;
         .member_form_content{
+            width: 100%;
             margin: 0 auto;
             background: $member_main_color;
             box-shadow: 0 0 5px rgb(221, 221, 221);
@@ -220,49 +193,50 @@ $member_main_color:rgb(242, 253, 240);
                     margin: 40px 183px 0;
                 }
             }
-            @media (max-width: 950px) {
-                .form-basic {
-                    padding: 30px;
-                    max-width: 480px;
-                    .form-row {
-                        max-width: 300px;
-                        margin: 25px auto;
-                        text-align: left;
-                        >label {
-                            span {
-                                display: block;
-                                text-align: left;
-                                padding: 0 0 15px;
-                            }
+        }
+    }
+}
+@media (max-width:930px) {
+    #member_container {
+        flex-direction: column;
+        .register_navbar {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            height: 110px;
+            margin-right: none;
+            margin-bottom: 50px;
+            .member_head {
+                height: 100%;
+                width: 150px;
+                img {
+                    width: 55%;
+                }
+                span {
+                    display: none;
+                }
+            }
+            ul {
+                width: 100%;
+                display: flex;
+                height: 100%;
+                align-items: center;
+                li {
+                    width: 20%;
+                    border: none;
+                    a {
+                        display: flex;
+                        flex-direction: column;
+                        i {
+                            font-size: 20px;
+                            width: 100%;
                         }
-                    }
-                    .form-title-row {
-                        margin-bottom: 50px;
-                    }
-                    select {
-                        width: 240px;
-                    }
-                    input[type=checkbox] {
-                        margin-top: 0;
-                    }
-                    .form-radio-buttons {
-                        >div {
-                            margin: 0 0 10px;
-                        }
-                    }
-                    button {
-                        margin: 0;
                     }
                 }
             }
         }
-        
-    }
-    @media(max-width:950px){
         .member_form_box {
-            width:100%;
-            float: none;
-            margin: 0 auto;
+            width: 100%;
         }
     }
 }

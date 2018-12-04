@@ -1,41 +1,58 @@
 @import '../../../../App.scss';
 
-
-.member_form_box_top {
-    width: 90%;
-    margin: 0px auto 5px auto;
-    // background: #000;
-    .register_container1{
-        .register_outside{
-            display: flex;
-            .OpenOrClose{
-                color: #3f3f3f;
-                font-weight: bold;
-                width: 30%;
-                transition: 0.5s;
-                height: 45px;
-                background-color: #f2fdf0;
-                border: 1px 1px 0px 1px;
+.bscase_container {
+    width:95%;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    .register_outside {
+        display: flex;
+        .OpenOrClose {
+            color: #3f3f3f;
+            font-weight: bold;
+            width: 250px;
+            transition: 0.5s;
+            background-color: rgb(243, 243, 243);
+            // border: 1px 1px 0px 1px;
+            // border-style: solid;
+            // border-color: #3f3f3f;
+            margin: 0 20px 0 0;
+            border-radius: 3px;
+            box-shadow: 0 0 5px rgb(221, 221, 221);
+            line-height: 45px;
+            height: 48px;
+            text-align: center;
+            border-bottom: 3px;
+            border-style: solid;
+            border-color: transparent;
+        }
+        .OpenOrClose1 {
+            &:hover{
+                border-bottom: 3px;
                 border-style: solid;
-                border-color: #3f3f3f;
-                margin: 0 20px 0 0;
-                border-radius: 3px;
-                box-shadow: 0 0 5px rgb(221, 221, 221);
-                line-height: 45px;
-                text-align: center;
+                border-color: #93a57c;
             }
-            .OpenOrClose1 {
-                &:hover{
-                    background-color: #93a57c;
-                    color: white;
-                }
+        }
+        .OpenOrClose1.active {
+            border-bottom: 3px;
+            border-style: solid;
+            border-color: #93a57c;
+        }
+        .OpenOrClose2 {
+            &:hover{
+                border-bottom: 3px;
+                border-style: solid;
+                border-color: #ff6e6e;
             }
-            .OpenOrClose2 {
-                &:hover{
-                    background-color: #ff6e6e;
-                    color: white;
-                }
+            .active {
+                border-bottom: 3px;
+                border-style: solid;
+                border-color: #ff6e6e;
             }
+        }
+        .OpenOrClose2.active {
+            border-bottom: 3px;
+            border-style: solid;
+            border-color: #ff6e6e;
         }
     }
 }

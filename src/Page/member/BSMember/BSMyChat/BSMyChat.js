@@ -242,6 +242,7 @@ class BSMyChat extends Component {
 componentDidMount=()=>{
     this.showCase();
     //如果是從接案管理->查看應徵網紅->按查看對話的話就啟動choose() => 顯示該案子的對話紀錄
+   
     if(this.bs_case_detail_sid){
         this.choose();
     }

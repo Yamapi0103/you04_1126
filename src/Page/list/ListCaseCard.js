@@ -118,9 +118,8 @@ class ListCaseCard extends Component {
                                     <span>活動方式：{ct.BScase_active}</span> */}
                                 </div>
                                 <div className="button_container">
-                                    <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>查看</Link>
-
-                                    <Link onClick={this.addfavor}  className="list_case_ctn_btn list_case_ctn_save" to="">儲存</Link>
+                                <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>查看</Link>
+                                     <button onClick={this.addfavor} className=" list_case_ctn_save" data-save={ct.BScase_sid}>收藏</button>
                                 </div>
                             </div>
                         </div>

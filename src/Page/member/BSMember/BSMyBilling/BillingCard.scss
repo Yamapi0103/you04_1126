@@ -3,34 +3,33 @@
     justify-content: space-between;
     display: flex;
     color: #5F5F5F;
-    background: #E9EBD5;    
+    background: #ffffff; 
     padding: 30px 50px;
     box-sizing: border-box;
-    box-shadow: 2px 2px 2px rgb(167, 167, 167);
+    box-shadow: 0 0 5px rgb(221, 221, 221);
     margin-bottom: 2vh;
     .billing_card_container_box {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 90px;
-        background: #E9EBD5;
+        background: #ffffff;
     }
     .billing_card_container_left {
-        // background: #E9EBD5;
+        // background: #ffffff;
         width: 60%;
     }
     .billing_card_container_right {
-        flex-flow: 1;
+        flex-grow: 1;
+        text-align: right;
         a {
             align-self: flex-end;
-            text-align: center;
-            width: 100px;
-            line-height: 30px;
-            height: 30px;
-            background: rgb(133, 133, 133);
-            color: white;
-            border: none;
-            border-radius: 5px;
+            padding: 3px 10px;
+            border: 1px solid #d6d6d6;
+            background: #e2e2e2;
+            border-radius: 3px;
+            font-weight: bold;
+            color: black;            
         }
     }
 }

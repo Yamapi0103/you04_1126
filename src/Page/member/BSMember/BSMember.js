@@ -63,10 +63,13 @@ class BSMember extends Component {
                         <Route  path={`${this.props.match.url}/BSMyCase`} component={BSMyCase} />
                         {/* 對話紀錄 */}
                         <Route exact path={`${this.props.match.url}/BSMyChat`} component={BSMyChat} />
+                        <Route exact path={`${this.props.match.url}/BSMyChat/:bs_case_detail_sid`} component={BSMyChat} />
                         {/* 訂單管理 */}
                         <Route exact path={`${this.props.match.url}/BSMyBilling`} component={BSMyBilling} />
                         {/* 我的收藏 */}
                         <Route exact path={`${this.props.match.url}/BSMyFavor`} component={BSMyFavor} />
+
+
                     </switch>
                 </div>
 

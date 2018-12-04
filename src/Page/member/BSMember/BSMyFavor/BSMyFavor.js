@@ -62,36 +62,45 @@ class BSMyFavor extends Component {
     render() {
         console.log(this.state)
          return (
-            this.state.saveCelebrity.map((k) => {
-                return (
-                    <div key={k.bs_sid} className="card flex radius-border card_shadow">
-                        <header className="banner">
-                            <img src={"/images/" + k['IC_photo'] + ".jpg"} alt="" />
-                            <div className="middle">
-                                <Link to={`/celebrityInfo/${k.IC_sid}`}>
-                                    <div className="text">詳細資料</div>
-                                </Link>
-                            </div>
-                        </header>
-                        <div className="card_body">
-                            <div className="celebrity_name_box">
-                                <p className="text_cuthead" >
-                                    {k.IC_name}
-                                </p>
-                            </div>
-                            <div className="text_align">
-                                <p><span>性別:</span>{k.IC_gender}</p>
-                                <p><span>類型: </span>{k.IC_media}</p>
-                                <p><span>最低接案金:</span>{k.IC_price}</p>
-                                <p><span>經手業配數: </span>{k.IC_case}</p>
-                            </div>
-                            <a id={k.IC_sid} name={k.IC_name} onClick={this.unSaved} className="unsaved">
-                                移除</a>
+            <React.Fragment>
+                <div class="member_form_box">
+                    <div class="member_form_content">
+                        <div className="bsmyfavor_container">
+                            {
+                                this.state.saveCelebrity.map((k) => 
+                                    <div key={k.bs_sid} className="bsmyfavor_container_card_container">
+                                    {/* <div key={k.bs_sid} className="card flex radius-border card_shadow"></div> */}
+                                        <header className="">
+                                            <img src={"/images/" + k['IC_photo'] + ".jpg"} alt="" />
+                                            <div className="">
+                                                <Link to={`/celebrityInfo/${k.IC_sid}`}>
+                                                    <div className="text">詳細資料</div>
+                                                </Link>
+                                            </div>
+                                        </header>
+                                        <div className="bccc_card_body">
+                                            <div className="bccc_card_body_left">
+                                                <div className="celebrity_name_box">
+                                                    <p className="text_cuthead" >
+                                                        {k.IC_name}
+                                                    </p>
+                                                </div>
+                                                <div className="text_align">
+                                                    <p><span>性別:</span>{k.IC_gender}</p>
+                                                    <p><span>類型: </span>{k.IC_media}</p>
+                                                    <p><span>最低接案金:</span>{k.IC_price}</p>
+                                                    <p><span>經手業配數: </span>{k.IC_case}</p>
+                                                </div>
+                                            </div>
+                                            <a id={k.IC_sid} name={k.IC_name} onClick={this.unSaved} className="unsaved">移除</a>
+                                        </div>
+                                    </div>
+                                )
+                            }
                         </div>
-                    
                     </div>
-                )
-            })
+                </div>
+            </React.Fragment>
         )
     }
 }

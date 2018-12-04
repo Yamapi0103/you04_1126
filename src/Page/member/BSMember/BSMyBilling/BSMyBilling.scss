@@ -1,7 +1,8 @@
+$member_main_color:rgb(243, 243, 243);
+
 .member_form_billing_container {
     // background: rgb(116, 106, 212);
     width: 100%;
-    padding: 5vh 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -19,49 +20,72 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            color: white;
-            background: #88AFD1;
+            color: rgb(0, 0, 0);
+            background: $member_main_color;
         }
         .mfb_container_top_credit {
             width: 57%;
+            box-shadow: 0 0 5px rgb(221, 221, 221);
             .credit_button_container {
                 display: flex;
-                width: 110px;
-                justify-content: space-between;
+                justify-content: flex-start;
                 a {
-                    text-align: center;
-                    width: 50px;
-                    line-height: 30px;
-                    height: 30px;
-                    background: rgb(133, 133, 133);
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
+                    padding: 3px 10px;
+                    border: 1px solid #d6d6d6;
+                    // background: #e2e2e2;
+                    border-radius: 3px;
+                    font-weight: bold;
+                    color: black;
+                    margin: 0 10px 0 0;
+                    background: white;
                 }
             }
         }
         .mfb_container_top_point {
             width: 41.5%;
+            box-shadow: 0 0 5px rgb(221, 221, 221);
             span {
                 strong {
                     font-size: 2rem;
                 }
             }
             a {
-                text-align: center;
-                width: 100px;
-                line-height: 30px;
-                height: 30px;
-                background: rgb(133, 133, 133);
-                color: white;
-                border: none;
-                border-radius: 5px;
+                padding: 3px 10px;
+                border: 1px solid #d6d6d6;
+                // background: #e2e2e2;
+                border-radius: 3px;
+                font-weight: bold;
+                color: black;
+                align-self: flex-start;
+                background: white;
+            }
+        }
+        @media (max-width: 660px) {
+            .mfb_container_top_box {
+                padding: 30px 30px;
+            }
+            .mfb_container_top_point {
+                span {
+                    strong {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+        @media (max-width: 660px) {
+            .mfb_container_top_point {
+                span {
+                    strong {
+                        font-size: 1.5rem;
+                        line-height: 51px;
+                    }
+                }
             }
         }
     }
     .mfb_container_bottom {
         width: 100%;
-        background: #88AFD1;
+        background: $member_main_color;
         // height: 300px;
         display: flex;
         flex-direction: column;

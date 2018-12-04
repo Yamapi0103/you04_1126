@@ -31,7 +31,7 @@ class BSMyCase_Open extends Component {
         })
     }
     check=(evt)=>{
-        $(evt.target).parent().next().toggleClass('show');
+        $(evt.target).parent().parent().next().toggleClass('show');
     }
     End=(evt)=>{
         let bs_sid = evt.target.dataset.end;  //記錄著案子的sid
@@ -93,17 +93,14 @@ class BSMyCase_Open extends Component {
                                                 <p>應徵人數: {this.state.count[idx]}位</p>
                                                 <div className="imco_card_right_btn_container">
                                                     <button  onClick={this.check} className="case_open_button" >查看應徵網紅</button>
-                                                    
                                                     <Link to={`/BSMyCase_edit`} className="case_open_button" >編輯</Link>
                                                     <button className="case_open_button" onClick={this.End} data-end={v.BScase_sid}>結案</button>
                                                 </div>
                                             </div>
-                                         
                                             <div className='imco_card_IC'>
                                                 {/* 把各筆案子的sid傳給各自的子元件 => 交給他們去fetch做應徵網紅資料呈現 */}
                                                 <BSMyCase_IChire   BScase_sid={v.BScase_sid}  Count={this.Count}/>
                                             </div> 
-                                            
                                         </div>
                                 )
                             })   
