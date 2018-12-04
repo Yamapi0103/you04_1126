@@ -11,7 +11,7 @@ class ATSearchBarOption extends Component{
             <React.Fragment>
                 {
                     this.props.active_option.map(active_option =>
-                        <option value={active_option.id}>{active_option.active_name}</option>
+                        <option key={active_option.id} value={active_option.id}>{active_option.active_name}</option>
                     )
                 }
               

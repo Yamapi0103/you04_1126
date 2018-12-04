@@ -73,7 +73,7 @@ class Navbar extends Component{
                         }
                         {!this.islogIn()?
                         <React.Fragment>
-                        <li><Link to="/login">會員登入</Link></li>
+                        <li><Link to="/loginIdSelect">會員登入</Link></li>
                         <li><Link to="/register">註冊</Link></li>
                         </React.Fragment>:
                         <li>

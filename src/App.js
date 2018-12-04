@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import Home from './Page/home/Home';
 import Login from './Page/login/Login';
+import loginIdSelect from './Page/login/loginIdSelect'
 import Register from './Page/register/Register';
 import CompanyRegister from './Page/register/CompanyRegister';
 import ICRegister from './Page/register/ICRegister';
@@ -34,6 +35,7 @@ class App extends Component {
           <div className="container margin-top70">
           {/* Link Page */}
 
+          <Route exact path="/loginIdSelect" component={loginIdSelect} />
           <Route path="/login" component={Login} />
           <Route path="/plan" component={Plan_explain} />
 
