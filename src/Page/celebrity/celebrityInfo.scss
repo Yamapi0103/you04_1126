@@ -48,8 +48,52 @@ h2 {
   margin-bottom: 20px;
 }
 
-.text_align {
-  text-align: left;
+.cele_title{
+  display: flex;
+}
+
+.cele_name{
+  font-size: 27px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.cele_content p{
+  line-height: 18px;
+  font-weight: 600;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+span{
+  color: #76797c;
+}
+
+.celeadd_btn {
+  position: relative;
+  height: 38%;
+  width: 45px;
+  text-align: center;
+  background: rgba(78, 165, 180, 0.8);
+  font-size: 14px;
+  padding:  0.2% 1.5%;
+  left: 5%;
+  top: 5px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgba(141, 141, 141, 0.5);
+  cursor: pointer;
+  &:hover{
+    background: rgb(34, 161, 184);
+  }
+}
+
+
+.celeadd_btn p{
+  font-weight: 600;
+  color: #ffffff;
 }
 
 

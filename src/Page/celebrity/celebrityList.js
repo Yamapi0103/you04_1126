@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CelebrityItem from './celebrityItem';
 // import  celebrity from './celebrity.json';
 import './celebrity.scss';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class CelebrityList extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class CelebrityList extends Component {
             // celebrity: this.initState,
         }
         // 沒給:ic_media(http://localhost:3001/celebrity/) =>預設為看到全部網紅
-        this.ic_media = this.props.match.params.ic_media||"all"; 
+        this.ic_media = this.props.match.params.ic_media || "all";
         console.log(this.ic_media);
 
     }
@@ -22,22 +22,23 @@ class CelebrityList extends Component {
         this.getMembers(this.ic_media);
     }
     getMembers(ic_media) {
-        fetch("http://localhost:3000/info/icmedia/"+ic_media)
+        fetch("http://localhost:3000/info/icmedia/" + ic_media)
             .then(res => res.json())
-            .then(members =>{
-                this.setState({ 
+            .then(members => {
+                this.setState({
                     celebrities: members
                 })
                 console.log(this.state.celebrities)
-            } )
-            // .then(members => { return members })
+            })
+        // .then(members => { return members })
     }
-    changeMedia =(evt)=>{
+    changeMedia = (evt) => {
         console.log(evt.target.dataset.type)
         this.ic_media = evt.target.dataset.type
-        this.getMembers(this.ic_media )
+        this.getMembers(this.ic_media)
         window.location.reload()
         // console.log(this.ic_media)
+
     }
 
     render() {
@@ -54,8 +55,8 @@ class CelebrityList extends Component {
 
                 </section>
                 <section className="celebrity_wrap">
-                {this.state.celebrities.map((c,idx)=>
-                    <CelebrityItem key={idx} celebrity={c} />
+                    {this.state.celebrities.map((c, idx) =>
+                        <CelebrityItem key={idx} celebrity={c} />
                     )}
 
                 </section>
