@@ -187,8 +187,10 @@ class Job extends Component {
               
               
               <div className="btn_wrap">
-                <a class="job_btn" role="button">應徵</a>
-                <a class="job_btn" role="button">收藏</a>
+              <a onClick={this.hire} id='hire' class="job_btn" role="button">應徵</a>
+                <a onClick={this.addfavor} id='addfavor' class="job_btn" role="button">收藏</a>
+                {/* <a class="job_btn" role="button">應徵</a>
+                <a class="job_btn" role="button">收藏</a> */}
               </div>
             </aside>
           </header>

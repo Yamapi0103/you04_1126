@@ -124,17 +124,19 @@ class CelebrityInfo extends Component {
                                 <p><span>‧ 最低階案金額: </span>{this.state.celebrity['IC_price']}</p>
                                 <p><span>‧ 經手業配數: </span>{this.state.celebrity['IC_media']}</p>
                                 <hr />
-                                {/* <p><span>‧ YouTube 連結: </span><a href="{this.state.celebrity['IC_yt']}"></a></p> */}
-                                <p><span>‧ YouTube 連結: </span>{this.state.celebrity['IC_yt']}</p>
+                                <p><span>‧ YouTube 連結: </span><a href={this.state.celebrity['IC_yt']}>{this.state.celebrity['IC_yt']}</a></p>
                                 <p><span>‧ 粉絲(千): </span>{this.state.celebrity['IC_ytfans']}</p>
+
                                 <hr />
-                                <p><span>‧ Facebook 連結: </span>{this.state.celebrity['IC_fb']}</p>
+                                <p><span>‧ Facebook 連結: </span><a href={this.state.celebrity['IC_fb']}>{this.state.celebrity['IC_fb']}</a></p>
                                 <p><span>‧ 粉絲(千): </span>{this.state.celebrity['IC_fbfans']}</p>
+
                                 <hr />
-                                <p><span>‧ Ingstram 連結: </span>{this.state.celebrity['IC_ig']}</p>
+                                <p><span>‧ Ingstram 連結: </span><a href={this.state.celebrity['IC_ig']}>{this.state.celebrity['IC_ig']}</a></p>
                                 <p><span>‧ 粉絲(千): </span>{this.state.celebrity['IC_igfans']}</p>
+
                                 <hr />
-                                <p><span>‧ Blog 連結: </span>{this.state.celebrity['IC_web']}</p>
+                                <p><span>‧ Blog 連結: </span><a href={this.state.celebrity['IC_web']}>{this.state.celebrity['IC_web']}</a></p>
                             </div>
                         </div>
                     </div>
