@@ -1,9 +1,41 @@
 import React, { Component } from 'react';
-import './ICMyFavor.scss';
+import cookie from 'react-cookies';
+import $ from 'jquery';
+import '../../BSMember/BSMyCase/BSMyCase_Open.scss';
+import '../../BSMember/BSMyCase/BSMyCase.scss';
 
 class ICMyFavor extends Component {
     constructor(props) {
         super([props]);
+        this.state = {
+            bsCaseArray: [],
+        };
+        this.sid = cookie.load('userId')[0]['IC_sid'];  //網紅id
+    }
+
+    //顯示收藏的專案列表
+    showCase = () => {
+        fetch('http://localhost:3000/api/ICAddFavor/' + this.sid)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    bsCaseArray: data
+                })
+
+            })
+    }
+    //修改日期
+    fixDate = (v) => {
+        if (!v) {
+            return '未設定'
+        }
+        else {
+            return v.replace(/\D[.:\d]*\D$/, '');
+        }
+    }
+    componentDidMount = () => {
+        this.showCase();
     }
 
     render() {
@@ -12,85 +44,29 @@ class ICMyFavor extends Component {
                 <div class="member_form_box">
                     <div class="member_form_content">
 
-                        <form class="form-basic" method="post" action="#">
-
-                            <div className="form-title-row">
-                                <h1>我的收藏</h1>
+                        <form>
+                            <div>
+                                {
+                                    this.state.bsCaseArray.map((v, idx) => {
+                                        return (
+                                            <div key={v.BScase_sid} className="imco_card">
+                                                <div className='imco_card_left'>
+                                                    <h6>{v.BScase_name}</h6>
+                                                    <hr />
+                                                    <p>地點: {v.BScase_location}</p>
+                                                    <p>預算: {v.BScase_pay}</p>
+                                                </div>
+                                                <div className='imco_card_right'>
+                                                    <p>發佈日期:{this.fixDate(v.BScase_publish_at)}</p>
+                                                    <p>截止日期:{this.fixDate(v.BScase_time_limit)}</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Full name</span>
-                                    <input type="text" name="name" />
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Email</span>
-                                    <input type="email" name="email" />
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Dropdown</span>
-                                    <select name="dropdown">
-                                        <option>Option One</option>
-                                        <option>Option Two</option>
-                                        <option>Option Three</option>
-                                        <option>Option Four</option>
-                                    </select>
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Textarea</span>
-                                    <textarea name="textarea"></textarea>
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label>
-                                    <span>Checkbox</span>
-                                    <input type="checkbox" name="checkbox" checked />
-                                </label>
-                            </div>
-
-                            <div className="form-row">
-                                <label><span>Radio</span></label>
-                                <div className="form-radio-buttons">
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 1</span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 2</span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="radio" />
-                                            <span>Radio option 3</span>
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div className="form-row">
-                                <button type="submit">Submit Form</button>
-                            </div>
-
                         </form>
+
                     </div>
                 </div>
             </React.Fragment>
