@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route,} from 'react-router-dom';
+import { BrowserRouter, Route, } from 'react-router-dom';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
@@ -21,41 +21,40 @@ import Publish from './Page/publish/publish';
 import CheckPublish from './Page/publish/publish_upload'
 import CelebrityList from './Page/celebrity/celebrityList';
 import CelebrityInfo from './Page/celebrity/celebrityInfo';
-
+import contact_us from './Page/contact/contact_us';
 
 class App extends Component {
 
   render() {
-    
+
     return (
       <BrowserRouter>
         <React.Fragment>
 
           <Navbar />
           <div className="container margin-top70">
-          {/* Link Page */}
+            {/* Link Page */}
 
-          <Route exact path="/loginIdSelect" component={loginIdSelect} />
-          <Route path="/login" component={Login} />
-          <Route path="/list/:ids/:bas/:keyword" component={List} />
-
-          <Route path="/publish_content/:category" component={Job} />
-          <Route path="/check_case_publish/:case_id" component={CheckPublish} />
-          <Route path="/publish" component={Publish} />
-          
-          <Route path="/celebrity/:ic_media?" component={CelebrityList} /> 
-          <Route path="/celebrityInfo/:icsid?" component={CelebrityInfo} />
-          <Route exact path="/register" component={Register} />
-          <Route path="/register/CompanyRegister" component={CompanyRegister}/>
-          <Route path="/register/ICRegister" component={ICRegister} />
+            <Route exact path="/loginIdSelect" component={loginIdSelect} />
+            <Route path="/login" component={Login} />
+            <Route path="/plan" component={Plan_explain} />
+            <Route path="/list/:ids/:bas/:keyword" component={List} />
+            <Route path="/plan_buy/:point/:text/:money" component={Plan_buy} />
+            <Route path="/publish_content/:category" component={Job} />
+            <Route path="/check_case_publish/:case_id" component={CheckPublish} />
+            <Route path="/publish" component={Publish} />
+            <Route path="/celebrity/:ic_media?" component={CelebrityList} />
+            <Route path="/celebrityInfo/:icsid?" component={CelebrityInfo} />
+            <Route exact path="/register" component={Register} />
+            <Route path="/register/CompanyRegister" component={CompanyRegister} />
+            <Route path="/register/ICRegister" component={ICRegister} />
+            <Route path="/contact_us" component={contact_us} />
 
           </div>
-            <Route exact path="/" component={Home}  />
-            <Route exact path="/home" component={Home}  />
-            <Route path="/plan" component={Plan_explain} />
-            <Route path ="/plan_buy/:point/:text/:money/:plan/:perprice/:pnum" component={Plan_buy} />
-            <Route path="/BSMember" component={BSMember} />
-            <Route path="/ICMember" component={ICMember} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route path="/BSMember" component={BSMember} />
+          <Route path="/ICMember" component={ICMember} />
 
 
 
@@ -64,7 +63,7 @@ class App extends Component {
         </React.Fragment>
       </BrowserRouter>
 
-      
+
     );
   }
 }
