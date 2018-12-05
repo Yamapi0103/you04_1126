@@ -6,8 +6,11 @@ class Section_4 extends Component{
     constructor(props){
         super(props);
         this.pointArray=['500點','1500點','3000點','5000點'];
-        this.textArray=['能夠刊登一個案子','能夠刊登三個案子','能夠刊登六個案子','能夠刊登六個案子'];
-        this.moneyArray=['100元','300元','500元','750元'];
+        this.textArray=['能刊登一個案子','能刊登三個案子','能刊登六個案子','能刊登六個案子'];
+        this.moneyArray=['100元','280元','500元','750元'];
+        this.perpriceArray=["100","93","83","75"];
+        this.planArray=["嘗鮮方案","入門方案","專業方案","企業方案"];
+        this.pnumArray=["1","3","6","10"];
     }
     handle =()=>{window.scrollTo(0,0)};
     // Information = ()=>{
@@ -27,10 +30,10 @@ class Section_4 extends Component{
                    <div className='plan_buy'>
                         {this.pointArray.map((v,k)=>{
                             return(
-                                <Publish_plan key={k}  point={this.pointArray[k]}
-                                 text={this.textArray[k]} money={this.moneyArray[k]} />
+                                <Publish_plan key={k} point={this.pointArray[k]} text={this.textArray[k]} 
+                                money={this.moneyArray[k]} perprice={this.perpriceArray[k]} plan={this.planArray[k]} pnum={this.pnumArray[k]}/>
                             );
-                        })};
+                        })}
                    </div>
                 </div>
             </section>

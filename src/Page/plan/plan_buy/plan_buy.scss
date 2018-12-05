@@ -26,7 +26,7 @@ $padding_left:2%;
     .plan_buy_content{
         width: 80%;
         margin: auto;
-        background-color: rgb(221, 190, 190);
+        background-color: #f1eade;
         .choose{
             @include Width;
             // .title{
@@ -44,19 +44,65 @@ $padding_left:2%;
                 display: flex;
                 justify-content: space-between;
                 .plan_buy_box{
-                    width:20%;
-                    border: 1px solid rgb(156, 154, 154);
+                    border: 1px solid rgb(204, 204, 204);
+                    width: 290px;
                     text-align: center;
                     margin-bottom: 30px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    .number{
-                        font-size: 2rem;
+                    .pbb_plan_ctn {
                         padding: 20px 0;
+                        background: rgb(160, 160, 160);
+                        color: white;
+                        span {
+                            color: white;
+                            strong {
+                                font-size: 3rem;
+                            }
+                        }
                     }
-                    .text{
-                        font-size: 1rem;
+                    .pbb_content_ctn {
+                        padding: 10px 20px;
+                        .description {
+                            color: rgb(71, 71, 71);
+                            text-align: justify;
+                        }
+                        .info {
+                            // border-top: 1px solid rgb(224, 224, 224);
+                            // border-bottom: 1px solid rgb(224, 224, 224);
+                            padding: 10px 0;
+                            margin: 10px 0;
+                            .number{
+                                font-size: 1rem;
+                                padding: 1px 0;
+                                font-weight: bold;
+                                border-bottom: 1px solid rgb(224, 224, 224);
+                                span {
+                                    color: rgb(148, 148, 148);
+                                }
+                            }
+                            .number:nth-child(3) {
+                                border: none;
+                            }
+                            .text{
+                                font-size: 1rem;
+                                text-align: left;
+                                color: grey;
+                            }
+                        }
+                    }
+                    .plan_buy_btn{
+                        display: block;
+                        width:130px;
+                        margin: auto;
+                        margin-bottom: 20px;
+                        padding: 10px 3%;
+                        text-decoration: none;
+                        border: 1px solid #353535;
+                        background: #353535;
+                        color: white;
+                        &:hover {
+                            background: white;
+                            color: #353535;
+                        }
                     }
                 }
                 .final_check{

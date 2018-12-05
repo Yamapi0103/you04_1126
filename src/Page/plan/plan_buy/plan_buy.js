@@ -10,6 +10,9 @@ class Plan_buy extends Component{
         this.point = props.match.params.point;
         this.text = props.match.params.text;
         this.money = props.match.params.money;
+        this.perprice = props.match.params.perprice;
+        this.plan = props.match.params.plan;
+        this.pnum = props.match.params.pnum;
         this.state={
             email:cookie.load('userId')[0].BS_email,
             re_name:'',  //發票真實姓名
@@ -190,9 +193,18 @@ class Plan_buy extends Component{
                         <div className='choose_plan'>
                             
                             <div className='plan_buy_box'>
-                                <p className='number'>{this.point}</p>
-                                <p className='text'>{this.text}</p>
-                                <p className='number'>{this.money}</p>
+                                <div className="pbb_plan_ctn">
+                                    <h3>{this.plan}</h3>
+                                    <span>$<strong>{this.perprice}</strong> /則</span>
+                                </div>
+                                <div className="pbb_content_ctn">
+                                    <p className='description'>選擇{this.plan}將會使您得到{this.point}，並且{this.text}，每次刊登案子的價格為{this.perprice}元一則</p>
+                                    <div className="info">
+                                        <p className='number'>{this.point}</p>
+                                        <p className='number'>{this.money}<span>的價格</span></p>
+                                        <p className='number'>{this.pnum}則<span>刊登額度</span></p>
+                                    </div>
+                                </div>              
                             </div>
 
                             <div className='final_check'>
