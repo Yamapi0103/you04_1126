@@ -121,9 +121,9 @@ class Publish extends Component {
         
     }
     
-    fetchPoints = (userSid)=>{
-        return fetch('http://localhost:3000/api3/bsmembers/'+userSid);
-    }
+    // fetchPoints = (userSid)=>{
+    //     return fetch('http://localhost:3000/api3/bsmembers/'+userSid);
+    // }
 
     //表單發送前檢查
     blur= evt =>{
@@ -197,8 +197,8 @@ class Publish extends Component {
             .then(data => {
                 alert(data.message)
             })
-            
-            //扣100點點數 並更新cookie裡的BS_point
+            .then(()=>{
+                            //扣100點點數 並更新cookie裡的BS_point
             cookies.save('userId',[{
                 ...this.cookie,
                 BS_point: parseInt(cookies.load('userId')[0].BS_point)-100
@@ -206,32 +206,32 @@ class Publish extends Component {
             this.cookie = cookies.load('userId')[0]  //對this.cookie更新
             // console.log(cookies.load('userId')[0]) 
             // console.log(this.cookie)
-
+            
             //更新bsmember裡的bs_point
-            fetch('http://localhost:3000/you04/updateBSmember/'+this.userSid, {
-                method: 'PUT',
-                body: JSON.stringify({BS_point:this.cookie.BS_point}), //只更新bsmember點數
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            }).then(res => res.json())
-                .then(data => {
-                    // alert(data.message);
-            }).then(
-                fetch('http://localhost:3000/api/publishlastOne')
-                .then(res =>res.json())
-                .then(data=>{
-                    
-                    let Data = data[0]
-                    console.log(Data['BScase_sid'])
-                    this.props.history.push('/publish_content/' + Data['BScase_sid'])
-                    
-                })
-            )
-                
-        }else{
-            swal('您有應填寫的欄位未填')
-        }
+                fetch('http://localhost:3000/you04/updateBSmember/'+this.userSid, {
+                    method: 'PUT',
+                    body: JSON.stringify({BS_point:this.cookie.BS_point}), //只更新bsmember點數
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                }).then(res => res.json())
+                    .then(data => {
+                        // alert(data.message);
+                }).then(
+                    fetch('http://localhost:3000/api/publishlastOne')
+                    .then(res =>res.json())
+                    .then(data=>{
+                        
+                        let Data = data[0]
+                        console.log(Data['BScase_sid'])
+                        this.props.history.push('/publish_content/' + Data['BScase_sid'])
+                        
+                    })
+                )
+            })
+            }else{
+                swal('您有應填寫的欄位未填')
+            }
     }
     
 
