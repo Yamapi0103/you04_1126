@@ -3,27 +3,30 @@ import './ICMyCase.scss';
 import { Link, Route } from 'react-router-dom';
 import ICMyCase_Open from './ICMyCase_Open'
 import ICMyCase_Close from './ICMyCase_Close'
+import $ from 'jquery'
 
 class ICMyCase extends Component {
     constructor(props) {
         super([props]);
     }
 
+    componentDidMount = () => {
+        $(".OpenOrClose1").click(function(){
+            $(this).addClass("active").next().removeClass('active')
+        })
+        $(".OpenOrClose2").click(function(){
+            $(this).addClass("active").prev().removeClass('active')
+        })
+    }
+
     render() {
         return (
             <React.Fragment>
-                <div class="member_form_box_top">
-
-                    <div className="register_container1">
-                        <form className="register_outside">
-
-                            <div>
-                                <Link className="btn OpenOrClose" to={`${this.props.match.url}/ICMyCase_Open`}>發布中</Link>
-                                <Link className="btn OpenOrClose" to={`${this.props.match.url}/ICMyCase_Close`}>已關閉</Link>
-                            </div>
-                        </form>
+                <div className="bscase_container">
+                    <div className="register_outside">
+                        <Link className="OpenOrClose OpenOrClose1 active" to={`${this.props.match.url}/ICMyCase_Open`}>發布中</Link>
+                        <Link className="OpenOrClose OpenOrClose2" to={`${this.props.match.url}/ICMyCase_Close`}>已關閉</Link>
                     </div>
-                    {/* <hr /> */}
                 </div>
                 <switch>
                     <Route path={`${this.props.match.url}/ICMyCase_Open`} component={ICMyCase_Open} />

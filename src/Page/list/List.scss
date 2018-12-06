@@ -128,7 +128,7 @@
                         height: 30px;
                         z-index: 9;
                         cursor: pointer;
-                        -webkit-transition: all 0.25s linear;
+                        transition: all 0.25s linear;
                     }
                     &:hover label {
                         color: rgb(49, 116, 85);
