@@ -37,9 +37,8 @@ class App extends Component {
 
             <Route exact path="/loginIdSelect" component={loginIdSelect} />
             <Route path="/login" component={Login} />
-            <Route path="/plan" component={Plan_explain} />
+
             <Route path="/list/:ids/:bas/:keyword" component={List} />
-            <Route path="/plan_buy/:point/:text/:money" component={Plan_buy} />
             <Route path="/publish_content/:category" component={Job} />
             <Route path="/check_case_publish/:case_id" component={CheckPublish} />
             <Route path="/publish" component={Publish} />
@@ -53,6 +52,8 @@ class App extends Component {
           </div>
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
+          <Route path="/plan" component={Plan_explain} />
+          <Route path="/plan_buy/:point/:text/:money/:plan/:perprice/:pnum" component={Plan_buy} />
           <Route path="/BSMember" component={BSMember} />
           <Route path="/ICMember" component={ICMember} />
 
