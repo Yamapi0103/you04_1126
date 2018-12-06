@@ -14,7 +14,7 @@ class Footer extends Component {
                 <div className='footer_content'>
                     <div className="footer_content_top">
                         <div className='footer_content_top_left'>
-                            <img src='./images/logo.svg' />
+                            <img src='/images/logo.svg' />
                         </div>
                         <div className='footer_content_top_right'>
                             <ul>
