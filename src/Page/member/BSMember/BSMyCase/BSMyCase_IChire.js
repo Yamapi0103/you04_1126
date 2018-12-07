@@ -22,7 +22,9 @@ class BSMyCase_IChire extends Component {
             })
         }) 
     }
-    
+    scrollTOP=()=>{
+        window.scrollTo(0,0);
+    }
 
 
     componentDidMount=()=>{
@@ -50,7 +52,7 @@ class BSMyCase_IChire extends Component {
                             </p>
                         </div>
                         <div className='btn_div'>
-                          <Link className="btn" to={`/BSMember/BSMyChat/${k.sid}`}>開啟對話</Link>
+                          <Link className="btn" to={`/BSMember/BSMyChat/${k.sid}`} onClick={this.scrollTOP}>開啟對話</Link>
                         </div>
                     </div>
                 )

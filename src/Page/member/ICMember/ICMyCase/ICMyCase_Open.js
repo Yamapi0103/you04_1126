@@ -35,6 +35,9 @@ class ICMyCase_Open extends Component {
             return  v.replace(/\D[.:\d]*\D$/,'');
         }
     }
+    scrollTOP=()=>{
+        window.scrollTo(0,0);
+    }
     componentDidMount=()=>{
         this.showCase();
     };
@@ -65,8 +68,8 @@ class ICMyCase_Open extends Component {
                                                 <p>發佈日期:{this.fixDate(v.BScase_publish_at)}</p>
                                                 <p>截止日期:{this.fixDate(v.BScase_time_limit)}</p>
                                               
-                                                {/* <button  className="btn" >查看對話</button> */}
-                                                <Link className="btn" to={`/ICMember/ICChat/${v.sid}`}>查看對話</Link>
+                                               
+                                                <Link className="btn" to={`/ICMember/ICChat/${v.sid}`} onClick={this.scrollTOP}>查看對話</Link>
                                             </div>
                                         </div>
                                 )
