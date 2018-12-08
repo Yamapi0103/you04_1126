@@ -67,9 +67,12 @@
       justify-content: center;
       text-decoration: none;
       font-family: "微軟正黑體";
-      color: white;
+      color: rgb(0, 0, 0);
       &:hover {
         background: rgb(29, 197, 189);
+        color: white;
+      }
+      &:hover span {
         color: white;
       }
       i{
@@ -79,6 +82,7 @@
       }
       span {
         // background: #ffffff;
+        color: rgb(0, 0, 0);
         line-height: 50px;
         text-align: center;
       }

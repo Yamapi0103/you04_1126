@@ -52,7 +52,7 @@ class ICChat extends Component {
             .siblings()
             .removeClass("choose");
           //從接案管理進來時,把放在'查看對話button'的"網紅index"設給this.CurrentIC_idx
-          this.CurrentBS_idx = $(`div[sid=${this.bs_case_detail_sid}]`).find($(`button[data-num]`)).attr('data-num');
+          this.CurrentBS_idx = $(`div[sid=${this.bs_case_detail_sid}]`).find($(`.show_chat[data-num]`)).attr('data-num');
         })
         .then(()=>{
           //如果是從接案管理->查看應徵網紅->按查看對話的話就啟動choose() => 顯示該案子的對話紀錄
@@ -337,18 +337,11 @@ class ICChat extends Component {
                 {this.state.bsCaseArray.map((v, idx) => {
                   return (
                     <div key={v.sid} className="case" sid={v.sid}>
-                      <h6>專案名字: {v.BScase_name}</h6>
-                      <p>廠商: <span style={{color:'#df910e'}}>{this.state.bsNameArray[idx]['BS_name']}</span></p>
-                      <p>地點: {v.BScase_location}</p>
-                      <p>預算: {v.BScase_pay}</p>
-                      <button
-                        data-casesid={v.sid}
-                        data-num={idx}
-                        onClick={this.showChat}
-                        className="LookChat"
-                      >
-                        查看對話
-                      </button>
+                        <div className="show_chat" data-casesid={v.sid} data-num={idx} onClick={this.showChat}></div>
+                        <h6>專案名字: {v.BScase_name}</h6>
+                        <p>廠商: <span style={{color:'#df910e'}}>{this.state.bsNameArray[idx]['BS_name']}</span></p>
+                        <p>地點: {v.BScase_location}</p>
+                        <p>預算: {v.BScase_pay}</p>
                     </div>
                   );
                 })}

@@ -1,4 +1,4 @@
-$bg_color:rgb(243, 239, 233);
+$bg_color:rgb(255, 255, 255);
 
 .chat{
     display: flex;
@@ -12,15 +12,31 @@ $bg_color:rgb(243, 239, 233);
             padding: 10px 10px;
             margin-bottom: 10px;
             background: #ffff;
+            position: relative;
+            height: calc( 20% - 10px );
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .show_chat {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                // background: #000;
+                z-index: 8;
+            }
             h6{
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+                font-weight: bold;
+                line-height: 30px;
             }
         }
         .case:hover{
-            background-color: rgb(250, 238, 236);
+            background-color: rgb(224, 245, 186);
         }
         .choose{
-            background: rgb(248, 222, 217) !important;
+            background: rgb(224, 245, 186) !important;
         }
         .LookChat{
             padding: 3px 10px;
@@ -36,8 +52,10 @@ $bg_color:rgb(243, 239, 233);
         background:$bg_color;
         .chatContent{
             // width:450px;  //暫時先寫死,不然當<p>太長時就會爆版
-            height: 520px;
+            height: 540px;
             overflow: auto;
+            padding: 0 10px;
+            box-sizing: border-box;
             // background-color: #ffff;
             .bsChat,.icChat{
                 width: 100%;
@@ -58,8 +76,7 @@ $bg_color:rgb(243, 239, 233);
         }
         .inputDiv{
             display: flex;
-            flex-wrap: wrap;
-            height: 80px;
+            height: 60px;
             .text{
                 width: 80%;
             }
@@ -68,7 +85,7 @@ $bg_color:rgb(243, 239, 233);
                 color: #ffff;
                 text-align: center;
                 width: 20%;
-                line-height: 80px;
+                line-height: 60px;
                 background: rgb(73, 108, 206);
             }
             .sent:hover{

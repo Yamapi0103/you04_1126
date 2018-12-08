@@ -97,3 +97,13 @@ input {
 .form-control {
   border-radius: 1px!important;
 }
+
+::-webkit-scrollbar {
+  width: 15px;
+} 
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0px 0px 15px rgba(30, 116, 64, 0.541); 
+} 
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 10px 10px 10px rgba(158, 158, 158, 0.541); 
+}

@@ -302,11 +302,12 @@ fixDate=(v)=>{
                             this.state.bsCaseArray.map((v,idx)=>{
                                 return(
                                         <div key={v.sid} className='case' sid={v.sid} >
-                                            <h6>專案名字: {v.BScase_name}</h6>
-                                            <p>應徵網紅:<span style={{color:'#df910e'}}>{this.state.icNameArray[idx]['IC_name']}</span></p>
-                                            <p>地點: {v.BScase_location}</p>
-                                            <p>預算: {v.BScase_pay}</p>
-                                            <button data-casesid={v.sid} data-num={idx} onClick={this.showChat} className='LookChat'>查看對話</button>
+                                            <div className="show_chat" data-casesid={v.sid} data-num={idx} onClick={this.showChat}></div>
+                                            <h6>專案名字：{v.BScase_name}</h6>
+                                            <p>應徵網紅：<span style={{color:'#df910e'}}>{this.state.icNameArray[idx]['IC_name']}</span></p>
+                                            <p>地點：{v.BScase_location}</p>
+                                            <p>預算：{v.BScase_pay}</p>
+                                            {/* <button data-casesid={v.sid} data-num={idx} onClick={this.showChat} className='LookChat'>查看對話</button> */}
                                         </div>
                                 )
                             })   
