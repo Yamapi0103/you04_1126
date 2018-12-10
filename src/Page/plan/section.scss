@@ -182,7 +182,7 @@ $plan_btn_color:#f54337;
                 border: 1px solid rgb(204, 204, 204);
                 width: 290px;
                 text-align: center;
-                margin-bottom: 30px;
+                // margin-bottom: 30px;
                 .pbb_plan_ctn {
                     padding: 20px 0;
                     background: rgb(245, 195, 32);
@@ -240,9 +240,14 @@ $plan_btn_color:#f54337;
                     }
                 }
             }
-            @media(max-width: 1100px) {
+            @media(max-width: 1600px) {
                 .plan_buy_box{
-                    min-width:40%;
+                    margin: 0 80px 50px 80px;
+                }
+            }
+            @media(max-width: 1155px) {
+                .plan_buy_box{
+                    margin: 0 10px 50px 10px;
                 }
             }
         }
