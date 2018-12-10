@@ -7,7 +7,14 @@ import swal from 'sweetalert';
 class Plan_buy extends Component{
     constructor(props){
         super(props);
-        this.point = props.match.params.point;
+        if(!cookie.load('userId') || cookie.load('userId')[0]['userType']!=='BS'){
+            swal("需以廠商身分登入才可購買點數")
+            .then(()=>{
+                this.props.history.push("/loginIdSelect")
+            })
+        }
+        else{
+                    this.point = props.match.params.point;
         this.text = props.match.params.text;
         this.money = props.match.params.money;
         this.perprice = props.match.params.perprice;
@@ -34,6 +41,9 @@ class Plan_buy extends Component{
         this.flag_re_name = null;
         this.flag_re_email = null;
         this.flag_method = null;
+        }
+
+
     }
     //-------------------------------------驗證登入區--------------------------------------
     islogIn = () =>{

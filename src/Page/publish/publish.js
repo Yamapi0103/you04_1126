@@ -78,7 +78,7 @@ class Publish extends Component {
         })   
     }
     else{
-        this.props.history.push('/login')
+        this.props.history.push('/loginIdSelect')
         return
     }
         this.getSearchIndustry();
@@ -177,7 +177,7 @@ class Publish extends Component {
 
         //判斷點數是否足夠
         if(this.userPoints<100){
-            alert('點數不足，請先到商城購買點數！')
+            swal('點數不足，請先到商城購買點數！')
             return
         }
 
@@ -253,7 +253,7 @@ class Publish extends Component {
             return(
                 <React.Fragment>
                 {alert("請先登入")}
-                {this.props.history.push("/login")}
+                {this.props.history.push("/loginIdSelect")}
                 </React.Fragment>
             )
         }
