@@ -44,9 +44,7 @@ class App extends Component {
             <Route path="/publish" component={Publish} />
             <Route path="/celebrity/:ic_media?" component={CelebrityList} />
             <Route path="/celebrityInfo/:icsid?" component={CelebrityInfo} />
-            <Route exact path="/register" component={Register} />
-            <Route path="/register/CompanyRegister" component={CompanyRegister} />
-            <Route path="/register/ICRegister" component={ICRegister} />
+
             <Route path="/contact_us" component={contact_us} />
 
           </div>
@@ -56,6 +54,10 @@ class App extends Component {
           <Route path="/plan_buy/:point/:text/:money/:plan/:perprice/:pnum" component={Plan_buy} />
           <Route path="/BSMember" component={BSMember} />
           <Route path="/ICMember" component={ICMember} />
+
+          <Route exact path="/register" component={Register} />
+          <Route path="/register/CompanyRegister" component={CompanyRegister} />
+          <Route path="/register/ICRegister" component={ICRegister} />
 
 
 

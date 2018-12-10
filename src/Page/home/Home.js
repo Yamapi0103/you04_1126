@@ -65,18 +65,20 @@ class Home extends Component{
                     </div>
                 </div>
                 <div className="home_section1h">
-                    <h2 className="section_title">關於You04</h2>
-                    <div className="about_us">
-                        <div className="about_us_left">
-                            {/* <div className="about_us_blank"></div>
-                            <div className="about_us_blank2"></div> */}
-                            <div className="about_us_content_container">
-                                <span>
-                                    You04 提供當今熱門社群，包含 YouTube、Facebook、Instgram、部落格等，有意承接業配案的網紅們，一個更公開、更迅速尋求業配的平台，另一方面，各行各業的廠商，也能透過發布業配專案，在此尋求合適的網紅接案。
-                                </span>
+                    <div className="home_section1h_container">
+                        <h2 className="section_title">關於You04</h2>
+                        <div className="about_us">
+                            <div className="about_us_left">
+                                {/* <div className="about_us_blank"></div>
+                                <div className="about_us_blank2"></div> */}
+                                <div className="about_us_content_container">
+                                    <span>
+                                        You04 提供當今熱門社群，包含 YouTube、Facebook、Instgram、部落格等，有意承接業配案的網紅們，一個更公開、更迅速尋求業配的平台，另一方面，各行各業的廠商，也能透過發布業配專案，在此尋求合適的網紅接案。
+                                    </span>
+                                </div>
                             </div>
+                            <div className="about_us_right"></div>
                         </div>
-                        <div className="about_us_right"></div>
                     </div>
 
                 </div>
