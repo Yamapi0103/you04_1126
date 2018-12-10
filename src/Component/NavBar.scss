@@ -32,7 +32,6 @@ $main_color:#71a795;
                 height: 55px;
             }
         }
-
     }
     .nav_option_container {
         display: flex;
@@ -45,22 +44,31 @@ $main_color:#71a795;
             a {
                 text-decoration: none;
                 color: white;
+                &:hover {
+                    color: rgb(255, 203, 60);
+                }
             }
         }
-        // li:nth-child(2) {
-        //     // margin: 0 20px;
-        // }
-        // li:nth-child(3) {
-        //     // background: rgb(255, 152, 152);
-        //     // padding: 5px 10px;
-        //     border-radius: 10px;
-        // }
+    }
+}
+@media(max-width:530px) {
+    .nav_container {
+        padding: 0 5%;
+        .nav_logo_container {
+            a {
+                img {
+                    height: 40px;
+                }
+            }
+        }
+        .nav_option_container {
+            li {
+                margin-left: 13px;
+            }
+        }
     }
 }
 .user-menu-wrap{
     cursor:pointer;
 }
-// nav_logo
-
-
 
