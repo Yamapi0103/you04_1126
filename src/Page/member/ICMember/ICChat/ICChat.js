@@ -9,6 +9,7 @@ class ICChat extends Component {
     super(props);
     this.state = {
       bsCaseArray: [],
+      bsNameArray:[],
       bsChatArray: [],
       icChatArray: [],
       //sortArray存放合併且排序過的對話內容
@@ -22,10 +23,11 @@ class ICChat extends Component {
     };
     this.sid = cookie.load("userId")[0]["IC_sid"]; //網紅id
 
-    this.BScase_sid = ""; //該案子的sid
     this.talk_sid = "";
     //從ICMyCase_Open.js的Link寄來的bs_case_detail流水號sid
     this.bs_case_detail_sid = props.match.params.bs_case_detail_sid;
+
+    this.CurrentBS_idx=0; //當前聊天的廠商index
   }
   // ---------------------
   //顯示該網紅應徵的案子
@@ -33,24 +35,38 @@ class ICChat extends Component {
     fetch("http://localhost:3000/chat/icMyCase_showCase/" + this.sid)
       .then(res => res.json())
       .then(data => {
-        this.setState({
-          bsCaseArray: data //[{bs_case_detail+case1的資料},{bs_case_detail+case2的資料}...]
+        //去讀取廠商的名字
+        fetch('http://localhost:3000/chat/icMyCase_showIC/'+this.sid)
+        .then(res=>res.json())
+        .then(datas=>{     //回傳 [{BSname:xxxx},{BSname:xxxx}...]
+            this.setState({
+                bsNameArray:datas,
+                bsCaseArray:data   //此時已含流水號sid  [{bs_case_detail+bs_case的資料},{bs_case_detail+bs_case的資料}...]
+            })
+        })
+        .then(() => {
+          //這段只有在從接案管理進來時才能抓到$(`div[sid=${this.bs_case_detail_sid}]`)
+          // console.log($(`div[sid=${this.bs_case_detail_sid}]`))
+          $(`div[sid=${this.bs_case_detail_sid}]`)
+            .addClass("choose")
+            .siblings()
+            .removeClass("choose");
+          //從接案管理進來時,把放在'查看對話button'的"網紅index"設給this.CurrentIC_idx
+          this.CurrentBS_idx = $(`div[sid=${this.bs_case_detail_sid}]`).find($(`.show_chat[data-num]`)).attr('data-num');
+        })
+        .then(()=>{
+          //如果是從接案管理->查看應徵網紅->按查看對話的話就啟動choose() => 顯示該案子的對話紀錄
+          if (this.bs_case_detail_sid) {
+            this.choose();
+          }
         });
-      })
-      .then(() => {
-        //這段只有在從接案管理進來時才能抓到$(`div[sid=${this.bs_case_detail_sid}]`)
-        // console.log($(`div[sid=${this.bs_case_detail_sid}]`))
-        $(`div[sid=${this.bs_case_detail_sid}]`)
-          .addClass("choose")
-          .siblings()
-          .removeClass("choose");
-      });
+    })
   };
   // --------------------顯示對話
   showChat = evt => {
-    //利用該案子的sid去抓bs_case_detail的"流水號sid"(流水號sid作為bs_talk資料表的talk_sid的值)
-    let casesid = evt.target.dataset.casesid; //該案子的sid
-    this.BScase_sid = casesid; //先把"該案子的sid"存起來,當下次傳送完訊息要重整畫面時會用到
+    //流水號sid作為bs_talk資料表的talk_sid的值
+    let casesid = evt.target.dataset.casesid; //該流水號sid
+    this.talk_sid = casesid; //先把"流水號sid"存起來,當下次傳送完訊息要重整畫面時會用到
 
     //因為寄出訊息後要重整顯示的function跟第一次要顯示對話的function有重複,所以寫成showChatFunction()
     this.showChatFunction();
@@ -60,6 +76,8 @@ class ICChat extends Component {
       .addClass("choose")
       .siblings()
       .removeClass("choose");
+
+      this.CurrentBS_idx = evt.target.dataset.num;  //把放在'查看對話button'的"廠商index"設給this.CurrentBS_idx => 這樣才能BSNameArray[this.CurrentBS_idx]["BS_name"] => 取到當前聊天的廠商名字
   };
   // ----------當寄出訊息後要重整對話頁
   showChatFunction = () => {
@@ -84,9 +102,9 @@ class ICChat extends Component {
       });
     };
 
-    //按下送出訊息後要重整畫面時,因為this.showChat()會用到evt.target而導致ERROR,所以改用this.BScase_sid
-    //如果沒有this.BScase_sid => 代表是從接按管理進來的
-    if (!this.BScase_sid) {
+    //按下送出訊息後要重整畫面時,因為this.showChat()會用到evt.target而導致ERROR,所以改用this.talk_sid
+    //如果沒有this.talk_sid => 代表是從接按管理進來的
+    if (!this.talk_sid) {
       //用流水號sid讀取廠商的對話(存在bs_talk資料表)
       fetch(
         "http://localhost:3000/chat/bsMyCase_showBSChat/" +
@@ -118,13 +136,8 @@ class ICChat extends Component {
             });
         });
     }
-    //如果有this.BScase_sid => 代表是點擊此頁的其他案子
+    //如果有this.talk_sid => 代表是點擊此頁的其他案子
     else {
-      fetch("http://localhost:3000/chat/bsMyCase_catch/" + this.BScase_sid)
-        .then(res => res.json())
-        .then(data => {
-          this.talk_sid = data[0].sid; //取得流水號sid
-
           //用流水號sid讀取廠商的對話(存在bs_talk資料表)
           fetch(
             "http://localhost:3000/chat/bsMyCase_showBSChat/" + this.talk_sid
@@ -154,7 +167,7 @@ class ICChat extends Component {
                   this.boxScroll($(".chatContent")[0]);
                 });
             });
-        });
+        
     }
   };
   // --------------------寄出對話
@@ -259,11 +272,14 @@ class ICChat extends Component {
   };
   // --------------------------
   componentDidMount = () => {
+
     this.showCase();
-    //如果是從接案管理->查看應徵網紅->按查看對話的話就啟動choose() => 顯示該案子的對話紀錄
-    if (this.bs_case_detail_sid) {
-      this.choose();
-    }
+
+    // //如果是從接案管理->查看應徵網紅->按查看對話的話就啟動choose() => 顯示該案子的對話紀錄
+    // if (this.bs_case_detail_sid) {
+    //   this.choose();
+    // }
+
   };
   // --------------------一些小設定
   change = evt => {
@@ -321,16 +337,11 @@ class ICChat extends Component {
                 {this.state.bsCaseArray.map((v, idx) => {
                   return (
                     <div key={v.sid} className="case" sid={v.sid}>
-                      <h6>專案名字: {v.BScase_name}</h6>
-                      <p>地點: {v.BScase_location}</p>
-                      <p>預算: {v.BScase_pay}</p>
-                      <button
-                        data-casesid={v.BScase_sid}
-                        onClick={this.showChat}
-                        className="btn"
-                      >
-                        查看對話
-                      </button>
+                        <div className="show_chat" data-casesid={v.sid} data-num={idx} onClick={this.showChat}></div>
+                        <h6>專案名字: {v.BScase_name}</h6>
+                        <p>廠商: <span style={{color:'#df910e'}}>{this.state.bsNameArray[idx]['BS_name']}</span></p>
+                        <p>地點: {v.BScase_location}</p>
+                        <p>預算: {v.BScase_pay}</p>
                     </div>
                   );
                 })}
@@ -339,19 +350,25 @@ class ICChat extends Component {
                 <div className="chatContent">
                   {this.state.sortArray.map((v, idx) => {
                     return v.hasOwnProperty("BS_content") ? (
-                      <div className="bsChat" key={v.time}>
-                        <p>廠商: {v.BS_content}</p>
+                      <div className="bsChat IC_bsChat" key={v.time}>
+                        <p>
+                        <span>
+                            {this.state.bsNameArray[this.CurrentBS_idx]['BS_name']}
+                            :　
+                        </span> 
+                          {v.BS_content}
+                        </p>
                         <p className="time">{this.fixDate(v.time)}</p>
                       </div>
                     ) : (
-                      <div className="icChat" key={v.time}>
+                      <div className="icChat IC_icChat" key={v.time}>
                         <p>{v.IC_content}</p>
                         <p className="time">{this.fixDate(v.time)}</p>
                       </div>
                     );
                   })}
                 </div>
-                {this.BScase_sid || this.bs_case_detail_sid ? (
+                {this.talk_sid || this.bs_case_detail_sid ? (
                   <div className="inputDiv">
                     <textarea
                       value={this.state.text}

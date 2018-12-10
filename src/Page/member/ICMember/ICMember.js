@@ -5,12 +5,29 @@ import ICMyInfo from './ICMyInfo/ICMyInfo';
 import ICMyCase from './ICMyCase/ICMyCase';
 import ICMyFavor from './ICMyFavor/ICMyFavor';
 import ICChat from './ICChat/ICChat';
-
+import cookie from 'react-cookies';
 
 class ICMember extends Component {
     constructor(props) {
         super([props])
-        console.log(props.match.url)
+        this.state={
+            Data:'',
+        };
+        // console.log(props.match.url)
+        this.sid = cookie.load('userId')[0]['IC_sid'];  //IC_sid
+    }
+    getInfo=()=>{
+        fetch('http://localhost:3000/you04/ICmemberInfo/'+this.sid)
+        .then(res=>res.json())
+        .then(data=>{  
+            // console.log(data); 
+            this.setState({
+                Data:data[0]
+            })
+        })
+    }
+    componentDidMount=()=>{
+        this.getInfo();
     }
     render() {
         return (
@@ -20,7 +37,7 @@ class ICMember extends Component {
                 <div className="register_navbar">
                         <div className="member_head">
                             <img src="/images/member.png" alt="me" />
-                            <span>金 城武</span>
+                            <span>{this.state.Data['IC_name']}</span>
                         </div>
                         <ul>
                             <li className="transition">

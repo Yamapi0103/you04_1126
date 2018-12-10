@@ -6,12 +6,29 @@ import BSMyCase from './BSMyCase/BSMyCase';
 import BSMyFavor from './BSMyFavor/BSMyFavor';
 import BSMyChat from './BSMyChat/BSMyChat';
 import BSMyBilling from './BSMyBilling/BSMyBilling';
-
+import cookie from 'react-cookies';
 
 class BSMember extends Component {
     constructor(props) {
-        super([props])
-        console.log(props.match.url)
+        super(props)
+        this.state={
+            Data:'AA',
+        };
+        // console.log(props.match.url)
+        this.sid = cookie.load('userId')[0]['BS_sid'];  //BS_sid
+    }
+    getInfo=()=>{
+        fetch('http://localhost:3000/you04/BSmemberInfo/'+this.sid)
+        .then(res=>res.json())
+        .then(data=>{  
+            console.log(data); 
+            this.setState({
+                Data:data[0]
+            })
+        })
+    }
+    componentDidMount=()=>{
+        this.getInfo();
     }
     render() {
         return (
@@ -21,7 +38,7 @@ class BSMember extends Component {
                     <div className="register_navbar">
                         <div className="member_head">
                             <img src="/images/member.png" alt="me" />
-                            <span>金 城武</span>
+                            <span>{this.state.Data['BS_name']}</span>
                         </div>
                         <ul>
                             <li className="transition">
