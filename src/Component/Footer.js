@@ -13,9 +13,9 @@ class Footer extends Component {
             <section className='footer'>
                 <div className='footer_content'>
                     <div className="footer_content_top">
-                        <div className='footer_content_top_left'>
+                        {/* <div className='footer_content_top_left'>
                             <img src='/images/logo.svg' />
-                        </div>
+                        </div> */}
                         <div className='footer_content_top_right'>
                             <ul>
                                 <li className='footer_title'>Y04服務總覽</li>
@@ -34,13 +34,16 @@ class Footer extends Component {
                                 <li className='footer_title'>聯繫Y04</li>
                                 <li><Link to='contact_us'>聯絡我們</Link></li>
                                 <li><Link to=''>郵件聯繫</Link></li>
-                                <li><Link to=''>台北專線: 02-2345-6789</Link></li>
-                                <li><Link to=''>高雄專線: 02-2345-6789</Link></li>
+                                {/* <li><Link to=''>台北專線: 02-2345-6789</Link></li>
+                                <li><Link to=''>高雄專線: 02-2345-6789</Link></li> */}
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div className="footer_bottom">
+                    <div className='footer_bottom_logo_container'>
+                        <img src='/images/logo.svg' />
+                    </div>
                     <div className="footer_bottom_icon_container">
                         <Link to="" className='link_img'>
                             <i className="fab fa-facebook-square fa-xs"></i>

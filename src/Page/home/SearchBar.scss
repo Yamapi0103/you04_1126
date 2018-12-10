@@ -5,9 +5,10 @@
     display: flex;
     justify-content: space-around;
     .searchbar_btn {
-      width: 170px;
+      // width: 250px;
+      width: 20%;
       background: #ffffff;
-      border: 2px solid grey;
+      border: 1px solid rgb(204, 204, 204);
       margin-right: 10px;
     //   border-radius: 20px;
       .searchbar_btn_dropdown_toggle {
@@ -21,31 +22,30 @@
         overflow: hidden;
         width: 100%;
         transition: .5s;
-        // border-radius: 20px;
-        position: relative;
         left: 0;
         outline: 2.5px solid transparent;
-        div {
-          padding-left: 10%;
-          color: #686868;
-        }
-        &:hover {
-          max-height: 250px;
-          background: #fff;
-          outline: 2.5px solid grey;
-        //   -moz-outline-radius: 20px;
-        }
-        li {
-            display: block;
-            padding-left: 10%;
-            a {
-                text-decoration: none;
-                color: black;
-            }
-        }
-        li:hover {
-            background: rgb(214, 214, 214);
-        }
+        // position: relative;
+        // div {
+        //   padding-left: 10%;
+        //   color: #686868;
+        // }
+        // &:hover {
+        //   max-height: 250px;
+        //   background: #fff;
+        //   outline: 2.5px solid grey;
+        // //   -moz-outline-radius: 20px;
+        // }
+        // li {
+        //     display: block;
+        //     padding-left: 10%;
+        //     a {
+        //         text-decoration: none;
+        //         color: black;
+        //     }
+        // }
+        // li:hover {
+        //     background: rgb(214, 214, 214);
+        // }
       }
     }
     .searchbar_btn3 {
@@ -53,7 +53,7 @@
       flex-grow: 1;
       font-family: "微軟正黑體";
       font-size: 1rem;
-      padding-left: 3%;
+      padding-left: 3px;
       box-sizing: border-box;
     }
   }
@@ -61,13 +61,13 @@
       display: block;
       width: 200px;
       height: 50px;
-      border-radius: 5px;
-      background: #28ada7;
+      border-radius: 3px;
+      background: #83ccb4;
       display: flex;
       justify-content: center;
       text-decoration: none;
       font-family: "微軟正黑體";
-      color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
       &:hover {
         background: rgb(28, 143, 137);
         color: white;
@@ -82,7 +82,7 @@
       }
       span {
         // background: #ffffff;
-        color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
         line-height: 50px;
         text-align: center;
       }

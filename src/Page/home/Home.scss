@@ -12,7 +12,8 @@ $section_color:rgb(191, 218, 209);
 .home_section1 {
   width: 100%;
   height: calc(100vh - 70px);
-  // background: #ffbe33 url("/images/pexels-photo-1230665.jpeg") no-repeat 0 0;
+  background: #ffffff url("/images/pexels-photo-1420701.jpeg") no-repeat 0;
+  // pexels-photo-1420709
   background-size: cover;
   .home_section1_top {
     width: 100%;
@@ -55,9 +56,9 @@ $section_color:rgb(191, 218, 209);
 }
 .home_section1h {
   margin: 0 auto;
-  padding: 15vh 0;
+  padding: 100px 0 50px 0;
   width: 100%;
-  background: $section_color;
+  // background: $section_color;
   .home_section1h_container {
     width: 80%;
     margin: 0 auto;
@@ -88,11 +89,11 @@ $section_color:rgb(191, 218, 209);
 
 }
 .home_section2 {
-  // margin: 15vh auto 15vh auto;
-  padding: 15vh 10%;
+  // margin: 50px auto 50px auto;
+  padding: 50px 10%;
   width: 80%;
   .blank {
-    margin-top: 15vh;
+    margin-top: 50px;
   }
   .home_section2_case_container {
     // height: 60vh;
@@ -115,7 +116,7 @@ $section_color:rgb(191, 218, 209);
       .home_section2_case_bottom {
         h5 {
           @media only screen and (max-width: 1230px) {
-            font-size: 2.5vh;
+            font-size: 1.3rem;
           }
         }
       }
@@ -143,7 +144,7 @@ $section_color:rgb(191, 218, 209);
   }
 }
 .home_section4 {
-  margin: 15vh auto;
+  margin: 50px auto 150px auto;
   width: 80%;
   // background: rgb(202, 202, 202);
   .home_section4_hotissue_container {

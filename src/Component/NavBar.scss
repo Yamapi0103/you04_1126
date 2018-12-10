@@ -20,11 +20,19 @@ $main_color:#71a795;
     z-index: 15;
     font-weight: bold;
     .nav_logo_container {
-        img {
-            width: auto;
-            height: 70px;
-
+        height: 100%;
+        a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: none!important;
+            padding: none!important;
+            img {
+                width: auto;
+                height: 55px;
+            }
         }
+
     }
     .nav_option_container {
         display: flex;
@@ -33,19 +41,20 @@ $main_color:#71a795;
         // background: #000;
         font-size: 1.3rem;
         li {
+            margin-left: 20px;
             a {
                 text-decoration: none;
                 color: white;
             }
         }
-        li:nth-child(2) {
-            margin: 0 20px;
-        }
-        li:nth-child(3) {
-            // background: rgb(255, 152, 152);
-            padding: 5px 10px;
-            border-radius: 10px;
-        }
+        // li:nth-child(2) {
+        //     // margin: 0 20px;
+        // }
+        // li:nth-child(3) {
+        //     // background: rgb(255, 152, 152);
+        //     // padding: 5px 10px;
+        //     border-radius: 10px;
+        // }
     }
 }
 .user-menu-wrap{

@@ -67,6 +67,7 @@ class Home extends Component{
                         <a href="#" className="down_btn"></a>
                     </div>
                 </div>
+                
                 <div className="home_section1h">
                     <div className="home_section1h_container">
                         <h2 className="section_title">關於You04</h2>
@@ -83,8 +84,8 @@ class Home extends Component{
                             <div className="about_us_right"></div>
                         </div>
                     </div>
-
                 </div>
+                
                 <div className="home_section3">
                     <div className="home_section3_content">
                         <div className="home_section3_content_text">

@@ -1,9 +1,8 @@
-$footer_hover: #fff78c;
+$footer_hover: #52ffae;
 
 .footer{
-    background-color: #212121;
+    background-color: #303030;
     color: #fff;
-    padding-bottom: 20px;
     .footer_content{
         width: 80%;
         padding: 50px 0 30px 0;
@@ -15,6 +14,7 @@ $footer_hover: #fff78c;
         .footer_content_top {
             display: flex;
             width: 100%;
+            justify-content: space-around;
             .footer_content_top_left {
                 // background: #000;
                 width: 40%;
@@ -42,10 +42,11 @@ $footer_hover: #fff78c;
                         text-decoration: none;
                         color: #aaa;;
                         font-size: 1rem;
+                        &:hover{
+                            color:$footer_hover;
+                        }
                     }
-                    a:hover{
-                        color:$footer_hover;
-                    }
+
                     .footer_title{
                         font-size: 1.1rem;
                         font-weight: 700;
@@ -64,7 +65,6 @@ $footer_hover: #fff78c;
                 }
             }
         }
-        
     }
     @media(max-width:900px){
         .footer_content{
@@ -81,11 +81,32 @@ $footer_hover: #fff78c;
     }
     .footer_bottom {
         width: 100%;
-        border-top: 1px solid #fff;
+        // border-top: 1px solid #fff;
+        background: rgb(39, 39, 39);
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 50px;
+        box-sizing: border-box;
+        .footer_bottom_logo_container {
+            // width: 100px;
+            flex-grow: 1;
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
+            height: 50px;
+            img {
+                margin: 0 auto;
+                height: 50px;
+                width: auto;
+            }
+        }
         .footer_bottom_icon_container {
             // padding: 5px 0;
-            margin: 10px auto 0 auto;
-            width: 70%;
+            margin: 0 auto 0 auto;
+            height: 50px;
+            width: 50%;
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -96,6 +117,12 @@ $footer_hover: #fff78c;
             }
             a {
                 color: #fff;
+                &:hover span {
+                    color:$footer_hover;
+                }
+                &:hover i {
+                    color:$footer_hover;
+                }
             }
         }
 
