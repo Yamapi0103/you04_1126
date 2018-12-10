@@ -112,7 +112,7 @@ $section_color:rgb(191, 218, 209);
         width: 50%;
         height: 200px;
         // position: relative;
-        padding: 30px;
+        padding: 70px 30px;
         text-align: justify;
         span {
           font-size: 1.3rem;
@@ -126,7 +126,7 @@ $section_color:rgb(191, 218, 209);
       }
       .about_us_right {
         width: 48%;
-        height: 250px;
+        height: 300px;
         background: #ffbe33 url("/images/pexels-photo-1415550.jpeg") no-repeat 0 0;
         background-size: cover;
         transform: rotate(4deg);
@@ -135,6 +135,7 @@ $section_color:rgb(191, 218, 209);
       @media(max-width: 879px) {
         .about_us_left {
           width: 100%;
+          padding: 30px 30px;
         }
         .about_us_right {
           display: none;
@@ -209,8 +210,6 @@ $section_color:rgb(191, 218, 209);
     align-items: center;
     height: 350px;
     .hshc_left {
-      // max-width: 500px;
-      // min-width: 400px;
       min-width: 50%;
       height: 100%;
       background: #ffbe33 url("/images/pexels-photo-1574649.jpeg") no-repeat 0 0;
