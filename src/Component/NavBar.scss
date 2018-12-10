@@ -1,8 +1,10 @@
 @import './avatar.scss';
+
+$main_color:#71a795;
 .nav_container {
     margin: 0;
     padding: 0;
-    background: #71a795;
+    background: $main_color;
     background-size: cover;
     width: 100%;
     height: 70px;

@@ -1,3 +1,5 @@
+$section_color:rgb(191, 218, 209);
+
 .section_title {
   text-align: left;
   padding-left: 20px;
@@ -10,7 +12,7 @@
 .home_section1 {
   width: 100%;
   height: calc(100vh - 70px);
-  background: #ffbe33 url("/images/pexels-photo-1230665.jpeg") no-repeat 0 0;
+  // background: #ffbe33 url("/images/pexels-photo-1230665.jpeg") no-repeat 0 0;
   background-size: cover;
   .home_section1_top {
     width: 100%;
@@ -26,7 +28,7 @@
       justify-content: space-around;
       align-items: center;
       h2 {
-      color: white;
+      color: rgb(126, 126, 126);
       text-align: center;
       }
     } 
@@ -52,34 +54,42 @@
   }
 }
 .home_section1h {
-  margin: 15vh auto 15vh auto;
-  width: 80%;
-  .about_us {
-    display: flex;
-    justify-content: space-between;
-    .about_us_left {
-      width: 50%;
-      height: 200px;
-      position: relative;
-      padding: 30px;
-      color: black;
-      text-align: justify;
-      span {
-        font-size: 1.3rem;
+  margin: 0 auto;
+  padding: 15vh 0;
+  width: 100%;
+  background: $section_color;
+  .home_section1h_container {
+    width: 80%;
+    margin: 0 auto;
+    .about_us {
+      display: flex;
+      justify-content: space-between;
+      .about_us_left {
+        width: 50%;
+        height: 200px;
+        // position: relative;
+        padding: 30px;
+        text-align: justify;
+        span {
+          font-size: 1.3rem;
+          color: rgb(0, 0, 0);
+        }
+      }
+      .about_us_right {
+        width: 48%;
+        height: 250px;
+        background: #ffbe33 url("/images/pexels-photo-1415550.jpeg") no-repeat 0 0;
+        background-size: cover;
+        transform: rotate(4deg);
+        opacity: .8;
       }
     }
-    .about_us_right {
-      width: 48%;
-      height: 250px;
-      background: #ffbe33 url("/images/pexels-photo-1415550.jpeg") no-repeat 0 0;
-      background-size: cover;
-      transform: rotate(4deg);
-      opacity: .8;
-    }
   }
+
 }
 .home_section2 {
-  margin: 15vh auto 15vh auto;
+  // margin: 15vh auto 15vh auto;
+  padding: 15vh 10%;
   width: 80%;
   .blank {
     margin-top: 15vh;
