@@ -34,19 +34,13 @@ class App extends Component {
           <Navbar />
           <div className="container margin-top70">
             {/* Link Page */}
-
-            <Route exact path="/loginIdSelect" component={loginIdSelect} />
-            <Route path="/login" component={Login} />
-
             <Route path="/list/:ids/:bas/:keyword" component={List} />
             <Route path="/publish_content/:category" component={Job} />
             <Route path="/check_case_publish/:case_id" component={CheckPublish} />
             <Route path="/publish" component={Publish} />
             <Route path="/celebrity/:ic_media?" component={CelebrityList} />
             <Route path="/celebrityInfo/:icsid?" component={CelebrityInfo} />
-
             <Route path="/contact_us" component={contact_us} />
-
           </div>
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
@@ -54,7 +48,8 @@ class App extends Component {
           <Route path="/plan_buy/:point/:text/:money/:plan/:perprice/:pnum" component={Plan_buy} />
           <Route path="/BSMember" component={BSMember} />
           <Route path="/ICMember" component={ICMember} />
-
+          <Route path="/login" component={Login} />
+          <Route exact path="/loginIdSelect" component={loginIdSelect} />
           <Route exact path="/register" component={Register} />
           <Route path="/register/CompanyRegister" component={CompanyRegister} />
           <Route path="/register/ICRegister" component={ICRegister} />

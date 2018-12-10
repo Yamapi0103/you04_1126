@@ -35,6 +35,10 @@ footer, header, hgroup, menu, nav, section {
 body {
   line-height: 1.7;
   background: rgb(255, 255, 255);
+  text-shadow: none!important;
+}
+h1, h2 , h3, h4, h5, h6 {
+  text-shadow: none!important;
 }
 ol, ul {
 	list-style: none;

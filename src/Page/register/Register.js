@@ -25,6 +25,7 @@ class Register extends Component{
                         </div>
                         <div className="register_container_a_btn">
                             <Link to="/register/CompanyRegister">我是廠商</Link>
+                            <div className="line"></div>
                             <Link to="/register/ICRegister">我是網紅</Link>
                         </div>
                     </div>

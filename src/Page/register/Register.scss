@@ -11,7 +11,7 @@
     .register_container_a{
         width: 50%;
         margin: 80px 0;
-        background: rgba(216, 216, 216, 0.7);
+        // background: rgba(216, 216, 216, 0.7);
         border-radius: 5px;
         display: flex;
         flex-direction: column;
@@ -32,18 +32,29 @@
             justify-content: space-around;
             align-items: center;
             margin-top: 50px;
-            flex-direction: column;
+            // flex-direction: column;
+            .line {
+                width: .5px;
+                height: 150px;
+                border-right: 1.5px solid black;
+                // background: #000;
+            }
             a {
                 // background: #ff5a5a;
-                border: 2px solid black;
+                border: 1.5px solid black;
+                box-shadow: 0px 0px 3px grey inset;
                 transition: 0.5s;
                 color: rgb(0, 0, 0);
-                padding: 10px 18%;
-                border-radius: 3px;
+                padding: 10px 0;
+                text-align: center;
+                width: 200px;
+                // border-radius: 3px;
+                font-weight: bold;
                 letter-spacing: 3px;
                 &:hover {
                     background: #000000;
                     color: white;
+                    box-shadow: 0px 0px 3px rgb(0, 0, 0) inset;
                 }
             }
         }
