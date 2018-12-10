@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './CicRegister.scss';
 import swal from 'sweetalert';
+import cookie from 'react-cookies'
 
 class ICRegister extends Component{
     constructor(props){
@@ -131,16 +132,25 @@ class ICRegister extends Component{
             })
             .then(res=>res.json())
             .then(data=>{
-                swal(data.message, "歡迎加入You04", "success");
                 if(data.stay==false){
                     //申請成功就跳回首頁
                     this.props.history.push("/home");
+                    swal(data.message, "歡迎加入You04", "success").then(()=>{
+                        let {email,password} = this.state;
+                        fetch("http://localhost:3000/you04/checkicmember/"+email+"/"+password)
+                        .then(res => res.json())
+                        .then(data => {
+                        if(data.length==1){
+                            data[0].userType = "ic".toUpperCase();
+                            cookie.save('userId', data);                
+                            }   
+                        window.location.reload();      
+                        })
+                    })
                 }
             })
         }
-        else{
-            swal('欄位有錯誤')
-        }
+
     }
     
 

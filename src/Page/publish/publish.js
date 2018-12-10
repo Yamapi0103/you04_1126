@@ -269,7 +269,6 @@ class Publish extends Component {
         else{
         return(
             <React.Fragment>
-                <Link to="/plan">購買方案</Link>
                 <form className="publish_container">
                 <h3>專案刊登</h3>
                 <p>＊為必填欄位</p>
