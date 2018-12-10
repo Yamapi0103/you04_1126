@@ -48,7 +48,7 @@ class App extends Component {
           <Route path="/plan_buy/:point/:text/:money/:plan/:perprice/:pnum" component={Plan_buy} />
           <Route path="/BSMember" component={BSMember} />
           <Route path="/ICMember" component={ICMember} />
-          <Route path="/login" component={Login} />
+          <Route path="/login/:userType" component={Login} />
           <Route exact path="/loginIdSelect" component={loginIdSelect} />
           <Route exact path="/register" component={Register} />
           <Route path="/register/CompanyRegister" component={CompanyRegister} />

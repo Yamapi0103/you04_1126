@@ -38,7 +38,6 @@ class Navbar extends Component{
         // console.log(cookie.load('userId'))
             $(window).click(function(){
                 $('.menu-container').removeClass('active');  
-                console.log("ddd")
             })
     }
     render(){ 

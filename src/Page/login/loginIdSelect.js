@@ -18,9 +18,9 @@ class loginIdSelect extends Component{
                             <h4>請選擇你的身份</h4>
                         </div>
                         <div className="register_container_a_btn">
-                            <Link to="/login">我是廠商</Link>
+                            <Link to="/login/bs">我是廠商</Link>
                             <div className="line"></div>
-                            <Link to="/login">我是網紅</Link>
+                            <Link to="/login/ic">我是網紅</Link>
                         </div>
                     </div>
                 </div>

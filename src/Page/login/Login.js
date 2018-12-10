@@ -9,42 +9,25 @@ class Login extends Component{
         this.state={
             email:"",
             name:""
-         }     
-         console.log(this.props.history)   
+         }
+        this.userType = this.props.match.params.userType;    
+         console.log(this.userType)   
     }
 
-    fetchMember = (email,password,userType)=>{
-        return fetch("http://localhost:3000/you04/check"+userType+"member/"+email+"/"+password);
-    }
     checkMember = (evt) =>{
         let {email,password} = this.state;
-        console.log(email,password)
+        // console.log(email,password)
 
-        //先check是不是bsmember
-        this.fetchMember(email,password,"bs")
+        fetch("http://localhost:3000/you04/check"+this.userType+"member/"+email+"/"+password)
         .then(res => res.json())
         .then(data => {
             if(data.length==1){
-                data[0].userType = "bs".toUpperCase();
+                data[0].userType = this.userType.toUpperCase();
                 cookie.save('userId', data);                
                 this.props.history.push("/home"); //是的話轉跳到首頁 
-               
             }else{
-                // $('#main_alert').show();
+                $('#main_alert').show();
             }            
-        })
-        // 不是bsmember的話，check是否為icmember
-        this.fetchMember(email,password,"ic")
-        .then(res => res.json())
-        .then(data => {
-            if(data.length==1){
-                data[0].userType = "ic".toUpperCase();
-                cookie.save('userId', data);                
-                this.props.history.push("/home"); //是的話轉跳到首頁
-            }     
-            else{
-                $('#main_alert').show(); //不是bs也不是ic則秀出alert字樣
-            }       
         })
         
         evt.preventDefault();
