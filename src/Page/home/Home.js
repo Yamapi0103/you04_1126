@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './Home.scss';
 import {Link} from 'react-router-dom';
 import SearchBar from './SearchBar';
-import CaseCard from './CaseCard';
+import NewCaseCard from './NewCaseCard';
+import HotCaseCard from './HotCaseCard';
 import Slider from './Slider';
 
 import cookie from 'react-cookies'
@@ -12,9 +13,36 @@ import CelebrityHome from '../celebrity/celebrityHome';
 class Home extends Component{
     constructor(props){
         super(props)
+        this.state= {   
+            new_cases:[],
+            hot_cases:[]
+        }
     }
     islogIn = () =>{
         return cookie.load('userId')? true : false;
+    }
+
+    getCase(){
+        fetch("http://localhost:3000/case_list/new/")
+        .then(res => res.json())
+        .then(data=>{
+            console.log(data)
+            this.setState({
+                new_cases:data
+            })
+        })
+        fetch("http://localhost:3000/case_list/hot/")
+        .then(res => res.json())
+        .then(data=>{
+            console.log(data)
+            this.setState({
+                hot_cases:data
+            })
+        })
+    }
+
+    componentDidMount() {
+        this.getCase()
     }
     render(){
         // let userType = this.islogIn()? cookie.load('userId')[0].userType:null
@@ -65,15 +93,11 @@ class Home extends Component{
                 <div className="home_section2">
                     <h2 className="section_title">最新刊登</h2>
                     <div className="home_section2_case_container">
-                        <CaseCard />
-                        <CaseCard />
-                        <CaseCard />
+                        <NewCaseCard cases={this.state.new_cases}/>
                     </div>
                     <h2 className="section_title blank">熱門刊登</h2>
                     <div className="home_section2_case_container">
-                        <CaseCard />
-                        <CaseCard />
-                        <CaseCard />
+                        <HotCaseCard cases={this.state.hot_cases}/>
                     </div>
                 </div>
 

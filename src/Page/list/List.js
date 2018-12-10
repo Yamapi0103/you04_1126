@@ -34,7 +34,7 @@ class List extends Component{
         .then(res => res.json())
         .then(data=>{
             console.log(data)
-            let Data = data[0]
+            // let Data = data[0]
             this.setState({
                 cases:data
             })
