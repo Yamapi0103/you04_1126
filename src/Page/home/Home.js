@@ -26,7 +26,7 @@ class Home extends Component{
         fetch("http://localhost:3000/case_list/new/")
         .then(res => res.json())
         .then(data=>{
-            console.log(data)
+            // console.log(data)
             this.setState({
                 new_cases:data
             })
@@ -34,7 +34,7 @@ class Home extends Component{
         fetch("http://localhost:3000/case_list/hot/")
         .then(res => res.json())
         .then(data=>{
-            console.log(data)
+            // console.log(data)
             this.setState({
                 hot_cases:data
             })
@@ -43,6 +43,9 @@ class Home extends Component{
 
     componentDidMount() {
         this.getCase()
+        if(this.islogIn()){
+            console.log(cookie.load('userId')[0])
+        }
     }
     render(){
         // let userType = this.islogIn()? cookie.load('userId')[0].userType:null
