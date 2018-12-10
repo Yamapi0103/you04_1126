@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 import NewCaseCard from './NewCaseCard';
 import HotCaseCard from './HotCaseCard';
 import Slider from './Slider';
-
+import $ from 'jquery';
 import cookie from 'react-cookies'
 import CelebrityHome from '../celebrity/celebrityHome';
 
@@ -41,6 +41,14 @@ class Home extends Component{
         })
     }
 
+    downBtn(evt) {
+        evt.preventDefault();
+        let target = $("#home_section1h").offset().top - 70;
+        $("body, html").animate({   
+            scrollTop: target
+        }, 700);
+    }
+
     componentDidMount() {
         this.getCase()
         if(this.islogIn()){
@@ -64,11 +72,11 @@ class Home extends Component{
                         </div>
                     </div>
                     <div className="home_section1_bottom">
-                        <a href="#" className="down_btn"></a>
+                        <a onClick={this.downBtn} href="#" className="down_btn"></a>
                     </div>
                 </div>
                 
-                <div className="home_section1h">
+                <div className="home_section1h" id="home_section1h">
                     <div className="home_section1h_container">
                         <h2 className="section_title">關於You04</h2>
                         <div className="about_us">
