@@ -61,6 +61,7 @@ class ICMyCase_Open extends Component {
                                             <div className='imco_card_left'>
                                                 <h6>{v.BScase_name}</h6>
                                                 <hr/>
+                                                <p>廠商: {v.BS_name}</p>
                                                 <p>地點: {v.BScase_location}</p>
                                                 <p>預算: {v.BScase_pay}</p>
                                             </div>

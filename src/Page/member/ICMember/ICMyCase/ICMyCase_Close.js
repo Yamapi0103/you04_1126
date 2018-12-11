@@ -51,6 +51,7 @@ class ICMyCase_Close extends Component {
                                              <div className='imco_card_left'>
                                                 <h6>{v.BScase_name}</h6>
                                                 <hr/>
+                                                <p>廠商: {v.BS_name}</p>
                                                 <p>地點: {v.BScase_location}</p>
                                                 <p>預算: {v.BScase_pay}</p>
                                             </div>
@@ -58,7 +59,7 @@ class ICMyCase_Close extends Component {
                                                 <p>發佈日期:{this.fixDate(v.BScase_publish_at)}</p>
                                                 <p>截止日期:{this.fixDate(v.BScase_time_limit)}</p>
                                               
-                                                <button  className="btn" >查看對話</button>
+                                                {/* <button  className="btn" >查看對話</button> */}
                                             </div>
                                         </div>
                                 )

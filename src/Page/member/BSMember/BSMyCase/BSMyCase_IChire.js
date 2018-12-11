@@ -9,14 +9,13 @@ class BSMyCase_IChire extends Component {
         }; 
         // console.log(this.props.BScase_sid)
         this.BScase_sid = this.props.BScase_sid;  //案子的sid
-        this.Count = this.props.Count;  //從BSMyCase_Open.js來的,計算有幾個網紅應徵
+        this.close = this.props.close;  //如果是從結案的列表來的
     }
     showIChire = ()=>{
         fetch('http://localhost:3000/case/showHire/'+this.BScase_sid)
         .then(res=>res.json())
         .then(data=>{   //回傳 應徵此案子的所有網紅資料 [{網紅1},{網紅2}...]
             
-            this.Count(data.length);
             this.setState({
                 icHireArray:data
             })
@@ -52,8 +51,13 @@ class BSMyCase_IChire extends Component {
                             </p>
                         </div>
                         <div className='btn_div'>
-                          <Link className="btn" to={`/BSMember/BSMyChat/${k.sid}`} onClick={this.scrollTOP}>開啟對話</Link>
-                        </div>
+                            {
+                                (this.close == 'close')?
+                                ''
+                                :
+                                <Link className="btn" to={`/BSMember/BSMyChat/${k.sid}`} onClick={this.scrollTOP}>開啟對話</Link>
+                            }
+                          </div>
                     </div>
                 )
             })

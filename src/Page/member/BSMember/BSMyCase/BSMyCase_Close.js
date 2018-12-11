@@ -7,10 +7,9 @@ import {Link} from 'react-router-dom';
 
 class BSMyCase_Close extends Component {
     constructor(props) {
-        super([props]);
+        super(props);
         this.state={
             bsCaseArray:[],
-            count:[]
             
         };
         this.sid = cookie.load('userId')[0]['BS_sid'];  //廠商id
@@ -28,13 +27,6 @@ class BSMyCase_Close extends Component {
         $(evt.target).parent().next().toggleClass('show');
     }
    
-    //計算有幾個網紅應徵
-    Count=(n)=>{
-        this.state.count.push(n);
-        this.setState({
-            count:this.state.count
-        })
-    }
     //修改日期
     fixDate=(v)=>{
         if(!v){
@@ -67,7 +59,7 @@ class BSMyCase_Close extends Component {
                                     <div className='imco_card_right'>
                                         <p>發佈日期: {this.fixDate(v.BScase_publish_at)}</p>
                                         <p>截止日期: {this.fixDate(v.BScase_time_limit)}</p>
-                                        <p>應徵人數: {this.state.count[idx]}位</p>
+                                        <p>應徵人數: {v.hire_num}位</p>
                                         <div className="imco_card_right_btn_container">
                                             <button onClick={this.check} className="case_open_button">查看應徵網紅</button>
                                             <Link to={`/BSMyCase_edit`} className="case_open_button" >編輯</Link>
@@ -75,7 +67,7 @@ class BSMyCase_Close extends Component {
                                     </div>
                                     <div className='imco_card_IC'>
                                         {/* 把各筆案子的sid傳給各自的子元件 => 交給他們去fetch做應徵網紅資料呈現 */}
-                                        <BSMyCase_IChire BScase_sid={v.BScase_sid} Count={this.Count}/>
+                                        <BSMyCase_IChire BScase_sid={v.BScase_sid} close='close' />
                                     </div> 
                                 </div>
                             )   
