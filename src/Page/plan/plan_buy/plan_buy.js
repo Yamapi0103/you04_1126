@@ -195,7 +195,7 @@ class Plan_buy extends Component{
     
     render(){
         return(
-            <section className='plan_buy'>
+            <section className='plan_buy_container'>
                 <section className='plan_buy_content'>
                     <section className='choose'>
                         <h3 className='title'>您選擇的方案</h3>
@@ -221,12 +221,12 @@ class Plan_buy extends Component{
                                     <p>方案說明</p>
                                     <a href='' className='final_check_change'><i className="fas fa-circle"/>更換方案</a>
                                 </div>
-                                <p className='final_check_content'>
-                                《漫威蜘蛛人》是《拉捷特與克拉克》團隊 Insomniac Games 擔綱開發的開放世界動作冒險遊戲，改編自漫威經典超級英雄漫畫《蜘蛛人》。採用開放世界舞台來呈現原作廣大的紐約曼哈頓舞台，融合高速動作與電影式演出玩法。讓玩家扮演經典超級英雄「蜘蛛人」與面罩背後的平凡人彼得‧帕克，施展飛簷走壁的蜘蛛異能縱橫現代叢林的紐約曼哈頓，打擊惡勢力維護市民安全。
-            
-            　　                 遊戲將陸續釋出以「不夜城（The City That Never Sleeps）」為題的 3 個 DLC 章節，進一步描寫本篇未提及的角色與情節。繼先前以女竊賊「黑貓（Black Cat）」為主題的第 1 個 DLC 章節「竊盜（The Heist）」之後，本次預定釋出的第 2 個 DLC 章節「地盤戰爭（Turf Wars）」將以前一章節揭露的反派「錘頭（Hammerhead）」為主題，描寫他率領幫派與蜘蛛人對抗的故事。
-                                </p>
-                                <h2 className='final_check_money'>NT${this.money}</h2>
+                                <div className='final_check_content_div'>
+                                    <p className='final_check_content'>
+                                    《漫威蜘蛛人》是《拉捷特與克拉克》團隊 Insomniac Games 擔綱開發的開放世界動作冒險遊戲，改編自漫威經典超級英雄漫畫《蜘蛛人》。採用開放世界舞台來呈現原作廣大的紐約曼哈頓舞台，融合高速動作與電影式演出玩法。讓玩家扮演經典超級英雄「蜘蛛人」與面罩背後的平凡人彼得‧帕克，施展飛簷走壁的蜘蛛異能縱橫現代叢林的紐約曼哈頓，打擊惡勢力維護市民安全。
+                                    </p>
+                                    <h2 className='final_check_money'>NT${this.money}</h2>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -260,7 +260,7 @@ class Plan_buy extends Component{
                             <div className='form_content'>
                                 <h3 className='title'>發票選項</h3>
                                 <div className='line'></div>
-                                <p style={{marginBottom:"20px",fontSize: "1.5rem"}}>以下資訊只用於開立發票，並不會在其他頁面顯示。發票一經開立後不可更改，請確認資訊是否都填寫正確喔！ （ * 為必填欄位）</p>
+                                <p style={{marginBottom:"20px",fontSize: "1.1rem"}}>以下資訊只用於開立發票，並不會在其他頁面顯示。發票一經開立後不可更改，請確認資訊是否都填寫正確喔！ （ * 為必填欄位）</p>
                                 <div className='nameEmail'>
                                     <div>
                                         <label htmlFor='enter_name'>姓名 *</label>
@@ -281,7 +281,8 @@ class Plan_buy extends Component{
                                         <ul>
                                             <li><p className='p_input_radio'><input type="radio" name="receipt" onChange={this.change} value="by_you04"/>將發票儲存在You04，中獎後自動寄信通知您</p></li>
                                             <li className="nature_form">
-                                                <p className='p_input_radio'><input type="radio" name="receipt" onChange={this.change} value="Natural_barcode"/>自然人憑證條碼</p>
+                                                <input type="radio" name="receipt" onChange={this.change} value="Natural_barcode"/>
+                                                <p className='p_input_radio'>自然人憑證條碼</p>
                                                 <input type='text' className="form-control" maxLength="16" placeholder='長度16個字元，由2碼大寫字母加上14碼數字組成'/>
                                             </li>
                                             <li><p className='p_input_radio'><input type="radio" name="receipt" onChange={this.change} value="phone_barcode"/>手機條碼</p></li>
@@ -293,7 +294,7 @@ class Plan_buy extends Component{
                             </div>
                             <div className='form_bottom'>
                                 <p>結帳金額 &nbsp;&nbsp;<span>NT${this.money}</span></p>
-                                <button onClick={this.checkout}>購買方案</button>
+                                <button className="checkout_btn" onClick={this.checkout}>購買方案</button>
                             </div>
                         </form>
                     </section>

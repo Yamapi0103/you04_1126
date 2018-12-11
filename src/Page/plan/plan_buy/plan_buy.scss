@@ -1,66 +1,83 @@
+@import '../../../Component/Navbar.scss';
+
 $padding_left:2%;
-@mixin Width($width:90%) {
+@mixin Width($width:85%) {
     width: $width;
     margin: auto;
-    padding: 50px 0;
+    padding: 70px 0;
+}
+
+// 按鈕統一css
+.checkout_btn {
+    padding: 5px 30px;
+    border-radius: 2px;
+    // border: 1px solid rgb(255, 255, 255);
+    border: none;
+    box-shadow: 1px 1px 1px rgb(146, 146, 146);
+    background: $main_color;
+    color: white;
+    transition: .5s;
+    margin-right: 20px;
+    &:hover {
+        background: rgb(75, 190, 133);
+        color: white;
+        // border: 1px solid black;
+    }
 }
 
 // ------------
 .title{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 900;
-}
-.line{
-    width: 100%;
-    margin: auto;
-    height: 1px;
-    border-bottom: 1px solid black;
-    margin: 15px 0 25px 0;
+    margin-bottom: 20px;
 }
 .white_section{
     height: 50px;
     background-color: #fff;
 }
 // ------------
-.plan_buy{
+.plan_buy_container {
+    margin: 120px 0 50px 0;
     .plan_buy_content{
         width: 80%;
         margin: auto;
-        background-color: #f1eade;
+        background-color: #f0f0f0ea;
+        box-shadow: 0 0 5px rgb(228, 228, 228);
         .choose{
             @include Width;
             // .title{
             //     font-size: 2rem;
             //     font-weight: 900;
             // }
-            // .line{
-            //     width: 100%;
-            //     margin: auto;
-            //     height: 1px;
-            //     border-bottom: 1px solid black;
-            //     margin: 25px 0;
-            // }
+            .line{
+                width: 100%;
+                margin: auto;
+                height: 1px;
+                border-bottom: 1px solid rgb(184, 184, 184);
+                margin: 15px 0 25px 0;
+            }
             .choose_plan{
                 display: flex;
                 justify-content: space-between;
                 .plan_buy_box{
-                    border: 1px solid rgb(204, 204, 204);
+                    border: 1px solid rgb(231, 231, 231);
                     width: 290px;
                     text-align: center;
-                    margin-bottom: 30px;
+                    // margin-bottom: 30px;
                     .pbb_plan_ctn {
                         padding: 20px 0;
-                        background: rgb(160, 160, 160);
+                        background: #f5c320;
                         color: white;
                         span {
                             color: white;
                             strong {
-                                font-size: 3rem;
+                                font-size: 2.5rem;
                             }
                         }
                     }
                     .pbb_content_ctn {
                         padding: 10px 20px;
+                        background: rgb(255, 255, 255);
                         .description {
                             color: rgb(71, 71, 71);
                             text-align: justify;
@@ -109,7 +126,8 @@ $padding_left:2%;
                     width:70%;
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between;
+                    justify-content: flex-start;
+                    margin-left: 50px;
                     .final_check_title_div{
                         display: flex;
                         justify-content: space-between;
@@ -123,14 +141,24 @@ $padding_left:2%;
                             color:red;
                         }
                     }
-                    .final_check_content{
-                        word-break: break-all;
-                        line-height: 2rem;
-                    }
-                    .final_check_money{
-                        font-size: 2rem;
-                        font-weight: 700;
-                        text-align: right;
+                    .final_check_content_div {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        height: 100%;
+                        margin-top: 30px;
+                        .final_check_content{
+                            word-break: break-all;
+                            line-height: 2rem;
+                        }
+                        .final_check_money{
+                            font-size: 2rem;
+                            font-weight: 700;
+                            text-align: right;
+                            border: none;
+                            margin-bottom: 0px;
+                            padding-bottom: 0px;
+                        }
                     }
                 }
             }
@@ -149,17 +177,17 @@ $padding_left:2%;
         }
         .ATM{
             @include Width(80%);
-            margin-top: 50px;
+            // margin-top: 50px;
             .form{
                 .form_content{
-                    margin-bottom: 50px;
+                    margin-bottom: 20px;
                 }
                 .p_input_radio{
-                    margin-bottom: 30px;
+                    margin-bottom: 20px;
                 }
                 .nameEmail{
                     display: flex;
-                    margin-bottom: 40px;
+                    margin-bottom: 30px;
                     flex-wrap: wrap;
                     div{
                         display: flex;
@@ -173,16 +201,28 @@ $padding_left:2%;
                 }
                 .ul{
                     li:first-child>p {
-                        margin-left: 12.8px;
+                        // margin-left: 12.8px;
                         margin-bottom: 10px;
                     }
                     li {
                         ul {
                             margin-left: 40px;
+                            li {
+                                margin-bottom: 20px;
+                            }
                             .nature_form {
                                 display: flex;
-                                input {
-                                    width: 50%;
+                                align-items: center;
+                                justify-content: flex-start;
+                                // margin-bottom: 10px;
+                                p {
+                                    display: block;
+                                    width: 130px;
+                                    text-align: left;
+                                    margin-bottom: 0px;
+                                }
+                                .form-control {
+                                    width: 60%;
                                 }
                             }
                         }
@@ -203,7 +243,8 @@ $padding_left:2%;
                         }
                     }
                     button{
-                        margin: auto;
+                        width: 180px;
+                        align-self: flex-end;
                     }
                 }
                 @media (max-width:550px){
