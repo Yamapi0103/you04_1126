@@ -26,7 +26,7 @@
     left: 0;
     margin-top: 70px;
     width: 100%;
-    height: 75px;
+    height: 63px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,25 +38,36 @@
         justify-content: center;
         align-items: center;
         padding: 0;
-        width: 80%;
+        width: 100%;
         .searchbar {
             width: 75%;
             justify-content: space-between;
+            height: 40px;
             .startsearch_btn {
                 width: 188px;
+                height: 40px;
+                i {
+                    line-height: 40px;
+                }
+                span {
+                    line-height: 40px;
+                }
             }
             .searchbar_btn {
                 border: 1px solid rgb(207, 207, 207);
+                height: 40px;
+                margin-right: 30px;
             }
             .searchbar_btn_dropdown_toggle {
                 width: 230px;
+
             }
         }
 
     }
 }
 .list_section2 {
-    margin-top: 145px;
+    margin-top: 125px;
     box-sizing: border-box;
     min-height: 100vh;
     width: 100%;
@@ -70,7 +81,7 @@
         width: 68%;
         align-self: flex-start;
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         .list_section2_case_container_case {
             height: 100%;
@@ -83,14 +94,13 @@
         // background: rgb(231, 231, 231);
         align-self: flex-start;
         position: sticky;
-        top: 183px;
+        top: 163px;
         // right: 0;
         // padding: 0px 30px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-
         .filter{
             display: block;
             position: relative;
@@ -98,9 +108,9 @@
             // width: 500px;
             width: 100%;
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 color: #AAAAAA;
-                margin-bottom: 15px!important;
+                margin-bottom: 3px!important;
             }
             ul {
                 list-style: none;
@@ -108,12 +118,12 @@
                 padding: 0;
                 overflow: auto;
                 li {
-                    color: #AAAAAA;
+                    color: rgb(143, 143, 143);
                     display: block;
                     position: relative;
                     float: left;
                     width: 100%;
-                    height: 43px;
+                    height: 36px;
                     input[type=radio] {
                         position: absolute;
                         visibility: hidden;
@@ -131,12 +141,12 @@
                         transition: all 0.25s linear;
                     }
                     &:hover label {
-                        color: rgb(49, 116, 85);
+                        color: rgb(73, 168, 124);
                     }
                     .check {
                         display: block;
                         position: absolute;
-                        border: 5px solid #AAAAAA;
+                        border: 3px solid rgb(143, 143, 143);
                         border-radius: 100%;
                         height: 15px;
                         width: 15px;
@@ -147,7 +157,7 @@
                         -webkit-transition: border .25s linear;
                     }
                     &:hover .check {
-                        border: 5px solid rgb(49, 116, 85);
+                        border: 3px solid rgb(73, 168, 124);
                     }
                 }
             }
@@ -159,9 +169,9 @@
         position: absolute;
         content: '';
         border-radius: 100%;
-        height: 11px;
-        width: 11px;
-        top: 1.5px;
+        height: 10px;
+        width: 10px;
+        top: 2.5px;
         left: 2.5px;
         margin: auto;
         transition: background 0.25s linear;
@@ -169,15 +179,15 @@
         }
 
         input[type=radio]:checked ~ .check {
-        border: 5px solid rgb(49, 116, 85);
+        border: 3px solid rgb(73, 168, 124);
         }
 
         input[type=radio]:checked ~ .check::before{
-        background: rgb(49, 116, 85);
+        background: rgb(73, 168, 124);
         }
 
         input[type=radio]:checked ~ label{
-        color: rgb(49, 116, 85);
+        color: rgb(73, 168, 124);
         }
 
         // .signature {

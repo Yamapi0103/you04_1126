@@ -1,4 +1,4 @@
-$plan_section_bg_color:rgb(241, 234, 222);
+$plan_section_bg_color:rgb(247, 247, 247);
 $plan_section_content_width:80%;
 $plan_section_content_marginTop:50px;
 $plan_section_content_paddingTop:50px;
@@ -38,8 +38,10 @@ $plan_btn_color:#f54337;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    width: 80%;
+    margin: 0 auto;
     h1{
-        width: 80%;
+        width: 100%;
         font-size: $plan_h1_fontSize;
         font-weight: 700;
         font-family: Microsoft JhengHei,sans-serif!important;
@@ -89,11 +91,13 @@ $plan_btn_color:#f54337;
     width: 80%;
     margin: 0 auto;
     h1 {
+        width: 80%;
+        margin: 0 auto 50px auto;
         margin-bottom: 50px;
     }
     .plan_section_2_content{
         width:$plan_section_content_width;
-        width: 100%;
+        width: 80%;
         margin: auto;
         display: flex;
         justify-content: space-between;
@@ -127,6 +131,8 @@ $plan_btn_color:#f54337;
 }
 
 .plan_section_3{
+    width: 80%;
+    margin: 0 auto;
     background-color: $plan_section_bg_color;
     .plan_section_3_content{
         width:$plan_section_content_width;
@@ -173,6 +179,8 @@ $plan_btn_color:#f54337;
         margin: auto;
         h1{
             margin-bottom: $plan_section_content_marginTop;
+            width: 80%;
+            margin: 0 auto 50px auto;
         }
         .plan_buy{
             display: flex;
