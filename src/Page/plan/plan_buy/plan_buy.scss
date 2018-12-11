@@ -171,12 +171,22 @@ $padding_left:2%;
                         .enter{}
                     }
                 }
-                .ul>li:first-child>p{
-                    margin-left: 12.8px;
-                    margin-bottom: 10px;
-                }
-                .ul ul{
-                    margin-left: 40px;
+                .ul{
+                    li:first-child>p {
+                        margin-left: 12.8px;
+                        margin-bottom: 10px;
+                    }
+                    li {
+                        ul {
+                            margin-left: 40px;
+                            .nature_form {
+                                display: flex;
+                                input {
+                                    width: 50%;
+                                }
+                            }
+                        }
+                    }
                 }
                 .form_bottom{
                     width: 300px;

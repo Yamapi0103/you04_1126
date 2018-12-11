@@ -67,7 +67,7 @@ class Navbar extends Component{
                         {//登入後 出現歡迎~XXX
                             this.islogIn()?
                             <li>
-                            <span>歡迎~{cookie.load('userId')[0][userType+'_name']}</span>
+                            <span>歡迎 {cookie.load('userId')[0][userType+'_name']}</span>
                             </li>
                             :null                   
                         }
@@ -77,15 +77,15 @@ class Navbar extends Component{
                         <li><Link to="/register">註冊</Link></li>
                         </React.Fragment>:
                         <li>
-                        <div onClick={this.userClick} className="user-menu-wrap"><img className="mini-photo" src="/images/user-solid.svg"/>
-                    
-                        <div className="menu-container">
-                            <ul className="user-menu">
-                                <Link to={`/${userType}Member`} className="user-menu-link" href="#"><li className="user-menu__item">個人檔案</li></Link>              
-                                <Link to="" className="user-menu-link" href="#"><li className="user-menu__item">Search</li></Link>
-                                <Link to="" onClick={this.logOut} className="user-menu-link" href="#"><li className="user-menu__item">登出</li></Link>
-                            </ul>
-                        </div>
+                        <div onClick={this.userClick} className="user-menu-wrap">
+                            <img className="mini-photo" src="/images/user-solid.svg"/>
+                            <div className="menu-container">
+                                <ul className="user-menu">
+                                    <Link to={`/${userType}Member`} className="user-menu-link" href="#"><li className="user-menu__item">個人檔案</li></Link>              
+                                    <Link to="" className="user-menu-link" href="#"><li className="user-menu__item">搜尋</li></Link>
+                                    <Link to="" onClick={this.logOut} className="user-menu-link" href="#"><li className="user-menu__item">登出</li></Link>
+                                </ul>
+                            </div>
                         </div>
                         </li>
                         }
