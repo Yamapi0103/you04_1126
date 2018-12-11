@@ -201,7 +201,6 @@ class Plan_buy extends Component{
                         <h3 className='title'>您選擇的方案</h3>
                         <div className='line'></div>
                         <div className='choose_plan'>
-                            
                             <div className='plan_buy_box'>
                                 <div className="pbb_plan_ctn">
                                     <h3>{this.plan}</h3>
@@ -265,13 +264,13 @@ class Plan_buy extends Component{
                                 <div className='nameEmail'>
                                     <div>
                                         <label htmlFor='enter_name'>姓名 *</label>
-                                        <input type='text' placeholder='請填入真實姓名' maxLength="10" name="re_name" id='enter_name' className='enter' onChange={this.change} onBlur={this.blur} />
+                                        <input type='text' placeholder='請填入真實姓名' maxLength="10" name="re_name" id='enter_name' className='enter form-control' onChange={this.change} onBlur={this.blur} />
                                         <small id="pb_blank_text1" style={{color:'transparent',display:'block'}}>&nbsp;</small>
                                         <small id="pb_enter_name_text" style={{color:'red',display:'none'}}>請填寫姓名，此為必要欄位</small>
                                     </div>
                                     <div>
                                         <label htmlFor='enter_email'>聯絡用電子信箱 *</label>
-                                        <input type='text' placeholder='請填入電子信箱' maxLength="30" name="re_email" id='enter_email' className='enter' onChange={this.change} onBlur={this.blur} />
+                                        <input type='text' placeholder='請填入電子信箱' maxLength="30" name="re_email" id='enter_email' className='enter form-control' onChange={this.change} onBlur={this.blur} />
                                         <small id="pb_blank_text2" style={{color:'transparent',display:'block'}}>&nbsp;</small>
                                         <small id="pb_email_format_text" style={{color:'red',display:'none'}}>電子信箱格式錯誤</small>
                                         <small id="pb_enter_email_text" style={{color:'red',display:'none'}}>請填寫聯絡用電子信箱，此為必要欄位</small>
@@ -281,9 +280,9 @@ class Plan_buy extends Component{
                                     <li><p>電子發票</p>
                                         <ul>
                                             <li><p className='p_input_radio'><input type="radio" name="receipt" onChange={this.change} value="by_you04"/>將發票儲存在You04，中獎後自動寄信通知您</p></li>
-                                            <li>
-                                                <p className='p_input_radio'><input type="radio" name="receipt" onChange={this.change} value="Natural_barcode"/>自然人憑證條碼
-                                                <input type='text' maxLength="16" placeholder='長度16個字元，由2碼大寫字母加上14碼數字組成'/></p>
+                                            <li className="nature_form">
+                                                <p className='p_input_radio'><input type="radio" name="receipt" onChange={this.change} value="Natural_barcode"/>自然人憑證條碼</p>
+                                                <input type='text' className="form-control" maxLength="16" placeholder='長度16個字元，由2碼大寫字母加上14碼數字組成'/>
                                             </li>
                                             <li><p className='p_input_radio'><input type="radio" name="receipt" onChange={this.change} value="phone_barcode"/>手機條碼</p></li>
                                         </ul>

@@ -8,7 +8,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 60px;
-    // justify-content: center;
+    justify-content: space-around;
   }
 }
 
@@ -30,7 +30,7 @@ section {
 }
 
 .radius-border {
-  border-radius: 7px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -158,16 +158,16 @@ header.banner:hover {
     height: 90%;
   }
 }
-@media screen and (min-width: 991px) and (max-width: 1200px) {
-  .celebrity_wrap {
-    margin-left: 150px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .celebrity_wrap {
-    margin-left: 60px;
-  }
-}
+// @media screen and (min-width: 991px) and (max-width: 1200px) {
+//   .celebrity_wrap {
+//     margin-left: 150px;
+//   }
+// }
+// @media screen and (min-width: 1200px) {
+//   .celebrity_wrap {
+//     margin-left: 60px;
+//   }
+// }
 
 
 .media-nav{
@@ -186,66 +186,57 @@ header.banner:hover {
     margin: 0.7%;
     font-weight: bold;
     border-radius: 7px;
+    // color: rgb(80, 80, 80)!important;
+  }
+  .btn-yt{
+    color: rgb(196, 60, 60);
+    // color: rgb(80, 80, 80);
+    border: rgb(196, 60, 60) 2px solid;
+    &:hover{
+      color: rgb(255, 255, 255);
+      background: rgb(196, 60, 60);
+    }
+  }
+
+  .btn-fb{
+    color: rgb(42, 103, 153);
+    // color: rgb(80, 80, 80);
+    border: rgb(42, 103, 153) 2px solid;
+    &:hover{
+      color: rgb(255, 255, 255);
+      background: rgb(42, 103, 153);
+    }
+  }
+  .btn-ig{
+    color: rgb(175, 64, 147);
+    // color: rgb(80, 80, 80);
+    border: rgb(175, 64, 147) 2px solid;
+    &:hover{
+      color: rgb(255, 255, 255);
+      background: rgb(175, 64, 147);
+    }
+  }
+  .btn-blog{
+    color: rgb(51, 156, 65);
+    // color: rgb(80, 80, 80);
+    border: rgb(51, 156, 65) 2px solid;
+    &:hover{
+      color: rgb(255, 255, 255);
+      background: rgb(51, 156, 65);
+    }
+  }
+  .btn-all{
+    color: rgb(99, 99, 99);
+    // color: rgb(80, 80, 80);
+    border: rgb(99, 99, 99) 2px solid;
+    &:hover{
+      color: rgb(255, 255, 255);
+      background: rgb(99, 99, 99);
+    }
   }
 }
-
 @media screen and (max-width: 500px) {
   .media-nav {
     margin:10px 5%;
-  }
-}
-
-.btn-yt{
-  color: rgb(196, 60, 60);
-  border: rgb(196, 60, 60) 2px solid;
-  &:hover{
-    color: rgb(255, 255, 255);
-    background: rgb(196, 60, 60);
-  }
-}
-
-.btn-yt{
-  color: rgb(196, 60, 60);
-  border: rgb(196, 60, 60) 2px solid;
-  &:hover{
-    color: rgb(255, 255, 255);
-    background: rgb(196, 60, 60);
-  }
-}
-
-.btn-fb{
-  color: rgb(42, 103, 153);
-  border: rgb(42, 103, 153) 2px solid;
-  &:hover{
-    color: rgb(255, 255, 255);
-    background: rgb(42, 103, 153);
-  }
-}
-
-.btn-ig{
-  color: rgb(175, 64, 147);
-  border: rgb(175, 64, 147) 2px solid;
-  &:hover{
-    color: rgb(255, 255, 255);
-    background: rgb(175, 64, 147);
-  }
-}
-
-.btn-blog{
-  color: rgb(51, 156, 65);
-  border: rgb(51, 156, 65) 2px solid;
-  &:hover{
-    color: rgb(255, 255, 255);
-    background: rgb(51, 156, 65);
-  }
-}
-
-
-.btn-all{
-  color: rgb(99, 99, 99);
-  border: rgb(99, 99, 99) 2px solid;
-  &:hover{
-    color: rgb(255, 255, 255);
-    background: rgb(99, 99, 99);
   }
 }

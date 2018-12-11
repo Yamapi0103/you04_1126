@@ -269,125 +269,125 @@ class Publish extends Component {
         else{
         return(
             <React.Fragment>
-                <form className="publish_container">
-                <h3>專案刊登</h3>
-                <p>＊為必填欄位</p>
-                <br/>
-                <br/>
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    上傳圖片
-                </button>
-                <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">請選擇要上傳的照片</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
+                <div className="publish_container">
+                    <form className="publish_content">
+                        <h3>專案刊登</h3>
+                        <p>*為必填欄位</p>
+                        <br/>
+                        <br/>
+                        <button type="button" className="upload_btn publish_btn" data-toggle="modal" data-target="#exampleModal">
+                            上傳圖片
+                        </button>
+                        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div className="modal-dialog" role="document">
+                                <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title">請選擇要上傳的照片</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="form-group">
+                                        <label for="exampleFormControlFile1">檔案請勿超過100k</label>
+                                        <input type="file" onChange={this.fileSelectPhoto} className="form-control-file" id="exampleFormControlFile1"/>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">取消</button>
+                                    <button type="button" className="btn btn-primary" onClick={this.submitPhoto} data-dismiss="modal">確定傳送</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
+                        <div className="form-group">
+                            <label>*請填寫專案名稱</label>
+                            <input type="text" value={this.state.BScase_name} id="publish_name" onBlur={this.blur} name="BScase_name" onChange={this.handleChange} className="form-control"/>
                         </div>
-                        <div className="modal-body">
+
+                        <div className="form-group">
+                            <h4>專案內容</h4>
+                            <label>*請選擇產業類型</label>
+                            <select value={this.state.industry_name} onClick={this.selectClick} id="industry_name" onBlur={this.blur} name="industry_name" onChange={this.handleChange} className="form-control" >
+                                <ISearchBarOption industry_option={this.state.industry_option}/>                    
+                            </select>
+                            <label>請選擇薪資區間</label>
+                            <select className="form-control" value={this.state.BScase_pay} name="BScase_pay" onChange={this.handleChange}>
+                                <option>1,000-3,000元</option>
+                                <option>3,000-5,000元</option>
+                                <option>5,000-10,000元</option>
+                                <option>10,000-50,000元</option>
+                                <option>50,001元以上</option>
+                            </select>
+                            <label>選擇需求人數</label>
+                            <select className="form-control" value={this.state.BScase_ask_people} name="BScase_ask_people" onChange={this.handleChange} >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="3">3人以上</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <div>
+                            <h4>條件內容</h4>
+                            <label>*請選擇活動型態</label>
+                            <select value={this.state.BScase_active} onClick={this.selectClick} id="active_name" onBlur={this.blur} name="BScase_active" onChange={this.handleChange} className="form-control" >
+                                <ATSearchBarOption active_option={this.state.active_option}/>
+                            </select>
                             <div className="form-group">
-                                <label for="exampleFormControlFile1">檔案請勿超過100k</label>
-                                <input type="file" onChange={this.fileSelectPhoto} className="form-control-file" id="exampleFormControlFile1"/>
+                                <label>人氣要求</label>
+                                <select value={this.state.BScase_fans} name="BScase_fans" onChange={this.handleChange} className="form-control" >
+                                    <option>100-500</option>
+                                    <option>500-1,000</option>
+                                    <option>1,000-5,000</option>
+                                    <option>5,001-10,000</option>
+                                </select>
+                                <label>*期限要求</label>
+                                <input value={this.state.BScase_time_limit} name="BScase_time_limit" type="date" onChange={this.handleChange} className="form-control" />
+                                <label>工作地點</label>
+                                <select value={this.state.BScase_location} name="BScase_location" onChange={this.handleChange} className="form-control" >
+                                    <option>不限</option>
+                                    <option>台北</option>
+                                    <option>台中</option>
+                                </select>
                             </div>
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">取消</button>
-                            <button type="button" className="btn btn-primary" onClick={this.submitPhoto} data-dismiss="modal">確定傳送</button>
+
+                        <br/>
+                        <div>
+                            <h4>額外資訊</h4>
+                            <textarea value={this.state.BScase_info} name="BScase_info" onChange={this.handleChange} className="form-control" rows="5"></textarea>
                         </div>
+                        <div className="form-group" value={this.state.tag_name} name="tag_name" onChange={this.handleChange}>
+                            {/* <label>請選擇符合您的tag標籤</label>
+                            <div >
+                                {this.state.tag_option.map((tg,index)=>
+                                
+                                        <div key={index}>
+                                        <input type="checkbox" id="scales" checked={this.state.selectTag[index]|| false} onChange={()=>this.tagChangeState(index)} name="scales"/>
+                                        <label>{tg.tag_name}</label>
+                                        </div>
+                                    )
+                                }
+                            </div> */}
                         </div>
-                    </div>
-                    </div>
+                        <div className="alert alert-success" role="alert">
+                            本次刊登將會扣除您100點點數
+                        </div>
+                        <br/> 
 
-                <div className="form-group">
-                    <label>*請填寫專案名稱</label>
-                    <input type="text" value={this.state.BScase_name} id="publish_name" onBlur={this.blur} name="BScase_name" onChange={this.handleChange} className="form-control"/>
+                        <div className="publish_warning">
+                            <h5>還沒有點數嗎？</h5>
+                            <Link to="./plan">點擊這裡購買方案！</Link>
+                        </div>
+                        <br/>
+                        <div className="publish_btn_container">
+                            <button className="publish_btn" onClick={this.addHandler}>發布</button>
+                            <button className="publish_btn" type="submit">清空</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div className="form-group">
-                    <h4>專案內容</h4>
-                    <label>*請選擇產業類型</label>
-                    <select value={this.state.industry_name} onClick={this.selectClick} id="industry_name" onBlur={this.blur} name="industry_name" onChange={this.handleChange} className="form-control" >
-                        <ISearchBarOption industry_option={this.state.industry_option}/>                    
-                    </select>
-                    <label>請選擇薪資區間</label>
-                    <select className="form-control" value={this.state.BScase_pay} name="BScase_pay" onChange={this.handleChange}>
-                        <option>1,000-3,000元</option>
-                        <option>3,000-5,000元</option>
-                        <option>5,000-10,000元</option>
-                        <option>10,000-50,000元</option>
-                        <option>50,001元以上</option>
-                    </select>
-                    <label>選擇需求人數</label>
-                    <select className="form-control" value={this.state.BScase_ask_people} name="BScase_ask_people" onChange={this.handleChange} >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="3">3人以上</option>
-                    </select>
-                </div>
-                
-
-                <br/>
-                <div>
-                    <h4>條件內容</h4>
-                    <label>*請選擇活動型態</label>
-                    <select value={this.state.BScase_active} onClick={this.selectClick} id="active_name" onBlur={this.blur} name="BScase_active" onChange={this.handleChange} className="form-control" >
-                        <ATSearchBarOption active_option={this.state.active_option}/>
-                    </select>
-                <div className="form-group">
-                    <label>人氣要求</label>
-                    <select value={this.state.BScase_fans} name="BScase_fans" onChange={this.handleChange} className="form-control" >
-                        <option>100-500</option>
-                        <option>500-1,000</option>
-                        <option>1,000-5,000</option>
-                        <option>5,001-10,000</option>
-                    </select>
-                    <label>*期限要求</label>
-                    <input value={this.state.BScase_time_limit} name="BScase_time_limit" type="date" onChange={this.handleChange} className="form-control" />
-                </div>
-                </div>
-                <label>工作地點</label>
-                    <select value={this.state.BScase_location} name="BScase_location" onChange={this.handleChange} className="form-control" >
-                        <option>不限</option>
-                        <option>台北</option>
-                        <option>台中</option>
-                    </select>
-                <br/>
-                <div>
-                    <h4>其他補充</h4>
-                    <textarea value={this.state.BScase_info} name="BScase_info" onChange={this.handleChange} className="form-control" rows="5"></textarea>
-                </div>
-                <div className="form-group" value={this.state.tag_name} name="tag_name" onChange={this.handleChange}>
-                    {/* <label>請選擇符合您的tag標籤</label>
-                    <div >
-                        {this.state.tag_option.map((tg,index)=>
-                        
-                                <div key={index}>
-                                <input type="checkbox" id="scales" checked={this.state.selectTag[index]|| false} onChange={()=>this.tagChangeState(index)} name="scales"/>
-                                <label>{tg.tag_name}</label>
-                                </div>
-                            )
-                        }
-                    </div> */}
-                </div>
-                <div className="alert alert-primary" role="alert">
-                    本次刊登將會扣除您100點點數
-                </div>
-                <br/> 
-
-                <div className="publish_warning">
-                    <h5>還沒有點數嗎？</h5>
-                    <Link to="./plan">點擊這裡購買方案！</Link>
-                </div>
-                <br/>
-                <div className="publish_btn">
-                    <button className="btn" onClick={this.addHandler}>發布</button>
-                    <button className="btn" type="submit">清空</button>
-                </div>
-
-                </form>
             </React.Fragment>
             )
         }

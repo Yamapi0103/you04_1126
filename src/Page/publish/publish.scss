@@ -1,17 +1,42 @@
-.publish_container{
-    margin: 150px auto;
-    max-width: 600px;
-}
+@import '../../Component/Navbar.scss';
 
-.publish_btn{
-    margin: 30px auto;
-    .btn{
-        padding: 20px;
-        margin: 0 10px;
-        color:#fff;
+// 按鈕統一css
+.publish_btn {
+    padding: 5px 30px;
+    border-radius: 2px;
+    // border: 1px solid rgb(255, 255, 255);
+    border: none;
+    box-shadow: 1px 1px 1px rgb(146, 146, 146);
+    background: $main_color;
+    color: white;
+    transition: .5s;
+    margin-right: 20px;
+    &:hover {
+        background: rgb(75, 190, 133);
+        color: white;
+        // border: 1px solid black;
     }
 }
 
-.publish_center{
-    text-align: center;
+label {
+    margin: 5px 0;
+}
+
+.publish_container {
+    margin: 150px auto 80px auto;
+    width: 80%;
+    box-shadow: 0 0 15px rgb(167, 167, 167);
+    .publish_content{
+        padding: 50px;
+        // max-width: 600px;
+        h3 {
+            font-weight: bold;
+        }
+        input {
+            width: 60%;
+        }
+        select {
+            width: 60%;
+        }
+    }
 }

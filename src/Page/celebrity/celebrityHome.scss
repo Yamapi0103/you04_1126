@@ -1,22 +1,26 @@
-h4{
+h2{
     text-align: center;
-    color: #fff;
-    font-weight: 600;
+    color: #7e7e7e;
     text-shadow: 0.5px 1px 3px rgb(96, 122, 98);
+}
+@media(max-width: 615px) {
+    h2 {
+      font-size: 1.5rem;
+    }
 }
 
-.celebtn{
+.celebtn {
     position: relative;
-    font-size: 19px;
-    color: #fff;
+    font-size: 20px;
+    color: rgb(134, 134, 134);
     margin: 15px;
-    text-shadow: 0.5px 1px 3px rgb(96, 122, 98);
+    text-shadow: 0.5px 1px 3px rgba(148, 148, 148, 0);
     &:hover{
-        color:rgb(207, 228, 149);
-        text-shadow: 0.5px 1px 3px rgb(96, 122, 98);
-        }
+        color:rgb(255, 255, 255);
+        text-shadow: 0.5px 1px 3px rgb(0, 0, 0);
+    }
 }
-.celebtnline{
+.celebtnline {
     color: #fff;
     font-weight: bold;
     position: relative;
