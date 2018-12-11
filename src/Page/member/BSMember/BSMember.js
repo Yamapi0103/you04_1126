@@ -27,6 +27,10 @@ class BSMember extends Component {
                 Data:data[0],
                 BS_photo:data[0]['BS_photo']
             })
+            cookie.save('userId',[{
+                ...cookie.load('userId')[0],
+                BS_photo:data[0]['BS_photo']
+            }])
         })
     }
     onChange = (evt) => {

@@ -26,6 +26,11 @@ class ICMember extends Component {
                 Data:data[0],
                 IC_photo:data[0]['IC_photo']
             })
+            cookie.save('userId',[{
+                ...cookie.load('userId')[0],
+                IC_photo:data[0]['IC_photo']
+            }])
+            console.log(cookie.load('userId'[0]))
         })
     }
 

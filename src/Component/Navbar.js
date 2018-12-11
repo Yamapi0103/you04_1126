@@ -72,7 +72,7 @@ class Navbar extends Component{
                         {//登入後 出現歡迎~XXX
                             this.islogIn()?
                             <li>
-                            <span>歡迎 {cookie.load('userId')[0][userType+'_name']}</span>
+                            <span>{cookie.load('userId')[0][userType+'_name']}</span>
                             </li>
                             :null                   
                         }
@@ -83,7 +83,7 @@ class Navbar extends Component{
                         </React.Fragment>:
                         <li>
                         <div onClick={this.userClick} className="user-menu-wrap">
-                            <img className="mini-photo" src="/images/user-solid.svg"/>
+                            <img className="mini-photo" src={this.cookie[userType+'_photo']==""?"/images/user-solid.svg":"http://localhost:3000/info/"+this.cookie[userType+"_photo"]} alt="" />
                             <div className="menu-container">
                                 <ul className="user-menu">
                                     <Link to={`/${userType}Member`} className="user-menu-link" href="#"><li className="user-menu__item">個人檔案</li></Link>              
@@ -95,7 +95,7 @@ class Navbar extends Component{
                         </li>
                         }
 
-                </ul>
+                </ul>   
                 </div>
             </React.Fragment>
         )
