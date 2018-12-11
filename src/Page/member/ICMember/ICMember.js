@@ -12,6 +12,7 @@ class ICMember extends Component {
         super([props])
         this.state={
             Data:'',
+            IC_photo:''
         };
         // console.log(props.match.url)
         this.sid = cookie.load('userId')[0]['IC_sid'];  //IC_sid
@@ -22,13 +23,52 @@ class ICMember extends Component {
         .then(data=>{  
             // console.log(data); 
             this.setState({
-                Data:data[0]
+                Data:data[0],
+                IC_photo:data[0]['IC_photo']
             })
         })
     }
-    componentDidMount=()=>{
-        this.getInfo();
+
+    onChange = (evt) => {
+        evt.preventDefault();
+        switch (evt.target.name) {
+            case 'IC_photo':
+            //console.log(evt.target.files[0]);
+                this.setState({IC_photo: evt.target.files[0] });
+                break;
+            default:
+                this.setState({ [evt.target.name]: evt.target.value });
+        }
+    }    
+
+    onSubmit = (evt) => {     
+        evt.preventDefault();
+        const {IC_photo} = this.state;
+       // console.log(IC_photo)
+        let formData = new FormData();
+
+        formData.append('photo', IC_photo);
+
+        let ic_sid = cookie.load('userId')[0]['IC_sid']
+       // alert(ic_sid);
+        fetch('http://localhost:3000/info/icmembers_upload_Photo/' + ic_sid, {
+            method: 'PUT',
+            body: formData
+        }).then(res=>res.json())
+        .then(data=>{  
+            console.log(data);
+        }).then(()=>{
+            this.getInfo();
+        })
     }
+
+    
+
+      componentDidMount = () => {
+        this.getInfo();
+   
+      }
+
     render() {
         return (
 
@@ -36,8 +76,31 @@ class ICMember extends Component {
                 <div id="member_container" className="flex" >
                 <div className="register_navbar">
                         <div className="member_head">
-                            <img src="/images/member.png" alt="me" />
+                            <img src={(`http://localhost:3000/info/${this.state.IC_photo}`)} alt="me" />
                             <span>{this.state.Data['IC_name']}</span>
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">上傳圖片</button>
+                <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">請選擇要上傳的照片</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="form-group">
+                                <label for="exampleFormControlFile1">檔案請勿超過100k</label>
+                                <input type="file" onChange={this.onChange} className="form-control-file" name="IC_photo" id="IC_photo"/>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button type="button" className="btn btn-primary" onClick={this.onSubmit} data-dismiss="modal">確定傳送</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                         </div>
                         <ul>
                             <li className="transition">
