@@ -55,7 +55,7 @@ class BSMyCase_IChire extends Component {
                                 (this.close == 'close')?
                                 ''
                                 :
-                                <Link className="btn" to={`/BSMember/BSMyChat/${k.sid}`} onClick={this.scrollTOP}>開啟對話</Link>
+                                <Link className="openChat_btn" to={`/BSMember/BSMyChat/${k.sid}`} onClick={this.scrollTOP}>開啟對話</Link>
                             }
                           </div>
                     </div>

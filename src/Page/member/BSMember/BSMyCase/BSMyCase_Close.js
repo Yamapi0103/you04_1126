@@ -24,7 +24,7 @@ class BSMyCase_Close extends Component {
         })
     }
     check=(evt)=>{
-        $(evt.target).parent().next().toggleClass('show');
+        $(evt.target).parent().parent().next().toggleClass('show');
     }
    
     //修改日期
