@@ -8,6 +8,7 @@ import swal from 'sweetalert';
 class Navbar extends Component{
     constructor(props){
         super(props)
+        this.cookie = []
     }
     islogIn = () =>{
         return cookie.load('userId')? true : false;
@@ -42,6 +43,10 @@ class Navbar extends Component{
     }
     render(){ 
         
+        if(this.islogIn()){
+            this.cookie = cookie.load('userId')[0]
+        }
+        console.log(this.cookie)
         //有登入的話 userType=>"BS" or "IC"，否則為null
         let userType = this.islogIn()? cookie.load('userId')[0].userType:null
         return(
@@ -51,14 +56,14 @@ class Navbar extends Component{
                         <Link to="/home"><img src="/images/logo.svg" alt="website_logo" /></Link>
                     </div>
                     <ul className="nav_option_container">
-                        <li><Link to="/plan">購買方案</Link></li>
+                        
                         {
                             //還沒登入 or BSmember才能看到 刊登方案"
                             //(還沒登入若點刊登方案 會叫你先去登入)
                             //(BSmember點數不足點刊登方案 會叫你先去儲值)
                             (!this.islogIn() || (cookie.load('userId')[0].userType==='BS'))?                        
                             <React.Fragment>
-                            
+                            <li><Link to="/plan">購買方案</Link></li>
                             <li><Link to="/publish">刊登方案</Link></li>
                             </React.Fragment>
                             :null             
