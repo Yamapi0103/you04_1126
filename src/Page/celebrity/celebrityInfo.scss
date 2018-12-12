@@ -18,6 +18,9 @@
         display: block;
         object-fit: cover;
       }
+      img#user_solid{
+        object-fit: contain;
+      }
     }
     .formalInfo{
         margin: 20px 0 0 50px;
