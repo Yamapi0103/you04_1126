@@ -86,8 +86,14 @@ class Navbar extends Component{
                             <img className="mini-photo" src={this.cookie[userType+'_photo']==""?"/images/user-solid.svg":"http://localhost:3000/info/"+this.cookie[userType+"_photo"]} alt="" />
                             <div className="menu-container">
                                 <ul className="user-menu">
-                                    <Link to={`/${userType}Member`} className="user-menu-link" href="#"><li className="user-menu__item">個人檔案</li></Link>              
-                                    <Link to="" className="user-menu-link" href="#"><li className="user-menu__item">搜尋</li></Link>
+                                <Link to={`/${userType}Member/${userType}MyInfo`} className="user-menu-link" href="#"><li className="user-menu__item">帳戶管理</li></Link>
+                                <Link to={`/${userType}Member/${userType}MyCase`} className="user-menu-link" href="#"><li className="user-menu__item">接案管理</li></Link>  
+                                <Link to={`/${userType}Member/${userType}MyChat`} className="user-menu-link" href="#"><li className="user-menu__item">對話紀錄</li></Link>  
+                                <Link to={`/${userType}Member/${userType}MyFavor`} className="user-menu-link" href="#"><li className="user-menu__item">我的收藏</li></Link>
+                                {this.cookie.userType=="BS"?
+                                <Link to={`/${userType}Member/${userType}MyBilling`} className="user-menu-link" href="#"><li className="user-menu__item">訂單管理</li></Link>                  
+                                :null
+                                }
                                     <Link to="" onClick={this.logOut} className="user-menu-link" href="#"><li className="user-menu__item">登出</li></Link>
                                 </ul>
                             </div>
