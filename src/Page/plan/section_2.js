@@ -12,7 +12,7 @@ class Section_2 extends Component{
                 <div id='plan_section_2_content' className='plan_section_2_content'>
                     <div className='plan_box'>
                         <div className='plan_box_circle'>
-                            1
+                            <i class="fas fa-address-book"></i>
                         </div>
                         <div className='plan_box_text'>
                             <p>加入會員並購買適合您的方案</p>
@@ -20,7 +20,7 @@ class Section_2 extends Component{
                     </div>
                     <div className='plan_box'>
                         <div className='plan_box_circle'>
-                            2
+                            <i class="fas fa-pen-fancy"></i>
                         </div>
                         <div className='plan_box_text'>
                             <p>刊登您的業配案</p>
@@ -28,7 +28,7 @@ class Section_2 extends Component{
                     </div>
                     <div className='plan_box'>
                         <div className='plan_box_circle'>
-                            3
+                            <i class="fas fa-headphones-alt"></i>
                         </div>
                         <div className='plan_box_text'>
                             <p>等待網紅與您聯繫並詳談</p>
@@ -36,7 +36,7 @@ class Section_2 extends Component{
                     </div>
                     <div className='plan_box'>
                         <div className='plan_box_circle'>
-                            4
+                            <i class="fas fa-hand-holding-usd"></i>
                         </div>
                         <div className='plan_box_text'>
                             <p>享受曝光帶來的效益</p>

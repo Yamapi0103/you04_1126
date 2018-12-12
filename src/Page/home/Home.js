@@ -118,23 +118,41 @@ class Home extends Component{
                 <div className="home_section4">
                     <h2 className="section_title">接案指南</h2>
                     <div className="home_section4_hotissue_container">
-                        <div className="hshc_left"></div>
+                        <div className="hshc_left">
+                            <div className="hshc_left_img"></div>
+                            <div className="hshc_left_text">
+                                <h4>網紅都在直播什麼？網路直播5大要點</h4>
+                                <p>網路直播的即時性非常吸引粉絲目光，其高互動性也能有效拉近與粉絲的距離，且沒有技術門檻，只要有手機和網路就能輕鬆上手，使許多自媒體和品牌在直播功能推出後都躍躍欲試……</p>
+                            </div>
+                        </div>
                         <div className="hshc_right">
                             <div className="issue">
-                                <Link to="#"><h4>第一次接案就上手</h4></Link>
-                                <span>Lorem ipsum dolor sit amet sed diam nonumy.Lorem ipsum dolor sit amet,sed diam nonumy</span>
+                                <div className="issue_right_img issue_right_img1"></div>
+                                <div className="issue_right_text">
+                                    <h4>與網紅合作之前，你必須事先瞭解的注意事項</h4>
+                                    <p>YouTuber 已堂堂擠進前十大，而且現在也經常看到以 Instagramer 為志的相機女孩……</p>
+                                </div>
                             </div>
                             <div className="issue">
-                                <Link to="#"><h4>接案沒有靈感怎麼辦？</h4></Link>
-                                <span>Lorem ipsum dolor sit amet sed diam nonumy.Lorem ipsum dolor sit amet,sed diam nonumy</span>
+                                <div className="issue_right_img issue_right_img2"></div>
+                                <div className="issue_right_text">
+                                    <h4>網紅行銷的六個成功秘訣</h4>
+                                    <p>若找到對的網紅，確實能有效將品牌信念傳達給更廣泛的群眾，但要如何找到合適的……</p>
+                                </div>
                             </div>
                             <div className="issue">
-                                <Link to="#"><h4>如何與廠商溝通</h4></Link>
-                                <span>Lorem ipsum dolor sit amet sed diam nonumy.Lorem ipsum dolor sit amet,sed diam nonumy</span>
+                                <div className="issue_right_img issue_right_img3"></div>
+                                <div className="issue_right_text">
+                                    <h4>新創如何與 YouTuber 合作，借助他們的影響力</h4>
+                                    <p>根據統計，2018台灣有 11 個 YouTube 頻道訂閱數突破百萬，其中，「這群人 TGOP」是台灣……</p>
+                                </div>
                             </div>
                             <div className="issue">
-                                <Link to="#"><h4>網紅經驗分享</h4></Link>
-                                <span>Lorem ipsum dolor sit amet sed diam nonumy.Lorem ipsum dolor sit amet,sed diam nonumy</span>
+                                <div className="issue_right_img issue_right_img4"></div>
+                                <div className="issue_right_text">
+                                    <h4>「上班不要看」、Yahoo TV、「這群人」傳授網紅行銷白皮書</h4>
+                                    <p>『網紅』憑什麼紅？『網紅經濟』背後暗藏玄機！」為題，由Yahoo TV 製作人洪煒恆、「這群人」……</p>
+                                </div>
                             </div>
                         </div>
                     </div>
