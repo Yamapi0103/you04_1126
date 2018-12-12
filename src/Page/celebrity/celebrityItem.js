@@ -97,7 +97,10 @@ class CelebrityItem extends Component {
       <React.Fragment>
         <div className="card radius-border card_shadow">
           <header className="banner">
-            <img src={"/images/" + this.celebrity['IC_photo'] + ".jpg"} alt="" />
+          {this.celebrity['IC_photo']===""?
+            <img id="user_solid" src={"/images/user-solid.svg"} alt="" />:
+            <img src={`http://localhost:3000/info/${this.celebrity['IC_photo']}`} alt=""/>
+          }
             <div className="middle">
               <Link to={`/celebrityInfo/${this.celebrity.IC_sid}`}>
                 <div className="text">詳細資料</div>

@@ -101,7 +101,10 @@ class CelebrityInfo extends Component {
                 <div className="Total_wrap">
                     <div className="Upper_wrap">
                         <figure>
-                            <img src={"/images/" + this.state.celebrity['IC_photo'] + ".jpg"} />
+                        {this.state.celebrity['IC_photo']===""?
+                            <img id="user_solid" src={"/images/user-solid.svg"} alt="" />:
+                            <img src={`http://localhost:3000/info/${this.state.celebrity['IC_photo']}`} alt=""/>
+                        }
                         </figure>
 
                         <div className="formalInfo">

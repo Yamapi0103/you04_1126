@@ -47,7 +47,9 @@ header.banner {
     transition: 0.5s;
     // display: none;
   }
-
+  img#user_solid{
+    object-fit: contain;
+  }
   .middle {
     transition: 0.5s ease;
     opacity: 0;
@@ -156,6 +158,7 @@ header.banner:hover {
   header.banner {
     width: 90%;
     height: 90%;
+    object-fit: cover;
   }
 }
 // @media screen and (min-width: 991px) and (max-width: 1200px) {
