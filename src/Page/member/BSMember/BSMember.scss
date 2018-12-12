@@ -26,11 +26,12 @@ $member_main_color:rgb(243, 243, 243);
             height: 150px;
             justify-content: space-around;
             align-items: center;
+            position: relative;
             img{
                 width: 50%;
                 height: auto;
                 border-radius: 50%;
-                border: 2px solid rgb(211, 211, 211);
+                border: 1px solid rgb(211, 211, 211);
             }
             span {
                 font-weight: bold;
@@ -38,6 +39,21 @@ $member_main_color:rgb(243, 243, 243);
             }
             a{
                 border-radius: 5px;
+            }
+            .upload_img {
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                bottom: 35px;
+                right: 56px;
+                background: rgb(90, 90, 90);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                i {
+                    color: white;
+                }
             }
         }
         ul {
@@ -217,6 +233,15 @@ $member_main_color:rgb(243, 243, 243);
                 }
                 span {
                     display: none;
+                }
+                .upload_img {
+                    width: 25px;
+                    height: 25px;
+                    bottom: 16px;
+                    right: 23px;
+                    i {
+                        color: white;
+                    }
                 }
             }
             ul {

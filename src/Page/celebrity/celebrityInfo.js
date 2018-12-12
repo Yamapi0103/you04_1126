@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './celebrityInfo.scss';
 import swal from 'sweetalert';
 import cookies from 'react-cookies'
+import{Link} from 'react-router-dom';
 
 
 class CelebrityInfo extends Component {
@@ -113,33 +114,30 @@ class CelebrityInfo extends Component {
                                     {this.state.celebrity['IC_name']}
                                 </div>
 
-                                <div className="celeadd_btn">
-                                    {/* <a onClick={this.addHandler} className="celeadd_btn" >收藏</a> */}
-                                    <a onClick={this.Favorite}>
-                                        <p> {this.state.saved ? "移除":"收藏"}</p>
-                                    </a>
-                                </div>
+                                <Link to="" className="celeadd_btn" onClick={this.Favorite}>{this.state.saved ? "移除":"收藏"}
+                                    {/* <a onClick={this.addHandler} className="celeadd_btn" >收藏</Link> */}
+                                </Link>
                             </div>
 
                             <div className="cele_content">
-                                <p><span>‧ 擅長社群: </span>{this.state.celebrity['IC_media']}</p>
-                                <p><span>‧ 性別: </span>{this.state.celebrity['IC_gender']}</p>
-                                <p><span>‧ 最低階案金額: </span>{this.state.celebrity['IC_price']}</p>
-                                <p><span>‧ 經手業配數: </span>{this.state.celebrity['IC_media']}</p>
+                                <p><span>‧ 擅長社群：</span>{this.state.celebrity['IC_media']}</p>
+                                <p><span>‧ 性別：</span>{this.state.celebrity['IC_gender']}</p>
+                                <p><span>‧ 最低階案金額：</span>{this.state.celebrity['IC_price']}</p>
+                                <p><span>‧ 經手業配數：</span>{this.state.celebrity['IC_media']}</p>
                                 <hr />
-                                <p><span>‧ YouTube 連結: </span><a href={this.state.celebrity['IC_yt']}>{this.state.celebrity['IC_yt']}</a></p>
-                                <p><span>‧ 粉絲(千): </span>{this.state.celebrity['IC_ytfans']}</p>
+                                <p><span>‧ YouTube 連結：</span><a href={this.state.celebrity['IC_yt']}>{this.state.celebrity['IC_yt']}</a></p>
+                                <p><span>‧ 粉絲(千)：</span>{this.state.celebrity['IC_ytfans']}</p>
 
                                 <hr />
-                                <p><span>‧ Facebook 連結: </span><a href={this.state.celebrity['IC_fb']}>{this.state.celebrity['IC_fb']}</a></p>
-                                <p><span>‧ 粉絲(千): </span>{this.state.celebrity['IC_fbfans']}</p>
+                                <p><span>‧ Facebook 連結：</span><a href={this.state.celebrity['IC_fb']}>{this.state.celebrity['IC_fb']}</a></p>
+                                <p><span>‧ 粉絲(千)：</span>{this.state.celebrity['IC_fbfans']}</p>
 
                                 <hr />
-                                <p><span>‧ Ingstram 連結: </span><a href={this.state.celebrity['IC_ig']}>{this.state.celebrity['IC_ig']}</a></p>
-                                <p><span>‧ 粉絲(千): </span>{this.state.celebrity['IC_igfans']}</p>
+                                <p><span>‧ Ingstram 連結：</span><a href={this.state.celebrity['IC_ig']}>{this.state.celebrity['IC_ig']}</a></p>
+                                <p><span>‧ 粉絲(千)：</span>{this.state.celebrity['IC_igfans']}</p>
 
                                 <hr />
-                                <p><span>‧ Blog 連結: </span><a href={this.state.celebrity['IC_web']}>{this.state.celebrity['IC_web']}</a></p>
+                                <p><span>‧ Blog 連結：</span><a href={this.state.celebrity['IC_web']}>{this.state.celebrity['IC_web']}</a></p>
                             </div>
                         </div>
                     </div>

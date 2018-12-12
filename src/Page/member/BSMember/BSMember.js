@@ -79,29 +79,31 @@ class BSMember extends Component {
                         <div className="member_head">
                             <img src={cookie.load('userId')[0]['BS_photo']==""?"/images/user-solid.svg":`http://localhost:3000/info/${this.state.BS_photo}`} alt="me" />
                             <span>{this.state.Data['BS_name']}</span>
-                            <a className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">上傳圖片</a>
-                                <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div className="modal-dialog" role="document">
-                                        <div className="modal-content">
-                                        <div className="modal-header">
-                                            <h5 className="modal-title">請選擇要上傳的照片</h5>
-                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div className="modal-body">
-                                            <div className="form-group">
-                                                <label for="exampleFormControlFile1">檔案請勿超過100k</label>
-                                                <input type="file" onChange={this.onChange} className="form-control-file" name="BS_photo" id="BS_photo"/>
-                                            </div>
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">取消</button>
-                                            <button type="button" className="btn btn-primary" onClick={this.onSubmit} data-dismiss="modal">確定傳送</button>
-                                        </div>
+                            <Link to="" className="upload_img" data-toggle="modal" data-target="#exampleModal" title="上傳照片">
+                                <i class="fas fa-camera"></i>
+                            </Link>
+                            <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div className="modal-dialog" role="document">
+                                    <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h5 className="modal-title">請選擇要上傳的照片</h5>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div className="modal-body">
+                                        <div className="form-group">
+                                            <label for="exampleFormControlFile1">檔案請勿超過100k</label>
+                                            <input type="file" onChange={this.onChange} className="form-control-file" name="BS_photo" id="BS_photo"/>
                                         </div>
                                     </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">取消</button>
+                                        <button type="button" className="btn btn-primary" onClick={this.onSubmit} data-dismiss="modal">確定傳送</button>
                                     </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <ul>
                             <li className="transition">

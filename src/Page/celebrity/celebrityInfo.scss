@@ -1,3 +1,5 @@
+@import '../../Component/Navbar.scss';
+
 .Total_wrap {
   //   border: 20px solid transparent;
 //   border: 5px solid #ccc;
@@ -53,13 +55,29 @@ h2 {
 
 .cele_title{
   display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  .cele_name{
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .celeadd_btn {
+    padding: 5px 30px;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 1px 1px 1px rgb(146, 146, 146);
+    background: $main_color;
+    color: white;
+    transition: .5s;
+    margin-left: 35px;
+    &:hover {
+        background: rgb(104, 194, 149);
+        color: white;
+    }
+  }
 }
 
-.cele_name{
-  font-size: 27px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
+
 
 .cele_content p{
   line-height: 18px;
@@ -73,30 +91,6 @@ h2 {
 
 span{
   color: #76797c;
-}
-
-.celeadd_btn {
-  position: relative;
-  height: 38%;
-  width: 45px;
-  text-align: center;
-  background: rgba(78, 165, 180, 0.8);
-  font-size: 14px;
-  padding:  0.2% 1.5%;
-  left: 5%;
-  top: 5px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 4px rgba(141, 141, 141, 0.5);
-  cursor: pointer;
-  &:hover{
-    background: rgb(34, 161, 184);
-  }
-}
-
-
-.celeadd_btn p{
-  font-weight: 600;
-  color: #ffffff;
 }
 
 
