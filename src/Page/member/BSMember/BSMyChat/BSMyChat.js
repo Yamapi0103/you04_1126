@@ -297,19 +297,24 @@ class BSMyChat extends Component {
       console.log("前端產生對話!");
       if (userType == "IC") {
         $(".chatContent").append(`
-                      <div class='icChat BS_icChat new' key=${Time}>
-                          <p>
-                            <span class='name'>${this.state.icNameArray[this.CurrentIC_idx]["IC_name"]}: </span>
-                            ${text}
-                           </p>
+                      <div class='ChatBox_left new' key=${Time}>
+                          <span class='name'>${this.state.icNameArray[this.CurrentIC_idx]["IC_name"]}: </span>
+                          <div class='other_chat'>
+                            <div class='BS_icChat'>${text}</div>
+                          </div>
                           <p class='time'>${Time}</p>
                       </div>
                       `);
       } else {
+        // 廠商自己的對話
         $(".chatContent").append(`
-                      <div class='bsChat BS_bsChat new' key=${Time}>
-                          <p>${text}</p>
-                          <p class='time'>${Time}</p>
+                      <div class='ChatBox_right new' key=${Time}>
+                        <div class='self_chat'>
+                          <div class='BS_bsChat'>
+                            ${text}
+                          </div>
+                        </div>
+                        <p class='time'>${Time}</p>
                       </div>
                       `);
       }
@@ -383,15 +388,24 @@ class BSMyChat extends Component {
                         data-num={idx}
                         onClick={this.showChat}
                       />
-                      <h6>專案名字：{v.BScase_name}</h6>
-                      <p>
-                        應徵網紅：
-                        <span style={{ color: "#df910e" }}>
+                      <h6>
+                        <div>專案名字：</div>
+                        <div className='hightlight_CaseName'>{v.BScase_name}</div>
+                      </h6>
+                      <div className='show_chat_title'>
+                        <div>應徵網紅：</div>
+                        <div className='hightlight_name'>
                           {this.state.icNameArray[idx]["IC_name"]}
-                        </span>
-                      </p>
-                      <p>地點：{v.BScase_location}</p>
-                      <p>預算：{v.BScase_pay}</p>
+                        </div>
+                      </div>
+                      <div className='show_chat_title show_chat_title_none'>
+                        <div>地點：</div>
+                        <div>{v.BScase_location}</div>
+                      </div>
+                      <div className='show_chat_title show_chat_title_none'>
+                        <div>預算：</div>
+                        <div>{v.BScase_pay}</div>
+                      </div>
                       {/* <button data-casesid={v.sid} data-num={idx} onClick={this.showChat} className='LookChat'>查看對話</button> */}
                     </div>
                   );
@@ -401,22 +415,28 @@ class BSMyChat extends Component {
                 <div className="chatContent">
                   {this.state.sortArray.map((v, idx) => {
                     return v.hasOwnProperty("BS_content") ? (
-                      <div className="bsChat BS_bsChat" key={v.time}>
-                        <p>{v.BS_content}</p>
-                        <p className="time">{this.fixDate(v.time)}</p>
+                      // 廠商自己的對話
+                      <div className='ChatBox_right'  key={v.time}>
+                          <div className='self_chat'>
+                            <div className='BS_bsChat'>{v.BS_content}</div>
+                          </div>
+                          <p className="time">{this.fixDate(v.time)}</p>
                       </div>
                     ) : (
-                      <div className="icChat BS_icChat" key={v.time}>
-                        <p>
+                      <div className='ChatBox_left'  key={v.time}>
+                        
                           <span className='name'>
                             {
                               this.state.icNameArray[this.CurrentIC_idx][
                                 "IC_name"
                               ]
-                            }
+                            }:
                           </span>
-                          : {v.IC_content}
-                        </p>
+                          <div className='other_chat'>
+                            <div className='BS_icChat'>
+                              {v.IC_content}
+                            </div>
+                          </div> 
                         <p className="time">{this.fixDate(v.time)}</p>
                       </div>
                     );

@@ -10,13 +10,14 @@ $bg_color:rgb(255, 255, 255);
         background:$bg_color;
         .case{
             padding: 10px 10px;
-            margin-bottom: 10px;
+            // margin-bottom: 10px;
             background: #ffff;
             position: relative;
-            height: calc( 20% - 10px );
+            // height: calc( 20% - 10px );
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.116);
             .show_chat {
                 position: absolute;
                 width: 100%;
@@ -27,16 +28,50 @@ $bg_color:rgb(255, 255, 255);
                 z-index: 8;
             }
             h6{
-                font-size: 1.3rem;
+                font-size: 1.2rem;
                 font-weight: bold;
                 line-height: 30px;
+                display: flex;
+                flex-wrap: wrap;
+                .hightlight_CaseName{
+                    color: #a2aa9f;
+                }
             }
+            .show_chat_title{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            @media(max-width:500px){
+                .show_chat_title_none{
+                    display: none;
+                }
+            }
+            .hightlight_name{
+                color: #99a19b;
+            }
+            
         }
         .case:hover{
-            background-color: rgb(224, 245, 186);
+            // background: #1d1e1dd6;
+            background: #4a4b4ad6;
+            color: white;
+            .hightlight_CaseName{
+                color: rgb(163, 240, 40);
+            }
+            .hightlight_name{
+                color: rgb(127, 245, 127);
+            }
         }
         .choose{
-            background: rgb(224, 245, 186) !important;
+            // background: #1d1e1dd6 !important;
+            background: #4a4b4ad6 !important;
+            color: white;
+            h6 > .hightlight_CaseName{
+                color: rgb(163, 240, 40);
+            }
+            .hightlight_name{
+                color: rgb(127, 245, 127);
+            }
         }
         .LookChat{
             padding: 3px 10px;
@@ -47,7 +82,8 @@ $bg_color:rgb(255, 255, 255);
         }
     }
     .chat_right{
-        width: 55%;
+        width: 56%;
+        padding: 1%;
         height: 600px;
         background:$bg_color;
         .chatContent{
@@ -56,25 +92,54 @@ $bg_color:rgb(255, 255, 255);
             overflow: auto;
             padding: 0 10px;
             box-sizing: border-box;
-            // background-color: #ffff;
-            .bsChat,.icChat{
-                width: 100%;
-                padding: 10px 0;
-                border-bottom: 1px solid rgb(226, 224, 224);
-                word-wrap:break-word;
-                .name{
-                    color:#a0adba;
+          
+            .ChatBox_right{
+                margin-bottom: 30px;
+                .self_chat{
+                    width: 80%;
+                    margin-left: auto;
                 }
                 .time{
+                    color:#a0adba;
                     font-size: 0.8rem;
+                    text-align: right;
                 }
-            }
-            .BS_bsChat,.IC_icChat{
-                // color: rgb(73, 108, 206);
-                text-align: right;
-            }
-            .BS_icChat,.IC_bsChat{
-                
+                .BS_bsChat,.IC_icChat{
+                    width:fit-content;
+                    margin-left: auto;
+                    text-align: right;
+                    padding: 3px 12px;
+                    border-radius: 20px;
+                    background-color: #1d1e1dd6;
+                    // background-color: #4d74f3d6;
+                    color: white;
+                    text-align:justify;
+                    word-break: break-all;
+                }
+             }
+
+             .ChatBox_left{
+               margin-bottom: 30px;
+               .other_chat{
+                    width: 80%;
+                    margin-right: auto;
+                }
+                .time{
+                    color:#a0adba;
+                    font-size: 0.8rem;
+                    text-align: left;
+                }
+                .BS_icChat,.IC_bsChat{
+                    width:fit-content;
+                    text-align: left;
+                    padding: 3px 12px;
+                    border-radius: 20px;
+                    background-color: #7a7a7cd6;
+                    // background-color: #31f041d6;
+                    color: white;
+                    text-align:justify;
+                    word-break: break-all;
+                }
             }
         }
         .inputDiv{
@@ -89,10 +154,10 @@ $bg_color:rgb(255, 255, 255);
                 text-align: center;
                 width: 20%;
                 line-height: 60px;
-                background: rgb(73, 108, 206);
+                background: #778a7f;
             }
             .sent:hover{
-                background: rgb(65, 96, 182);
+                background: #617067;
             }
         }
     }

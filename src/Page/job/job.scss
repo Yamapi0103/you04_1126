@@ -2,16 +2,16 @@ div{
   box-sizing: unset;
 }
 .job_wrap {
-  // border: 1px solid #ccc;
-  //   background-color: #b0c3e9;
-  //   min-height: 500px;
-
+  width: 70%;
+  margin: 130px auto 50px auto;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 4px rgba(44, 44, 44, 0.5);
   .job_upper {
     display: flex;    
     justify-content: space-between;
     align-items: center;
     // margin: 10px 10px 50px 0;
-    border-bottom: 5px solid #ccc;
+    // border-bottom: 1px solid #ccc;
     // background-color: #94bd90;
     figure.upper_left {
       // display: block;
@@ -96,10 +96,15 @@ div{
 
 
 .text_align_center{
+  color: rgb(42, 167, 42);
   text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
 }
 
 .container720{
-  width: 720px;
-  margin: 0 auto;
+  width: 100%;
+  // margin: auto;
+  font-size: 1.5rem;
+  text-align: center;
 }

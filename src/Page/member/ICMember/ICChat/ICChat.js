@@ -292,20 +292,23 @@ class ICChat extends Component {
     this.socket.on("ADDClient", (text, userType, Time) => {
       console.log("前端產生對話!");
       if (userType == "IC") {
+        //網紅自己的對話
         $(".chatContent").append(`
-              <div class='icChat IC_icChat new' key=${Time}>
-                  <p>${text}</p>
+              <div class='ChatBox_right new' key=${Time}>
+                  <div class='self_chat'>
+                    <div class='IC_icChat'>${text}</div>
+                  </div>
                   <p class='time'>${Time}</p>
               </div>
               `);
       } else {
         $(".chatContent").append(`
-              <div class='bsChat IC_bsChat new' key=${Time}>
-              <p>
+              <div class='ChatBox_left new' key=${Time}>
                 <span class='name'>${this.state.bsNameArray[this.CurrentBS_idx]["BS_name"]}: </span>
-                ${text}
-              </p>
-              <p class='time'>${Time}</p>
+                <div class='other_chat'>
+                  <div class='IC_bsChat'>${text}</div>
+                </div>
+                <p class='time'>${Time}</p>
               </div>
               `);
       }
@@ -378,10 +381,22 @@ class ICChat extends Component {
                         data-num={idx}
                         onClick={this.showChat}
                       />
-                      <h6>專案名字: {v.BScase_name}</h6>
-                      <p>廠商: <span style={{color:'#df910e'}}>{this.state.bsNameArray[idx]['BS_name']}</span></p>
-                      <p>地點: {v.BScase_location}</p>
-                      <p>預算: {v.BScase_pay}</p>
+                      <h6>
+                        <div>專案名字：</div>
+                        <div className='hightlight_CaseName'>{v.BScase_name}</div>
+                      </h6>
+                      <div className='show_chat_title'>
+                        <div>廠商:</div>
+                        <div className='hightlight_name'>{this.state.bsNameArray[idx]['BS_name']}</div>
+                      </div>
+                      <div className='show_chat_title show_chat_title_none'>
+                        <div>地點：</div>
+                        <div>{v.BScase_location}</div>
+                      </div>
+                      <div className='show_chat_title show_chat_title_none'>
+                        <div>預算：</div>
+                        <div>{v.BScase_pay}</div>
+                      </div>   
                     </div>
                   );
                 })}
@@ -390,22 +405,25 @@ class ICChat extends Component {
                 <div className="chatContent">
                   {this.state.sortArray.map((v, idx) => {
                     return v.hasOwnProperty("BS_content") ? (
-                      <div className="bsChat IC_bsChat" key={v.time}>
-                        <p>
+                      <div className="ChatBox_left" key={v.time}>
                           <span className='name'>
                             {
                               this.state.bsNameArray[this.CurrentBS_idx][
                                 "BS_name"
                               ]
-                            }
+                            }:
                           </span>
-                          : {v.BS_content}
-                        </p>
-                        <p className="time">{this.fixDate(v.time)}</p>
+                          <div className='other_chat'>
+                            <div className='IC_bsChat'>{v.BS_content}</div>
+                          </div>
+                          <p className="time">{this.fixDate(v.time)}</p>
                       </div>
                     ) : (
-                      <div className="icChat IC_icChat" key={v.time}>
-                        <p>{v.IC_content}</p>
+                      // 網紅自己的對話
+                      <div className="ChatBox_right" key={v.time}>
+                        <div className='self_chat'>
+                          <div className='IC_icChat'>{v.IC_content}</div>
+                        </div>
                         <p className="time">{this.fixDate(v.time)}</p>
                       </div>
                     );

@@ -23,7 +23,7 @@ class Login extends Component{
         .then(data => {
             if(data.length==1){
                 data[0].userType = this.userType.toUpperCase();
-                cookie.save('userId', data);                
+                cookie.save('userId', data, { path: '/' });                
                 this.props.history.push("/home"); //是的話轉跳到首頁 
             }else{
                 $('#main_alert').show();
