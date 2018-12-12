@@ -104,7 +104,7 @@ class ListCaseCard extends Component {
                     this.props.cases.map(ct =>
                         <div className="list_case_card_container" people-value={ct.BScase_ask_people} fans-value={ct.BScase_fans} pay-value={ct.BScase_pay} >
                             <Link to="" className="list_case_card_container_left">
-                                <img src={(`http://localhost:3000/api/${ct.BScase_photo}`)} /> 
+                                <img src={(`http://localhost:3000/info/${ct.BScase_photo}`)} /> 
                             </Link>
                             <div className="list_case_card_container_right">
                                 <div className="text_container">

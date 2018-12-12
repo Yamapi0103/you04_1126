@@ -21,6 +21,13 @@
         height: 100%;
         object-fit: cover;
       }
+
+    }
+    .middle {
+      opacity: 1;
+      .text:hover{
+        box-shadow: 2px 2px 6px rgba(44, 44, 44, 0.5);
+      }
     }
     .bccc_card_body {
       flex-grow: 1;

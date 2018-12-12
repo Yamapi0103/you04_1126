@@ -71,8 +71,12 @@ class BSMyFavor extends Component {
                                     <div key={k.bs_sid} className="bsmyfavor_container_card_container">
                                     {/* <div key={k.bs_sid} className="card flex radius-border card_shadow"></div> */}
                                         <header className="">
-                                            <img src={"/images/" + k['IC_photo'] + ".jpg"} alt="" />
-                                            <div className="">
+                                        {k['IC_photo']===""?
+                                            <img id="user_solid" src={"/images/user-solid.svg"} alt="" />:
+                                            <img src={`http://localhost:3000/info/${k['IC_photo']}`} alt=""/>
+                                        }
+                                            {/* <img src={"/images/" + k['IC_photo']} alt="" /> */}
+                                            <div className="middle">
                                                 <Link to={`/celebrityInfo/${k.IC_sid}`}>
                                                     <div className="text">詳細資料</div>
                                                 </Link>
