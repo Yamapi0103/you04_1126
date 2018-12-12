@@ -208,36 +208,184 @@ $section_color:rgb(191, 218, 209);
     padding: 0 50px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 350px;
+    align-items: flex-start;
+    // height: 600px;
+    box-sizing: border-box;
+    color: black;
     .hshc_left {
-      min-width: 50%;
-      height: 100%;
-      background: #ffbe33 url("/images/pexels-photo-1574649.jpeg") no-repeat 0 0;
-      background-size: cover;
-      border-radius: 5px;
-      opacity: .8;
-      margin-right: 50px;
-    }
-    @media only screen and (max-width: 1263px) {
-      .hshc_left {
-        display: none;
-      }
-    }
-    .hshc_right {
-      height: 100%;
+      // min-width: 50%;
+      width: 48%;
+      height: 600px;
+      opacity: .9;
+      margin-right: 25px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-      a {
-        font-weight: bold;
-        color: rgb(253, 253, 253);
+      cursor: pointer;
+      .hshc_left_img {
+        width: 100%;
+        height: 70%;
+        background: #ffbe33 url("/images/pexels-photo-174938.jpeg") no-repeat 0 0;
+        background-size: cover;
+      }
+      .hshc_left_text {
+        width: 100%;
+        height: 30%;
+        padding: 10px;
+        box-sizing: border-box;
         h4 {
-          border-right: 2px solid orange;
-          background: orange;;
+          margin-bottom: 10px;
+          font-weight: 600;
         }
       }
     }
+    .hshc_right {
+      width: 45%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      // background: rgb(218, 191, 191);
+      flex-grow: 1;
+      flex-wrap: wrap;
+      .issue {
+        // margin: 0 15px;
+        width: 48%;
+        // height: 50%;
+        height: 360px;
+        // background: #000;
+        border: #ffb900;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        .issue_right_img {
+          width: 100%;
+          height: 50%;
+        }
+        .issue_right_img1 {
+          background: url("/images/pexels-photo-1471752.jpeg") no-repeat 0 0;
+          background-size: cover;
+          // pexels-photo-545334
+        }
+        .issue_right_img2 {
+          background: url("/images/pexels-photo-935756.jpeg") no-repeat 0 0;
+          background-size: cover;
+        }
+        .issue_right_img3 {
+          background: url("/images/pexels-photo-1509428.jpeg") no-repeat 0 0;
+          background-size: cover;
+        }
+        .issue_right_img4 {
+          background: url("/images/pexels-photo-1059116.jpeg") no-repeat 0 0;
+          background-size: cover;
+        }
+        .issue_right_text {
+          width: 100%;
+          height: 50%;
+          display: flex;
+          padding: 10px;
+          box-sizing: border-box;
+          flex-direction: column;
+          overflow: hidden;
+          h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+          }
+          p {
+            line-height: 20px;
+          }
+        }
+      }
+
+    }
+  }
+  @media only screen and (max-width: 1163px) {
+    .home_section4_hotissue_container {
+      flex-direction: column;
+      width: 90%;
+      margin: 0 auto;
+      .hshc_left {
+        width: 100%;
+        margin-right: 0px;
+      }
+      .hshc_right {
+        width: 100%;
+        height: 50%;
+      }
+    }
+  }
+  @media only screen and (max-width: 753px) {
+    .home_section4_hotissue_container {
+      .hshc_left {
+        .hshc_left_img {
+          height: 65%;
+        }
+      }
+      .hshc_right {
+        height: 55%;
+      }
+    }
+  }
+  @media only screen and (max-width: 656px) {
+    .home_section4_hotissue_container {
+      .hshc_left {
+        height: 350px;
+        margin-bottom: 80px;
+        .hshc_left_img {
+        }
+        .hshc_left_text {
+          h4 {
+            font-size: 1.1rem;
+          }
+          p {
+            line-height: 20px;
+          }
+        }
+      }
+      .hshc_right {
+        .issue {
+          height: 350px;
+          width: 100%;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 550px) {
+    .home_section4_hotissue_container {
+      .hshc_left {
+        height: 300px;
+        margin-bottom: 0px;
+        .hshc_left_img {
+          height: 70%;
+        }
+        .hshc_left_text {
+          height: 30%;
+          p {
+            display: none;
+          }
+        }
+      }
+      .hshc_right {
+        .issue {
+          height: 300px;
+          width: 100%;
+          .issue_right_img {
+            height: 70%;
+          }
+          .issue_right_text {
+            height: 30%;
+            p {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 590px) {
+  .home_section4 {
+    width: 95%;
   }
 }
