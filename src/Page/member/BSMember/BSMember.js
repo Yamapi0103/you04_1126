@@ -79,7 +79,7 @@ class BSMember extends Component {
                         <div className="member_head">
                             <img src={cookie.load('userId')[0]['BS_photo']==""?"/images/user-solid.svg":`http://localhost:3000/info/${this.state.BS_photo}`} alt="me" />
                             <span>{this.state.Data['BS_name']}</span>
-                            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">上傳圖片</button>
+                            <a className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">上傳圖片</a>
                                 <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div className="modal-dialog" role="document">
                                         <div className="modal-content">
