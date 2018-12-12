@@ -28,8 +28,10 @@ $member_main_color:rgb(243, 243, 243);
             align-items: center;
             position: relative;
             img{
-                width: 50%;
-                height: auto;
+                // width: 50%;
+                // height: auto;
+                width: 100px;
+                height: 110px;
                 border-radius: 50%;
                 border: 1px solid rgb(211, 211, 211);
             }
@@ -229,7 +231,8 @@ $member_main_color:rgb(243, 243, 243);
                 height: 100%;
                 width: 150px;
                 img {
-                    width: 55%;
+                   width: 65px;
+                   height: 75px;
                 }
                 span {
                     display: none;
