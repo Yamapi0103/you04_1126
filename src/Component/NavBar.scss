@@ -135,3 +135,21 @@ $main_color:#71a795;
         }
     }
 }
+
+.Notification{
+    p{
+        font-size: 0.6em;
+        text-align: center;
+        line-height: 1.2em
+    }
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -9px;
+    top: 16px;
+    border: 1px solid rgb(140, 20, 20);
+    background: rgb(176, 54, 54);
+    box-shadow:1px 1px 1px #444;
+    padding: 3px;
+    border-radius: 50%;
+}
