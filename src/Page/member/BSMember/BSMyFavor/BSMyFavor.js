@@ -70,7 +70,7 @@ class BSMyFavor extends Component {
                                 this.state.saveCelebrity.map((k) => 
                                     <div key={k.bs_sid} className="bsmyfavor_container_card_container">
                                     {/* <div key={k.bs_sid} className="card flex radius-border card_shadow"></div> */}
-                                        <header className="">
+                                        <header className="banner">
                                         {k['IC_photo']===""?
                                             <img id="user_solid" src={"/images/user-solid.svg"} alt="" />:
                                             <img src={`http://localhost:3000/info/${k['IC_photo']}`} alt=""/>
