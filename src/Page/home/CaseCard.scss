@@ -51,15 +51,16 @@
         .btnctn_btn {
           text-align: center;
           color: white;
+          text-shadow: 0 0 1px rgb(131, 131, 131);
           height: 30px;
           width: 35%;
           // padding: 3px 5px;
           border-radius: 20px;
-          background: #83ccb4;
+          background: rgb(77, 173, 128);
           text-decoration: none;
           line-height: 30px;
           &:hover {
-            background: rgb(28, 143, 137);;
+            background: rgb(28, 143, 137);
           }
         }
       }

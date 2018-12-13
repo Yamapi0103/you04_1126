@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./job.scss";
 import cookie from 'react-cookies';
 import swal from 'sweetalert';
-import SearchBar from '../home/SearchBar'
+import SearchBar from '../home/SearchBar';
+import { Link } from 'react-router-dom';
 
 class Job extends Component {
   constructor(props) {
@@ -176,8 +177,10 @@ class Job extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <SearchBar />
+        <div className="list_section1">
+            <div className="list_section1_searchbar_container">
+                <SearchBar />
+            </div>
         </div>
         
         <div className="job_wrap">
@@ -190,12 +193,9 @@ class Job extends Component {
 
               <p><b>專案名稱: </b>{this.state.BScase_name}</p>
               
-              
-              <div className="btn_wrap">
-              <a onClick={this.hire} id='hire' class="job_btn" role="button">應徵<i class="far fa-star"></i></a>
-                <a onClick={this.addfavor} id='addfavor' class="job_btn" role="button">收藏</a>
-                {/* <a class="job_btn" role="button">應徵</a>
-                <a class="job_btn" role="button">收藏</a> */}
+              <div className="button_container">
+                  <Link to="" role="button" onClick={this.hire} id='hire' className="list_case_ctn_apply">應徵</Link>
+                  <Link to="" role="button" onClick={this.addfavor} id='addfavor' className="list_case_ctn_save">收藏</Link>
               </div>
             </aside>
           </header>
@@ -204,18 +204,18 @@ class Job extends Component {
                   <h3 className="text_align_center ">工作內容</h3>
                 <div className="container720">
                 
-                <p><b>產業類別: </b>{this.state.industry}</p>
-                <p><b>期限要求: </b> {this.state.BScase_time_limit}</p>
-                <p><b>薪資待遇: </b>{this.state.BScase_pay}</p>
+                <p><b>產業類別：</b>{this.state.industry}</p>
+                <p><b>期限要求：</b> {this.state.BScase_time_limit}</p>
+                <p><b>薪資待遇：</b>{this.state.BScase_pay}</p>
                 
                 </div>
               </article>
               <article className="job_content">
                 <h3 className="text_align_center ">條件內容</h3>
               <div className="container720">
-                <p><b>地點: </b> {this.state.BScase_location}</p>
-                <p><b>人氣:</b> {this.state.BScase_fans}</p>
-                <p><b>專案形式: </b>{this.state.active}</p>
+                <p><b>地點：</b> {this.state.BScase_location}</p>
+                <p><b>人氣：</b> {this.state.BScase_fans}</p>
+                <p><b>專案形式：</b>{this.state.active}</p>
                 </div>
               </article>
               <article className="job_content">
@@ -223,7 +223,6 @@ class Job extends Component {
                 <div className="container720">
                 <p>{this.state.BScase_info}
                 </p></div>
-              
               </article>
           </section>
         </div>

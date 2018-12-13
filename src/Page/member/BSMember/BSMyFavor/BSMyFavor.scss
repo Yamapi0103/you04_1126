@@ -9,12 +9,13 @@
   .bsmyfavor_container_card_container {
     display: flex;
     flex-direction: column;
-    width: 270px;
+    width: 250px;
     background: #fff;
     height: 400px;
     box-shadow: 0 0 15px grey;
     margin-bottom: 30px;
-
+    border-radius: 3px;
+    overflow: hidden;
     header {
       overflow: hidden;
       height: 200px;
@@ -38,8 +39,8 @@
         -ms-transform: translate(-50%, -50%);
         text-align: center;
         .text {
-          border-radius: 5px;
-          background-color: rgb(98, 201, 103);
+          border-radius: 3px;
+          background-color: #71a795;
           color: white;
           font-size: 16px;
           padding: 10px 25px;
