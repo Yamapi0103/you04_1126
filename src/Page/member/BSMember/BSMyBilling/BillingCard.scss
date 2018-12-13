@@ -33,3 +33,17 @@
         }
     }
 }
+@media (max-width:550px) {
+    .billing_card_container {
+        padding: 30px 30px;
+        .billing_card_container_box {
+        }
+        .billing_card_container_left {
+            width: 50%;
+        }
+        .billing_card_container_right {
+            a {          
+            }
+        }
+    }
+}

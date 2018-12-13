@@ -175,3 +175,36 @@
         text-decoration:none;
     }
 }
+@media (max-width:630px) {
+    .imco_card {
+        flex-direction: column;
+        .imco_card_left {
+            width: 100%;
+        }
+        .imco_card_right {
+            width: 100%;
+            .imco_card_right_btn_container {
+                margin-top: 20px;
+                justify-content: flex-end;
+            }
+        }
+    }
+    .imco_card_IC{
+        .imco_card_IC_container{
+            padding: 20px 30px;
+            flex-direction: column;
+            .imco_card_IC_content{
+                .imco_card_IC_img{
+                    img{
+                    }
+                }
+                .introduction{
+                }
+            }
+            .btn_div {
+                margin-top: 20px;
+                padding-bottom: 0px;
+            }
+        }
+    }
+}

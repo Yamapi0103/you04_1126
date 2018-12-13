@@ -9,12 +9,13 @@
     margin-bottom: 40px;
     .home_section2_case_top {
       height: 45%;
-      background: #ffbe33 url("/images/project1.jpg") no-repeat 0 0;
+      // background: #ffbe33 url("/images/project1.jpg") no-repeat 0 0;
       background-size: cover;
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover
+        object-fit: cover;
+        opacity: .9;
       }
     }
     .home_section2_case_bottom {
