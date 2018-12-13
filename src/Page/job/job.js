@@ -179,7 +179,7 @@ class Job extends Component {
         <div className="job_wrap">
           <header className="job_upper">
             <figure className="upper_left">
-              <img className="photo" src={(`http://localhost:3000/api/${this.state.BScase_Photo}`)} />
+              <img className="photo" src={(`http://localhost:3000/info/${this.state.BScase_Photo}`)} />
             </figure>
             <aside className="upper_right">
 
