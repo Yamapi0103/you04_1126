@@ -96,11 +96,13 @@ class BSMyInfo extends Component {
         evt.preventDefault();
         console.log(this.state);
         this.update(this.state)
+        window.location.reload(); 
 
     }
     selectClick=(evt)=>{
         let select = evt.target;
         select[0].setAttribute('disabled','disabled');
+        
     }
 
     render() {
