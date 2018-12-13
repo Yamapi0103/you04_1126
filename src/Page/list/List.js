@@ -141,8 +141,6 @@ class List extends Component{
                 <div className="list_section1">
                     <div className="list_section1_searchbar_container">
                         <SearchBar />
-                        <div>
-                </div>
                     </div>
                 </div>
                 <div className="list_section2">
