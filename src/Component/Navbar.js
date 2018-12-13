@@ -35,7 +35,7 @@ class Navbar extends Component{
     }
 
 
-    componentDidMount=()=> {      
+    componentDidMount=()=> {
         // console.log(cookie.load('userId'))
             $(window).click(function(){
                 $('.menu-container').removeClass('active');  
