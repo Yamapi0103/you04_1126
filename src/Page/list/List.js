@@ -83,8 +83,14 @@ class List extends Component{
                 $(".list_case_card_container").hide();
                 if($(this).data("dropdownValue") == 'all'){
                 $(".people-filter").show();
+                $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
+                    scrollTop: 0
+                }, 0);
             }else{
                 $("div[people-value='"+$(this).data("dropdownValue")+"']").show();
+                $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
+                    scrollTop: 0
+                }, 0);
             }            
             })
           });
@@ -96,8 +102,14 @@ class List extends Component{
                 $(".list_case_card_container").hide();
                 if($(this).data("dropdownValue") == 'all'){
                 $(".fans-filter").show();
+                $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
+                    scrollTop: 0
+                }, 0);
             }else{
                 $("div[fans-value='"+$(this).data("dropdownValue")+"']").show();
+                $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
+                    scrollTop: 0
+                }, 0);
             }            
             })
           });
@@ -109,8 +121,14 @@ class List extends Component{
                 $(".list_case_card_container").hide();
                 if($(this).data("dropdownValue") == 'all'){
                 $(".pay-filter").show();
+                $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
+                    scrollTop: 0
+                }, 0);
             }else{
                 $("div[pay-value='"+$(this).data("dropdownValue")+"']").show();
+                $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
+                    scrollTop: 0
+                }, 0);
             }            
             })
           });
