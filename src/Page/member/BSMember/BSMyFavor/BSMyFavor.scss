@@ -71,25 +71,26 @@
       flex-grow: 1;
       padding: 30px;
       display: flex;
+      position: relative;
 
       .bccc_card_body_left {
         flex-grow: 1;
       }
 
       .unsaved {
-        width: 10%;
+        // width: 10%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
         background: rgb(204, 204, 204);
-        padding: 2px;
         font-size: 10px;
         color:#fff;
         text-align: center;
-        align-self: flex-end;
         border-radius: 5px;
         cursor: pointer;
-        position: relative;
-        left:7%;
-        margin-bottom: -7%;
-
+        position: absolute;
+        right: 18px;
+        top: 14px;
         &:hover {
           background: rgb(207, 151, 151);
         }
