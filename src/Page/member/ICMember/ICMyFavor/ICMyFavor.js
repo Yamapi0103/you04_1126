@@ -4,6 +4,7 @@ import $ from 'jquery';
 import '../../BSMember/BSMyCase/BSMyCase_Open.scss';
 import '../../BSMember/BSMyCase/BSMyCase.scss';
 import swal from 'sweetalert';
+import {Link} from  'react-router-dom';
 
 class ICMyFavor extends Component {
     constructor(props) {
@@ -91,6 +92,7 @@ class ICMyFavor extends Component {
                                                     <p>截止日期:{this.fixDate(v.BScase_time_limit)}</p>
                                                 </div>
                                                 <a id={v.BScase_sid} name={v.BScase_name} onClick={this.unSaved} className="unsaved">X</a>
+                                                <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${v.BScase_sid}`}>查看</Link>
                                             </div>
                                         )
                                     })
