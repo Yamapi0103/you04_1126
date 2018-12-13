@@ -96,7 +96,7 @@ class BSMyFavor extends Component {
                                                     <p><span>經手業配數: </span>{k.IC_case}</p>
                                                 </div>
                                             </div>
-                                            <a id={k.IC_sid} name={k.IC_name} onClick={this.unSaved} className="unsaved">移除</a>
+                                            <a id={k.IC_sid} name={k.IC_name} onClick={this.unSaved} className="unsaved">X</a>
                                         </div>
                                     </div>
                                 )
