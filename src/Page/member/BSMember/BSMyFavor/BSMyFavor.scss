@@ -9,12 +9,13 @@
   .bsmyfavor_container_card_container {
     display: flex;
     flex-direction: column;
-    width: 270px;
+    width: 250px;
     background: #fff;
     height: 400px;
     box-shadow: 0 0 15px grey;
     margin-bottom: 30px;
-
+    border-radius: 3px;
+    overflow: hidden;
     header {
       overflow: hidden;
       height: 200px;
