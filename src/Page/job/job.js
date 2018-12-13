@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./job.scss";
 import cookie from 'react-cookies';
 import swal from 'sweetalert';
+import SearchBar from '../home/SearchBar'
 
 class Job extends Component {
   constructor(props) {
@@ -175,8 +176,12 @@ class Job extends Component {
   render() {
     return (
       <React.Fragment>
-        {/* <h2>Job introduction</h2> */}
+        <div>
+          <SearchBar />
+        </div>
+        
         <div className="job_wrap">
+        
           <header className="job_upper">
             <figure className="upper_left">
               <img className="photo" src={(`http://localhost:3000/info/${this.state.BScase_Photo}`)} />
@@ -187,7 +192,7 @@ class Job extends Component {
               
               
               <div className="btn_wrap">
-              <a onClick={this.hire} id='hire' class="job_btn" role="button">應徵</a>
+              <a onClick={this.hire} id='hire' class="job_btn" role="button">應徵<i class="far fa-star"></i></a>
                 <a onClick={this.addfavor} id='addfavor' class="job_btn" role="button">收藏</a>
                 {/* <a class="job_btn" role="button">應徵</a>
                 <a class="job_btn" role="button">收藏</a> */}
