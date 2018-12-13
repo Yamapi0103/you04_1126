@@ -94,7 +94,7 @@ class ListCaseCardItem extends Component {
                 {
                     
                         <div className="list_case_card_container" people-value={ct.BScase_ask_people} fans-value={ct.BScase_fans} pay-value={ct.BScase_pay} >
-                            <Link to="" className="list_case_card_container_left">
+                            <Link to={`/publish_content/${ct.BScase_sid}`} className="list_case_card_container_left">
                                 <img src={(`http://localhost:3000/info/${ct.BScase_photo}`)} /> 
                             </Link> 
                             <div className="list_case_card_container_right">
