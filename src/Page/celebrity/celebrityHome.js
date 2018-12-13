@@ -13,7 +13,7 @@ class CelebrityHome extends Component {
     render() {
         return (
             <React.Fragment>
-                <h2>選擇你喜歡的網紅<br/>可按照類型或熱門程度做查詢</h2>
+                <h2>選擇你喜歡的網紅<br/>可按照類型做查詢</h2>
 
                 <ul className="flex">
                     <Link to="/celebrity/youtube" data-type="youtube" onClick={this.changeMedia} className="celebtn ">YouTube</Link>
