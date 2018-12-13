@@ -42,7 +42,7 @@ class NewCaseCard extends Component{
                     this.props.cases.map(ct =>
                     <div className="home_section2_case">
                         <Link to="" className="home_section2_case_top">
-                            {/* <img src={(`http://localhost:3000/api/${ct.BScase_photo}`)} />  */}
+                            <img src={(`http://localhost:3000/info/${ct.BScase_photo}`)} /> 
                         </Link>
                         <div className="home_section2_case_bottom">
                             <Link to=""><h5>{ct.BScase_name}</h5></Link>

@@ -42,11 +42,11 @@ $member_main_color:rgb(243, 243, 243);
             }
         }
         .mfb_container_top_point {
-            width: 41.5%;
+            width: 39.5%;
             box-shadow: 0 0 5px rgb(221, 221, 221);
             span {
                 strong {
-                    font-size: 2rem;
+                    font-size: 1.1rem;
                 }
             }
             a {
@@ -62,14 +62,8 @@ $member_main_color:rgb(243, 243, 243);
         }
         @media (max-width: 660px) {
             .mfb_container_top_box {
-                padding: 30px 30px;
-            }
-            .mfb_container_top_point {
-                span {
-                    strong {
-                        font-size: 2rem;
-                    }
-                }
+                padding: 20px 30px;
+                height: 150px;
             }
         }
         @media (max-width: 660px) {

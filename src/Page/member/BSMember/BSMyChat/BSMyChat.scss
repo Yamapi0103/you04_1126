@@ -37,6 +37,11 @@ $bg_color:rgb(255, 255, 255);
                     color: #a2aa9f;
                 }
             }
+            @media(max-width:683px){
+                h6 {
+                    font-size: 1.1rem;
+                }
+            }
             .show_chat_title{
                 display: flex;
                 flex-wrap: wrap;
@@ -46,31 +51,28 @@ $bg_color:rgb(255, 255, 255);
                     display: none;
                 }
             }
-            .hightlight_name{
-                color: #99a19b;
-            }
-            
+            // .hightlight_name{
+            //     color: #99a19b;
+            // }
         }
         .case:hover{
-            // background: #1d1e1dd6;
-            background: #4a4b4ad6;
-            color: white;
-            .hightlight_CaseName{
-                color: #ffb900;
+            background: rgb(245, 255, 241) !important;
+            color: rgb(46, 46, 46);
+            h6 > .hightlight_CaseName{
+                color: #ff8a04;
             }
             .hightlight_name{
-                color: #5efcad;
+                color: rgb(46, 46, 46);
             }
         }
         .choose{
-            // background: #1d1e1dd6 !important;
-            background: #4a4b4ad6 !important;
-            color: white;
+            background: rgb(245, 255, 241) !important;
+            color: rgb(46, 46, 46);
             h6 > .hightlight_CaseName{
-                color: #ffb900;
+                color: #ff8a04;
             }
             .hightlight_name{
-                color: #5efcad;
+                color: rgb(46, 46, 46);
             }
         }
         .LookChat{

@@ -9,7 +9,7 @@ $member_main_color:rgb(243, 243, 243);
 #member_container {
     background: rgb(255, 255, 255);
     // background: #F3F3F4;
-    padding: 30px 10%;
+    padding: 30px 13%;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
@@ -31,7 +31,7 @@ $member_main_color:rgb(243, 243, 243);
                 // width: 50%;
                 // height: auto;
                 width: 100px;
-                height: 110px;
+                height: 100px;
                 border-radius: 50%;
                 border: 1px solid rgb(211, 211, 211);
             }
@@ -46,9 +46,9 @@ $member_main_color:rgb(243, 243, 243);
                 position: absolute;
                 width: 25px;
                 height: 25px;
-                bottom: 35px;
+                bottom: 44px;
                 right: 56px;
-                background: rgb(90, 90, 90);
+                background: #aaa;
                 border-radius: 50%;
                 display: flex;
                 justify-content: center;
@@ -76,18 +76,39 @@ $member_main_color:rgb(243, 243, 243);
                     text-decoration: none;
                     display: flex;
                     justify-content: center;
-                    align-items: center;    
+                    align-items: center;
                     &:hover {
                         i {
-                            background: #aaa;
                             color: rgb(253, 252, 240);
                         }
+                    }    
+                    &:hover i::after {
+                        // width: 100%;
+                        right: 0;
                     }
                     i {
                         color: #aaa;
                         width: 30%;
                         line-height: 50px;
                         transition: .5s;
+                        position: relative;
+                        z-index: 1;
+                    }
+                    i::after {
+                        content: "";
+                        position: absolute;
+                        z-index: -1;
+                        left: 0;
+                        right: 100%;
+                        bottom: 0;
+                        background: #aaa;
+                        height: 100%;
+                        -webkit-transition-property: right;
+                        transition-property: right;
+                        -webkit-transition-duration: 0.3s;
+                        transition-duration: 0.3s;
+                        -webkit-transition-timing-function: ease-out;
+                        transition-timing-function: ease-out;
                     }
                     span {
                         margin-left: 10px;
@@ -105,7 +126,7 @@ $member_main_color:rgb(243, 243, 243);
         width:100%;
     }
     .member_form_box{
-        width:95%;
+        width:100%;
         .member_form_content{
             width: 100%;
             margin: 0 auto;
@@ -217,6 +238,16 @@ $member_main_color:rgb(243, 243, 243);
         }
     }
 }
+@media (max-width:1257px) {
+    #member_container {
+        padding: 30px 8%;
+    }
+}
+@media (max-width:1111px) {
+    #member_container {
+        padding: 30px 5%;
+    }
+}
 @media (max-width:930px) {
     #member_container {
         flex-direction: column;
@@ -225,13 +256,17 @@ $member_main_color:rgb(243, 243, 243);
             width: 100%;
             align-items: center;
             height: 110px;
-            margin-right: none;
+            margin-right: 0px;
             margin-bottom: 50px;
+            padding: 0 3%;
+            box-sizing: border-box;
+            justify-content: space-between;
             .member_head {
                 height: 100%;
-                width: 150px;
+                width: 75px;
+                margin: 0 0;
                 img {
-                   width: 65px;
+                   width: 75px;
                    height: 75px;
                 }
                 span {
@@ -241,19 +276,20 @@ $member_main_color:rgb(243, 243, 243);
                     width: 25px;
                     height: 25px;
                     bottom: 16px;
-                    right: 23px;
+                    right: -2px;
                     i {
                         color: white;
                     }
                 }
             }
             ul {
-                width: 100%;
+                width: 81%;
                 display: flex;
                 height: 100%;
                 align-items: center;
+                justify-content: space-between;
                 li {
-                    width: 20%;
+                    width: 13%;
                     border: none;
                     a {
                         display: flex;
@@ -262,12 +298,31 @@ $member_main_color:rgb(243, 243, 243);
                             font-size: 20px;
                             width: 100%;
                         }
+                        span {
+                            margin-left: 0px;
+                            width: 64px;
+                        }
                     }
                 }
             }
         }
         .member_form_box {
             width: 100%;
+        }
+    }
+}
+@media (max-width:587px) {
+    #member_container {
+        .register_navbar {
+            height: 85px;
+            margin-bottom: 40px;
+            padding: 0 5%;
+            .member_head {
+                display: none;
+            }
+            ul {
+                width: 100%;
+            }
         }
     }
 }
