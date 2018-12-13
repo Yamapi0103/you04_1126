@@ -85,12 +85,12 @@ class List extends Component{
                 $(".people-filter").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
-                }, 0);
+                }, 500);
             }else{
                 $("div[people-value='"+$(this).data("dropdownValue")+"']").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
-                }, 0);
+                }, 500);
             }            
             })
           });
@@ -104,12 +104,12 @@ class List extends Component{
                 $(".fans-filter").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
-                }, 0);
+                }, 500);
             }else{
                 $("div[fans-value='"+$(this).data("dropdownValue")+"']").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
-                }, 0);
+                }, 500);
             }            
             })
           });
@@ -123,12 +123,12 @@ class List extends Component{
                 $(".pay-filter").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
-                }, 0);
+                }, 500);
             }else{
                 $("div[pay-value='"+$(this).data("dropdownValue")+"']").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
-                }, 0);
+                }, 500);
             }            
             })
           });
@@ -147,7 +147,7 @@ class List extends Component{
                 </div>
                 <div className="list_section2">
                     <div className="list_section2_case_container">
-                        <h3>以下是您的搜尋結果{this.state.industry} , {this.state.active}</h3>
+                        <h3>以下是您的搜尋結果</h3>
                         <div className="list_section2_case_container_case">
                             <ListCaseCard cases={this.state.cases} industry={this.state.industry} active={this.state.active} />
                         </div>
