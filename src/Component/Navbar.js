@@ -126,8 +126,8 @@ class Navbar extends Component{
             
                                 <ul className="user-menu">
                                 <Link to={`/${userType}Member/${userType}MyInfo`} className="user-menu-link" href="#"><li className="user-menu__item">帳戶管理</li></Link>
-                                <Link to={`/${userType}Member/${userType}MyCase`} className="user-menu-link" href="#"><li className="user-menu__item">接案管理</li></Link>  
-                                <Link to={`/${userType}Member/${userType}MyChat`} className="user-menu-link" href="#"><li className="user-menu__item">對話紀錄</li></Link>  
+                                <Link to={`/${userType}Member/${userType}MyCase/${userType}MyCase_Open`} className="user-menu-link" href="#"><li className="user-menu__item">接案管理</li></Link>  
+                                <Link to={(userType=='BS')?`/${userType}Member/${userType}MyChat`:`/${userType}Member/${userType}Chat`} className="user-menu-link" href="#"><li className="user-menu__item">對話紀錄</li></Link>  
                                 <Link to={`/${userType}Member/${userType}MyFavor`} className="user-menu-link" href="#"><li className="user-menu__item">我的收藏</li></Link>
                                 {this.cookie.userType=="BS"?
                                 <Link to={`/${userType}Member/${userType}MyBilling`} className="user-menu-link" href="#"><li className="user-menu__item">訂單管理</li></Link>                  
