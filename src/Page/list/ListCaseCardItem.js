@@ -13,6 +13,7 @@ class ListCaseCardItem extends Component {
         // this.ic_favor = {}
         this.state = {
             saved: false,
+            BS_name:""
         }
         this.cases = this.props.cases;
         // console.log(this.cases)
@@ -22,7 +23,22 @@ class ListCaseCardItem extends Component {
         }
         // console.log(this.favor_case)
         this.savedOrNot()
+        this.setBS_name()
+   
+    }
 
+    //get BS_name by BS_sid
+    setBS_name =()=>{
+        fetch('http://localhost:3000/you04/updateBSmember/'+this.cases.BS_sid)
+        .then(res => res.json())
+          .then(result => {
+            if (result.length == 1){
+                this.setState({
+                    BS_name : result[0].BS_name
+                })
+            }
+            
+          })
     }
     savedOrNot = () => {
           fetch("http://localhost:3000/api/ICGetFavor/" + this.BScase.ICmember_sid + "/" + this.BScase.BScase_sid)
@@ -105,6 +121,7 @@ class ListCaseCardItem extends Component {
                                     <span>需求人數：{ct.BScase_ask_people}人</span>
                                     <span>薪資待遇：{ct.BScase_pay}</span>
                                     <span>粉絲要求：{ct.BScase_fans}</span>
+                                    <span>廠商名稱: {this.state.BS_name}</span>
                                     {/* <span>產業類型：{ct.industry_name}</span>
                                     <span>活動方式：{ct.BScase_active}</span> */}
                                 </div>
