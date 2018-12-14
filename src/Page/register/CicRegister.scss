@@ -57,7 +57,23 @@
                     text-align: center;
                     margin-bottom: 30px;
                 }
+                .policyCheck_container {
+                    display: flex;
+                    flex-direction: column;
+                    .policyCheck {
+                        display: flex;
+                        align-items: center;
+                        .form-check-input {
+                            position: relative;
+                            margin-right: 10px;
+                        }
+                        label {
+                            margin-top: 0px;
+                        }
+                    }
+                }
                 .submit_container {
+                    margin: 0 10px;
                     button {
                         padding: 5px 30px;
                         border-radius: 2px;

@@ -10,7 +10,7 @@ class Navbar extends Component{
         super(props)
         this.cookie = []
         this.state={
-            message:''
+            message:'0'
         }
     }
     islogIn = () =>{

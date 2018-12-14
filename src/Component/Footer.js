@@ -3,12 +3,18 @@ import React, { Component } from 'react';
 // import Right_footer from './right_footer';
 import './footer.scss';
 import { Link } from 'react-router-dom';
+import cookie from 'react-cookies';
 
 class Footer extends Component {
     constructor(props) {
         super(props)
     }
+    islogIn = () =>{
+        return cookie.load('userId')? true : false;
+    }
+
     render() {
+        let userType = this.islogIn()? cookie.load('userId')[0].userType:null
         return (
             <section className='footer'>
                 <div className='footer_content'>
@@ -20,7 +26,7 @@ class Footer extends Component {
                             <ul>
                                 <li className='footer_title'>Y04服務總覽</li>
                                 <li><Link to='publish'>刊登專案</Link></li>
-                                <li><Link to=''>會員中心</Link></li>
+                                <li><Link to={this.islogIn()?"/"+userType+"Member":""} >會員中心</Link></li>
                                 <li><Link to=''>線上徵才</Link></li>
                             </ul>
                             <ul>

@@ -99,7 +99,7 @@ class ListCaseCardItem extends Component {
                             </Link> 
                             <div className="list_case_card_container_right">
                                 <div className="text_container">
-                                    <Link to=""><h5>{ct.BScase_name}</h5></Link>
+                                    <Link to={`/publish_content/${ct.BScase_sid}`}><h5>{ct.BScase_name}</h5></Link>
                                     <div className="line"></div>
                                     {/* <span>{ct.case_company}</span> */}
                                     <span>需求人數：{ct.BScase_ask_people}人</span>
