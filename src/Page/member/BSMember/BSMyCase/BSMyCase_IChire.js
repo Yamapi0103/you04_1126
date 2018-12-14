@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link} from 'react-router-dom';
+import cookie from 'react-cookies';
 
 class BSMyCase_IChire extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class BSMyCase_IChire extends Component {
         // console.log(this.props.BScase_sid)
         this.BScase_sid = this.props.BScase_sid;  //案子的sid
         this.close = this.props.close;  //如果是從結案的列表來的
+        
     }
     showIChire = ()=>{
         fetch('http://localhost:3000/case/showHire/'+this.BScase_sid)
@@ -24,22 +26,22 @@ class BSMyCase_IChire extends Component {
     scrollTOP=()=>{
         window.scrollTo(0,0);
     }
-
-
+   
     componentDidMount=()=>{
        this.showIChire();
       
     };
 
     render() {
+      
         return (
             this.state.icHireArray.map((k)=>{
                 return(
                     <div key={k.IC_sid} className='imco_card_IC_container'>
                         <div className='imco_card_IC_content'>
-                            <div className='imco_card_IC_img'>
-                                <img src='/images/1.jpg'></img>
-                            </div>
+                            <Link to={`/celebrityInfo/${k.IC_sid}`} className='imco_card_IC_img'>
+                                <img src={(k.IC_photo=="")?'/images/user-solid.svg':"http://localhost:3000/info/"+k.IC_photo}></img>
+                            </Link>
                             <p className="introduction">
                                 名字: {k.IC_name}
                                 <br/>
