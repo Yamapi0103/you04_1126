@@ -85,10 +85,7 @@ class Job extends Component {
             BScase_info:Data['BScase_info'],
             industry_name:Data['industry_name'],
             BScase_Photo:Data['BScase_photo'],
-<<<<<<< HEAD
             BS_name: Data['BS_name'],
-=======
->>>>>>> c056c5f602a54eb57d3dbf49241326b33e5f902a
             BS_sid:Data['BS_sid']
           })
           this.getIndustry();
@@ -251,13 +248,8 @@ delfavor = () => {
             </figure>
             <aside className="upper_right">
 
-<<<<<<< HEAD
               <p><b>專案名稱：</b>{this.state.BScase_name}</p>
-              <p><b>廠商名稱：</b><Link to='/company'>{this.state.BS_name}</Link></p>
-=======
-              <p><b>專案名稱: </b>{this.state.BScase_name}</p>
-              <p><b>發布廠商: </b>{this.state.BS_name}</p>
->>>>>>> c056c5f602a54eb57d3dbf49241326b33e5f902a
+              <p><b>廠商名稱：</b><Link to={`/company/${this.state.BS_sid}`}>{this.state.BS_name}</Link></p>
               <div className="button_container">
                   <button onClick={this.hire} id='hire' className="list_case_ctn_apply">應徵</button>
                   {/* <Link to="" role="button" onClick={this.addfavor} id='addfavor' className="list_case_ctn_save">收藏</Link> */}
