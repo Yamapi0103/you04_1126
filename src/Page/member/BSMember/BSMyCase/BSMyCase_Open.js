@@ -34,14 +34,46 @@ class BSMyCase_Open extends Component {
     }
     End=(evt)=>{
         let bs_sid = evt.target.dataset.end;  //記錄著案子的sid
-        fetch('http://localhost:3000/case/bsMycase_close/'+bs_sid,{
-            method:'PUT'
-        })
-        .then(res=>res.json())
-        .then(data=>{  
-            swal(data.message);
-        })
-        $(evt.target).closest('.imco_card').attr('style','display:none');  
+        /* 結案方案二 失敗 */
+        let bs_name = evt.target.dataset.name;
+        swal({
+            title: "確定要將"+ bs_name +"結案嗎?",
+            // text: "確定要將"+ bs_name +"結案嗎?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                fetch('http://localhost:3000/case/bsMycase_close/'+bs_sid,{
+                    method:'PUT'
+                })
+                .then(res=>res.json())
+                .then(window.location.reload())
+                // .then(data=>{  
+                //     swal("已將案子轉為結案", {
+                //         icon: "success",
+                //     })
+                // })
+                // .then(this.showCase)
+                // $(evt.target).closest('.imco_card').attr('style','display:none')
+            } else {
+            //   swal("Your imaginary file is safe!");
+            }
+          });
+
+
+        // fetch('http://localhost:3000/case/bsMycase_close/'+bs_sid,{
+        //     method:'PUT'
+        // })
+        // .then(res=>res.json())
+        // .then(data=>{  
+        //     swal("已將案子轉為結案", {
+        //         icon: "success",
+        //     })
+        //     // swal(data.message);
+        // })
+        // $(evt.target).closest('.imco_card').attr('style','display:none')
     }
 
     //修改日期
@@ -86,8 +118,8 @@ class BSMyCase_Open extends Component {
                                                 <p>應徵人數: {v.hire_num}位</p>
                                                 <div className="imco_card_right_btn_container">
                                                     <button  onClick={this.check} className="case_open_button" >查看應徵網紅</button>
-                                                    <Link to={`/BSMyCase_edit`} className="case_open_button" >編輯</Link>
-                                                    <button className="case_open_button" onClick={this.End} data-end={v.BScase_sid}>結案</button>
+                                                    {/* <Link to={`/BSMyCase_edit`} className="case_open_button" >編輯</Link> */}
+                                                    <button className="case_open_button" onClick={this.End} data-end={v.BScase_sid} data-name={v.BScase_name}>結案</button>
                                                 </div>
                                             </div>
                                             <div className='imco_card_IC'>

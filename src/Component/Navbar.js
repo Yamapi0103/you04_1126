@@ -21,6 +21,7 @@ class Navbar extends Component{
         // window.location.reload();
         cookie.remove('userId')
         document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.scrollTo(0,0);
         // this.setState({
         //     cookie:""
         // })
@@ -66,7 +67,9 @@ class Navbar extends Component{
     //     })
         
     // };
-
+    scrollTOP=()=>{
+        window.scrollTo(0,0);
+    }
 
     componentDidMount=()=> {      
         console.log(cookie.load('userId'))
@@ -125,12 +128,12 @@ class Navbar extends Component{
                             <div className="menu-container">
             
                                 <ul className="user-menu">
-                                <Link to={`/${userType}Member/${userType}MyInfo`} className="user-menu-link" href="#"><li className="user-menu__item">帳戶管理</li></Link>
-                                <Link to={`/${userType}Member/${userType}MyCase`} className="user-menu-link" href="#"><li className="user-menu__item">接案管理</li></Link>  
-                                <Link to={`/${userType}Member/${userType}MyChat`} className="user-menu-link" href="#"><li className="user-menu__item">對話紀錄</li></Link>  
-                                <Link to={`/${userType}Member/${userType}MyFavor`} className="user-menu-link" href="#"><li className="user-menu__item">我的收藏</li></Link>
+                                <Link onClick={this.scrollTOP} to={`/${userType}Member/${userType}MyInfo`} className="user-menu-link" href="#"><li className="user-menu__item">帳戶管理</li></Link>
+                                <Link onClick={this.scrollTOP} to={`/${userType}Member/${userType}MyCase/${userType}MyCase_Open`} className="user-menu-link" href="#"><li className="user-menu__item">接案管理</li></Link>  
+                                <Link onClick={this.scrollTOP} to={(userType=='BS')?`/${userType}Member/${userType}MyChat`:`/${userType}Member/${userType}Chat`} className="user-menu-link" href="#"><li className="user-menu__item">對話紀錄</li></Link>  
+                                <Link onClick={this.scrollTOP} to={`/${userType}Member/${userType}MyFavor`} className="user-menu-link" href="#"><li className="user-menu__item">我的收藏</li></Link>
                                 {this.cookie.userType=="BS"?
-                                <Link to={`/${userType}Member/${userType}MyBilling`} className="user-menu-link" href="#"><li className="user-menu__item">訂單管理</li></Link>                  
+                                <Link onClick={this.scrollTOP} to={`/${userType}Member/${userType}MyBilling`} className="user-menu-link" href="#"><li className="user-menu__item">訂單管理</li></Link>                  
                                 :null
                                 }
                                     <Link to="" onClick={this.logOut} className="user-menu-link" href="#"><li className="user-menu__item">登出</li></Link>

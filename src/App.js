@@ -17,6 +17,7 @@ import ICMember from './Page/member/ICMember/ICMember';
 import BSMember from './Page/member/BSMember/BSMember';
 import List from './Page/list/List';
 import Job from './Page/job/job';
+import JobByVisistor from './Page/job/jobByVisistor'
 import Publish from './Page/publish/publish';
 import CheckPublish from './Page/publish/publish_upload'
 import CelebrityList from './Page/celebrity/celebrityList';
@@ -36,6 +37,7 @@ class App extends Component {
             {/* Link Page */}
             <Route path="/list/:ids/:bas/:keyword" component={List} />
             <Route path="/publish_content/:category" component={Job} />
+            <Route path="/publish_connect_visistor/:category" component={JobByVisistor}/>
             <Route path="/check_case_publish/:case_id" component={CheckPublish} />
             <Route path="/publish" component={Publish} />
             <Route path="/celebrity/:ic_media?" component={CelebrityList} />
