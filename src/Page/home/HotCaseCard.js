@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './CaseCard.scss';
 import cookies from 'react-cookies';
 import swal from 'sweetalert';
+import $ from 'jquery';
 
 class HotCaseCard extends Component{
     constructor(props){
@@ -34,6 +35,11 @@ class HotCaseCard extends Component{
             })
     };
 
+    toTop = () => {
+        $("body, html").animate({   //要讓他可以上去一定要設置body, html window會有問題
+            scrollTop: 0
+        }, 0);
+    }
 
     render(){
         return(
@@ -51,8 +57,8 @@ class HotCaseCard extends Component{
                             <span>薪資待遇：{ct.BScase_pay}</span>
                             <span>粉絲要求：{ct.BScase_fans}</span>
                             <div className="home_section2_case_bottom_btnctn">
-                                <Link className="btnctn_btn btnctn_btn_left" to={`/publish_content/${ct.BScase_sid}`}>查看</Link>
-                                <Link className="btnctn_btn btnctn_btn_right" to="" data-save={ct.BScase_sid} onClick={this.addfavor}>儲存</Link>
+                                <Link className="btnctn_btn btnctn_btn_left" to={`/publish_content/${ct.BScase_sid}`} onClick={this.toTop}>查看</Link>
+                                {/* <Link className="btnctn_btn btnctn_btn_right" to="" data-save={ct.BScase_sid} onClick={this.addfavor}>儲存</Link> */}
                             </div>
                         </div>
                     </div>
