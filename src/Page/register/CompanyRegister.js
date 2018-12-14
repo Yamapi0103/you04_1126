@@ -184,9 +184,11 @@ class CompanyRegister extends Component{
                             <small className="blank_text3 form-text" style={{color:'transparent',display:'block'}}>&nbsp;</small>
                             <small id="password_check_text" className="form-text" style={{color:'red',display:'none'}}>確認密碼不符</small>
                         </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox"  className="form-check-input"  id='read_check'/>
-                            <label className="form-check-label" for="exampleCheck1">我已經閱讀相關政策</label>
+                        <div className="form-group form-check policyCheck_container">
+                            <div className="policyCheck">
+                                <input type="checkbox"  className="form-check-input"  id='read_check'/>
+                                <label className="form-check-label" for="exampleCheck1">我已經閱讀相關政策</label>
+                            </div>
                             <small className="blank_text4 form-text" style={{color:'transparent',display:'block'}}>&nbsp;</small>
                             <small id="read_check_text" className="form-text" style={{color:'red',display:'none'}}>必須勾選閱讀條款</small>
                         </div>

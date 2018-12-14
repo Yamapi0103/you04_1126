@@ -7,6 +7,7 @@ import BSMyFavor from './BSMyFavor/BSMyFavor';
 import BSMyChat from './BSMyChat/BSMyChat';
 import BSMyBilling from './BSMyBilling/BSMyBilling';
 import cookie from 'react-cookies';
+import $ from 'jquery';
 
 class BSMember extends Component {
     constructor(props) {
@@ -66,10 +67,16 @@ class BSMember extends Component {
         })
     }
 
-      componentDidMount = () => {
+    componentDidMount = () => {
         this.getInfo();
-
     }
+
+    topTop = () => {
+        $("body, html").animate({   //要讓他可以上去一定要設置body, html window會有問題
+            scrollTop: 0
+        }, 500);
+    }
+
     render() {
         return (
 
@@ -107,31 +114,31 @@ class BSMember extends Component {
                         </div>
                         <ul>
                             <li className="transition">
-                                <Link to={`${this.props.match.url}/BSMyInfo`}>
+                                <Link to={`${this.props.match.url}/BSMyInfo`} onClick={this.topTop}>
                                     <i class="fas fa-home"></i>
                                     <span>帳戶資訊</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/BSMyCase/BSMyCase_Open`}>
+                                <Link to={`${this.props.match.url}/BSMyCase/BSMyCase_Open`} onClick={this.topTop}>
                                     <i class="fas fa-book-open"></i>
                                     <span>接案管理</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/BSMyChat`}>
+                                <Link to={`${this.props.match.url}/BSMyChat`} onClick={this.topTop}>
                                     <i class="fas fa-comment"></i>
                                     <span>對話紀錄</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/BSMyFavor`}>
+                                <Link to={`${this.props.match.url}/BSMyFavor`} onClick={this.topTop}>
                                     <i class="fas fa-heart"></i>
                                     <span>我的收藏</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/BSMyBilling`}>
+                                <Link to={`${this.props.match.url}/BSMyBilling`} onClick={this.topTop}>
                                     <i class="fas fa-folder"></i>
                                     <span>訂單管理</span>
                                 </Link>
