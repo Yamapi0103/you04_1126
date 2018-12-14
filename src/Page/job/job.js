@@ -24,16 +24,32 @@ class Job extends Component {
       active:'',
       industry_id:'',
       industry:'',
-      BScase_Photo:''
+      BScase_Photo:'',
+      //發布廠商
+      BS_sid:'',
+      BS_name:''
     }
     this.BScase = {
       ICmember_sid: cookies.load('userId')[0].IC_sid,
       BScase_sid:this.props.match.params.category
 
   }
+  
   // console.log(this.favor_case)
   this.savedOrNot()
   }
+  setBS_name =()=>{
+    fetch('http://localhost:3000/you04/updateBSmember/'+this.state.BS_sid)
+    .then(res => res.json())
+      .then(result => {
+        if (result.length == 1){
+            this.setState({
+                BS_name : result[0].BS_name
+            })
+        }
+        
+      })
+}
   savedOrNot = () => {
     fetch("http://localhost:3000/api/ICGetFavor/" + this.BScase.ICmember_sid + "/" + this.BScase.BScase_sid)
     .then(res => res.json())
@@ -88,10 +104,12 @@ class Job extends Component {
             BScase_contact:Data['BScase_contact'],
             BScase_info:Data['BScase_info'],
             industry_name:Data['industry_name'],
-            BScase_Photo:Data['BScase_photo']
+            BScase_Photo:Data['BScase_photo'],
+            BS_sid:Data['BS_sid']
           })
           this.getIndustry();
           this.getActive();
+          this.setBS_name()
         })
   }
 
@@ -248,7 +266,7 @@ delfavor = () => {
             <aside className="upper_right">
 
               <p><b>專案名稱: </b>{this.state.BScase_name}</p>
-              
+              <p><b>發布廠商: </b>{this.state.BS_name}</p>
               <div className="button_container">
                   <button onClick={this.hire} id='hire' className="list_case_ctn_apply">應徵</button>
                   {/* <Link to="" role="button" onClick={this.addfavor} id='addfavor' className="list_case_ctn_save">收藏</Link> */}
