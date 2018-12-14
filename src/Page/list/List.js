@@ -167,11 +167,13 @@ class List extends Component{
                 <div className="list_section2">
                     <div className="list_section2_case_container">
                     
-                        <h3>以下是您的搜尋結果：產業類型：{(this.state.industry=='請選擇產業類型')?'':this.state.industry}活動類型：{(this.state.active=='請選擇活動類型')?'':this.state.active}</h3>
-                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <h3>您的搜尋結果 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 產業類型：{(this.state.industry=='請選擇產業類型')?'':this.state.industry}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活動類型：{(this.state.active=='請選擇活動類型')?'':this.state.active}</h3>
+
+                        <div className="btn-group" role="group" aria-label="Basic example">
                             <button type="button" data-item="BScase_sid" onClick={this.sortItem}  className="btn btn-secondary">最新發布</button>
                             <button type="button" data-item="hire_num" onClick={this.sortItem}  className="btn btn-secondary" >最高人氣</button>
                         </div>
+
                         <div className="list_section2_case_container_case">
                             <ListCaseCard cases={this.state.cases} industry={this.state.industry} active={this.state.active} />
                         </div>

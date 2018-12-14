@@ -77,11 +77,11 @@
     align-items: center;
     .list_section2_case_container {
         height: 100%;
-        // background: #000;
         width: 68%;
         align-self: flex-start;
         h3 {
-            font-size: 1.3rem;
+            font-size: 1rem;
+            color: #888;
         }
         .list_section2_case_container_case {
             height: 100%;
@@ -109,7 +109,7 @@
             // width: 500px;
             width: 100%;
             h2 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 color: #AAAAAA;
                 margin-bottom: 3px!important;
             }
@@ -164,6 +164,9 @@
             }
         }
 
+        .serach_show{
+            display: flex;
+        }
 
         ul li .check::before {
         display: block;
