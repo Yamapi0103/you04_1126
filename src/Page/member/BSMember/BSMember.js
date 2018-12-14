@@ -147,7 +147,7 @@ class BSMember extends Component {
                     </div>
                     <switch>
                         {/* 會員中心 */}
-                        <Route exact path={`${this.props.match.url}/BSMyInfo`} component={BSMyInfo} />
+                        <Route exact path={`${this.props.match.url}/BSMyInfo`} component={BSMyInfo}/>
                         {/* 接案管理 */}
                         <Route  path={`${this.props.match.url}/BSMyCase`} component={BSMyCase} />
                         {/* 對話紀錄 */}

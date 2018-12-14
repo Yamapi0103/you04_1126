@@ -53,37 +53,39 @@ $plan_btn_color:#f54337;
         flex-wrap:wrap;
         h1{
             width: 100%;
-            padding: $plan_padding;
+            // padding: $plan_padding;
         }  
-        .plan_section_1_content_bottom{
+        h2{
+            font-size: $plan_h2_fontSize;
+            // padding: $plan_padding;
+            padding: 10px 0 10px 0;
             width: 100%;
-            display: flex;
-            align-items: center;
-            h2{
-                font-size: $plan_h2_fontSize;
-                padding: $plan_padding;
-                width: 50%;
-                text-align: left;
-                border: none;
-            }
-            .explain_button{
-                width: 125px;
-                height: $explain_button_height;
-                line-height: $explain_button_height;
-                margin-left: 20%;
-                text-align: center;
-                text-decoration: none;
-                @include btn;
-                .arrow{
-                    width:30%;
-                    height: auto;
-                    vertical-align: middle;
-                }
-            }
-            .explain_button:hover{
-                @include btn_hover;
-            }
+            text-align: left;
+            border: none;
+        }
+        .plan_section_1_content_bottom{
+            width: 70%;
+            line-height: 35px;
+            // display: flex;
+            // align-items: center;
 
+            // .explain_button{
+            //     width: 125px;
+            //     height: $explain_button_height;
+            //     line-height: $explain_button_height;
+            //     margin-left: 20%;
+            //     text-align: center;
+            //     text-decoration: none;
+            //     @include btn;
+            //     .arrow{
+            //         width:30%;
+            //         height: auto;
+            //         vertical-align: middle;
+            //     }
+            // }
+            // .explain_button:hover{
+            //     @include btn_hover;
+            // }
         }
     }
 }
