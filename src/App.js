@@ -23,6 +23,7 @@ import CheckPublish from './Page/publish/publish_upload'
 import CelebrityList from './Page/celebrity/celebrityList';
 import CelebrityInfo from './Page/celebrity/celebrityInfo';
 import contact_us from './Page/contact/contact_us';
+import company from './Page/company/company';
 
 class App extends Component {
 
@@ -43,6 +44,7 @@ class App extends Component {
             <Route path="/celebrity/:ic_media?" component={CelebrityList} />
             <Route path="/celebrityInfo/:icsid?" component={CelebrityInfo} />
             <Route path="/contact_us" component={contact_us} />
+            <Route path="/company/:bssid?" component={company} />
           </div>
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
