@@ -62,7 +62,7 @@ class BSMyCase_Close extends Component {
                                         <p>應徵人數: {v.hire_num}位</p>
                                         <div className="imco_card_right_btn_container">
                                             <button onClick={this.check} className="case_open_button">查看應徵網紅</button>
-                                            <Link to={`/BSMyCase_edit`} className="case_open_button" >編輯</Link>
+                                            {/* <Link to={`/BSMyCase_edit`} className="case_open_button" >編輯</Link> */}
                                         </div>
                                     </div>
                                     <div className='imco_card_IC'>
