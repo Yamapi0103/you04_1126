@@ -3,6 +3,7 @@ import cookie from 'react-cookies';
 import $ from 'jquery';
 import '../../BSMember/BSMyCase/BSMyCase_Open.scss';
 import '../../BSMember/BSMyCase/BSMyCase.scss';
+import './ICMyFavor';
 import swal from 'sweetalert';
 import {Link} from  'react-router-dom';
 
@@ -41,6 +42,7 @@ class ICMyFavor extends Component {
     }
 
     unSaved=(evt)=>{
+        evt.preventDefault();
         let BScase_sid = evt.target.id
         let BScase_name = evt.target.name
         swal({
@@ -74,7 +76,6 @@ class ICMyFavor extends Component {
             <React.Fragment>
                 <div class="member_form_box">
                     <div class="member_form_content">
-
                         <form>
                             <div>
                                 {
@@ -90,16 +91,17 @@ class ICMyFavor extends Component {
                                                 <div className='imco_card_right'>
                                                     <p>發佈日期:{this.fixDate(v.BScase_publish_at)}</p>
                                                     <p>截止日期:{this.fixDate(v.BScase_time_limit)}</p>
+                                                    <div className="imco_card_right_btn_container">
+                                                        <Link className="case_open_button mt-3" to={`/publish_content/${v.BScase_sid}`}>查看</Link>
+                                                        <Link className="case_open_button mt-3" to="" id={v.BScase_sid} name={v.BScase_name} onClick={this.unSaved}>移除</Link>
+                                                    </div>
                                                 </div>
-                                                <a id={v.BScase_sid} name={v.BScase_name} onClick={this.unSaved} className="unsaved">X</a>
-                                                <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${v.BScase_sid}`}>查看</Link>
                                             </div>
                                         )
                                     })
                                 }
                             </div>
                         </form>
-
                     </div>
                 </div>
             </React.Fragment>

@@ -120,8 +120,9 @@ class ICMyInfo extends Component {
             ...cookie.load('userId')[0],
             IC_name: this.state.IC_name
         }])
-
+        window.location.reload()
     }
+
     selectClick=(evt)=>{
         let select = evt.target;
         select[0].setAttribute('disabled','disabled');
@@ -276,11 +277,11 @@ class ICMyInfo extends Component {
                                     <input value={this.state.IC_web} name="IC_web" onChange={this.change} className="form-control" />
                                 </div>
 
-                                {/* <br></br> */}
+                                <br></br>
 
                                 <div className="">
                                     <div className="case_successAlert alert alert-success" role="alert" >修改成功!</div>
-                                    <button type="submit" onClick={this.sent}  className="save_button member_button">儲存</button>
+                                    <button type="submit" onClick={this.sent}  className="btn btn-primary">儲存</button>
 
                                 </div>
                                 <br></br>

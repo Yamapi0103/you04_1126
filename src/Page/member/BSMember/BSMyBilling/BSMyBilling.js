@@ -62,7 +62,7 @@ class BSMyBilling extends Component {
                             <div className="mfb_container_top_point mfb_container_top_box">
                                 <span>剩餘點數：</span>
                                 <span><strong>{this.state.point}點</strong></span>
-                                <Link to="#">購買方案</Link>
+                                <Link to="../../../plan">購買方案</Link>
                             </div>
                         </div>
                         <div className="mfb_container_bottom">

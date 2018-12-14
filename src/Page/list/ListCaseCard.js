@@ -4,25 +4,14 @@ import { Link } from 'react-router-dom';
 import './ListCaseCard.scss';
 import cookies from 'react-cookies';
 import swal from 'sweetalert';
-
+import ListCaseCardItem from './ListCaseCardItem'
 
 class ListCaseCard extends Component {
     constructor(props) {
         super(props);
 
-        // this.bscase = this.props.bscase;
-        // this.ic_favor = {}
-        this.state = {
-            saved: false,
-        }
-
-        // this.favor_case = {
-        //     ic_sid: cookies.load('userId')[0].ic_sid,
-        //     bscase_sid: this.bscase_sid
-        // }
-        // this.savedOrNot()
-
     }
+<<<<<<< HEAD
 
     //網紅收藏專案
     addfavor = (evt) => {
@@ -92,32 +81,14 @@ class ListCaseCard extends Component {
     }
 
 
+=======
+>>>>>>> 7de687f9627e6070b5af4b40703c91cc256859db
     render() {
         return (
             <React.Fragment>
                 {
                     this.props.cases.map(ct =>
-                        <div className="list_case_card_container" people-value={ct.BScase_ask_people} fans-value={ct.BScase_fans} pay-value={ct.BScase_pay} >
-                            <Link to="" className="list_case_card_container_left">
-                                <img src={(`http://localhost:3000/info/${ct.BScase_photo}`)} /> 
-                            </Link>
-                            <div className="list_case_card_container_right">
-                                <div className="text_container">
-                                    <Link to=""><h5>{ct.BScase_name}</h5></Link>
-                                    <div className="line"></div>
-                                    {/* <span>{ct.case_company}</span> */}
-                                    <span>需求人數：{ct.BScase_ask_people}人</span>
-                                    <span>薪資待遇：{ct.BScase_pay}</span>
-                                    <span>粉絲要求：{ct.BScase_fans}</span>
-                                    {/* <span>產業類型：{ct.industry_name}</span>
-                                    <span>活動方式：{ct.BScase_active}</span> */}
-                                </div>
-                                <div className="button_container">
-                                <Link className="list_case_ctn_btn list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>查看</Link>
-                                     <button onClick={this.addfavor} className=" list_case_ctn_save" data-save={ct.BScase_sid}>收藏</button>
-                                </div>
-                            </div>
-                        </div>
+                        <ListCaseCardItem cases={ct}/>
                     )
                 }
 

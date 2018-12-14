@@ -51,7 +51,7 @@ class ICMyCase_Open extends Component {
                     <div class="member_form_content">
                         <div >
                             {
-                              <p className='NoneCaseOpen' style={{'display':'none'}}>您沒有應徵的案子喔!</p>
+                              <p className='NoneCaseOpen' style={{'display':'none'}}>您尚未應徵專案喔!</p>
                             }
                           {
                             this.state.bsCaseArray.map((v,idx)=>{
