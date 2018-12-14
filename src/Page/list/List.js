@@ -6,13 +6,17 @@ import ListCaseCard from './ListCaseCard';
 // import Listjson from './casejson.json';
 import $ from 'jquery';
 import FilterRight from '../../Component/FilterRight'
+import { enabled } from '../../../node_modules/ansi-colors';
 
 
 class List extends Component{
     constructor(props){
         super(props);
         this.state= {   
-            cases:[]
+            cases:[],
+            // enabled: true,
+            industry:'',
+            industry_name:''
         }
         // console.log(Listjson);
     }
@@ -39,10 +43,12 @@ class List extends Component{
                 cases:data
             })
         })
+        this.getIndustry(ids);
+        this.getActive(bas)
     }
 
-    getIndustry = () =>{
-        fetch("http://localhost:3000/api/pairIndustry/" + this.state.industry_name,{
+    getIndustry = (ids) =>{
+        fetch("http://localhost:3000/api/pairIndustry/" + ids,{
           method:'GET',
           headers:{
             'content-type': 'application/json',
@@ -50,17 +56,17 @@ class List extends Component{
         })
         .then(res=>res.json())
         .then(data=>{
-          console.log(data)
+        //   console.log(data)
           let Data = data[0]
-          console.log(Data);
+        //   console.log(Data);
           this.setState({
             industry: Data['industry_name']
           })
         })
       }
 
-      getActive = () =>{
-        fetch("http://localhost:3000/api/pairActive/" + this.state.BScase_active,{
+      getActive = (bas) =>{
+        fetch("http://localhost:3000/api/pairActive/" + bas,{
           method:'GET',
           headers:{
             'content-type': 'application/json',
@@ -133,9 +139,23 @@ class List extends Component{
             })
           });
     }
-    render(){
-        const keyword = this.props.match.params.keyword;
 
+    sortItem = evt =>{
+        console.log(evt.target.dataset)
+        var sort_case = this.state.cases;
+        var sort_item = evt.target.dataset.item;
+
+        sort_case.sort(function(a, b){
+            if(a[sort_item] === b[sort_item]) return 0;
+        })
+        this.setState({
+            cases:sort_case,
+        })
+        console.log(this.state.cases)
+    }
+
+
+    render(){
         return(
             <React.Fragment>
                 <div className="list_section1">
@@ -144,10 +164,16 @@ class List extends Component{
                         <div>
                 </div>
                     </div>
+                    
                 </div>
                 <div className="list_section2">
                     <div className="list_section2_case_container">
-                        <h3>以下是您的搜尋結果</h3>
+                    
+                        <h3>以下是您的搜尋結果：產業類型：{(this.state.industry=='請選擇產業類型')?'':this.state.industry}活動類型：{(this.state.active=='請選擇活動類型')?'':this.state.active}</h3>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" data-item="BScase_sid" onClick={this.sortItem}  className="btn btn-secondary">最新發布</button>
+                            <button type="button" data-item="hire_num" onClick={this.sortItem}  className="btn btn-secondary" >最高人氣</button>
+                        </div>
                         <div className="list_section2_case_container_case">
                             <ListCaseCard cases={this.state.cases} industry={this.state.industry} active={this.state.active} />
                         </div>

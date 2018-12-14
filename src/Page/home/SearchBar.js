@@ -12,7 +12,7 @@ class SearchBar extends Component{
             active_option:[],
             ids:'1',
             bas:'1',
-            keyword:'1'
+            keyword:'null'
         }
     
     }
@@ -61,6 +61,7 @@ class SearchBar extends Component{
         this.getSearchIndustry()
         this.getSearchActive()
     }
+    
 
     render(){
         return(
@@ -76,7 +77,7 @@ class SearchBar extends Component{
                     
                     <input onChange={this.handleChange} name="keyword" className="searchbar_btn3 searchbar_btn" placeholder="關鍵字搜尋：產品名稱等" />
 
-                    <Link exact to={`/list/${this.state.ids}/${this.state.bas}/${this.state.keyword}`} className="startsearch_btn" onClick={this.search}>
+                    <Link exact to={{pathname:`/list/${this.state.ids}/${this.state.bas}/${this.state.keyword}`}} className="startsearch_btn" onClick={this.search}>
                         <i className="fas fa-search"></i><span>開始搜尋</span>
                     </Link>
                 </div>

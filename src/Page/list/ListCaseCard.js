@@ -66,11 +66,6 @@ class ListCaseCard extends Component {
     }
 
 
-
-
-
-
-
     addHandler = (evt) => {
         fetch('http://localhost:3000/api/ICAddFavor', {
             method: 'POST',
