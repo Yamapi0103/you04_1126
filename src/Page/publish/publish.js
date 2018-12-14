@@ -176,7 +176,7 @@ class Publish extends Component {
         // console.log(this.userSid)
 
         //判斷點數是否足夠
-        if(this.userPoints<100){
+        if(this.userPoints<500){
             swal('點數不足，請先到商城購買點數！')
             return
         }
@@ -198,10 +198,10 @@ class Publish extends Component {
                 alert(data.message)
             })
             .then(()=>{
-                            //扣100點點數 並更新cookie裡的BS_point
+                            //扣500點點數 並更新cookie裡的BS_point
             cookies.save('userId',[{
                 ...this.cookie,
-                BS_point: parseInt(cookies.load('userId')[0].BS_point)-100
+                BS_point: parseInt(cookies.load('userId')[0].BS_point)-500
             }])
             this.cookie = cookies.load('userId')[0]  //對this.cookie更新
             // console.log(cookies.load('userId')[0]) 
@@ -373,7 +373,7 @@ class Publish extends Component {
                             </div> */}
                         </div>
                         <div className="alert alert-success" role="alert">
-                            本次刊登將會扣除您100點點數
+                            本次刊登將會扣除您500點點數
                         </div>
                         <br/> 
 

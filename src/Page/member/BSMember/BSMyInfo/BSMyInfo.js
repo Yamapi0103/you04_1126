@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import './BSMyInfo.scss';
 import cookie from 'react-cookies';
 import $ from 'jquery';
+import swal from 'sweetalert';
 
 class BSMyInfo extends Component {
     constructor(props) {
+        // console.log(props.getInfo)
         super([props]);
         this.state={
             BS_email:'',
@@ -97,7 +99,6 @@ class BSMyInfo extends Component {
         console.log(this.state);
         this.update(this.state)
         window.location.reload(); 
-
     }
     selectClick=(evt)=>{
         let select = evt.target;
@@ -111,7 +112,6 @@ class BSMyInfo extends Component {
                 <div class="member_form_box">
                     <div class="member_form_content">
                         <div >
-
                             <form className="register_form">
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">帳號</label>
@@ -174,8 +174,6 @@ class BSMyInfo extends Component {
                                 </div>
                             </form>
                         </div>
-
-
                     </div>
                 </div>
             </React.Fragment>
