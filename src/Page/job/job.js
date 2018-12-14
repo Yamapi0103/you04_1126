@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./job.scss";
-import cookie from 'react-cookies';
+import cookies from 'react-cookies';
 import swal from 'sweetalert';
 import SearchBar from '../home/SearchBar';
 import { Link } from 'react-router-dom';
@@ -26,8 +26,24 @@ class Job extends Component {
       industry:'',
       BScase_Photo:''
     }
-  }
+    this.BScase = {
+      ICmember_sid: cookies.load('userId')[0].IC_sid,
+      BScase_sid:this.props.match.params.category
 
+  }
+  // console.log(this.favor_case)
+  this.savedOrNot()
+  }
+  savedOrNot = () => {
+    fetch("http://localhost:3000/api/ICGetFavor/" + this.BScase.ICmember_sid + "/" + this.BScase.BScase_sid)
+    .then(res => res.json())
+    .then(result => {
+      if (result.length == 1)
+        this.setState({
+          saved: true
+        })
+    })
+}
   //   getSearchIndustry(){
   //     fetch("http://localhost:3000/api/searchIndustry/")
   //         .then(res =>res.json())
@@ -83,7 +99,7 @@ class Job extends Component {
   //網紅應徵
   hire = (evt) => {
     // alert(evt.target);
-    let ICmember_sid = cookie.load('userId')[0]['IC_sid'];
+    let ICmember_sid = cookies.load('userId')[0]['IC_sid'];
     let hire = {
       BScase_sid: this.state.BScase_sid,
       ICmember_sid: ICmember_sid,
@@ -107,7 +123,7 @@ class Job extends Component {
   //網紅收藏專案
   addfavor = (evt) => {
     // alert(evt.target);
-    let ICmember_sid = cookie.load('userId')[0]['IC_sid'];
+    let ICmember_sid = cookies.load('userId')[0]['IC_sid'];
     let addfavor = {
       BScase_sid: this.state.BScase_sid,
       ICmember_sid: ICmember_sid,
@@ -166,7 +182,47 @@ class Job extends Component {
         })
       })
   }
+ //網紅收藏專案
+ addfavor = (evt) => {
+  // alert(evt.target);
+  this.setState({
+      saved: !(this.state.saved),
+  })
+  
+  let addfavor = {
+      BScase_sid: evt.target.dataset.save,
+      ICmember_sid:this.BScase.ICmember_sid
+  };
+  console.log(addfavor)
+  //先確認之前有沒有收藏
+  //之前沒收藏 => 可以收藏
+  fetch('http://localhost:3000/api/ICAddFavor', {
+      method: 'POST',
+      body: JSON.stringify(addfavor),
+      headers: new Headers({
+          'content-Type': 'application/json'
+      })
+  })
+      .then(res => res.json())
+      .then(data => {
+          swal(data.message);
+      })
+};
 
+delfavor = () => {
+  this.setState({
+      saved: !(this.state.saved),
+  })
+
+  fetch('http://localhost:3000/api/ICGetFavor/' + this.BScase.ICmember_sid + '/' + this.BScase.BScase_sid, {
+    method: 'DELETE'
+  })
+    .then(res => res.json())
+    .then(data => {
+      // alert(data.message)
+      swal(data.message, "已移除");
+    })
+}
 
   componentDidMount = () => {
     // console.log(this.props.match.params);
@@ -194,8 +250,13 @@ class Job extends Component {
               <p><b>專案名稱: </b>{this.state.BScase_name}</p>
               
               <div className="button_container">
-                  <Link to="" role="button" onClick={this.hire} id='hire' className="list_case_ctn_apply">應徵</Link>
-                  <Link to="" role="button" onClick={this.addfavor} id='addfavor' className="list_case_ctn_save">收藏</Link>
+                  <button onClick={this.hire} id='hire' className="list_case_ctn_apply">應徵</button>
+                  {/* <Link to="" role="button" onClick={this.addfavor} id='addfavor' className="list_case_ctn_save">收藏</Link> */}
+                  {this.state.saved ? 
+                    <button onClick={this.delfavor} className=" list_case_ctn_save" data-save={this.BScase.BScase_sid}>已收藏</button>
+                    :
+                    <button onClick={this.addfavor} className=" list_case_ctn_save" data-save={this.BScase.BScase_sid}>收藏</button>
+                    }
               </div>
             </aside>
           </header>
