@@ -6,6 +6,7 @@ import ICMyCase from './ICMyCase/ICMyCase';
 import ICMyFavor from './ICMyFavor/ICMyFavor';
 import ICChat from './ICChat/ICChat';
 import cookie from 'react-cookies';
+import $ from 'jquery';
 
 class ICMember extends Component {
     constructor(props) {
@@ -67,12 +68,16 @@ class ICMember extends Component {
         })
     }
 
-    
+    componentDidMount = () => {
+    this.getInfo();
 
-      componentDidMount = () => {
-        this.getInfo();
-   
-      }
+    }
+
+    topTop = () => {
+        $("body, html").animate({   //要讓他可以上去一定要設置body, html window會有問題
+            scrollTop: 0
+        }, 500);
+    }
 
     render() {
         return (
@@ -111,25 +116,25 @@ class ICMember extends Component {
                         </div>
                         <ul>
                             <li className="transition">
-                                <Link to={`${this.props.match.url}/ICMyInfo`}>
+                                <Link to={`${this.props.match.url}/ICMyInfo`} onClick={this.topTop}>
                                     <i class="fas fa-home"></i>
                                     <span>帳戶資訊</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/ICMyCase/ICMyCase_Open`}>
+                                <Link to={`${this.props.match.url}/ICMyCase/ICMyCase_Open`} onClick={this.topTop}>
                                     <i class="fas fa-book-open"></i>
                                     <span>接案管理</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/ICChat`}>
+                                <Link to={`${this.props.match.url}/ICChat`} onClick={this.topTop}>
                                     <i class="fas fa-comment"></i>
                                     <span>對話紀錄</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`${this.props.match.url}/ICMyFavor`}>
+                                <Link to={`${this.props.match.url}/ICMyFavor`} onClick={this.topTop}>
                                     <i class="fas fa-heart"></i>
                                     <span>我的收藏</span>
                                 </Link>
