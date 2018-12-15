@@ -110,7 +110,7 @@ class ICChat extends Component {
       //先把上次real time產生的對話div刪除
       $(".new").remove();
       //用流水號sid讀取廠商的對話(存在bs_talk資料表)
-      fetch("http://localhost:3000/chat/bsMyCase_showBSChat/" + this.talk_sid)
+      fetch("http://localhost:3000/chat/icMyCase_showBSChat/" + this.talk_sid)
         .then(res => res.json())
         .then(data => {
           this.setState({
@@ -121,7 +121,7 @@ class ICChat extends Component {
         .then(() => {
           //用流水號sid讀取網紅的對話(存在ic_talk資料表)
           fetch(
-            "http://localhost:3000/chat/bsMyCase_showICChat/" + this.talk_sid
+            "http://localhost:3000/chat/icMyCase_showICChat/" + this.talk_sid
           )
             .then(res => res.json())
             .then(data => {
@@ -157,13 +157,16 @@ class ICChat extends Component {
       ].join("");
     };
     let sentArray;
+
+    console.log(this.BS_no_exist);  //undefined
+
     //如果有this.talk_sid => 代表是點擊此頁的其他案子
     if (this.talk_sid) {
-      sentArray = [this.talk_sid, this.state.text, onTime()];
+      sentArray = [this.talk_sid, this.state.text, onTime(),this.BS_no_exist];
     }
     //如果沒有this.talk_sid => 代表是從接按管理進來的
     else {
-      sentArray = [this.bs_case_detail_sid, this.state.text, onTime()];
+      sentArray = [this.bs_case_detail_sid, this.state.text, onTime(),this.BS_no_exist];
     }
 
     fetch("http://localhost:3000/chat/icMyCase_sent", {
@@ -221,7 +224,7 @@ class ICChat extends Component {
   choose = () => {
     //用流水號sid讀取廠商的對話(存在bs_talk資料表)
     fetch(
-      "http://localhost:3000/chat/bsMyCase_showBSChat/" +
+      "http://localhost:3000/chat/icMyCase_showBSChat/" +
         this.bs_case_detail_sid
     )
       .then(res => res.json())
@@ -234,7 +237,7 @@ class ICChat extends Component {
       .then(() => {
         //用流水號sid讀取網紅的對話(存在ic_talk資料表)
         fetch(
-          "http://localhost:3000/chat/bsMyCase_showICChat/" +
+          "http://localhost:3000/chat/icMyCase_showICChat/" +
             this.bs_case_detail_sid
         )
           .then(res => res.json())
@@ -274,8 +277,9 @@ class ICChat extends Component {
     let userType = cookie.load("userId")[0]["userType"];
     var oldID = this.ID;
     //離開舊房間
-    this.socket.emit("leave", oldID, userType);
-
+    if(oldID !== 0){
+      this.socket.emit("leave", oldID, userType);
+    }
     this.ID = talk_sid;
 
     //設置新的房間ID
@@ -314,10 +318,30 @@ class ICChat extends Component {
       }
       this.boxScroll($(".chatContent")[0]);
     });
+
+    // this.socket.on('joinINFO',(roomINFO)=>{
+    //   console.log(roomINFO)
+    //   if(roomINFO.indexOf('BS') == -1){  //廠商不在房間
+    //     this.BS_no_exist = 0;
+    //   }else{
+    //     this.BS_no_exist = 1;   //廠商有在房間
+    //   }
+    // })
+    this.socket.on("sys", (roomINFO)=>{
+      console.log(roomINFO)
+      if(roomINFO.indexOf('BS') == -1){  //網紅不在房間
+        this.BS_no_exist = 0;
+      }else{
+        this.BS_no_exist = 1;   //網紅有在房間
+      }
+    });
+
   };
 
   componentWillUnmount = () => {
-    this.socket.emit("forceDisconnect");
+    let userType = cookie.load("userId")[0]["userType"];
+  
+    this.socket.emit("forceDisconnect",this.ID,userType);
   };
   // --------------------一些小設定
   change = evt => {

@@ -10,7 +10,7 @@ class Navbar extends Component{
         super(props)
         this.cookie = []
         this.state={
-            message:'0'
+            message:''
         }
     }
     islogIn = () =>{
@@ -41,32 +41,41 @@ class Navbar extends Component{
 
 
     //訊息通知
-    // EvtSource = ()=>{
-    //     let evtSource;
-    //     //如果有登入且是網紅的話
-    //     if(this.islogIn() && cookie.load("userId")[0]["IC_sid"]){
-    //         let sid = cookie.load("userId")[0]["IC_sid"]; //網紅id
-    //         evtSource = new EventSource(`http://localhost:3000/sse/ICnavbar/${sid}`, { withCredentials: true });
-    //         // console.log(evtSource)
-    //     }else{
-    //     //如果是廠商登入
-    //         // let sid = cookie.load("userId")[0]["BS_sid"]; //廠商id
-    //         // evtSource = new EventSource(`http://localhost:3000/sse/BSnavbar/${sid}`, { withCredentials: true });
-    //         // // console.log(evtSource)
-    //     }
+    EvtSource = ()=>{
+        let evtSource;
+        //如果有登入且是網紅的話
+        if(this.islogIn() && cookie.load("userId")[0]["IC_sid"]){
+            let sid = cookie.load("userId")[0]["IC_sid"]; //網紅id
+            evtSource = new EventSource(`http://localhost:3000/sse/ICnavbar/${sid}`, { withCredentials: true });
+            // console.log(evtSource)
+            //透過message事件接收資料
+            evtSource.addEventListener('message',(data)=>{
+                // console.log(data['data']);
+                let JSON_data = JSON.parse(data['data']);
+                let num = JSON_data[0]['count'];    
+                // console.log(num);   
+                this.setState({
+                    message: num,
+                });
+            })
+        }else if(this.islogIn() && cookie.load("userId")[0]["BS_sid"]){
+        //如果是廠商登入
+            let sid = cookie.load("userId")[0]["BS_sid"]; //廠商id
+            evtSource = new EventSource(`http://localhost:3000/sse/BSnavbar/${sid}`, { withCredentials: true });
+            // console.log(evtSource)
+            //透過message事件接收資料
+            evtSource.addEventListener('message',(data)=>{
+                // console.log(data['data']);
+                let JSON_data = JSON.parse(data['data']);
+                let num = JSON_data[0]['count'];    
+                // console.log(num);   
+                this.setState({
+                    message: num,
+                });
+            })
+        }  
+    };
 
-    //     //透過message事件接收資料
-    //     evtSource.addEventListener('message',(data)=>{
-    //         // console.log(data['data']);
-    //         let JSON_data = JSON.parse(data['data']);
-    //         let num = JSON_data[0]['count'];    
-    //         // console.log(num);   
-    //         this.setState({
-    //             message: num,
-    //         });
-    //     })
-        
-    // };
     scrollTOP=()=>{
         window.scrollTo(0,0);
     }
@@ -77,7 +86,7 @@ class Navbar extends Component{
             $('.menu-container').removeClass('active');  
         })
     
-        // this.EvtSource()
+        this.EvtSource()
 
     }
     render(){ 
@@ -124,7 +133,7 @@ class Navbar extends Component{
                         <li>
                         <div onClick={this.userClick} className="user-menu-wrap">
                             <img className="mini-photo" src={(this.cookie[userType+'_photo']==null||this.cookie[userType+'_photo']=="")?"/images/user-solid.svg":"http://localhost:3000/info/"+this.cookie[userType+"_photo"]} alt="" />
-                            <span className="Notification"><p>{this.state.message}</p></span>
+                            {(this.state.message == '')?'':<span className="Notification"><p>{this.state.message}</p></span>}
                             <div className="menu-container">
             
                                 <ul className="user-menu">
