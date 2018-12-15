@@ -30,6 +30,7 @@ class BSMyChat extends Component {
 
     this.CurrentIC_idx = 0; //當前聊天網紅的index
     this.ID = 0;
+    
   }
   // ---------------------
   //顯示廠商發佈中且有人應徵的案子們
@@ -134,6 +135,7 @@ class BSMyChat extends Component {
               SortFunction();
             })
             .then(() => {
+                //加入房間
                 this.roomIN(this.talk_sid);
             });
         });
@@ -159,13 +161,14 @@ class BSMyChat extends Component {
       ].join("");
     };
     let sentArray;
+    console.log(this.IC_no_exist);  //undefined
     //如果有this.talk_sid => 代表是點擊此頁的其他案子
     if (this.talk_sid) {
-      sentArray = [this.talk_sid, this.state.text, onTime()];
+      sentArray = [this.talk_sid, this.state.text, onTime(),this.IC_no_exist];
     }
     //如果沒有this.talk_sid => 代表是從接按管理進來的
     else {
-      sentArray = [this.bs_case_detail_sid, this.state.text, onTime()];
+      sentArray = [this.bs_case_detail_sid, this.state.text, onTime(),this.IC_no_exist];
     }
 
     fetch("http://localhost:3000/chat/bsMyCase_sent", {
@@ -183,7 +186,9 @@ class BSMyChat extends Component {
         this.send(this.state.text);
         //清空輸入框
         this.setState(this.initstate);
-      });
+      }); 
+    
+    
   };
   // ------
   send = text => {
@@ -267,6 +272,7 @@ class BSMyChat extends Component {
             });
           })
           .then(() => {
+            //加入房間
             this.roomIN(this.bs_case_detail_sid)
           });
       });
@@ -277,13 +283,15 @@ class BSMyChat extends Component {
     let userType = cookie.load("userId")[0]["userType"];
     var oldID = this.ID;
     //離開舊房間
-    this.socket.emit("leave", oldID, userType);
-
+    if(oldID !== 0){
+      this.socket.emit("leave", oldID, userType);
+    }
     this.ID = talk_sid;
 
     //設置新的房間ID
     var newID = talk_sid;
     this.socket.emit("join", newID, userType);
+
 
     this.boxScroll($(".chatContent")[0]);
   }
@@ -293,7 +301,6 @@ class BSMyChat extends Component {
     this.showCase();
     this.socket = socketIOClient(this.state.endpoint);
     this.socket.on("ADDClient", (text, userType, Time) => {
-       
       console.log("前端產生對話!");
       if (userType == "IC") {
         $(".chatContent").append(`
@@ -320,10 +327,22 @@ class BSMyChat extends Component {
       }
       this.boxScroll($(".chatContent")[0]);
     });
-  };
+    
+    this.socket.on("sys", (roomINFO)=>{
+      console.log(roomINFO)
+      if(roomINFO.indexOf('IC') == -1){  //網紅不在房間
+        this.IC_no_exist = 0;
+      }else{
+        this.IC_no_exist = 1;   //網紅有在房間
+      }
+    });
 
+  };
+  
   componentWillUnmount = () => {
-    this.socket.emit("forceDisconnect");
+    let userType = cookie.load("userId")[0]["userType"];
+
+    this.socket.emit("forceDisconnect",this.ID,userType);
   };
 
   // --------------------一些小設定
