@@ -30,6 +30,8 @@ class List extends Component{
         this.getPeopleFilter()
         this.getFansFilter()
         this.getPayFilter()
+
+        this.mobileMenuFunction()
     }   
 
 
@@ -154,78 +156,85 @@ class List extends Component{
         console.log(this.state.cases)
     }
 
+    mobileMenuFunction = () => {
+        $(".mmf_btn_group_1").click(function(){
+            $(this).addClass("active").siblings().removeClass('active')
+        })
+        $(".mmf_btn_group_2").click(function(){
+            $(this).parent().parent().find("li.mmf_btn_group_2").removeClass('active');
+            $(this).addClass("active")
+        })
+        $(".burger-menu").click(function () {
+            $(this).toggleClass("menu-on");
+            $(this).parent().parent().toggleClass("show");
+            $(this).parent().parent().parent().toggleClass("show");
+        });
+    }
 
     render(){
         return(
             <React.Fragment>
                 <div className="list_section1">
                     <div className="list_section1_searchbar_container">
+                        <div className="burger_button_container">
+                            <div class="burger-menu">
+                                <div class="burger"></div>  
+                            </div>
+                        </div>
                         <SearchBar />
-                        <div class="filter">
-                            <h2>網紅需求數</h2>
+                        <div class="mobile_menu_filter">
+                            <h3>文章排序</h3>
                             <ul>
-                                <li>
-                                    <input type="radio" id="people-1" name="selector" className="people-filter" data-dropdown-value="1" />
-                                    <label for="people-1">需求人數：1</label>
-                                    <div class="check"></div>
+                                <li className="mmf_btn_group_1">
+                                    <div data-item="BScase_sid" onClick={this.sortItem} className="">最新發布</div>
                                 </li>
-                                <li>
-                                    <input type="radio" id="people-2" name="selector" className="people-filter" data-dropdown-value="2" />
-                                    <label for="people-2">需求人數：2</label>
-                                    <div class="check"><div class="inside"></div></div>
+                                <li className="mmf_btn_group_1">
+                                    <div data-item="hire_num" onClick={this.sortItem} className="" >最高人氣</div>
                                 </li>
-                                <li>
-                                    <input type="radio" id="people-3" name="selector" className="people-filter" data-dropdown-value="3" />
-                                    <label for="people-3">需求人數：3</label>
-                                    <div class="check"><div class="inside"></div></div>
+                            </ul>
+
+                            <h3>網紅需求數</h3>
+                            <ul>
+                                <li className="mmf_btn_group_2">
+                                    <div id="people-1" name="selector" className="people-filter" data-dropdown-value="1">需求人數：1</div>
                                 </li>
-                                <li>
-                                    <input type="radio" id="people-4" name="selector" className="people-filter" data-dropdown-value="3人以上" />
-                                    <label for="people-4">需求人數：3人以上</label>
-                                    <div class="check"><div class="inside"></div></div>
+                                <li className="mmf_btn_group_2">
+                                    <div id="people-2" name="selector" className="people-filter" data-dropdown-value="2">需求人數：2</div>
+                                </li>
+                                <li className="mmf_btn_group_2">
+                                    <div id="people-3" name="selector" className="people-filter" data-dropdown-value="3">需求人數：3</div>
+                                </li>
+                                <li className="mmf_btn_group_2">
+                                    <div id="people-4" name="selector" className="people-filter" data-dropdown-value="3人以上">需求人數：3人以上</div>
                                 </li>
                             </ul>
                             
-                            <h2 className="mt-3">網紅粉絲需求數</h2>
+                            <h3 className="mt-3">網紅粉絲需求數</h3>
                             <ul>
-                                <li>
-                                    <input type="radio" id="fans-1" name="selector" className="fans-filter" data-dropdown-value="100~500" />
-                                    <label for="fans-1">微量粉絲數</label>
-                                    <div class="check"></div>
+                                <li className="mmf_btn_group_2">
+                                    <div id="fans-1" name="selector" className="fans-filter" data-dropdown-value="100~500">微量粉絲數</div>
                                 </li>
-                                <li>
-                                    <input type="radio" id="fans-2" name="selector" className="fans-filter" data-dropdown-value="500~1000" />
-                                    <label for="fans-2">輕量粉絲數</label>
-                                    <div class="check"><div class="inside"></div></div>
+                                <li className="mmf_btn_group_2">
+                                    <div id="fans-2" name="selector" className="fans-filter" data-dropdown-value="500~1000">輕量粉絲數</div>
                                 </li>
-                                <li>
-                                    <input type="radio" id="fans-3" name="selector" className="fans-filter" data-dropdown-value="1000~2000" />
-                                    <label for="fans-3">中量級粉絲數</label>
-                                    <div class="check"><div class="inside"></div></div>
+                                <li className="mmf_btn_group_2">
+                                    <div id="fans-3" name="selector" className="fans-filter" data-dropdown-value="1000~2000">中量級粉絲數</div>
                                 </li>
-                                <li>
-                                    <input type="radio" id="fans-4" name="selector" className="fans-filter" data-dropdown-value="2000~5000" />
-                                    <label for="fans-4">重量級粉絲數</label>
-                                    <div class="check"><div class="inside"></div></div>
+                                <li className="mmf_btn_group_2">
+                                    <div id="fans-4" name="selector" className="fans-filter" data-dropdown-value="2000~5000">重量級粉絲數</div>
                                 </li>
                             </ul>
                             
-                            <h2 className="mt-3">案子薪水需求</h2>
+                            <h3 className="mt-3">案子薪水需求</h3>
                             <ul>
-                                <li>
-                                    <input type="radio" id="pay-1" name="selector" className="pay-filter" data-dropdown-value="1,000-3,000元" />
-                                    <label for="pay-1">要求低薪</label>
-                                    <div class="check"></div>
+                                <li className="mmf_btn_group_2">
+                                    <div id="pay-1" name="selector" className="pay-filter" data-dropdown-value="1,000-3,000元">要求低薪</div>
                                 </li>
-                                <li>
-                                    <input type="radio" id="pay-2" name="selector" className="pay-filter" data-dropdown-value="3,000-5,000元" />
-                                    <label for="pay-2">剛好就好</label>
-                                    <div class="check"><div class="inside"></div></div>
+                                <li className="mmf_btn_group_2">
+                                    <div id="pay-2" name="selector" className="pay-filter" data-dropdown-value="3,000-5,000元">剛好就好</div>
                                 </li>
-                                <li>
-                                    <input type="radio" id="pay-3" name="selector" className="pay-filter" data-dropdown-value="10,000-50,000元" />
-                                    <label for="pay-3">我要高薪</label>
-                                    <div class="check"><div class="inside"></div></div>
+                                <li className="mmf_btn_group_2">
+                                    <div id="pay-3" name="selector" className="pay-filter" data-dropdown-value="10,000-50,000元">我要高薪</div>
                                 </li>
                             </ul>
                         </div>
@@ -234,12 +243,13 @@ class List extends Component{
                 </div>
                 <div className="list_section2">
                     <div className="list_section2_case_container">
-                    
-                        <h3>您的搜尋結果 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 產業類型：{(this.state.industry=='請選擇產業類型')?'':this.state.industry}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活動類型：{(this.state.active=='請選擇活動類型')?'':this.state.active}</h3>
+                        <div className="list_section2_case_container_result">
+                            <h3>您的搜尋結果 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 產業類型：{(this.state.industry=='請選擇產業類型')?'':this.state.industry}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活動類型：{(this.state.active=='請選擇活動類型')?'':this.state.active}</h3>
 
-                        <div className="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" data-item="BScase_sid" onClick={this.sortItem}  className="btn btn-secondary">最新發布</button>
-                            <button type="button" data-item="hire_num" onClick={this.sortItem}  className="btn btn-secondary" >最高人氣</button>
+                            <div className="lsccr_btn_container" role="group" aria-label="Basic example">
+                                <button type="button" data-item="BScase_sid" onClick={this.sortItem} className="lsccr_btn">最新發布</button>
+                                <button type="button" data-item="hire_num" onClick={this.sortItem} className="lsccr_btn" >最高人氣</button>
+                            </div>
                         </div>
 
                         <div className="list_section2_case_container_case">

@@ -88,5 +88,47 @@
         }
     }
 }
+@media only screen and (max-width: 768px) {
+    .list_case_card_container {
+        .list_case_card_container_right {
+            // .text_container {
 
+            // }
+            .button_container {
+                .list_case_ctn_apply {
+                    padding: 2px 7px;
+                }
+                .list_case_ctn_save {
+                    padding: 2px 7px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 680px) {
+    .list_case_card_container {
+        height: 203px;
+        .list_case_card_container_left {
+            width: 55%;
+            margin: 15px 5px;
+        }
+        .list_case_card_container_right {
+            margin: 15px 5px 15px 10px;
+            .text_container {
+                margin-right: 15px;
+                a {
+                    h5 {
+                        // font-size: 1rem;
+                    }
+                }
+                span {
+                    // font-size: 0.9rem;
+                }
+            }
+            .button_container {
+                align-items: flex-start;
+            }
+        }
+    }
+}
 
