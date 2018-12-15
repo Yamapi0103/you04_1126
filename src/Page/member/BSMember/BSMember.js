@@ -84,7 +84,7 @@ class BSMember extends Component {
                 <div id="member_container" className="flex" >
                     <div className="register_navbar">
                         <div className="member_head">
-                            <img src={cookie.load('userId')[0]['BS_photo']==""?"/images/user-solid.svg":`http://localhost:3000/info/${this.state.BS_photo}`} alt="me" />
+                            <img src={(cookie.load('userId')[0]['BS_photo']==null||cookie.load('userId')[0]['BS_photo']=="")?"/images/user-solid.svg":`http://localhost:3000/info/${this.state.BS_photo}`} alt="me" />
                             <span>{this.state.Data['BS_name']}</span>
                             <Link to="" className="upload_img" data-toggle="modal" data-target="#exampleModal" title="上傳照片">
                                 <i class="fas fa-camera"></i>

@@ -123,7 +123,7 @@ class Navbar extends Component{
                         </React.Fragment>:
                         <li>
                         <div onClick={this.userClick} className="user-menu-wrap">
-                            <img className="mini-photo" src={this.cookie[userType+'_photo']==""?"/images/user-solid.svg":"http://localhost:3000/info/"+this.cookie[userType+"_photo"]} alt="" />
+                            <img className="mini-photo" src={(this.cookie[userType+'_photo']==null||this.cookie[userType+'_photo']=="")?"/images/user-solid.svg":"http://localhost:3000/info/"+this.cookie[userType+"_photo"]} alt="" />
                             <span className="Notification"><p>{this.state.message}</p></span>
                             <div className="menu-container">
             
