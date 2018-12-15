@@ -170,8 +170,8 @@ class JobByVisistor extends Component {
             <aside className="upper_right">
 
               <p><b>專案名稱: </b>{this.state.BScase_name}</p>
-              <p><b>發布廠商: </b>{this.state.BS_name}</p>
-              
+              <p><b>廠商名稱：</b><Link to={`/company/${this.state.BS_sid}`}>{this.state.BS_name}</Link></p>
+              <p>(需以網紅身分登入才可應徵或收藏專案)</p>
             </aside>
           </header>
           <section className="job_lower">
