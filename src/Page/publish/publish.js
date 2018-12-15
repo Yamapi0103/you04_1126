@@ -248,7 +248,7 @@ class Publish extends Component {
 
 
     render(){
-
+        // console.log(this.cookie)
         if(!this.isLogin()){
             return(
                 <React.Fragment>
@@ -265,6 +265,14 @@ class Publish extends Component {
                     {this.props.history.push("/plan")}
                 </React.Fragment>
             )
+        }
+        else if(this.cookie.BS_status!="啟用中"){
+            return(
+                <React.Fragment>
+                    {alert("帳戶狀態不允許刊登方案!")}
+                    {this.props.history.push("/plan")}
+                </React.Fragment>
+            ) 
         }
         else{
         return(

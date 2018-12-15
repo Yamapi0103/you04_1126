@@ -248,8 +248,8 @@ delfavor = () => {
             </figure>
             <aside className="upper_right">
 
-              <p><b>專案名稱：</b>{this.state.BScase_name}</p>
-              <p><b>廠商名稱：</b><Link to={`/company/${this.state.BS_sid}`}>{this.state.BS_name}</Link></p>
+              <div className="casename" ><b></b>{this.state.BScase_name}</div>
+              <p className="bsname"><b>廠商名稱：</b><Link className="bsname_show" to={`/company/${this.state.BS_sid}`}>{this.state.BS_name}</Link></p>
               <div className="button_container">
                   <button onClick={this.hire} id='hire' className="list_case_ctn_apply">應徵</button>
                   {/* <Link to="" role="button" onClick={this.addfavor} id='addfavor' className="list_case_ctn_save">收藏</Link> */}
@@ -286,6 +286,11 @@ delfavor = () => {
                 <p>{this.state.BScase_info}
                 </p></div>
               </article>
+              
+              <div className="case_back container720">
+                  <a className="case_back_btn" href="javascript:history.back()">上一頁</a>
+              </div>
+              
           </section>
         </div>
       </React.Fragment>

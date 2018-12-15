@@ -24,7 +24,7 @@ class Publish_plan extends Component{
                 </div>
                 
                 
-                <Link className='plan_buy_btn' to={`/plan_buy/${this.props.point}/${this.props.text}/${this.props.money}/${this.props.plan}/${this.props.perprice}/${this.props.pnum}`} onClick={this.handle}><i className="fas fa-cart-plus"/>&nbsp;開始刊登</Link>
+                <Link className='plan_buy_btn' to={`/plan_buy/${this.props.point}/${this.props.text}/${this.props.money}/${this.props.plan}/${this.props.perprice}/${this.props.pnum}`} onClick={this.handle}><i className="fas fa-cart-plus"/>&nbsp;購買方案</Link>
             </div>
         )                       
     }

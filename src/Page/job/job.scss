@@ -145,3 +145,37 @@ div{
   font-size: 1.5rem;
   text-align: center;
 }
+
+.casename{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.bsname{
+  text-align: left;
+}
+
+.bsname_show {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+.case_back{
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.case_back_btn{
+  background: rgb(125, 185, 153);
+  text-decoration: none;
+  text-align: center;
+  padding: 7px 26px;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+      color: #fff;
+      background: rgb(81, 170, 123);
+  }
+}
