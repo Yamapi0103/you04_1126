@@ -245,7 +245,7 @@
         transition: .5s;
         align-items: flex-start;
         .list_section1_searchbar_container.show {
-            overflow-y: scroll;
+            // overflow-y: scroll;
         }
         .list_section1_searchbar_container {
             width: 100%;
@@ -256,7 +256,8 @@
             flex-direction: column;
             justify-content: flex-start;
             height: calc( 100vh - 70px );
-            overflow-y: hidden;
+            // overflow-y: hidden;
+            overflow: auto;
             // background: rgb(192, 116, 116);
             // .element::-webkit-scrollbar {display:none}
             position: relative;
@@ -329,7 +330,7 @@
                 height: 173px;
                 .searchbar_btn {
                   width: calc( 50% - 5px );
-                  height: 50px;
+                  height: 40px;
                   margin-bottom: 6px;
                   margin-right: 0;
                 }
@@ -347,7 +348,7 @@
             .mobile_menu_filter {
                 display: block;
                 position: absolute;
-                top: 257px;
+                top: 243px;
                 width: 75%;
                 h3 {
                     color: rgb(134, 134, 134);

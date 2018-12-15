@@ -209,7 +209,7 @@ class List extends Component{
                                 </li>
                             </ul>
                             
-                            <h3 className="mt-3">網紅粉絲需求數</h3>
+                            <h3 className="">網紅粉絲需求數</h3>
                             <ul>
                                 <li className="mmf_btn_group_2">
                                     <div id="fans-1" name="selector" className="fans-filter" data-dropdown-value="100~500">微量粉絲數</div>
@@ -225,7 +225,7 @@ class List extends Component{
                                 </li>
                             </ul>
                             
-                            <h3 className="mt-3">案子薪水需求</h3>
+                            <h3 className="">案子薪水需求</h3>
                             <ul>
                                 <li className="mmf_btn_group_2">
                                     <div id="pay-1" name="selector" className="pay-filter" data-dropdown-value="1,000-3,000元">要求低薪</div>
