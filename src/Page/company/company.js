@@ -23,6 +23,12 @@ componentDidMount = () => {
 }
 
 
+goBack=()=>{
+    this.props.history.goBack();
+}
+
+
+
 getMembers(bssid) {
   console.log(bssid)
   fetch("http://localhost:3000/info/bsmemberinfo/" + bssid)
@@ -54,6 +60,7 @@ getMembers(bssid) {
                                 <div className="bsinfo_name">
                                     {this.state.company['BS_name']}
                                 </div>
+                                
                             </div>
 
                             <div className="bsinfo_content">
@@ -67,6 +74,9 @@ getMembers(bssid) {
                                 <hr />
 
                                 <p><span></span>{this.state.company['BS_info']}</p>
+                            </div>
+                            <div className="bsinfo_back">
+                                <a className="bsinfo_back_btn" href="javascript:history.back()">上一頁</a>
                             </div>
                         </div>
                     </div>
