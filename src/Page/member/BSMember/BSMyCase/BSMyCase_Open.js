@@ -76,6 +76,10 @@ class BSMyCase_Open extends Component {
         // $(evt.target).closest('.imco_card').attr('style','display:none')
     }
 
+    scrollTOP=()=>{
+        window.scrollTo(0,0);
+    }
+
     //修改日期
     fixDate=(v)=>{
         if(!v){
@@ -117,6 +121,7 @@ class BSMyCase_Open extends Component {
                                                 <p>截止日期: {this.fixDate(v.BScase_time_limit)}</p>
                                                 <p>應徵人數: {v.hire_num}位</p>
                                                 <div className="imco_card_right_btn_container">
+                                                    <Link to={`/publish_content/${v.BScase_sid}` } onClick={this.scrollTOP} className="case_open_button">查看</Link>
                                                     <button  onClick={this.check} className="case_open_button" >查看應徵網紅</button>
                                                     {/* <Link to={`/BSMyCase_edit`} className="case_open_button" >編輯</Link> */}
                                                     <button className="case_open_button" onClick={this.End} data-end={v.BScase_sid} data-name={v.BScase_name}>結案</button>

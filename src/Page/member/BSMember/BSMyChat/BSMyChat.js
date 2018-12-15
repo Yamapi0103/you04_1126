@@ -329,8 +329,8 @@ class BSMyChat extends Component {
     });
     
     this.socket.on("sys", (roomINFO)=>{
-      console.log(roomINFO)
-      if(roomINFO.indexOf('IC') == -1){  //網紅不在房間
+      console.log('roomINFO' +　roomINFO)
+      if(roomINFO.indexOf('IC') === -1){  //網紅不在房間
         this.IC_no_exist = 0;
       }else{
         this.IC_no_exist = 1;   //網紅有在房間
