@@ -93,4 +93,14 @@
             }
         }
     }
+    @media only screen and (max-width: 900px) {
+        .register_form_container {
+            .register_form_left {
+                display: none;
+            }
+            .register_form_right {
+                width: 100%;
+            }
+        }
+    }
 }

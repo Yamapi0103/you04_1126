@@ -39,6 +39,11 @@
                 border-right: 1.5px solid black;
                 margin: 0 100px;
             }
+            @media only screen and (max-width: 680px) {
+                .line {
+                    margin: 0 5%;
+                }
+            }
             a {
                 // background: #ff5a5a;
                 border: 1.5px solid black;
@@ -60,3 +65,5 @@
         }
     }
 }
+
+  
