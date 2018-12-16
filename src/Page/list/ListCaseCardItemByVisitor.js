@@ -64,7 +64,7 @@ class ListCaseCardItemByVisitor extends Component {
                                     <span>需求人數：{ct.BScase_ask_people}人</span>
                                     <span>薪資待遇：{ct.BScase_pay}</span>
                                     <span>粉絲要求：{ct.BScase_fans}</span>
-                                    <span>廠商名稱: {this.state.BS_name}</span>
+                                    <span>廠商名稱：{this.state.BS_name}</span>
                                     {/* <span>產業類型：{ct.industry_name}</span>
                                     <span>活動方式：{ct.BScase_active}</span> */}
                                 </div>

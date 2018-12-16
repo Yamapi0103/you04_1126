@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './ICMyCase.scss';
+// import '../../BSMember/BSMyCase/BSMyCase_Open.scss';
 import { Link, Route } from 'react-router-dom';
 import ICMyCase_Open from './ICMyCase_Open'
 import ICMyCase_Close from './ICMyCase_Close'
@@ -24,7 +25,7 @@ class ICMyCase extends Component {
             <React.Fragment>
                 <div className="bscase_container">
                     <div className="register_outside">
-                        <Link className="OpenOrClose OpenOrClose1 active" to={`${this.props.match.url}/ICMyCase_Open`}>發布中</Link>
+                        <Link className="OpenOrClose OpenOrClose1 active" to={`${this.props.match.url}/ICMyCase_Open`}>應徵中</Link>
                         <Link className="OpenOrClose OpenOrClose2" to={`${this.props.match.url}/ICMyCase_Close`}>已關閉</Link>
                     </div>
                 </div>

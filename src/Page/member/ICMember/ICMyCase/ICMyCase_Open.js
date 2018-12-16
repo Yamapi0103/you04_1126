@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cookie from 'react-cookies';
 import $ from 'jquery';
 import { Link} from 'react-router-dom';
+import './ICMyCase_Open.scss';
 
 class ICMyCase_Open extends Component {
     constructor(props) {
@@ -68,9 +69,12 @@ class ICMyCase_Open extends Component {
                                             <div className='imco_card_right'>
                                                 <p>發佈日期:{this.fixDate(v.BScase_publish_at)}</p>
                                                 <p>截止日期:{this.fixDate(v.BScase_time_limit)}</p>
-                                              
-                                               
-                                                <Link className="btn" to={`/ICMember/ICChat/${v.sid}`} onClick={this.scrollTOP}>查看對話</Link>
+                                                {/* <div className="imco_card_right_btn_container">
+                                                <Link to="" className="case_open_button">查看</Link>
+                                                </div> */}
+                                                <div className="btn_div mt-5">
+                                                    <Link id="ic_openChat_btn" to={`/ICMember/ICChat/${v.sid}`} onClick={this.scrollTOP}>查看對話</Link>
+                                                </div>
                                             </div>
                                         </div>
                                 )

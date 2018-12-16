@@ -11,7 +11,7 @@
 .imco_card{
     width: 100%;
     margin-bottom: 30px;
-    padding: 30px;
+    padding: 30px 25px;
     // background: #e7e7e7;
     background-color: #ffffff;
     box-sizing: border-box;
@@ -31,12 +31,16 @@
     }   
     .imco_card_right{
         width: 48%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         // background: rgb(248, 67, 67);
         // p {
         //     text-align: right;
         // }
         .imco_card_right_btn_container {
             display: flex;
+            width: 100%;
             .case_open_button {
                 padding: 2px 10px;
                 border: 1px solid rgb(214, 214, 214);
@@ -46,6 +50,12 @@
                 font-weight: bold;
                 margin: 5px 10px 0 0;
                 cursor: pointer;
+            }
+            .case_open_button:nth-child(3) {
+                margin: 5px 0px 0 0;
+            }
+            .case_open_button:nth-child(1) {
+                width: 87px;
             }
             a {
                 display: block;

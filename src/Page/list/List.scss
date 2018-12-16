@@ -246,18 +246,16 @@
         align-items: flex-start;
         .list_section1_searchbar_container.show {
             // overflow-y: scroll;
+            overflow: auto;
         }
         .list_section1_searchbar_container {
             width: 100%;
             transition: .5s;
-            // padding-top: 70px;
             box-sizing: border-box;
-            // height: 500px;
             flex-direction: column;
             justify-content: flex-start;
             height: calc( 100vh - 70px );
-            // overflow-y: hidden;
-            overflow: auto;
+            overflow: hidden;
             // background: rgb(192, 116, 116);
             // .element::-webkit-scrollbar {display:none}
             position: relative;
