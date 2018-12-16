@@ -84,13 +84,13 @@ class List extends Component{
       }
     
 
-    //標籤篩選器
+    //標籤篩選器 電腦版
     getPeopleFilter(){
         $(document).ready(function(){
             $(".people-filter").on("click", function(){
                 $(".list_case_card_container").hide();
                 if($(this).data("dropdownValue") == 'all'){
-                $(".people-filter").show();
+                // $(".people-filter").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
                 }, 500);
@@ -109,7 +109,7 @@ class List extends Component{
             $(".fans-filter").on("click", function(){
                 $(".list_case_card_container").hide();
                 if($(this).data("dropdownValue") == 'all'){
-                $(".fans-filter").show();
+                // $(".fans-filter").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
                 }, 500);
@@ -128,7 +128,7 @@ class List extends Component{
             $(".pay-filter").on("click", function(){
                 $(".list_case_card_container").hide();
                 if($(this).data("dropdownValue") == 'all'){
-                $(".pay-filter").show();
+                // $(".pay-filter").show();
                 $("body, html").animate({   //避免每次點選右邊篩選畫面停留在下方難看
                     scrollTop: 0
                 }, 500);
@@ -196,45 +196,45 @@ class List extends Component{
                             <h3>網紅需求數</h3>
                             <ul>
                                 <li className="mmf_btn_group_2">
-                                    <div id="people-1" name="selector" className="people-filter" data-dropdown-value="1">需求人數：1</div>
+                                    <div name="selector" className="people-filter" data-dropdown-value="1">需求人數：1</div>
                                 </li>
                                 <li className="mmf_btn_group_2">
-                                    <div id="people-2" name="selector" className="people-filter" data-dropdown-value="2">需求人數：2</div>
+                                    <div name="selector" className="people-filter" data-dropdown-value="2">需求人數：2</div>
                                 </li>
                                 <li className="mmf_btn_group_2">
-                                    <div id="people-3" name="selector" className="people-filter" data-dropdown-value="3">需求人數：3</div>
+                                    <div name="selector" className="people-filter" data-dropdown-value="3">需求人數：3</div>
                                 </li>
                                 <li className="mmf_btn_group_2">
-                                    <div id="people-4" name="selector" className="people-filter" data-dropdown-value="3人以上">需求人數：3人以上</div>
+                                    <div name="selector" className="people-filter" data-dropdown-value="3人以上">需求人數：3人以上</div>
                                 </li>
                             </ul>
                             
                             <h3 className="">網紅粉絲需求數</h3>
                             <ul>
                                 <li className="mmf_btn_group_2">
-                                    <div id="fans-1" name="selector" className="fans-filter" data-dropdown-value="100~500">微量粉絲數</div>
+                                    <div name="selector" className="fans-filter" data-dropdown-value="100~500">微量粉絲數</div>
                                 </li>
                                 <li className="mmf_btn_group_2">
-                                    <div id="fans-2" name="selector" className="fans-filter" data-dropdown-value="500~1000">輕量粉絲數</div>
+                                    <div name="selector" className="fans-filter" data-dropdown-value="500~1000">輕量粉絲數</div>
                                 </li>
                                 <li className="mmf_btn_group_2">
-                                    <div id="fans-3" name="selector" className="fans-filter" data-dropdown-value="1000~2000">中量級粉絲數</div>
+                                    <div name="selector" className="fans-filter" data-dropdown-value="1000~2000">中量級粉絲數</div>
                                 </li>
                                 <li className="mmf_btn_group_2">
-                                    <div id="fans-4" name="selector" className="fans-filter" data-dropdown-value="2000~5000">重量級粉絲數</div>
+                                    <div name="selector" className="fans-filter" data-dropdown-value="2000~5000">重量級粉絲數</div>
                                 </li>
                             </ul>
                             
                             <h3 className="">案子薪水需求</h3>
                             <ul>
                                 <li className="mmf_btn_group_2">
-                                    <div id="pay-1" name="selector" className="pay-filter" data-dropdown-value="1,000-3,000元">要求低薪</div>
+                                    <div  name="selector" className="pay-filter" data-dropdown-value="1,000-3,000元">要求低薪</div>
                                 </li>
                                 <li className="mmf_btn_group_2">
-                                    <div id="pay-2" name="selector" className="pay-filter" data-dropdown-value="3,000-5,000元">剛好就好</div>
+                                    <div  name="selector" className="pay-filter" data-dropdown-value="3,000-5,000元">剛好就好</div>
                                 </li>
                                 <li className="mmf_btn_group_2">
-                                    <div id="pay-3" name="selector" className="pay-filter" data-dropdown-value="10,000-50,000元">我要高薪</div>
+                                    <div  name="selector" className="pay-filter" data-dropdown-value="10,000-50,000元">我要高薪</div>
                                 </li>
                             </ul>
                         </div>
