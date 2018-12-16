@@ -1,4 +1,29 @@
+.form{
+    margin: 100px 2% 30px 10%;
+}
+
+.form_container{
+    width: 65%;
+    padding: 20px;
+}
+
+.form-control{
+    border: 1.5px solid rgb(160, 187, 172);
+    border-radius: 5px;
+}
+
+
 .btn {
     padding: 7px 18px;
     color: #fff;
+    background: rgb(87, 189, 133);
+    border: 1.5px solid rgb(87, 189, 133);
+    text-decoration: none;
+    padding: 4px 24px;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+            background: rgb(58, 133, 92);
+            border: 1.5px solid rgb(68, 150, 105);
+    }
 }
