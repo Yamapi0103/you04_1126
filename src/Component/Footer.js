@@ -13,6 +13,10 @@ class Footer extends Component {
         return cookie.load('userId')? true : false;
     }
 
+    scrollTOP=()=>{
+        window.scrollTo(0,0);
+    }
+
     render() {
         let userType = this.islogIn()? cookie.load('userId')[0].userType:null
         return (
@@ -38,7 +42,7 @@ class Footer extends Component {
                             </ul>
                             <ul>
                                 <li className='footer_title'>聯繫Y04</li>
-                                <li><Link to='contact_us'>聯絡我們</Link></li>
+                                <li><Link onClick={this.scrollTOP} to='/contact_us'>聯絡我們</Link></li>
                                 <li><Link to=''>郵件聯繫</Link></li>
                                 {/* <li><Link to=''>台北專線: 02-2345-6789</Link></li>
                                 <li><Link to=''>高雄專線: 02-2345-6789</Link></li> */}
