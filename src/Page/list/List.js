@@ -147,7 +147,7 @@ class List extends Component{
         var sort_case = this.state.cases;
         var sort_item = evt.target.dataset.item;
 
-        sort_case.sort(function(a, b){
+        sort_case.reverse(function(a, b){
             if(a[sort_item] === b[sort_item]) return 0;
         })
         this.setState({

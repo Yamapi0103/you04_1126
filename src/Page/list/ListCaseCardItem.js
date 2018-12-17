@@ -102,6 +102,11 @@ class ListCaseCardItem extends Component {
                     })
             })
     }
+
+    scrollTOP=()=>{
+        window.scrollTo(0,0);
+    }
+
     render() {
         let ct = this.props.cases;
         return (
@@ -126,7 +131,7 @@ class ListCaseCardItem extends Component {
                                     <span>活動方式：{ct.BScase_active}</span> */}
                                 </div>
                                 <div className="button_container">
-                                <Link className="list_case_ctn_apply" to={`/publish_content/${ct.BScase_sid}`}>查看</Link>
+                                <Link className="list_case_ctn_apply" onClick={this.scrollTOP} to={`/publish_content/${ct.BScase_sid}`}>查看</Link>
                                      
                                      {this.state.saved ? 
                                      <button onClick={this.delfavor} className=" list_case_ctn_save" data-save={ct.BScase_sid}>已收藏</button>

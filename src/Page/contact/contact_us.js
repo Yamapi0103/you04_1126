@@ -38,6 +38,7 @@ class contact_us extends Component {
             .then(data => {
                 swal(data.message, "成功送出");
             })
+            this.props.history.push("/");
     }
 
 
