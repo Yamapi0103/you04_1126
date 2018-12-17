@@ -188,53 +188,63 @@ header.banner:hover {
     padding: 0.8% 4%;
     margin: 0.7%;
     font-weight: bold;
-    border-radius: 7px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px gray;
     // color: rgb(80, 80, 80)!important;
   }
   .btn-yt{
-    color: rgb(196, 60, 60);
+    color: rgb(255, 255, 255);
     // color: rgb(80, 80, 80);
-    border: rgb(196, 60, 60) 2px solid;
+    background: rgb(211, 117, 117);
+    border: rgb(211, 117, 117) 2px solid;
     &:hover{
+      background: rgb(201, 74, 74);
+      border: rgb(201, 74, 74) 2px solid;
       color: rgb(255, 255, 255);
-      background: rgb(196, 60, 60);
     }
   }
 
   .btn-fb{
-    color: rgb(42, 103, 153);
+    color: rgb(255, 255, 255);
     // color: rgb(80, 80, 80);
-    border: rgb(42, 103, 153) 2px solid;
+    background: rgb(97, 144, 182);
+    border: rgb(97, 144, 182) 2px solid;
     &:hover{
       color: rgb(255, 255, 255);
       background: rgb(42, 103, 153);
+      border: rgb(42, 103, 153) 2px solid;
     }
   }
   .btn-ig{
-    color: rgb(175, 64, 147);
-    // color: rgb(80, 80, 80);
-    border: rgb(175, 64, 147) 2px solid;
+    color: rgb(255, 255, 255);
+    background: rgb(196, 118, 176);
+    border: rgb(196, 118, 176) 2px solid;
     &:hover{
       color: rgb(255, 255, 255);
       background: rgb(175, 64, 147);
+      border: rgb(175, 64, 147) 2px solid;
     }
   }
   .btn-blog{
-    color: rgb(51, 156, 65);
+    color: rgb(255, 255, 255);
     // color: rgb(80, 80, 80);
-    border: rgb(51, 156, 65) 2px solid;
+    background: rgb(141, 192, 147);
+    border: rgb(141, 192, 147) 2px solid;
     &:hover{
       color: rgb(255, 255, 255);
+      border: rgb(51, 156, 65) 2px solid;
       background: rgb(51, 156, 65);
     }
   }
   .btn-all{
-    color: rgb(99, 99, 99);
+    color: rgb(255, 255, 255);
     // color: rgb(80, 80, 80);
-    border: rgb(99, 99, 99) 2px solid;
+    background: rgb(129, 129, 129);
+    border: rgb(129, 129, 129) 2px solid;
     &:hover{
       color: rgb(255, 255, 255);
       background: rgb(99, 99, 99);
+      border: rgb(99, 99, 99) 2px solid;
     }
   }
 }
