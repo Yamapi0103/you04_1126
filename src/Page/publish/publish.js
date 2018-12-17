@@ -224,6 +224,7 @@ class Publish extends Component {
                         
                         let Data = data[0]
                         console.log(Data['BScase_sid'])
+                        window.scrollTo(0,0);
                         this.props.history.push('/publish_content/' + Data['BScase_sid'])
                         
                     })

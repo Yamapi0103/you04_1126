@@ -8,55 +8,55 @@ class BSMyInfo extends Component {
     constructor(props) {
         // console.log(props.getInfo)
         super([props]);
-        this.state={
-            BS_email:'',
-            BS_password:'',
+        this.state = {
+            BS_email: '',
+            BS_password: '',
             // BS_photo:'',
-            BS_name:'',
-            BS_type:'',
-            BS_phone:'',
-            BS_link:'',
-            BS_info:'',
-            BS_create_at:'',
+            BS_name: '',
+            BS_type: '',
+            BS_phone: '',
+            BS_link: '',
+            BS_info: '',
+            BS_create_at: '',
             // BS_case:'',
             // BS_point:'',
             // BS_billing:''
         };
-        this.Data='';
+        this.Data = '';
         this.sid = cookie.load('userId')[0]['BS_sid'];
         // alert(this.sid)
     }
 
-    change=(evt)=>{
+    change = (evt) => {
         const inputName = evt.target.name;
         const inputValue = evt.target.value;
         this.setState({
-            [inputName]:inputValue
+            [inputName]: inputValue
         })
     }
-   
+
     //要問老師為什麼fetch裡面不能用迴圈,還有作用域的問題
-    show = ()=>{  
-        fetch('http://localhost:3000/info/bsmembers/'+this.sid)
-            .then(res=>res.json())
-            .then(data=>{
+    show = () => {
+        fetch('http://localhost:3000/info/bsmembers/' + this.sid)
+            .then(res => res.json())
+            .then(data => {
                 // console.log(data);   //data['BS_email'] =  BS@yahoo.com.tw
-                 //防止使用者在網址/:sid打上不存在的BS_sid => 就會回傳{"Message":"XXXX"},再跳回首頁
-                 if(data.hasOwnProperty("Message")){  
+                //防止使用者在網址/:sid打上不存在的BS_sid => 就會回傳{"Message":"XXXX"},再跳回首頁
+                if (data.hasOwnProperty("Message")) {
                     this.props.history.push("/home");
                 }
-                else{
+                else {
                     this.setState(data[0])
                 }
             })
 
     }
-    
+
     // 網頁產生後會觸發此事件  
     componentDidMount() {
         this.show();
     }
-    
+
     update = (bsInfo) => {
         const onTime = () => {
             const date = new Date();
@@ -75,7 +75,7 @@ class BSMyInfo extends Component {
             ].join('');
         };
         this.state.BS_create_at = onTime();
-        fetch('http://localhost:3000/info/bsmembers/'+this.sid, {
+        fetch('http://localhost:3000/info/bsmembers/' + this.sid, {
             method: 'PUT',
             body: JSON.stringify(bsInfo),
             headers: new Headers({
@@ -85,25 +85,25 @@ class BSMyInfo extends Component {
             .then(data => {
                 // alert(data.message);
                 // console.log(this.state)
-                cookie.save('userId',[{
+                cookie.save('userId', [{
                     ...cookie.load('userId')[0],
                     ...this.state
                 }])
                 this.show();
-                $('.case_successAlert').attr('style','display:block');
+                $('.case_successAlert').attr('style', 'display:block');
                 console.log(cookie.load('userId')[0])
             })
     }
-    sent=(evt)=>{
+    sent = (evt) => {
         evt.preventDefault();
         console.log(this.state);
         this.update(this.state)
-        window.location.reload(); 
+        window.location.reload();
     }
-    selectClick=(evt)=>{
+    selectClick = (evt) => {
         let select = evt.target;
-        select[0].setAttribute('disabled','disabled');
-        
+        select[0].setAttribute('disabled', 'disabled');
+
     }
 
     render() {
@@ -124,7 +124,7 @@ class BSMyInfo extends Component {
                                 </div>
 
                                 <div>
-                                {/* <button type="submit" className="btn btn-primary">修改密碼</button> */}
+                                    {/* <button type="submit" className="btn btn-primary">修改密碼</button> */}
                                 </div>
 
 
@@ -132,27 +132,21 @@ class BSMyInfo extends Component {
 
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">名稱</label>
-                                    <input type="text" name='BS_name'  value={this.state.BS_name} onChange={this.change} className="form-control" placeholder="請填寫您的名稱" />
+                                    <input type="text" name='BS_name' value={this.state.BS_name} onChange={this.change} className="form-control" placeholder="請填寫您的名稱" />
                                 </div>
                                 <div class="form-group">
                                     <label htmlFor="exampleFormControlSelect1">產業類型</label>
                                     <select class="form-control" name='BS_type' value={this.state.BS_type} onChange={this.change} onClick={this.selectClick}>
                                         <option>請選擇</option>
-                                        <option>資訊╱軟體/電子</option>
                                         <option>零售/批發</option>
-                                        <option>行銷/傳播</option>
-                                        <option>餐飲/觀光</option>
-                                        <option>運動╱文教</option>
-                                        <option>服務業</option>
-                                        <option>製造業</option>
-                                        <option>政府機構</option>
-                                        <option>農林漁牧水電</option>
-                                        <option>運輸物流倉儲</option>
-                                        <option>政治/宗教/社福</option>
-                                        <option>金融/投顧/保險</option>
-                                        <option>法律╱會計╱顧問</option>
-                                        <option>不動產/建築營造</option>
-                                        <option>醫療保健/環境衛生</option>
+                                        <option>資訊/遊戲</option>
+                                        <option>科技/製造</option>
+                                        <option>服務/餐飲</option>
+                                        <option>旅遊/娛樂</option>
+                                        <option>美妝/時尚</option>
+                                        <option>學習/體驗</option>
+                                        <option>藝文/展覽</option>
+                                        <option>其他</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
